@@ -1,0 +1,6 @@
+*.bak
+scratch/
+server.py
+*.pyc
+__pycache__/
+Onechemicals.ai*

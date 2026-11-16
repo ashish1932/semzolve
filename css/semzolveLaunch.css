@@ -1,0 +1,772 @@
+/* ==================================================
+   SEMZOLVE CINEMATIC BRAND LAUNCH & COUNTDOWN
+   Premium Technology Company Launch Experience
+   ================================================== */
+
+/* Prevent page scroll and completely eliminate scrollbars while launch is active */
+html.launch-active,
+body.launch-active,
+.semzolve-launch-overlay {
+  overflow: hidden !important;
+  height: 100% !important;
+  max-height: 100vh !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html.launch-active::-webkit-scrollbar,
+body.launch-active::-webkit-scrollbar,
+.semzolve-launch-overlay::-webkit-scrollbar,
+.semzolve-launch-overlay *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+.semzolve-launch-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999999;
+  background: #030806;
+  color: #ffffff;
+  font-family: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
+}
+
+.semzolve-launch-overlay.is-hidden {
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Background Canvas */
+.launch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Ambient Radial Vignette & Grid Depth */
+.launch-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(5, 184, 251, 0.04) 0%, rgba(3, 8, 6, 0.4) 50%, rgba(2, 5, 4, 0.95) 100%),
+              linear-gradient(180deg, rgba(3, 8, 6, 0.6) 0%, transparent 20%, transparent 80%, rgba(3, 8, 6, 0.85) 100%);
+}
+
+/* Cinematic Film Letterbox Bars */
+.launch-letterbox-top,
+.launch-letterbox-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: #000000;
+  z-index: 20;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.launch-letterbox-top { top: 0; }
+.launch-letterbox-bottom { bottom: 0; }
+
+.semzolve-launch-overlay.curtain-open .launch-letterbox-top {
+  transform: translateY(-100%);
+}
+.semzolve-launch-overlay.curtain-open .launch-letterbox-bottom {
+  transform: translateY(100%);
+}
+
+/* Central Stage Container */
+.launch-stage {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+/* ==================================================
+   SCENE 1: THE INTRODUCTION ("Something New Is Coming...")
+   ================================================== */
+.launch-intro-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  max-width: 880px;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  pointer-events: auto;
+  z-index: 20;
+  margin: auto;
+  will-change: transform, opacity, filter;
+}
+
+.intro-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(10.5px, 1.2vw, 12.5px);
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: #34D399;
+  text-transform: uppercase;
+  margin-bottom: clamp(10px, 1.8vh, 18px);
+  text-shadow: 0 0 20px rgba(52, 211, 153, 0.7);
+}
+
+.intro-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 32px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid rgba(52, 211, 153, 0.75);
+  border-radius: 999px;
+  box-shadow: 0 0 45px rgba(5, 184, 251, 0.6),
+              0 0 80px rgba(52, 211, 153, 0.35),
+              0 12px 35px rgba(0, 0, 0, 0.6);
+  margin-bottom: clamp(12px, 2vh, 22px);
+}
+
+.intro-logo-img {
+  height: clamp(34px, 4.5vh, 42px);
+  width: auto;
+  max-width: 240px;
+  object-fit: contain;
+  display: block;
+}
+
+.intro-headline {
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 0 clamp(8px, 1.4vh, 14px) 0;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), 0 0 50px rgba(52, 211, 153, 0.3);
+}
+
+.intro-ellipsis {
+  color: #34D399;
+  animation: ellipsisGlow 1.8s infinite ease-in-out;
+}
+
+@keyframes ellipsisGlow {
+  0%, 100% { opacity: 1; text-shadow: 0 0 20px #34D399; }
+  50% { opacity: 0.4; text-shadow: 0 0 4px #34D399; }
+}
+
+.intro-subtext {
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: clamp(13px, 1.4vw, 16px);
+  font-weight: 450;
+  color: #94A3B8;
+  max-width: 620px;
+  line-height: 1.5;
+  margin: 0 0 clamp(16px, 2.5vh, 26px) 0;
+  letter-spacing: 0.02em;
+}
+
+/* Interactive Launch Button */
+.intro-launch-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 40px;
+  background: linear-gradient(135deg, #10B981 0%, #05B8FB 100%);
+  color: #020705;
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 12px 35px rgba(16, 185, 129, 0.45),
+              0 0 50px rgba(52, 211, 153, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.intro-launch-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 16px 50px rgba(16, 185, 129, 0.65),
+              0 0 75px rgba(52, 211, 153, 0.6);
+  filter: brightness(1.08);
+}
+
+.intro-launch-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-pulse-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  border: 2px solid rgba(52, 211, 153, 0.65);
+  animation: btnPulseRingAnim 2.2s infinite cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+
+@keyframes btnPulseRingAnim {
+  0% { transform: scale(0.96); opacity: 0.9; }
+  100% { transform: scale(1.24); opacity: 0; }
+}
+
+.btn-icon {
+  font-size: 12px;
+  transform: translateX(0);
+  transition: transform 0.25s ease;
+}
+
+.intro-launch-btn:hover .btn-icon {
+  transform: translateX(3px);
+}
+
+/* ==================================================
+   SCENE 2: COUNTDOWN NUMBERS & PROMINENT BRAND LOGO
+   ================================================== */
+.countdown-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  will-change: transform, opacity, filter;
+}
+
+/* Countdown Brand Header & Illuminated Logo Pill */
+.countdown-brand-header {
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  will-change: transform, opacity;
+}
+
+.countdown-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 32px;
+  background: #ffffff;
+  border-radius: 999px;
+  border: 1.5px solid rgba(5, 184, 251, 0.7);
+  box-shadow: 0 0 35px rgba(5, 184, 251, 0.6),
+              0 0 70px rgba(52, 211, 153, 0.4),
+              0 10px 30px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  will-change: transform, filter;
+}
+
+.countdown-logo-img {
+  height: 42px;
+  width: auto;
+  max-width: 250px;
+  object-fit: contain;
+  display: block;
+}
+
+.countdown-number {
+  font-size: clamp(100px, 18vw, 220px);
+  font-weight: 850;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, #ffffff 20%, #A7F3D0 55%, #05B8FB 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 45px rgba(5, 184, 251, 0.45)) drop-shadow(0 4px 20px rgba(0, 0, 0, 0.8));
+  display: inline-block;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+}
+
+.countdown-telemetry {
+  margin-top: 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(11px, 1.4vw, 14px);
+  letter-spacing: 0.32em;
+  color: #34D399;
+  text-transform: uppercase;
+  text-shadow: 0 0 16px rgba(52, 211, 153, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.countdown-telemetry::before,
+.countdown-telemetry::after {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #34D399);
+}
+.countdown-telemetry::after {
+  background: linear-gradient(90deg, #34D399, transparent);
+}
+
+/* ==================================================
+   SCENE 2: CINEMATIC BUILD-UP (LIGHT CORE)
+   ================================================== */
+.launch-core-flash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, rgba(5, 184, 251, 0.8) 35%, rgba(16, 185, 129, 0.4) 65%, transparent 75%);
+  filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  will-change: transform, opacity;
+}
+
+/* Shockwave expansion rings */
+.launch-shockwave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  border: 2px solid rgba(5, 184, 251, 0.7);
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.5), inset 0 0 40px rgba(5, 184, 251, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 6;
+  will-change: transform, opacity;
+}
+
+/* ==================================================
+   SCENE 3 & 4: CONVERGING PRODUCTS & BRAND CLIMAX
+   ================================================== */
+.launch-brand-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 1080px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity, filter;
+  z-index: 12;
+  padding: 20px 24px;
+  box-sizing: border-box;
+}
+
+/* Converging Product Quad Gallery */
+.converge-products-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  width: 100%;
+  max-width: 1040px;
+  margin-bottom: 26px;
+  z-index: 10;
+  will-change: transform, opacity, filter;
+}
+
+.converge-card {
+  position: relative;
+  height: 140px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(52, 211, 153, 0.15);
+  background: #041a12;
+  transition: transform 0.4s ease, border-color 0.4s ease;
+  will-change: transform, opacity;
+}
+
+.converge-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: #34D399;
+}
+
+.converge-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) brightness(0.85);
+  transition: transform 0.6s ease;
+}
+
+.converge-card:hover img {
+  transform: scale(1.08);
+}
+
+.converge-card span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 12px;
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(180deg, transparent 0%, rgba(2, 7, 5, 0.95) 100%);
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Official Semzolve Brand Climax Box */
+.brand-reveal-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 12;
+  max-width: 880px;
+  will-change: transform, opacity, filter;
+}
+
+.brand-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(11px, 1.3vw, 13px);
+  font-weight: 700;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #34D399;
+  text-shadow: 0 0 20px rgba(52, 211, 153, 0.8);
+  margin-bottom: 14px;
+  will-change: transform, opacity;
+}
+
+/* Logo Hero Container & Glow Wrap */
+.brand-logo-glow-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  padding: 8px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+}
+
+.brand-logo-radial-aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 440px;
+  height: 240px;
+  background: radial-gradient(ellipse, rgba(52, 211, 153, 0.70) 0%, rgba(5, 184, 251, 0.40) 45%, transparent 75%);
+  filter: blur(36px);
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform, opacity;
+}
+
+.brand-logo-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  border: 2px solid #34D399;
+  box-shadow: 0 0 35px rgba(52, 211, 153, 0.8), inset 0 0 20px rgba(5, 184, 251, 0.6);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1;
+  will-change: transform, opacity;
+}
+
+.brand-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 52px;
+  background: #ffffff;
+  border: 2px solid rgba(52, 211, 153, 0.85);
+  border-radius: 999px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 60px rgba(52, 211, 153, 0.6);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+.brand-logo-sheen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.95) 50%, transparent 80%);
+  transform: translateX(-150%) skewX(-20deg);
+  pointer-events: none;
+  z-index: 4;
+  will-change: transform;
+}
+
+.brand-logo-img {
+  height: 50px;
+  width: auto;
+  max-width: 260px;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  z-index: 3;
+  will-change: transform;
+}
+
+/* Live Headline & Creed */
+.brand-live-headline {
+  margin: 12px 0 6px 0;
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: clamp(34px, 5.5vw, 68px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.85), 0 0 35px rgba(52, 211, 153, 0.45);
+}
+
+.brand-live-creed {
+  margin: 0 0 18px 0;
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: clamp(12px, 2vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: #34D399;
+  text-transform: uppercase;
+  text-shadow: 0 0 16px rgba(52, 211, 153, 0.4);
+}
+
+/* Corporate Metrics Badge */
+.brand-stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: 'Schibsted Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #CBD5E1;
+  padding: 10px 26px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.stat-sep {
+  color: #10B981;
+  font-weight: 900;
+}
+
+/* Responsive adjustments for final brand stage */
+@media (max-width: 1024px) {
+  .converge-products-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    max-width: 600px;
+  }
+  .converge-card {
+    height: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .converge-products-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-height: 220px;
+    margin-bottom: 14px;
+  }
+  .converge-card {
+    height: 90px;
+    border-radius: 12px;
+  }
+  .converge-card span {
+    font-size: 9px;
+    padding: 4px 6px;
+  }
+  .brand-logo-pill {
+    padding: 12px 30px;
+  }
+  .brand-logo-img {
+    height: 36px;
+  }
+  .brand-live-headline {
+    font-size: clamp(26px, 7vw, 38px);
+  }
+  .brand-live-creed {
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+  }
+  .brand-stats-row {
+    font-size: 11px;
+    gap: 8px;
+    padding: 7px 16px;
+  }
+}
+
+/* Subtle Progress Bar at Bottom of Stage */
+.launch-progress-wrap {
+  position: absolute;
+  bottom: 60px;
+  width: min(320px, 80vw);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+  z-index: 15;
+}
+.launch-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #05B8FB, #10B981);
+  box-shadow: 0 0 10px #10B981;
+  border-radius: 999px;
+  transition: width 0.15s linear;
+}
+
+/* ==================================================
+   REPLAY TRIGGER (IN FOOTER & NAVBAR)
+   ================================================== */
+.launch-replay-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(11, 107, 84, 0.15);
+  border: 1px solid rgba(167, 243, 208, 0.3);
+  color: #0B6B54;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+.launch-replay-pill:hover {
+  background: rgba(11, 107, 84, 0.28);
+  color: #07533F;
+  border-color: #0B6B54;
+  transform: translateY(-1px);
+}
+.launch-replay-pill svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* ==================================================
+   ACCESSIBILITY: REDUCED MOTION
+   ================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .semzolve-launch-overlay {
+    transition: opacity 0.4s ease;
+  }
+  .countdown-number,
+  .brand-logo-container,
+  .brand-tagline,
+  .brand-subtext {
+    animation: none !important;
+    transition: none !important;
+  }
+  .launch-canvas {
+    opacity: 0.25;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .launch-letterbox-top,
+  .launch-letterbox-bottom {
+    height: 24px;
+  }
+  .countdown-brand-header {
+    margin-bottom: 14px;
+  }
+  .countdown-logo-pill {
+    padding: 7px 20px;
+  }
+  .countdown-logo-img {
+    height: 30px;
+    max-width: 170px;
+  }
+  .countdown-number {
+    font-size: clamp(80px, 18vw, 120px);
+  }
+  .countdown-telemetry {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    margin-top: 12px;
+  }
+  .brand-logo-pill {
+    padding: 12px 26px;
+  }
+  .brand-tagline {
+    font-size: 22px;
+    letter-spacing: 0.08em;
+  }
+  .brand-subtext {
+    font-size: 13.5px;
+    padding: 0 16px;
+  }
+  .brand-logo-img {
+    height: 36px;
+    max-width: min(280px, 75vw);
+  }
+}
