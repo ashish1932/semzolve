@@ -6293,6 +6293,251 @@
       }
     }
 
+
+/* ==================================================
+   PRODUCT DETAIL DRAWER (SLIDE-OVER SPECIFICATIONS)
+   ================================================== */
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+}
+.drawer.open {
+  display: block;
+}
+.drawer .scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 10, 36, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: drawerFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.drawer .panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: min(580px, 100%);
+  background: #ffffff;
+  overflow-y: auto;
+  box-shadow: -20px 0 60px rgba(6, 22, 73, 0.35);
+  animation: drawerSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  display: flex;
+  flex-direction: column;
+}
+@keyframes drawerSlideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes drawerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.dhead {
+  flex: none;
+  background: linear-gradient(135deg, #061649 0%, #0B2263 100%);
+  color: #ffffff;
+  padding: 30px 32px 28px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid #05B8FB;
+}
+.dhead .cat {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #05B8FB;
+  margin-bottom: 8px;
+  padding-right: 50px;
+}
+.dhead h3 {
+  font-size: clamp(24px, 2.5vw, 30px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 16px;
+  padding-right: 44px;
+  color: #ffffff;
+  font-family: var(--sans);
+}
+.dhead .chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.dhead .chips span {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(5, 184, 251, 0.4);
+  color: #E4F6FE;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12.5px;
+  font-weight: 500;
+  font-family: var(--mono);
+}
+.dclose {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+.dclose:hover {
+  background: #05B8FB;
+  color: #061649;
+  border-color: #05B8FB;
+}
+.dbody {
+  flex: 1 1 auto;
+  padding: 28px 32px;
+  display: grid;
+  gap: 24px;
+  background: #ffffff;
+}
+.dbody h4 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #0369A1;
+  margin: 0 0 10px;
+  font-family: var(--sans);
+}
+.dbody p {
+  margin: 0;
+  color: #1E293B;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.dbody .apps {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.dbody .apps span {
+  background: #E4F6FE;
+  color: #0369A1;
+  border: 1px solid rgba(5, 184, 251, 0.25);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.dbody .docs-pill {
+  background: #F4F8FB;
+  color: #061649;
+  border: 1px solid #D7E3ED;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.dspec {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #D7E3ED;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #F4F8FB;
+}
+.dspec div {
+  padding: 12px 16px;
+  border-bottom: 1px solid #D7E3ED;
+}
+.dspec div:nth-child(odd) {
+  border-right: 1px solid #D7E3ED;
+}
+.dspec div:nth-last-child(-n+2) {
+  border-bottom: 0;
+}
+.dspec small {
+  display: block;
+  font-size: 11.5px;
+  color: #55657F;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 3px;
+}
+.dspec b {
+  font-weight: 600;
+  font-size: 14px;
+  color: #061649;
+}
+.dfoot {
+  flex: none;
+  padding: 20px 32px;
+  border-top: 1px solid #D7E3ED;
+  display: flex;
+  gap: 12px;
+  position: sticky;
+  bottom: 0;
+  background: #ffffff;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.04);
+}
+.dfoot .btn-drawer-add {
+  flex: 1;
+  background: #061649;
+  color: #ffffff;
+  border: 1px solid #061649;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--sans);
+}
+.dfoot .btn-drawer-add:hover {
+  background: #0B2263;
+}
+.dfoot .btn-drawer-add.added {
+  background: #047857;
+  border-color: #047857;
+}
+.dfoot .btn-drawer-quote {
+  flex: 1;
+  background: linear-gradient(135deg, #05B8FB 0%, #0369A1 100%);
+  color: #061649;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--sans);
+}
+.dfoot .btn-drawer-quote:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 4px 14px rgba(5, 184, 251, 0.4);
+}
+.product-card {
+  cursor: pointer !important;
+}
+.product-card:hover {
+  background: rgba(5, 184, 251, 0.04) !important;
+}
+
 </style>
 </head>
 <body>
@@ -6521,10 +6766,10 @@
             <!-- Quick Filter Chips -->
             <div class="elchemy-chips-row">
               <span class="elchemy-chips-label">Popular:</span>
-              <button type="button" class="hero-chip elchemy-chip" data-product="Methanol">Methanol <span class="chip-cas">67-56-1</span></button>
-              <button type="button" class="hero-chip elchemy-chip" data-product="CAS 64-19-7">Acetic Acid <span class="chip-cas">64-19-7</span></button>
-              <button type="button" class="hero-chip elchemy-chip" data-product="PGMEA">PGMEA</button>
-              <button type="button" class="hero-chip elchemy-chip" data-product="Triacetin">Triacetin</button>
+              <button type="button" class="hero-chip elchemy-chip" data-product="Methanol" onclick="window.openProductDetail('Methanol')">Methanol <span class="chip-cas">67-56-1</span></button>
+              <button type="button" class="hero-chip elchemy-chip" data-product="CAS 64-19-7" onclick="window.openProductDetail('Acetic Acid')">Acetic Acid <span class="chip-cas">64-19-7</span></button>
+              <button type="button" class="hero-chip elchemy-chip" data-product="PGMEA" onclick="window.openProductDetail('Methoxypropyl Acetate')">PGMEA</button>
+              <button type="button" class="hero-chip elchemy-chip" data-product="Triacetin" onclick="window.openProductDetail('Triacetin')">Triacetin</button>
             </div>
 
             <!-- Autocomplete Results Dropdown -->
@@ -8432,6 +8677,172 @@ Incoterm: ${currentIncoterm}`;
 
     initGlobalMap();
 
+    
+    // ==============================================
+    // PRODUCT DETAIL DRAWER CONTROLLER
+    // ==============================================
+    const esc = s => String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const fml = f => esc(f).replace(/(\d+)/g, '<sub>$1</sub>');
+
+    window.openProductDetail = function(ident) {
+      let prod = null;
+      if (typeof ident === 'object' && ident !== null) {
+        prod = ident;
+      } else if (typeof ident === 'number') {
+        prod = productsData[ident] || (typeof P !== 'undefined' ? P[ident] : null);
+      } else if (typeof ident === 'string') {
+        const q = ident.trim().toLowerCase();
+        prod = productsData.find(p => p.name.toLowerCase() === q) ||
+               (typeof P !== 'undefined' ? P.find(p => p.name.toLowerCase() === q) : null) ||
+               productsData.find(p => p.cas && p.cas.toLowerCase() === q) ||
+               (typeof P !== 'undefined' ? P.find(p => p.cas && p.cas.toLowerCase() === q) : null) ||
+               productsData.find(p => p.name.toLowerCase().includes(q)) ||
+               (typeof P !== 'undefined' ? P.find(p => p.name.toLowerCase().includes(q)) : null);
+      }
+
+      if (!prod) return;
+
+      const drawer = document.getElementById('drawer');
+      if (!drawer) return;
+
+      // Category
+      const catEl = document.getElementById('dCat');
+      if (catEl) catEl.textContent = prod.category || (typeof CATS !== 'undefined' && prod.cat !== undefined ? CATS[prod.cat] : 'Specialty Chemical');
+
+      // Title
+      const titleEl = document.getElementById('dTitle');
+      if (titleEl) titleEl.textContent = prod.name;
+
+      // Chips
+      const chipsEl = document.getElementById('dChips');
+      if (chipsEl) {
+        let chipsHtml = '';
+        if (prod.cas) chipsHtml += `<span>CAS ${esc(prod.cas)}</span>`;
+        if (prod.formula || prod.f) chipsHtml += `<span>${fml(prod.formula || prod.f)}</span>`;
+        if (prod.hsn) chipsHtml += `<span>HSN ${esc(prod.hsn)}</span>`;
+        if (prod.mw) chipsHtml += `<span>MW ${prod.mw}</span>`;
+        chipsHtml += `<span>Samples Available</span>`;
+        chipsEl.innerHTML = chipsHtml;
+      }
+
+      // Structure Image
+      const structWrap = document.getElementById('dStructWrap');
+      const structImg = document.getElementById('dStructImg');
+      if (structWrap && structImg) {
+        let imgPath = prod.image || '';
+        if (!imgPath) {
+          const cleanName = prod.name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/--+/g, '-');
+          const knownStructures = [
+            '1-3-cyclohexanedione', '1-4-cyclohexanedione', '2-4-thiazolidinedione',
+            '4-hydroxycarbazole', '4-methylcyclohexanone', 'acetic-acid-glacial',
+            'acetic-acid', 'acrylamide', 'adipic-acid', 'alum', 'ammonium-bicarbonate',
+            'benzalkonium-chloride-50', 'benzene', 'chimassorb-944', 'cyclohexanone',
+            'ethylhexyl-triazone', 'forskolin-98', 'irgafos-168', 'irganox-1010',
+            'mixed-xylene', 'normal-butanol', 'piperine-95', 'piroctone-olamine',
+            'propylene-glycol-ip-ffg', 'styrene-monomer', 'tinuvin-326', 'toluene',
+            'methoxypropyl-acetate', 'n-butyl-acetate', 'ethyl-acetate'
+          ];
+          for (let k of knownStructures) {
+            if (cleanName.includes(k) || k.includes(cleanName)) {
+              imgPath = `images/structures/${k}.png`;
+              break;
+            }
+          }
+        }
+        if (imgPath) {
+          structImg.src = imgPath;
+          structWrap.style.display = 'block';
+        } else {
+          structWrap.style.display = 'none';
+        }
+      }
+
+      // Description / Overview
+      const descEl = document.getElementById('dDesc');
+      if (descEl) {
+        descEl.textContent = prod.desc || prod.app || `${prod.name} is a high-grade chemical manufactured and supplied to strict international quality standards. High assay, consistent batch-to-batch repeatability, and customized packing sizes.`;
+      }
+
+      // Applications
+      const appsEl = document.getElementById('dApps');
+      if (appsEl) {
+        let appItems = [];
+        if (prod.app) {
+          appItems = prod.app.split(/[,;|]/).map(s => s.trim()).filter(Boolean);
+        }
+        if (!appItems.length) {
+          appItems = ['Active Pharmaceutical Synthesis', 'Coatings, Inks & Resins', 'Specialty Chemical Processing', 'Industrial Formulations'];
+        }
+        appsEl.innerHTML = appItems.map(a => `<span>${esc(a)}</span>`).join('');
+      }
+
+      // Supply Details
+      const specEl = document.getElementById('dSpec');
+      if (specEl) {
+        const packing = prod.cas ? 'UN-approved 200L drums, IBCs & bulk ISO tankers' : '25 kg bags / customized drums';
+        specEl.innerHTML = `
+          <div><small>CAS NUMBER</small><b>${esc(prod.cas || 'N/A')}</b></div>
+          <div><small>GRADE</small><b>Technical, Pharma or Reagent (USP/IP/BP)</b></div>
+          <div><small>PACKAGING</small><b>${packing}</b></div>
+          <div><small>MINIMUM ORDER</small><b>Sample batch to full container load (FCL/LCL)</b></div>
+          <div><small>LEAD TIME</small><b>Immediate ex-stock / 7-14 business days</b></div>
+          <div><small>INCOTERMS</small><b>FOB, CIF, CFR, DAP, DDP</b></div>
+        `;
+      }
+
+      // Documents
+      const docsEl = document.getElementById('dDocs');
+      if (docsEl) {
+        docsEl.innerHTML = `
+          <span class="docs-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Certificate of Analysis (COA)</span>
+          <span class="docs-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Safety Data Sheet (SDS)</span>
+          <span class="docs-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Technical Data Sheet (TDS)</span>
+          <span class="docs-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> REACH &amp; Regulatory Declarations</span>
+        `;
+      }
+
+      // Actions
+      const addBtn = document.getElementById('dAdd');
+      if (addBtn) {
+        addBtn.classList.remove('added');
+        addBtn.textContent = '+ Add to enquiry';
+        addBtn.onclick = function() {
+          if (typeof addToQuote === 'function') {
+            const idx = typeof prod.i === 'number' ? prod.i : (typeof P !== 'undefined' ? P.findIndex(p => p.name === prod.name) : 0);
+            addToQuote(idx >= 0 ? idx : 0, addBtn);
+          }
+          addBtn.classList.add('added');
+          addBtn.textContent = 'Added to enquiry ✓';
+        };
+      }
+
+      const quoteBtn = document.getElementById('dQuote');
+      if (quoteBtn) {
+        quoteBtn.onclick = function(e) {
+          e.preventDefault();
+          if (typeof window.enquireProduct === 'function') {
+            window.enquireProduct(prod.name, prod.cas || '', prod.hsn || '');
+          }
+          closeProductDetail();
+        };
+      }
+
+      drawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeProductDetail = function() {
+      const drawer = document.getElementById('drawer');
+      if (drawer) drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        window.closeProductDetail();
+      }
+    });
+
     // 5. PRODUCTS DATA & FILTERING
     const productsData = [
       // Solvents
@@ -8618,26 +9029,29 @@ Incoterm: ${currentIncoterm}`;
         const card = document.createElement('div');
         card.className = 'product-card product-pop-in';
         card.style.animationDelay = `${idx * 45}ms`;
+        card.style.cursor = 'pointer';
+        card.onclick = () => window.openProductDetail(prod.name);
+
         const imgHtml = prod.image ? `
           <div class="prod-img-box">
-            <img src="${prod.image}" alt="${prod.name}" class="prod-img" loading="lazy">
+            <img src="${prod.image}" alt="${esc(prod.name)}" class="prod-img" loading="lazy">
           </div>
         ` : '';
 
         card.innerHTML = `
           ${imgHtml}
-          <h3 class="prod-name">${prod.name}</h3>
+          <h3 class="prod-name">${esc(prod.name)}</h3>
           <div class="prod-cas-pill">
             <span class="cas-label">HSN</span>
-            <span class="cas-val">${prod.hsn || prod.cas}</span>
-            <button class="cas-copy-btn" title="Copy HSN" data-cas="${prod.hsn || prod.cas}">
+            <span class="cas-val">${esc(prod.hsn || prod.cas)}</span>
+            <button class="cas-copy-btn" title="Copy HSN" data-cas="${esc(prod.hsn || prod.cas)}">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             </button>
           </div>
-          <p class="prod-desc">${prod.desc || 'An intermediate for APIs and specialty chemical synthesis.'}</p>
+          <p class="prod-desc">${esc(prod.desc || 'An intermediate for APIs and specialty chemical synthesis.')}</p>
           <div class="prod-bottom-row">
-            <button type="button" class="prod-spec-btn" data-name="${prod.name}" data-cas="${prod.cas || ''}" data-hsn="${prod.hsn || ''}">Specification &mdash;</button>
-            <button type="button" class="prod-quote-btn" data-name="${prod.name}" data-cas="${prod.cas || ''}" data-hsn="${prod.hsn || ''}">+ Quote</button>
+            <button type="button" class="prod-spec-btn" onclick="event.stopPropagation(); window.openProductDetail('${esc(prod.name)}');">Specification &mdash;</button>
+            <button type="button" class="prod-quote-btn" onclick="event.stopPropagation(); window.enquireProduct('${esc(prod.name)}', '${esc(prod.cas || '')}', '${esc(prod.hsn || '')}'); this.innerText='Added ✓'; this.style.background='#047857'; setTimeout(() => { this.innerText='+ Quote'; this.style.background='#05B8FB'; }, 1800);">+ Quote</button>
           </div>
         `;
         productsTrack.appendChild(card);
@@ -8682,33 +9096,6 @@ Incoterm: ${currentIncoterm}`;
           showToast(`Added ${name} to enquiry`);
         }
       };
-
-      // Hook up interactive Specification & Quote buttons
-      productsTrack.querySelectorAll('.prod-spec-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const name = btn.getAttribute('data-name');
-          const cas = btn.getAttribute('data-cas') || '';
-          const hsn = btn.getAttribute('data-hsn') || '';
-          window.enquireProduct(name, cas, hsn);
-        });
-      });
-
-      productsTrack.querySelectorAll('.prod-quote-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const name = btn.getAttribute('data-name');
-          const cas = btn.getAttribute('data-cas') || '';
-          const hsn = btn.getAttribute('data-hsn') || '';
-          window.enquireProduct(name, cas, hsn);
-          btn.innerText = 'Added ✓';
-          btn.style.background = '#047857';
-          setTimeout(() => {
-            btn.innerText = '+ Quote';
-            btn.style.background = '#05B8FB';
-          }, 1800);
-        });
-      });
 
       // Reset scroll position and recalculate progress bar
       productsTrack.scrollTo({ left: 0, behavior: 'smooth' });
@@ -9131,8 +9518,6 @@ ${email} · ${country}`;
       '2905.32': ['Propylene Glycol']
     };
 
-    const esc = s => String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    const fml = f => esc(f).replace(/(\d+)/g, '<sub>$1</sub>');
     const norm = s => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 
     const pickedItems = new Set();
@@ -10057,5 +10442,46 @@ ${email} · ${country}`;
   <!-- Cinematic Launch Experience -->
   <script src="js/gsap.min.js"></script>
   <script src="js/semzolveLaunch.js"></script>
+
+<!-- ==============================================
+     PRODUCT DETAIL DRAWER (SLIDE-OVER SPECIFICATIONS)
+     ============================================== -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+  <div class="scrim" onclick="closeProductDetail()"></div>
+  <aside class="panel">
+    <div class="dhead">
+      <button class="dclose" type="button" onclick="closeProductDetail()" aria-label="Close specifications">✕</button>
+      <div class="cat" id="dCat">Specialty Chemicals</div>
+      <h3 id="dTitle">Product Name</h3>
+      <div class="chips" id="dChips"></div>
+    </div>
+    <div class="dbody">
+      <div id="dStructWrap" style="display:none; text-align:center; padding:16px; background:#F4F8FB; border-radius:12px; border:1px solid #D7E3ED;">
+        <img id="dStructImg" src="" alt="Chemical Structure" style="max-height:140px; margin:0 auto; object-fit:contain; display:block;">
+      </div>
+      <div>
+        <h4>Overview &amp; Functional Purpose</h4>
+        <p id="dDesc"></p>
+      </div>
+      <div>
+        <h4>Typical Applications &amp; Industries</h4>
+        <div class="apps" id="dApps"></div>
+      </div>
+      <div>
+        <h4>Supply &amp; Commercial Specifications</h4>
+        <div class="dspec" id="dSpec"></div>
+      </div>
+      <div>
+        <h4>Regulatory Compliance &amp; Documents</h4>
+        <div class="apps" id="dDocs"></div>
+      </div>
+    </div>
+    <div class="dfoot">
+      <button class="btn-drawer-add" type="button" id="dAdd">+ Add to enquiry</button>
+      <a class="btn-drawer-quote" href="#contact" id="dQuote">Request a quote</a>
+    </div>
+  </aside>
+</div>
+
 </body>
 </html>
