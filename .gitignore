@@ -4,3 +4,4 @@ server.py
 *.pyc
 __pycache__/
 Onechemicals.ai*
+*-old.*
