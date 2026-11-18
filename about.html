@@ -6742,16 +6742,19 @@
           <a href="index.html" class="nav-link" >Home</a>
         </li>
         <li class="nav-item">
-          <a href="products.html" class="nav-link">Products</a>
+          <a href="products.html" class="nav-link" >Products</a>
         </li>
         <li class="nav-item">
-          <a href="about.html" class="nav-link" style="color:#05B8FB; font-weight:700;">About Us</a>
+          <a href="industries.html" class="nav-link" >Industries</a>
         </li>
         <li class="nav-item">
-          <a href="services.html" class="nav-link">Services</a>
+          <a href="services.html" class="nav-link" >Services</a>
         </li>
         <li class="nav-item">
-          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="about.html" class="nav-link active" style="color:#05B8FB; font-weight:700;">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact.html" class="nav-link" >Contact</a>
         </li>
       </ul>
 
@@ -7011,5 +7014,48 @@
   </footer>
   <script src="js/gsap.min.js"></script>
   <script src="js/semzolveLaunch.js"></script>
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
+<div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+  <div class="mobile-nav-header" style="display:flex; justify-content:space-between; align-items:center; padding:18px 24px; border-bottom:1px solid #D7E3ED;">
+    <a href="index.html" class="mobile-nav-brand">
+      <img src="images/semzolve-logo.png" alt="SEMZOLVE" style="height:32px;">
+    </a>
+    <button type="button" class="mobile-nav-close" id="mobileNavClose" onclick="closeMobileNav()" aria-label="Close Navigation" style="background:none; border:none; font-size:22px; cursor:pointer; color:#061649;">✕</button>
+  </div>
+  <ul class="mobile-nav-list" style="list-style:none; padding:20px 24px; margin:0; display:flex; flex-direction:column; gap:16px;">
+      <li><a href="index.html" class="mobile-nav-link" >Home</a></li>
+      <li><a href="products.html" class="mobile-nav-link" >Products</a></li>
+      <li><a href="industries.html" class="mobile-nav-link" >Industries</a></li>
+      <li><a href="services.html" class="mobile-nav-link" >Services</a></li>
+      <li><a href="about.html" class="mobile-nav-link active" style="color:#05B8FB; font-weight:700;">About Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link" >Contact</a></li>
+  </ul>
+  <div class="mobile-nav-cta" style="padding:20px 24px; border-top:1px solid #D7E3ED;">
+    <a href="contact.html" class="btn-primary" style="width:100%; text-align:center; display:block; padding:12px;">Request a Quote</a>
+  </div>
+</div>
+
+<script>
+window.openMobileNav = function() {
+  var drawer = document.getElementById('mobileNavDrawer');
+  var backdrop = document.getElementById('mobileNavBackdrop');
+  var toggle = document.getElementById('mobileNavToggle');
+  if (drawer) drawer.classList.add('open');
+  if (backdrop) backdrop.classList.add('open');
+  if (toggle) toggle.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeMobileNav = function() {
+  var drawer = document.getElementById('mobileNavDrawer');
+  var backdrop = document.getElementById('mobileNavBackdrop');
+  var toggle = document.getElementById('mobileNavToggle');
+  if (drawer) drawer.classList.remove('open');
+  if (backdrop) backdrop.classList.remove('open');
+  if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+};
+</script>
 </body>
 </html>
