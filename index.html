@@ -7948,7 +7948,7 @@
         <div class="contact-email-bar">
           <div style="display:flex; align-items:center; gap:8px;">
             <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10B981; box-shadow:0 0 0 3px rgba(16,185,129,0.2);"></span>
-            <code class="contact-email-val" id="contactEmailAddr">mani.mp@semzolve.com</code>
+            <a href="mailto:info@semzolve.com" class="contact-email-val" id="contactEmailAddr" style="color:inherit; text-decoration:none; font-weight:600;" title="Click to email info@semzolve.com">info@semzolve.com</a>
           </div>
           <div style="display:flex; gap:8px;">
             <button class="contact-pill-btn" type="button" id="copyContactEmailBtn" title="Copy email address">
@@ -7978,9 +7978,13 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
               <span id="copyEnquiryBtnTxt">Copy enquiry</span>
             </button>
-            <a href="#" class="done-btn-mail" id="openEmailClientBtn" target="_blank">
+            <a href="#" class="done-btn-mail" id="openEmailClientBtn">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               <span>Open in Email App</span>
+            </a>
+            <a href="#" class="done-btn-webmail" id="openGmailWebBtn" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:6px; padding:8px 14px; background:#F1F5F9; border:1px solid #CBD5E1; border-radius:8px; font-size:12.5px; font-weight:600; color:#061649; text-decoration:none;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+              <span>Gmail Web</span>
             </a>
           </div>
         </div>
@@ -8093,7 +8097,7 @@
       </div>
       <div class="footer-cta-actions">
         <a href="#contact" class="btn-primary footer-btn-quote">Request a Quote</a>
-        <a href="mailto:mani.mp@semzolve.com" class="footer-btn-outline">Email Specialist</a>
+        <a href="mailto:info@semzolve.com?subject=Specialist%20Technical%20Inquiry" class="footer-btn-outline">Email Specialist</a>
       </div>
     </div>
 
@@ -9332,7 +9336,7 @@ Incoterm: ${currentIncoterm}`;
     // Direct Copy Email Button
     if (copyContactEmailBtn) {
       copyContactEmailBtn.addEventListener('click', () => {
-        const addr = document.getElementById('contactEmailAddr')?.textContent?.trim() || 'mani.mp@semzolve.com';
+        const addr = document.getElementById('contactEmailAddr')?.textContent?.trim() || 'info@semzolve.com';
         navigator.clipboard.writeText(addr).then(() => {
           if (copyContactEmailTxt) copyContactEmailTxt.innerText = 'Copied! ✓';
           showToast('Email address copied: ' + addr);
@@ -9413,8 +9417,12 @@ ${email} · ${country}`;
 
       if (enquiryOutputTxt) enquiryOutputTxt.textContent = rfqText;
 
-      const encodedMailto = `mailto:mani.mp@semzolve.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(rfqText)}`;
+      const encodedMailto = `mailto:info@semzolve.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(rfqText)}`;
       if (openEmailClientBtn) openEmailClientBtn.href = encodedMailto;
+
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@semzolve.com&su=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(rfqText)}`;
+      const openGmailWebBtn = document.getElementById('openGmailWebBtn');
+      if (openGmailWebBtn) openGmailWebBtn.href = gmailUrl;
 
       if (enquiryDoneCard) {
         enquiryDoneCard.hidden = false;

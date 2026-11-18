@@ -6820,56 +6820,93 @@
         
         <!-- Enquiry Form -->
         <div style="background:#ffffff; border:1px solid #E2E8F0; border-radius:20px; padding:38px; box-shadow:0 10px 30px rgba(6,22,73,0.06);">
-          <h2 style="font-size:24px; font-weight:800; color:#061649; margin:0 0 8px;">Request a Quotation</h2>
-          <p style="color:#64748B; font-size:14.5px; margin:0 0 24px;">Fill out the details below and our team will get back to you promptly.</p>
-          
-          <form id="contactPageForm" onsubmit="event.preventDefault(); alert('Thank you! Your quotation request has been received. Our team will contact you within 24 hours.'); this.reset();">
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
-              <div>
-                <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Your Name *</label>
-                <input type="text" required placeholder="John Doe" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px;">
+          <div id="contactFormContainer">
+            <h2 style="font-size:24px; font-weight:800; color:#061649; margin:0 0 8px;">Request a Quotation</h2>
+            <p style="color:#64748B; font-size:14.5px; margin:0 0 24px;">Fill out the details below and our team will get back to you promptly.</p>
+            
+            <form id="contactPageForm" onsubmit="handleContactPageSubmit(event);">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                <div>
+                  <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Your Name *</label>
+                  <input type="text" id="cpName" required placeholder="John Doe" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px;">
+                </div>
+                <div>
+                  <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Company Name *</label>
+                  <input type="text" id="cpCompany" required placeholder="Pharma Corp Ltd" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px;">
+                </div>
               </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                <div>
+                  <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Work Email *</label>
+                  <input type="email" id="cpEmail" required placeholder="john@company.com" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px;">
+                </div>
+                <div>
+                  <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Phone / WhatsApp</label>
+                  <input type="tel" id="cpPhone" placeholder="+91 80508 18585" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px;">
+                </div>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                <div>
+                  <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Country of Destination *</label>
+                  <input type="text" id="cpCountry" required placeholder="e.g. United States, Germany" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px;">
+                </div>
+                <div>
+                  <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Preferred Incoterm</label>
+                  <select id="cpIncoterm" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px; background:#fff;">
+                    <option>CIF (Port of destination)</option>
+                    <option>FOB (Indian port - Nhava Sheva / Mundra)</option>
+                    <option>CFR (Cost &amp; Freight)</option>
+                    <option>DAP (Delivered at Place)</option>
+                    <option>DDP (Delivered Duty Paid)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="margin-bottom:20px;">
+                <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Products, CAS Numbers &amp; Quantity Required *</label>
+                <textarea id="cpProducts" rows="4" required placeholder="e.g. Methoxypropyl acetate (CAS 108-65-6) - 20 MT, 200L drums" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px; font-family:inherit;"></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width:100%; padding:14px; font-size:16px; font-weight:700; border-radius:10px; cursor:pointer; background:#05B8FB; color:#061649; border:none; transition:all 0.2s ease;">Submit Quotation Request →</button>
+            </form>
+          </div>
+
+          <!-- Dynamic Success Confirmation Panel -->
+          <div id="contactSuccessPanel" style="display:none;">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+              <span style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:#DCFCE7; color:#15803D; font-size:22px; font-weight:800;">✓</span>
               <div>
-                <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Company Name *</label>
-                <input type="text" required placeholder="Pharma Corp Ltd" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px;">
+                <h3 style="font-size:20px; font-weight:800; color:#061649; margin:0;">Quotation Request Received</h3>
+                <span id="contactRefId" style="font-size:13px; color:#64748B; font-weight:600;">Reference: SZ-RFQ-2026</span>
               </div>
             </div>
+            
+            <p style="color:#475569; font-size:14.5px; line-height:1.6; margin-bottom:18px;">
+              Thank you! Your quotation request has been prepared and logged. Our commercial desk will respond with batch COA, TDS, and formal pricing within 24 hours.
+            </p>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
-              <div>
-                <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Work Email *</label>
-                <input type="email" required placeholder="john@company.com" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px;">
-              </div>
-              <div>
-                <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Phone / WhatsApp</label>
-                <input type="tel" placeholder="+1 555 0192" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px;">
-              </div>
+            <div style="background:#F8FAFD; border:1px solid #D7E3ED; border-radius:12px; padding:16px; margin-bottom:20px; font-family:monospace; font-size:13px; color:#334155; max-height:180px; overflow-y:auto; white-space:pre-wrap;" id="contactSummaryText"></div>
+
+            <div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:20px;">
+              <a id="cpMailtoBtn" href="#" style="display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:8px; background:#061649; color:#FFFFFF; font-size:13.5px; font-weight:700; text-decoration:none;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Send via Email App
+              </a>
+              <a id="cpGmailBtn" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:8px; background:#F1F5F9; border:1px solid #CBD5E1; color:#061649; font-size:13.5px; font-weight:700; text-decoration:none;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                Open in Gmail Web
+              </a>
+              <button type="button" onclick="copyContactSummary();" style="display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:8px; background:#FFFFFF; border:1px solid #CBD5E1; color:#334155; font-size:13.5px; font-weight:600; cursor:pointer;">
+                <span id="cpCopyBtnText">Copy Details</span>
+              </button>
             </div>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
-              <div>
-                <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Country of Destination *</label>
-                <input type="text" required placeholder="e.g. United States, Germany" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px;">
-              </div>
-              <div>
-                <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Preferred Incoterm</label>
-                <select style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px; background:#fff;">
-                  <option>CIF (Port of destination)</option>
-                  <option>FOB (Indian port)</option>
-                  <option>CFR (Cost &amp; Freight)</option>
-                  <option>DAP (Delivered at Place)</option>
-                  <option>DDP (Delivered Duty Paid)</option>
-                </select>
-              </div>
-            </div>
-
-            <div style="margin-bottom:20px;">
-              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Products, CAS Numbers &amp; Quantity Required *</label>
-              <textarea rows="4" required placeholder="e.g. Methoxypropyl acetate (CAS 108-65-6) - 20 MT, 200L drums" style="width:100%; padding:10px 14px; border:1px solid #CBD5E1; border-radius:8px; font-size:14.5px; font-family:inherit;"></textarea>
-            </div>
-
-            <button type="submit" class="btn-primary" style="width:100%; padding:14px; font-size:16px; font-weight:700; border-radius:10px; cursor:pointer; background:#05B8FB; color:#061649; border:none;">Submit Quotation Request →</button>
-          </form>
+            <button type="button" onclick="resetContactPageForm();" style="background:none; border:none; color:#0369A1; font-size:13.5px; font-weight:600; cursor:pointer; padding:0; text-decoration:underline;">
+              ← Submit another quotation request
+            </button>
+          </div>
         </div>
 
           <!-- Direct Contact Details -->
@@ -6940,7 +6977,7 @@
       </div>
       <div class="footer-cta-actions">
         <a href="#contact" class="btn-primary footer-btn-quote">Request a Quote</a>
-        <a href="mailto:mani.mp@semzolve.com" class="footer-btn-outline">Email Specialist</a>
+        <a href="mailto:info@semzolve.com?subject=Specialist%20Technical%20Inquiry" class="footer-btn-outline">Email Specialist</a>
       </div>
     </div>
 
@@ -7101,6 +7138,76 @@ window.closeMobileNav = function() {
   if (toggle) toggle.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
 };
+
+function handleContactPageSubmit(e) {
+  e.preventDefault();
+  var name = (document.getElementById('cpName') && document.getElementById('cpName').value || '').trim();
+  var company = (document.getElementById('cpCompany') && document.getElementById('cpCompany').value || '').trim();
+  var email = (document.getElementById('cpEmail') && document.getElementById('cpEmail').value || '').trim();
+  var phone = (document.getElementById('cpPhone') && document.getElementById('cpPhone').value || '').trim();
+  var country = (document.getElementById('cpCountry') && document.getElementById('cpCountry').value || '').trim();
+  var incoterm = (document.getElementById('cpIncoterm') && document.getElementById('cpIncoterm').value || 'CIF');
+  var products = (document.getElementById('cpProducts') && document.getElementById('cpProducts').value || '').trim();
+
+  var refNum = 'SZ-' + Math.floor(100000 + Math.random() * 900000);
+  var refEl = document.getElementById('contactRefId');
+  if (refEl) refEl.textContent = 'Reference: ' + refNum;
+
+  var summary = 'Commercial Quotation Request #' + refNum + '\n' +
+    'Company: ' + company + '\n' +
+    'Contact Person: ' + name + '\n' +
+    'Work Email: ' + email + (phone ? '\nPhone/WhatsApp: ' + phone : '') + '\n' +
+    'Destination & Incoterm: ' + country + ' (' + incoterm + ')\n\n' +
+    'Required Chemicals & Specifications:\n' +
+    products + '\n\n' +
+    'Please provide current batch availability, COA, TDS, packaging options, and firm CIF/FOB quote.';
+
+  var summaryEl = document.getElementById('contactSummaryText');
+  if (summaryEl) summaryEl.textContent = summary;
+
+  var subject = 'Quotation Request #' + refNum + ' – ' + company + ', ' + country;
+  var mailtoUrl = 'mailto:info@semzolve.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(summary);
+  var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=info@semzolve.com&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(summary);
+
+  var mailtoBtn = document.getElementById('cpMailtoBtn');
+  if (mailtoBtn) mailtoBtn.href = mailtoUrl;
+
+  var gmailBtn = document.getElementById('cpGmailBtn');
+  if (gmailBtn) gmailBtn.href = gmailUrl;
+
+  var formCont = document.getElementById('contactFormContainer');
+  if (formCont) formCont.style.display = 'none';
+
+  var successPanel = document.getElementById('contactSuccessPanel');
+  if (successPanel) {
+    successPanel.style.display = 'block';
+    successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function copyContactSummary() {
+  var summaryEl = document.getElementById('contactSummaryText');
+  if (!summaryEl) return;
+  var text = summaryEl.textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById('cpCopyBtnText');
+    if (btn) {
+      btn.textContent = 'Copied! ✓';
+      setTimeout(function() { btn.textContent = 'Copy Details'; }, 2000);
+    }
+  }).catch(function() {
+    prompt('Copy your quotation draft:', text);
+  });
+}
+
+function resetContactPageForm() {
+  var form = document.getElementById('contactPageForm');
+  if (form) form.reset();
+  var formCont = document.getElementById('contactFormContainer');
+  if (formCont) formCont.style.display = 'block';
+  var successPanel = document.getElementById('contactSuccessPanel');
+  if (successPanel) successPanel.style.display = 'none';
+}
 </script>
 </body>
 </html>
