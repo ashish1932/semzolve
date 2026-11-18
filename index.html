@@ -7948,7 +7948,7 @@
         <div class="contact-email-bar">
           <div style="display:flex; align-items:center; gap:8px;">
             <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10B981; box-shadow:0 0 0 3px rgba(16,185,129,0.2);"></span>
-            <code class="contact-email-val" id="contactEmailAddr">mani.mp@Semzolve Technologies</code>
+            <code class="contact-email-val" id="contactEmailAddr">mani.mp@semzolve.com</code>
           </div>
           <div style="display:flex; gap:8px;">
             <button class="contact-pill-btn" type="button" id="copyContactEmailBtn" title="Copy email address">
@@ -8093,7 +8093,7 @@
       </div>
       <div class="footer-cta-actions">
         <a href="#contact" class="btn-primary footer-btn-quote">Request a Quote</a>
-        <a href="mailto:mani.mp@Semzolve Technologies" class="footer-btn-outline">Email Specialist</a>
+        <a href="mailto:mani.mp@semzolve.com" class="footer-btn-outline">Email Specialist</a>
       </div>
     </div>
 
@@ -8111,7 +8111,7 @@
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
               <polyline points="22,6 12,13 2,6"/>
             </svg>
-            <a href="mailto:mani.mp@Semzolve Technologies">mani.mp@Semzolve Technologies</a>
+            <a href="mailto:mani.mp@semzolve.com">mani.mp@semzolve.com</a>
           </div>
           <div class="footer-info-item">
             <svg class="footer-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -9315,7 +9315,7 @@ Incoterm: ${currentIncoterm}`;
     // Direct Copy Email Button
     if (copyContactEmailBtn) {
       copyContactEmailBtn.addEventListener('click', () => {
-        const addr = document.getElementById('contactEmailAddr')?.textContent?.trim() || 'mani.mp@Semzolve Technologies';
+        const addr = document.getElementById('contactEmailAddr')?.textContent?.trim() || 'mani.mp@semzolve.com';
         navigator.clipboard.writeText(addr).then(() => {
           if (copyContactEmailTxt) copyContactEmailTxt.innerText = 'Copied! ✓';
           showToast('Email address copied: ' + addr);
@@ -9396,7 +9396,7 @@ ${email} · ${country}`;
 
       if (enquiryOutputTxt) enquiryOutputTxt.textContent = rfqText;
 
-      const encodedMailto = `mailto:mani.mp@Semzolve Technologies?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(rfqText)}`;
+      const encodedMailto = `mailto:mani.mp@semzolve.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(rfqText)}`;
       if (openEmailClientBtn) openEmailClientBtn.href = encodedMailto;
 
       if (enquiryDoneCard) {
