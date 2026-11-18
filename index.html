@@ -205,41 +205,19 @@
 
     /* Scroll Reveal Baseline */
     .reveal {
-      opacity: 0;
-      transform: translateY(34px);
-      transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      opacity: 1 !important;
+      transform: none !important;
     }
     .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+      opacity: 1 !important;
+      transform: none !important;
     }
 
     /* ==================================================
        2. PAGE-LOAD INTRO
        ================================================== */
     #page-intro {
-      position: fixed;
-      inset: 0;
-      background: #ffffff;
-      z-index: 999999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
-      animation: introAutoFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
-    }
-    @keyframes introAutoFade {
-      0% {
-        opacity: 1;
-        visibility: visible;
-      }
-      100% {
-        opacity: 0;
-        visibility: hidden;
-        display: none;
-        pointer-events: none;
-      }
+      display: none !important;
     }
     .intro-chevron {
       opacity: 0;
@@ -6555,27 +6533,6 @@
 </head>
 <body>
 
-  <!-- ==================================================
-       2. PAGE-LOAD INTRO
-       ================================================== -->
-  <div id="page-intro">
-    <svg class="intro-chevron" width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="#05B8FB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="13 17 18 12 13 7"></polyline>
-      <polyline points="6 17 11 12 6 7"></polyline>
-    </svg>
-    <script>
-      (function() {
-        setTimeout(function() {
-          var el = document.getElementById('page-intro');
-          if (el) {
-            el.style.opacity = '0';
-            el.style.pointerEvents = 'none';
-            setTimeout(function() { if (el && el.parentNode) el.remove(); }, 400);
-          }
-        }, 500);
-      })();
-    </script>
-  </div>
 
   <!-- ==================================================
        3. SINGLE-LINE UNIFIED NAVBAR
@@ -8453,6 +8410,8 @@ Incoterm: ${currentIncoterm}`;
     }
 
     // 4. SCROLL REVEAL OBSERVER
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -8462,7 +8421,7 @@ Incoterm: ${currentIncoterm}`;
           }
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0 });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
