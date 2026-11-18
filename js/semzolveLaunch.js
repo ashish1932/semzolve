@@ -216,6 +216,14 @@
         <div class="launch-letterbox-top"></div>
         <div class="launch-letterbox-bottom"></div>
 
+        <!-- Top Right Close & Dismiss Button -->
+        <div style="position: absolute; top: 16px; right: 20px; z-index: 99999999;">
+          <button type="button" id="launchSkipBtn" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #ffffff; padding: 6px 16px; border-radius: 999px; font-size: 12.5px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; backdrop-filter: blur(8px); transition: all 0.2s ease;">
+            <span>Close</span>
+            <span style="font-size: 14px;">✕</span>
+          </button>
+        </div>
+
         <!-- Central Stage -->
         <div class="launch-stage" id="launchStage">
           <!-- Central Energy Core & Shockwave Elements -->
@@ -237,11 +245,16 @@
             <p class="intro-subtext">
               The next era in specialty chemicals, precision molecular synthesis, and global manufacturing.
             </p>
-            <button type="button" class="intro-launch-btn" id="introLaunchBtn" aria-label="Start Launch Countdown">
-              <span class="btn-pulse-ring"></span>
-              <span class="btn-icon">▶</span>
-              <span class="btn-text">START COUNTDOWN</span>
-            </button>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 20px;">
+              <button type="button" class="intro-launch-btn" id="introLaunchBtn" aria-label="Start Launch Countdown">
+                <span class="btn-pulse-ring"></span>
+                <span class="btn-icon">▶</span>
+                <span class="btn-text">START COUNTDOWN</span>
+              </button>
+              <button type="button" id="directRevealBtn" style="background: rgba(255,255,255,0.08); border: 1.5px solid rgba(5,184,251,0.5); color: #05B8FB; padding: 12px 22px; border-radius: 999px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s ease;">
+                ✦ View Brand Reveal Directly
+              </button>
+            </div>
           </div>
 
           <!-- ==============================================
@@ -458,6 +471,14 @@
         });
       }
 
+      const directRevealBtn = document.getElementById('directRevealBtn');
+      if (directRevealBtn) {
+        directRevealBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.showDirectReveal();
+        });
+      }
+
       const audioBtn = document.getElementById('launchAudioBtn');
       if (audioBtn) {
         audioBtn.addEventListener('click', (e) => {
@@ -578,6 +599,28 @@
     /**
      * Build the Coordinated Countdown & Brand Reveal GSAP Timeline
      */
+
+    showDirectReveal() {
+      this.hasStarted = true;
+      const introStage = document.getElementById('introStage');
+      const countdownBox = document.getElementById('countdownBox');
+      const brandStage = document.getElementById('brandStage');
+
+      if (introStage) introStage.style.display = 'none';
+      if (countdownBox) countdownBox.style.display = 'none';
+
+      if (brandStage) {
+        brandStage.style.visibility = 'visible';
+        brandStage.style.opacity = '1';
+        brandStage.style.display = 'flex';
+      }
+
+      const gsapLib = window.gsap;
+      if (gsapLib && !this.reducedMotion) {
+        gsapLib.fromTo(brandStage, { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.6, ease: 'power2.out' });
+      }
+    }
+
     startSequence() {
       const gsapLib = window.gsap;
       const numEl = document.getElementById('countdownNumber');
@@ -997,7 +1040,7 @@
     /**
      * Replay Launch Sequence (can be triggered by nav button or window.SemzolveLaunch.replay())
      */
-    replay(autoStart = true) {
+    replay(autoStart = false) {
       this.hasSkipped = false;
       this.hasStarted = false;
       this.isReplay = true;
@@ -1056,18 +1099,14 @@
       cancelAnimationFrame(this.animFrameId);
       this.renderCanvas();
 
-      if (autoStart) {
-        setTimeout(() => {
-          this.startFromIntro();
-        }, 320);
-      }
+      // Countdown will NOT start automatically; user chooses when to start or skip.
     }
   }
 
   function initLaunch() {
     window.SemzolveLaunch = {
       instance: new SemzolveLaunchController(),
-      replay: function (autoStart = true) {
+      replay: function (autoStart = false) {
         if (this.instance) this.instance.replay(autoStart);
       },
       skip: function () {
@@ -1077,9 +1116,9 @@
 
     window.triggerSemzolveLaunch = function() {
       if (window.SemzolveLaunch && typeof window.SemzolveLaunch.replay === 'function') {
-        window.SemzolveLaunch.replay(true);
+        window.SemzolveLaunch.replay(false);
       } else {
-        window.location.href = 'index.html?launch=true';
+        window.location.href = 'index.html?launch=preview';
       }
     };
 
@@ -1097,9 +1136,9 @@
   if (typeof window.triggerSemzolveLaunch === 'undefined') {
     window.triggerSemzolveLaunch = function() {
       if (window.SemzolveLaunch && typeof window.SemzolveLaunch.replay === 'function') {
-        window.SemzolveLaunch.replay(true);
+        window.SemzolveLaunch.replay(false);
       } else {
-        window.location.href = 'index.html?launch=true';
+        window.location.href = 'index.html?launch=preview';
       }
     };
   }
