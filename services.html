@@ -6727,6 +6727,58 @@
   color: #047857;
   font-weight: 800;
 }
+
+    /* Ultra-High Contrast Launch Experience Footer Button */
+    .launch-replay-pill,
+    .footer-bottom-links a.launch-replay-pill,
+    .footer-links-group a.launch-replay-pill {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 7px !important;
+      background: #EBF8FF !important;
+      border: 1.5px solid #05B8FB !important;
+      color: #0369A1 !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      padding: 5px 14px !important;
+      border-radius: 999px !important;
+      cursor: pointer !important;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      text-decoration: none !important;
+      letter-spacing: 0.02em !important;
+      line-height: 1.2 !important;
+      box-shadow: 0 1px 4px rgba(5, 184, 251, 0.15) !important;
+    }
+    .launch-replay-pill svg,
+    .footer-bottom-links a.launch-replay-pill svg,
+    .footer-links-group a.launch-replay-pill svg {
+      width: 13px !important;
+      height: 13px !important;
+      fill: #0284C7 !important;
+      color: #0284C7 !important;
+      flex-shrink: 0 !important;
+      transition: fill 0.2s ease, transform 0.2s ease !important;
+    }
+    .launch-replay-pill:hover,
+    .footer-bottom-links a.launch-replay-pill:hover,
+    .footer-links-group a.launch-replay-pill:hover,
+    .launch-replay-pill:focus,
+    .footer-bottom-links a.launch-replay-pill:focus {
+      background: #061649 !important;
+      color: #FFFFFF !important;
+      border-color: #05B8FB !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 16px rgba(6, 22, 73, 0.32) !important;
+    }
+    .launch-replay-pill:hover svg,
+    .footer-bottom-links a.launch-replay-pill:hover svg,
+    .footer-links-group a.launch-replay-pill:hover svg,
+    .launch-replay-pill:focus svg,
+    .footer-bottom-links a.launch-replay-pill:focus svg {
+      fill: #05B8FB !important;
+      color: #05B8FB !important;
+      transform: scale(1.15) !important;
+    }
 </style>
 </head>
 <body>
@@ -7001,9 +7053,9 @@
           <span class="footer-sep">•</span>
           <a href="terms-of-trade.html">Terms of Trade</a>
           <span class="footer-sep">•</span>
-          <a href="javascript:void(0)" onclick="window.SemzolveLaunch && window.SemzolveLaunch.replay()" class="launch-replay-pill" title="Experience Semzolve Cinematic Launch Reveal">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.77 20 14.44 20 13c0-4.42-3.58-8-8-8zm-6 8c0-1.01.25-1.97.7-2.8L5.24 8.74C4.46 10.23 4 11.56 4 13c0 4.42 3.58 8 8 8v4l5-5-5-5v4c-3.31 0-6-2.69-6-6z"/></svg>
-            ✦ Launch Experience
+          <a href="javascript:void(0)" onclick="window.triggerSemzolveLaunch ? window.triggerSemzolveLaunch() : (window.SemzolveLaunch ? window.SemzolveLaunch.replay(true) : window.location.href='index.html?launch=true')" class="launch-replay-pill" title="Experience Semzolve Cinematic Launch Reveal">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7.2-6.3-4.6-6.3 4.6 2.3-7.2-6-4.6h7.6z"/></svg>
+            ✦ Launch
           </a></div>
         <span class="footer-sep footer-sep-mid">•</span>
         <div class="footer-links-group">

@@ -997,7 +997,7 @@
     /**
      * Replay Launch Sequence (can be triggered by nav button or window.SemzolveLaunch.replay())
      */
-    replay() {
+    replay(autoStart = true) {
       this.hasSkipped = false;
       this.hasStarted = false;
       this.isReplay = true;
@@ -1055,17 +1055,51 @@
       this.canvasMode = 'ambient';
       cancelAnimationFrame(this.animFrameId);
       this.renderCanvas();
+
+      if (autoStart) {
+        setTimeout(() => {
+          this.startFromIntro();
+        }, 320);
+      }
     }
   }
 
   function initLaunch() {
     window.SemzolveLaunch = {
       instance: new SemzolveLaunchController(),
-      replay: function () {
-        if (this.instance) this.instance.replay();
+      replay: function (autoStart = true) {
+        if (this.instance) this.instance.replay(autoStart);
       },
       skip: function () {
         if (this.instance) this.instance.skip();
+      }
+    };
+
+    window.triggerSemzolveLaunch = function() {
+      if (window.SemzolveLaunch && typeof window.SemzolveLaunch.replay === 'function') {
+        window.SemzolveLaunch.replay(true);
+      } else {
+        window.location.href = 'index.html?launch=true';
+      }
+    };
+
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('launch') === 'true' || urlParams.get('launch') === '1') {
+        setTimeout(() => {
+          if (window.SemzolveLaunch) window.SemzolveLaunch.replay(true);
+        }, 400);
+      }
+    } catch (e) {}
+  }
+
+  // Pre-define trigger immediately
+  if (typeof window.triggerSemzolveLaunch === 'undefined') {
+    window.triggerSemzolveLaunch = function() {
+      if (window.SemzolveLaunch && typeof window.SemzolveLaunch.replay === 'function') {
+        window.SemzolveLaunch.replay(true);
+      } else {
+        window.location.href = 'index.html?launch=true';
       }
     };
   }
