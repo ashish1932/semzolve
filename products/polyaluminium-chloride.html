@@ -207,28 +207,29 @@
 
     /* Scroll Reveal Baseline */
     .reveal {
-      opacity: 0;
-      transform: translateY(34px);
-      transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      opacity: 1 !important;
+      transform: none !important;
     }
     .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* Standard Centered Page Container */
+    .wrap {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: clamp(20px, 3.5vw, 48px);
+      padding-right: clamp(20px, 3.5vw, 48px);
+      box-sizing: border-box;
     }
 
     /* ==================================================
        2. PAGE-LOAD INTRO
        ================================================== */
     #page-intro {
-      position: fixed;
-      inset: 0;
-      background: #ffffff;
-      z-index: 999999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.6s ease;
-      pointer-events: all;
+      display: none !important;
     }
     .intro-chevron {
       opacity: 0;
@@ -6543,8 +6544,8 @@
 
 
 :root {
-  --shell: 1200px;
-  --pad: clamp(1rem, 3vw, 2rem);
+  --shell: 1400px;
+  --pad: clamp(20px, 3.5vw, 48px);
   --bg-1: #ffffff;
   --bg-2: #F8FAFD;
   --bg-3: #EDF2F7;
@@ -6564,18 +6565,25 @@
   --notch: 14px;
 }
 
+section, .section {
+  padding-inline: 0 !important;
+}
+
 .shell {
   width: 100%;
   max-width: var(--shell);
   margin-inline: auto;
   padding-inline: var(--pad);
+  box-sizing: border-box !important;
 }
 
 .section {
   padding-block: clamp(3rem, 6vw, 4.5rem);
+  padding-inline: 0 !important;
 }
 .section--tight {
   padding-block: clamp(2rem, 4vw, 3rem);
+  padding-inline: 0 !important;
 }
 .section--ruled {
   border-top: 1px solid var(--line);
@@ -6583,12 +6591,13 @@
 
 .product__head {
   display: grid;
-  gap: clamp(1.75rem, 4vw, 3.5rem);
+  gap: clamp(2rem, 4vw, 4.5rem);
   align-items: start;
 }
 @media (min-width: 860px) {
   .product__head {
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 460px);
+    justify-content: space-between;
   }
 }
 
@@ -6775,13 +6784,15 @@
   display: grid;
   place-items: center;
   padding: clamp(1.5rem, 3.5vw, 2.75rem);
-  background: #ffffff;
+  background: #F8FAFD;
+  border-radius: 12px;
 }
 .product__struct img {
   max-height: 100%;
   max-width: 100%;
   width: auto;
   object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 /* Description List .dl */
@@ -7078,19 +7089,20 @@
 
   <!-- 1. Hero Section (Somu Group Product Head Layout) -->
   <section class="section section--tight" style="padding-top:100px;">
-    <div class="shell product__head">
-      <div>
-        <div style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--fg-3); margin-bottom:14px;">
-          <a href="../index.html" style="color:inherit; text-decoration:none;">Home</a>
-          <span>/</span>
-          <a href="../products.html" style="color:inherit; text-decoration:none;">Products</a>
-          <span>/</span>
-          <a href="../products.html?cat=industrial" style="color:inherit; text-decoration:none;">Industrial Chemicals, Plasticizers & Acids</a>
-          <span>/</span>
-          <span style="color:var(--signal-text); font-weight:600;">Polyaluminium Chloride</span>
-        </div>
+    <div class="shell">
+      <nav class="breadcrumb-trail" aria-label="Breadcrumb" style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-size:13.5px; color:var(--fg-3); margin-bottom:24px; line-height:1.5;">
+        <a href="../index.html" style="color:inherit; text-decoration:none;">Home</a>
+        <span style="opacity:0.6;">/</span>
+        <a href="../products.html" style="color:inherit; text-decoration:none;">Products</a>
+        <span style="opacity:0.6;">/</span>
+        <a href="../products.html?cat=industrial" style="color:inherit; text-decoration:none;">Industrial Chemicals, Plasticizers & Acids</a>
+        <span style="opacity:0.6;">/</span>
+        <span style="color:var(--signal-text); font-weight:600;">Polyaluminium Chloride</span>
+      </nav>
 
-        <h1>Polyaluminium Chloride</h1>
+      <div class="product__head">
+        <div>
+          <h1>Polyaluminium Chloride</h1>
 
         <div class="product__ids">
           <span class="cas">
@@ -7122,6 +7134,7 @@
       <!-- Right Column Structure Plate -->
       <div class="plate product__struct">
         <img src="../images/structures/alum.png" alt="Skeletal structure of Polyaluminium Chloride" decoding="async" height="600" width="600" loading="eager">
+      </div>
       </div>
     </div>
   </section>
