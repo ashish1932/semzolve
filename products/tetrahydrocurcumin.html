@@ -7029,6 +7029,52 @@ section, .section {
   color: var(--fg-2);
 }
 
+/* Site Footer Styling */
+.site-footer {
+  background: #FFFFFF;
+  border-top: 1px solid #D7E3ED;
+  padding-top: 60px;
+  padding-bottom: 28px;
+  margin-top: 60px;
+}
+.footer-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1fr;
+  gap: 38px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #D7E3ED;
+}
+.footer-col-brand { padding-right: 20px; }
+.footer-logo { display: inline-block; margin-bottom: 14px; text-decoration: none; }
+.footer-logo-img { height: 32px !important; max-height: 32px !important; width: auto !important; max-width: 160px !important; display: inline-block; vertical-align: middle; object-fit: contain; }
+.footer-desc { font-size: 13.5px; color: #55657F; line-height: 1.65; max-width: 320px; margin-bottom: 22px; }
+.footer-contact-info { display: flex; flex-direction: column; gap: 11px; font-size: 13px; }
+.footer-info-item { display: flex; align-items: center; gap: 9px; color: #55657F; }
+.footer-info-item a { color: #061649; text-decoration: none; font-weight: 600; }
+.footer-info-item a:hover { color: #05B8FB; }
+.footer-info-icon { width: 16px; height: 16px; color: #05B8FB; flex-shrink: 0; }
+.footer-col-title { font-size: 13.5px; font-weight: 800; color: #061649; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 18px; }
+.footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
+.footer-links a { color: #55657F; text-decoration: none; transition: all 0.2s ease; }
+.footer-links a:hover { color: #05B8FB; transform: translateX(3px); display: inline-block; }
+.footer-link-highlight { color: #05B8FB !important; font-weight: 700; }
+.footer-bottom-bar { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; font-size: 12.5px; color: #55657F; flex-wrap: wrap; gap: 16px; }
+.footer-bottom-left { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.footer-pill-badge { background: #EBF3F9; color: #0B2263; padding: 3px 10px; border-radius: 999px; font-weight: 600; font-size: 11px; }
+.footer-bottom-links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.footer-links-group { display: flex; align-items: center; gap: 10px; }
+.footer-links-group a { color: #55657F; text-decoration: none; }
+.footer-links-group a:hover { color: #05B8FB; }
+.footer-sep { color: #D7E3ED; }
+.footer-social-links a:hover { background: #05B8FB !important; color: #FFFFFF !important; transform: translateY(-2px); }
+@media (max-width: 900px) {
+  .footer-main-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .footer-main-grid { grid-template-columns: 1fr; }
+}
+
+
   </style>
 </head>
 <body>
@@ -7038,11 +7084,11 @@ section, .section {
       <div style="display:flex; align-items:center; gap:16px;">
         <span><strong style="color:#05B8FB;">ISO 9001:2008</strong> Certified Indian Chemical Manufacturer &amp; Global Exporter</span>
         <span style="display:inline-block; width:4px; height:4px; border-radius:50%; background:#05B8FB;"></span>
-        <span>Two Advanced Units in Ankleshwar &amp; Tarapur</span>
+        <span>Parent Infrastructure &amp; Audited Partner Network</span>
       </div>
       <div style="display:flex; align-items:center; gap:20px;">
-        <a href="tel:+919820000000" style="color:#E4F6FE; text-decoration:none;">Sales: +91 (22) 6984-2300</a>
-        <a href="mailto:contact@semzolve.com" style="color:#05B8FB; text-decoration:none;">contact@semzolve.com</a>
+        <a href="tel:+918050818585" style="color:#E4F6FE; text-decoration:none;">Sales: +91 80508 18585</a>
+        <a href="mailto:info@semzolve.com" style="color:#05B8FB; text-decoration:none;">info@semzolve.com</a>
       </div>
     </div>
   </div>
@@ -7182,7 +7228,7 @@ section, .section {
         <div><dt>Molecular Weight</dt><dd style="font-family:var(--mono);">372.42 g/mol</dd></div>
         <div><dt>Assay &amp; Analytical Purity</dt><dd style="font-weight:700; color:#0369A1;">&ge; 99.0% &ndash; 99.8% (GC-FID / HPLC validated against analytical standard)</dd></div>
         <div><dt>Primary Commercial Uses</dt><dd>Antiseptic, skin care</dd></div>
-        <div><dt>Production &amp; Supply Origin</dt><dd>One Chemicals Pvt Ltd (Export Trading &amp; Custom Synthesis Hubs in Ankleshwar GIDC and Tarapur MIDC, India)</dd></div>
+        <div><dt>Production &amp; Supply Origin</dt><dd>One Chemicals Pvt Ltd &bull; Semzolve (Parent Company Manufacturing Infrastructure &amp; Audited Partner Network, India)</dd></div>
         <div><dt>Reaction Chemistry</dt><dd>Supercritical CO2 / solvent extraction, chromatographic purification & crystallization</dd></div>
         <div><dt>Accreditations</dt><dd>ISO 9001:2015 &bull; ISO 14001:2015 &bull; ISO 45001:2018 &bull; EU REACH Registration Dossier Ready &bull; cGMP Controls</dd></div>
         <div><dt>Compliance Documentation</dt><dd>Batch-specific Certificate of Analysis (COA), 16-section GHS Safety Data Sheet (SDS), Technical Data Sheet (TDS), Certificate of Origin (COO)</dd></div>
@@ -7232,13 +7278,13 @@ section, .section {
         <details>
           <summary>What are the typical lead times and shipping routes?</summary>
           <div class="faq__a">
-            <p>For standard catalogue grades, dispatch from our domestic buffer inventory at Ankleshwar or Tarapur takes <strong>48 to 72 hours</strong>. For custom synthesis campaigns or dedicated FCL container batches, lead time is typically <strong>2 to 3 weeks</strong> to container stuffing. Ocean consignments load via <strong>Nhava Sheva (JNPT)</strong> or <strong>Mundra</strong> ports, with direct sailings to Hamburg, Rotterdam, Antwerp, Houston, Busan, Singapore, and Jebel Ali.</p>
+            <p>For standard catalogue grades, dispatch from our domestic buffer inventory at audited manufacturing hubs takes <strong>48 to 72 hours</strong>. For custom synthesis campaigns or dedicated FCL container batches, lead time is typically <strong>2 to 3 weeks</strong> to container stuffing. Ocean consignments load via <strong>Nhava Sheva (JNPT)</strong> or <strong>Mundra</strong> ports, with direct sailings to Hamburg, Rotterdam, Antwerp, Houston, Busan, Singapore, and Jebel Ali.</p>
           </div>
         </details>
         <details>
           <summary>Can you tailor synthesis specifications or manufacture under an NDA?</summary>
           <div class="faq__a">
-            <p>Yes. If your process requires tightened impurity profiles, specific isomer ratios, low-water solvent grades, or custom intermediate synthesis, our reaction hubs (500L to 10kL glass-lined and SS reactors) can accommodate campaign synthesis. We execute bilateral Non-Disclosure Agreements (NDAs) upfront to safeguard your proprietary synthetic pathways and formulation IP.</p>
+            <p>Yes. If your process requires tightened impurity profiles, specific isomer ratios, low-water solvent grades, or custom intermediate synthesis, our parent and partner reaction hubs (500L to 10kL glass-lined and SS reactors) can accommodate campaign synthesis. We execute bilateral Non-Disclosure Agreements (NDAs) upfront to safeguard your proprietary synthetic pathways and formulation IP.</p>
           </div>
         </details>
       </div>
@@ -7321,18 +7367,109 @@ section, .section {
     </div>
   </section>
 
-  <!-- Common Footer -->
-  <footer class="site-footer" style="padding-top:40px; border-top:1px solid var(--line);">
+  <!-- Rich 5-Column Enterprise Footer -->
+  <footer class="site-footer">
     <div class="shell">
-      <div style="display:flex; justify-content:space-between; align-items:center; padding:24px 0; font-size:13px; color:var(--fg-3); flex-wrap:wrap; gap:16px;">
-        <div>&copy; 2026 Semzolve Technologies. All rights reserved.</div>
-        <div style="display:flex; gap:20px;">
-          <a href="../index.html" style="color:inherit; text-decoration:none;">Home</a>
-          <a href="../products.html" style="color:inherit; text-decoration:none;">Products</a>
-          <a href="../industries.html" style="color:inherit; text-decoration:none;">Industries</a>
-          <a href="../services.html" style="color:inherit; text-decoration:none;">Services</a>
-          <a href="../about.html" style="color:inherit; text-decoration:none;">About</a>
-          <a href="../contact.html" style="color:inherit; text-decoration:none;">Contact</a>
+      <div class="footer-main-grid">
+        <!-- Col 1: Brand & Contact -->
+        <div class="footer-col footer-col-brand">
+          <a href="../index.html" class="footer-logo" aria-label="SEMZOLVE"><img src="../images/semzolve-logo.png" alt="SEMZOLVE" class="footer-logo-img"></a>
+          <p class="footer-desc">
+            India's technology-driven specialty chemicals and contract manufacturing partner. Connecting global buyers with verified Indian synthesis capabilities and regulatory compliance.
+          </p>
+          <div class="footer-contact-info">
+            <div class="footer-info-item">
+              <svg class="footer-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <a href="mailto:info@semzolve.com">info@semzolve.com</a>
+            </div>
+            <div class="footer-info-item">
+              <svg class="footer-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <a href="tel:+918050818585">+91 80508 18585</a>
+            </div>
+            <div class="footer-info-item">
+              <svg class="footer-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>#21, 29th Main Road, MCHS Colony, BTM Layout 2nd Stage, Bengaluru 560076, India</span>
+            </div>
+          </div>
+          <div class="footer-social-links" style="display:flex; align-items:center; gap:10px; margin-top:16px;">
+            <a href="https://www.linkedin.com/company/semzolve/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style="display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; background:#EBF3F9; color:#061649; transition:all 0.2s ease;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://x.com/Semzolve" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" style="display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; background:#EBF3F9; color:#061649; transition:all 0.2s ease;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/semzolve/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; background:#EBF3F9; color:#061649; transition:all 0.2s ease;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Products -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Chemical Products</h4>
+          <ul class="footer-links">
+            <li><a href="../products.html?cat=pharma">Pharma &amp; Agro Intermediates</a></li>
+            <li><a href="../products.html?cat=solvents">Specialty Solvents &amp; Esters</a></li>
+            <li><a href="../products.html?cat=cosmetics">Cosmetic &amp; Active Ingredients</a></li>
+            <li><a href="../products.html?cat=petro">Petrochemicals &amp; Ketones</a></li>
+            <li><a href="../products.html?cat=industrial">Industrial Acids &amp; Plasticizers</a></li>
+            <li><a href="../products.html" class="footer-link-highlight">Explore Full Catalogue →</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Quality & Standards -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Quality &amp; Standards</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html#certifications">ISO 9001:2015 Quality</a></li>
+            <li><a href="../index.html#certifications">ISO 14001:2015 Environment</a></li>
+            <li><a href="../index.html#certifications">ISO 45001:2018 Safety</a></li>
+            <li><a href="../index.html#how-it-works">EU REACH Compliance</a></li>
+            <li><a href="../index.html#how-it-works">SCOMET Clearances</a></li>
+            <li><a href="../index.html#how-it-works">IMDG Packaging</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Company -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../products.html">Products Catalogue</a></li>
+            <li><a href="../about.html">About Us &amp; Leadership</a></li>
+            <li><a href="../services.html">Services &amp; Synthesis</a></li>
+            <li><a href="../contact.html">Contact &amp; RFQ</a></li>
+            <li><a href="../index.html#hero">Back to Top ↑</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-left">
+          <span>&copy; 2026 Semzolve Technologies. All rights reserved.</span>
+          <span class="footer-pill-badge">WHO-GMP &amp; ISO Compliant Supply</span>
+        </div>
+        <div class="footer-bottom-links">
+          <div class="footer-links-group">
+            <a href="../index.html#how-it-works">Privacy Policy</a>
+            <span class="footer-sep">&bull;</span>
+            <a href="../index.html#how-it-works">Terms of Trade</a>
+          </div>
+          <span class="footer-sep">&bull;</span>
+          <div class="footer-links-group">
+            <a href="../index.html#how-it-works">Regulatory Compliance</a>
+            <span class="footer-sep">&bull;</span>
+            <a href="../contact.html">Security</a>
+          </div>
         </div>
       </div>
     </div>
