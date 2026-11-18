@@ -225,8 +225,21 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.6s ease;
-      pointer-events: all;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+      animation: introAutoFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+    @keyframes introAutoFade {
+      0% {
+        opacity: 1;
+        visibility: visible;
+      }
+      100% {
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+        pointer-events: none;
+      }
     }
     .intro-chevron {
       opacity: 0;
@@ -6550,6 +6563,18 @@
       <polyline points="13 17 18 12 13 7"></polyline>
       <polyline points="6 17 11 12 6 7"></polyline>
     </svg>
+    <script>
+      (function() {
+        setTimeout(function() {
+          var el = document.getElementById('page-intro');
+          if (el) {
+            el.style.opacity = '0';
+            el.style.pointerEvents = 'none';
+            setTimeout(function() { if (el && el.parentNode) el.remove(); }, 400);
+          }
+        }, 500);
+      })();
+    </script>
   </div>
 
   <!-- ==================================================
@@ -7162,7 +7187,7 @@
       </a>
 
       <!-- 04. Paints, Inks & Coatings -->
-      <a href="#products-catalogue" class="industry-bento-card industry-card" data-category="Specialty solvents & glycol esters" title="Paints, Inks and Coatings">
+      <a href="industry.html?id=coatings" class="industry-bento-card industry-card" data-category="Specialty solvents & glycol esters" title="Paints, Inks and Coatings">
         <div class="ind-card-watermark" aria-hidden="true">
           <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
         </div>
@@ -7219,7 +7244,7 @@
       </a>
 
       <!-- 06. Home Care & Detergents -->
-      <a href="#products-catalogue" class="industry-bento-card industry-card" data-category="Industrial chemicals, plasticizers & acids" title="Home Care and Detergents">
+      <a href="industry.html?id=home-care" class="industry-bento-card industry-card" data-category="Industrial chemicals, plasticizers & acids" title="Home Care and Detergents">
         <div class="ind-card-watermark" aria-hidden="true">
           <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
         </div>
@@ -7249,7 +7274,7 @@
       </a>
 
       <!-- 07. Food, Flavour & Fragrance -->
-      <a href="#products-catalogue" class="industry-bento-card industry-card" data-category="Cosmetic & perfumery ingredients" title="Food, Flavour and Fragrance">
+      <a href="industry.html?id=food-nutrition" class="industry-bento-card industry-card" data-category="Cosmetic & perfumery ingredients" title="Food, Flavour and Fragrance">
         <div class="ind-card-watermark" aria-hidden="true">
           <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
         </div>
@@ -7278,7 +7303,7 @@
       </a>
 
       <!-- 08. Polymers & Plastics -->
-      <a href="#products-catalogue" class="industry-bento-card industry-card" data-category="Petrochemicals & solvents" title="Polymers and Plastics">
+      <a href="industry.html?id=polymers" class="industry-bento-card industry-card" data-category="Petrochemicals & solvents" title="Polymers and Plastics">
         <div class="ind-card-watermark" aria-hidden="true">
           <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
         </div>
@@ -7307,7 +7332,7 @@
       </a>
 
       <!-- 09. Agriculture & Aquaculture -->
-      <a href="#products-catalogue" class="industry-bento-card industry-card" data-category="Packaging & agri films" title="Agriculture and Aquaculture">
+      <a href="industry.html?id=agriculture" class="industry-bento-card industry-card" data-category="Packaging & agri films" title="Agriculture and Aquaculture">
         <div class="ind-card-watermark" aria-hidden="true">
           <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
         </div>
@@ -10200,263 +10225,4 @@ ${email} · ${country}`;
       const botBubble = bubble('a', '<span style="color:var(--muted); font-size:13px;">Reviewing catalogue specifications...</span>');
 
       setTimeout(() => {
-        const resp = generateAIResponse(msg);
-        botBubble.innerHTML = md(resp.text) + renderProductCards(resp.cards || []);
-        chatMsgs.scrollTop = chatMsgs.scrollHeight;
-        renderQuickQs(resp.qs || QS.slice(0, 3));
-      }, 300);
-    }
-
-    if (chatForm) {
-      chatForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (chatInput) sendChat(chatInput.value);
-      });
-    }
-
-    // Initialize Manufacturing Network Diagram (2 Own Plants & 25+ Contract Plants)
-    initNetworkDiagram();
-  }
-
-  function initNetworkDiagram() {
-    const s = document.getElementById('netsvg');
-    if (!s) return;
-    const cx = 260, cy = 210;
-    const pts = [];
-    let seed = 7;
-    const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
-    for (let k = 0; k < 26; k++) {
-      const a = k / 26 * Math.PI * 2 + rnd() * 0.18, r = 120 + rnd() * 70;
-      pts.push([cx + Math.cos(a) * r * 1.12, cy + Math.sin(a) * r * 0.92]);
-    }
-    let h = `<rect width="520" height="420" rx="16" fill="#EBF3F9"/>`;
-    for (let x = 20; x < 520; x += 26) {
-      for (let y = 20; y < 420; y += 26) {
-        h += `<circle cx="${x}" cy="${y}" r="1" fill="#D7E3ED"/>`;
-      }
-    }
-    pts.forEach((p, k) => {
-      const n = pts[(k + 1) % pts.length];
-      h += `<line x1="${p[0].toFixed(1)}" y1="${p[1].toFixed(1)}" x2="${n[0].toFixed(1)}" y2="${n[1].toFixed(1)}" stroke="#D7E3ED" stroke-width="1"/>`;
-    });
-    pts.forEach((p, k) => {
-      h += `<line class="${k % 3 === 0 ? "flow" : ""}" x1="${cx}" y1="${cy}" x2="${p[0].toFixed(1)}" y2="${p[1].toFixed(1)}" stroke="#05B8FB" stroke-opacity="${k % 3 === 0 ? 0.7 : 0.22}" stroke-width="${k % 3 === 0 ? 1.6 : 1}" style="animation-delay:${(k * 0.13).toFixed(2)}s"/>`;
-    });
-    pts.forEach((p, k) => {
-      h += `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${k % 4 === 0 ? 8 : 6}" fill="#FFFFFF" stroke="#05B8FB" stroke-width="2"/><circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="2.5" fill="#05B8FB"/>`;
-    });
-    h += `<circle cx="${cx}" cy="${cy}" r="46" fill="#05B8FB" opacity=".12"><animate attributeName="r" values="40;56;40" dur="3.2s" repeatCount="indefinite"/></circle><circle cx="${cx}" cy="${cy}" r="36" fill="#05B8FB"/><text x="${cx}" y="${cy - 3}" text-anchor="middle" fill="#FFFFFF" font-family="'Schibsted Grotesk', -apple-system, sans-serif" font-weight="700" font-size="14">2 own</text><text x="${cx}" y="${cy + 14}" text-anchor="middle" fill="#FFFFFF" font-family="'Schibsted Grotesk', -apple-system, sans-serif" font-weight="700" font-size="14">plants</text>`;
-    h += `<g transform="translate(20, 372)"><rect width="186" height="32" rx="16" fill="#FFFFFF" stroke="#D7E3ED"/><circle cx="20" cy="16" r="6" fill="none" stroke="#05B8FB" stroke-width="2"/><circle cx="20" cy="16" r="2.5" fill="#05B8FB"/><text x="34" y="21" fill="#061649" font-family="'Schibsted Grotesk', -apple-system, sans-serif" font-weight="600" font-size="12">25+ contract plants, India</text></g>`;
-    s.innerHTML = h;
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initInteractiveEngine);
-  } else {
-    initInteractiveEngine();
-  }
-
-
-    // ==================================================
-    // MOBILE NAVIGATION DRAWER CONTROLLER
-    // ==================================================
-    const mobileToggle = document.getElementById('mobileNavToggle');
-    const mobileDrawer = document.getElementById('mobileNavDrawer');
-    const mobileBackdrop = document.getElementById('mobileNavBackdrop');
-    const mobileClose = document.getElementById('mobileNavClose');
-
-    window.openMobileNav = function() {
-      if (mobileToggle) {
-        mobileToggle.classList.add('open');
-        mobileToggle.setAttribute('aria-expanded', 'true');
-      }
-      if (mobileDrawer) {
-        mobileDrawer.classList.add('open');
-        mobileDrawer.setAttribute('aria-hidden', 'false');
-      }
-      if (mobileBackdrop) {
-        mobileBackdrop.classList.add('open');
-      }
-      document.body.style.overflow = 'hidden';
-    };
-
-    window.closeMobileNav = function() {
-      if (mobileToggle) {
-        mobileToggle.classList.remove('open');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-      }
-      if (mobileDrawer) {
-        mobileDrawer.classList.remove('open');
-        mobileDrawer.setAttribute('aria-hidden', 'true');
-      }
-      if (mobileBackdrop) {
-        mobileBackdrop.classList.remove('open');
-      }
-      document.body.style.overflow = '';
-    };
-
-    if (mobileToggle) {
-      mobileToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (mobileDrawer && mobileDrawer.classList.contains('open')) {
-          closeMobileNav();
-        } else {
-          openMobileNav();
-        }
-      });
-    }
-    if (mobileClose) mobileClose.addEventListener('click', closeMobileNav);
-    if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileNav);
-
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('open')) {
-        closeMobileNav();
-      }
-    });
-
-  // Feature: Hide / Toggle Header Launch Button
-  function toggleHeaderLaunch(forceShow) {
-    const wrap = document.getElementById('headerLaunchWrap');
-    const footerToggle = document.getElementById('footerLaunchToggleLink');
-    if (!wrap) return;
-
-    const willHide = (forceShow === undefined) ? !wrap.classList.contains('is-hidden') : !forceShow;
-
-    if (willHide) {
-      wrap.classList.add('is-hidden');
-      try { localStorage.setItem('semzolve_launch_btn_hidden', '1'); } catch (e) {}
-      if (footerToggle) footerToggle.style.display = 'inline-flex';
-      showLaunchToast('✦ Launch button hidden. Press <kbd>Alt + L</kbd> to restore.', true);
-    } else {
-      wrap.classList.remove('is-hidden');
-      try { localStorage.removeItem('semzolve_launch_btn_hidden'); } catch (e) {}
-      if (footerToggle) footerToggle.style.display = 'none';
-      showLaunchToast('✦ Launch button restored.', false);
-    }
-  }
-
-  let toastTimer = null;
-  function showLaunchToast(htmlMessage, showUndo) {
-    let toast = document.getElementById('headerLaunchToast');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.id = 'headerLaunchToast';
-      toast.className = 'header-launch-toast';
-      document.body.appendChild(toast);
-    }
-
-    toast.innerHTML = `
-      <span>${htmlMessage}</span>
-      ${showUndo ? '<button type="button" class="toast-undo-btn" onclick="toggleHeaderLaunch(true)">Undo</button>' : ''}
-    `;
-    toast.classList.add('is-visible');
-
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-      toast.classList.remove('is-visible');
-    }, 4500);
-  }
-
-  window.toggleHeaderLaunch = toggleHeaderLaunch;
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Check saved state
-    try {
-      if (localStorage.getItem('semzolve_launch_btn_hidden') === '1') {
-        const wrap = document.getElementById('headerLaunchWrap');
-        if (wrap) wrap.classList.add('is-hidden');
-        const footerToggle = document.getElementById('footerLaunchToggleLink');
-        if (footerToggle) footerToggle.style.display = 'inline-flex';
-      }
-    } catch (e) {}
-
-    // Click on Hide button
-    const hideBtn = document.getElementById('headerLaunchHideBtn');
-    if (hideBtn) {
-      hideBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleHeaderLaunch(false);
-      });
-    }
-
-    // Right-click on Launch button to hide
-    const launchBtn = document.getElementById('headerLaunchBtn');
-    if (launchBtn) {
-      launchBtn.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-        toggleHeaderLaunch(false);
-      });
-    }
-
-    // Double-click on navbar brand logo to toggle
-    const brandLogo = document.querySelector('.navbar-brand');
-    if (brandLogo) {
-      brandLogo.addEventListener('dblclick', (e) => {
-        e.preventDefault();
-        toggleHeaderLaunch();
-      });
-    }
-
-    // Keyboard shortcut: Alt + L to toggle
-    window.addEventListener('keydown', (e) => {
-      if (e.altKey && (e.key === 'l' || e.key === 'L')) {
-        e.preventDefault();
-        toggleHeaderLaunch();
-      }
-    });
-  });
-
-</script>
-  <!-- Cinematic Launch Experience -->
-  <script src="js/gsap.min.js"></script>
-  <script src="js/semzolveLaunch.js"></script>
-
-<!-- ==============================================
-     PRODUCT DETAIL DRAWER (SLIDE-OVER SPECIFICATIONS)
-     ============================================== -->
-<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
-  <div class="scrim" onclick="closeProductDetail()"></div>
-  <aside class="panel">
-    <div class="dhead">
-      <button class="dclose" type="button" onclick="closeProductDetail()" aria-label="Close specifications">✕</button>
-      <div class="cat" id="dCat">Specialty Chemicals</div>
-      <h3 id="dTitle">Product Name</h3>
-      <div class="chips" id="dChips"></div>
-    </div>
-    <div class="dbody">
-      <div id="dStructWrap" style="display:none; text-align:center; padding:16px; background:#F4F8FB; border-radius:12px; border:1px solid #D7E3ED;">
-        <img id="dStructImg" src="" alt="Chemical Structure" style="max-height:140px; margin:0 auto; object-fit:contain; display:block;">
-      </div>
-      <div>
-        <h4>Overview &amp; Functional Purpose</h4>
-        <p id="dDesc"></p>
-      </div>
-      <div>
-        <h4>Typical Applications &amp; Industries</h4>
-        <div class="apps" id="dApps"></div>
-      </div>
-      <div>
-        <h4>Supply &amp; Commercial Specifications</h4>
-        <div class="dspec" id="dSpec"></div>
-      </div>
-      <div>
-        <h4>Regulatory Compliance &amp; Documents</h4>
-        <div class="apps" id="dDocs"></div>
-      </div>
-    </div>
-    <div class="dfoot" style="display:flex; flex-direction:column; gap:8px;">
-      <a class="btn-drawer-quote" id="dDedicatedPage" href="products/acetic-acid.html" style="background:#061649; color:#fff; border:1px solid #05B8FB; text-align:center; display:flex; align-items:center; justify-content:center; gap:8px;">
-        <span>View Full Chemical Page &amp; Structure</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <div style="display:flex; gap:8px;">
-        <button class="btn-drawer-add" type="button" id="dAdd" style="flex:1;">+ Add to enquiry</button>
-        <a class="btn-drawer-quote" href="#contact" id="dQuote" style="flex:1; text-align:center;">Request a quote</a>
-      </div>
-    </div>
-  </aside>
-</div>
-
-</body>
-</html>
+... [truncated for diff preview]
