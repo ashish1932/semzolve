@@ -697,23 +697,25 @@ body.launch-active::-webkit-scrollbar,
 .launch-replay-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(11, 107, 84, 0.15);
-  border: 1px solid rgba(167, 243, 208, 0.3);
-  color: #061649;
+  gap: 6px;
+  background: rgba(5, 184, 251, 0.12);
+  border: 1px solid rgba(5, 184, 251, 0.35);
+  color: #05B8FB;
   font-size: 12px;
-  font-weight: 600;
-  padding: 6px 14px;
+  font-weight: 700;
+  padding: 5px 13px;
   border-radius: 999px;
   cursor: pointer;
   transition: all 0.25s ease;
   text-decoration: none;
+  letter-spacing: 0.02em;
 }
 .launch-replay-pill:hover {
-  background: rgba(11, 107, 84, 0.28);
-  color: #0B2263;
-  border-color: #061649;
+  background: #05B8FB;
+  color: #061649;
+  border-color: #05B8FB;
   transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(5, 184, 251, 0.25);
 }
 .launch-replay-pill svg {
   width: 14px;
