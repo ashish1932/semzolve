@@ -9510,6 +9510,30 @@ ${email} · ${country}`;
         enquiryDoneCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
 
+      // Record in SQLite backend database via REST API
+      fetch('/api/inquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          company: company,
+          email: email,
+          phone: '',
+          country: country,
+          incoterm: incoterm,
+          products: products,
+          need: need,
+          source_page: 'index.html (RFQ Form)',
+          summary: rfqText
+        })
+      }).then(function(r) { return r.json(); }).then(function(res) {
+        if (res && res.success && res.ref_id) {
+          showToast('✓ Saved to database! Ref: ' + res.ref_id);
+        }
+      }).catch(function(err) {
+        console.warn('API submission offline, fallback to mailto draft:', err);
+      });
+
       showToast('✓ Enquiry prepared! Copy text or send via your email client.');
     }
 

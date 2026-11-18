@@ -6640,14 +6640,20 @@
     .prods-category-track {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       overflow-x: auto;
       white-space: nowrap;
-      scrollbar-width: none;
-      padding: 4px 0;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(5, 184, 251, 0.25) transparent;
+      padding: 6px 8px 8px 4px;
+      -webkit-overflow-scrolling: touch;
     }
     .prods-category-track::-webkit-scrollbar {
-      display: none;
+      height: 4px;
+    }
+    .prods-category-track::-webkit-scrollbar-thumb {
+      background: rgba(5, 184, 251, 0.25);
+      border-radius: 4px;
     }
     .category-btn {
       display: inline-flex;
@@ -6710,9 +6716,11 @@
     /* Grid of Chemical Cards */
     .prods-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
       margin-bottom: 48px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .prod-grid-card {
       background: #ffffff;
@@ -6998,7 +7006,7 @@
           <span class="category-count-badge">149</span>
         </button>
         <button type="button" class="category-btn" data-cat="emulsions" onclick="filterCategory('emulsions', this)">
-          <span>BASF Emulsions &amp; Additives</span>
+          <span>Emulsions &amp; Additives</span>
           <span class="category-count-badge">55</span>
         </button>
         <button type="button" class="category-btn" data-cat="packaging" onclick="filterCategory('packaging', this)">
@@ -7351,7 +7359,7 @@ window.closeMobileNav = function() {
         'cosmetics': 'Cosmetic Ingredients & Perfumery Chemicals',
         'petro': 'Petrochemicals & Solvents',
         'industrial': 'Industrial Chemicals, Plasticizers & Acids',
-        'emulsions': 'BASF Emulsions, Construction Chemicals & Additives',
+        'emulsions': 'Performance Emulsions, Construction Chemicals & Additives',
         'packaging': 'Packaging & Agricultural Protective Films'
       };
 

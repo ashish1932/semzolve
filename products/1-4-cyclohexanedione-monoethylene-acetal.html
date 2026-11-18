@@ -6781,18 +6781,41 @@ section, .section {
 }
 .product__struct {
   aspect-ratio: 1 / 1;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: clamp(1.5rem, 3.5vw, 2.75rem);
   background: #F8FAFD;
   border-radius: 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-height: 0;
+  max-height: 460px;
+  width: 100%;
 }
 .product__struct img {
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
+  max-height: 100% !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
   object-fit: contain;
   mix-blend-mode: multiply;
+  margin: auto;
+  display: block;
+}
+.product__struct svg {
+  max-height: 100% !important;
+  max-width: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  margin: auto;
+  display: block;
+}
+.breadcrumb-trail a,
+.breadcrumb-trail span {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 /* Description List .dl */
@@ -7179,7 +7202,7 @@ section, .section {
 
       <!-- Right Column Structure Plate -->
       <div class="plate product__struct">
-        <img src="../images/structures/1-4-cyclohexanedione.png" alt="Skeletal structure of 1,4-Cyclohexanedione Monoethylene Acetal" decoding="async" height="600" width="600" loading="eager">
+        <img src="../images/structures/1-4-cyclohexanedione-monoethylene-acetal.png" alt="Skeletal structure of 1,4-Cyclohexanedione Monoethylene Acetal" decoding="async" height="600" width="600" loading="eager">
       </div>
       </div>
     </div>

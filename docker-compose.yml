@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  semzolve-web:
+    build: .
+    container_name: semzolve-portal
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    volumes:
+      - semzolve-data:/app/data
+
+volumes:
+  semzolve-data:
+    driver: local

@@ -7139,8 +7139,15 @@ window.closeMobileNav = function() {
   document.body.style.overflow = '';
 };
 
-function handleContactPageSubmit(e) {
+async function handleContactPageSubmit(e) {
   e.preventDefault();
+  var submitBtn = e.target.querySelector('button[type="submit"]');
+  var origBtnText = submitBtn ? submitBtn.innerHTML : 'Submit Quotation Request →';
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Connecting to database...';
+  }
+
   var name = (document.getElementById('cpName') && document.getElementById('cpName').value || '').trim();
   var company = (document.getElementById('cpCompany') && document.getElementById('cpCompany').value || '').trim();
   var email = (document.getElementById('cpEmail') && document.getElementById('cpEmail').value || '').trim();
@@ -7150,8 +7157,6 @@ function handleContactPageSubmit(e) {
   var products = (document.getElementById('cpProducts') && document.getElementById('cpProducts').value || '').trim();
 
   var refNum = 'SZ-' + Math.floor(100000 + Math.random() * 900000);
-  var refEl = document.getElementById('contactRefId');
-  if (refEl) refEl.textContent = 'Reference: ' + refNum;
 
   var summary = 'Commercial Quotation Request #' + refNum + '\n' +
     'Company: ' + company + '\n' +
@@ -7161,6 +7166,48 @@ function handleContactPageSubmit(e) {
     'Required Chemicals & Specifications:\n' +
     products + '\n\n' +
     'Please provide current batch availability, COA, TDS, packaging options, and firm CIF/FOB quote.';
+
+  // Attempt backend database storage via REST API
+  var dbStored = false;
+  try {
+    var resp = await fetch('/api/inquiries', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ref_id: refNum,
+        name: name,
+        company: company,
+        email: email,
+        phone: phone,
+        country: country,
+        incoterm: incoterm,
+        products: products,
+        need: 'Commercial quotation',
+        source_page: 'contact.html',
+        summary: summary
+      })
+    });
+    if (resp.ok) {
+      var resJson = await resp.json();
+      if (resJson.ref_id) refNum = resJson.ref_id;
+      dbStored = true;
+    }
+  } catch (err) {
+    console.warn('API submission failed or offline, saving to browser storage:', err);
+  }
+
+  // Local storage backup
+  try {
+    var existing = JSON.parse(localStorage.getItem('sz_inquiries') || '[]');
+    existing.push({ ref_id: refNum, date: new Date().toISOString(), name: name, email: email, products: products, db_stored: dbStored });
+    localStorage.setItem('sz_inquiries', JSON.stringify(existing));
+  } catch(e) {}
+
+  var refEl = document.getElementById('contactRefId');
+  if (refEl) {
+    refEl.innerHTML = 'Reference: <strong>' + refNum + '</strong> ' + 
+      (dbStored ? '<span style="color:#10B981; font-weight:700;">(Recorded in Database ✓)</span>' : '<span style="color:#0369A1;">(Draft Prepared)</span>');
+  }
 
   var summaryEl = document.getElementById('contactSummaryText');
   if (summaryEl) summaryEl.textContent = summary;
@@ -7182,6 +7229,11 @@ function handleContactPageSubmit(e) {
   if (successPanel) {
     successPanel.style.display = 'block';
     successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = origBtnText;
   }
 }
 

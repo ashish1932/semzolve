@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: semzolve-portal
+    env: python
+    buildCommand: ""
+    startCommand: "python3 server.py"
+    plan: starter
+    disk:
+      name: semzolve-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: PORT
+        value: 10000
