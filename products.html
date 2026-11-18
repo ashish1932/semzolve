@@ -215,19 +215,21 @@
       transform: none !important;
     }
 
+    /* Standard Centered Page Container */
+    .wrap {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: clamp(20px, 3.5vw, 48px);
+      padding-right: clamp(20px, 3.5vw, 48px);
+      box-sizing: border-box;
+    }
+
     /* ==================================================
        2. PAGE-LOAD INTRO
        ================================================== */
     #page-intro {
-      position: fixed;
-      inset: 0;
-      background: #ffffff;
-      z-index: 999999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.6s ease;
-      pointer-events: all;
+      display: none !important;
     }
     .intro-chevron {
       opacity: 0;
@@ -6642,7 +6644,7 @@
       overflow-x: auto;
       white-space: nowrap;
       scrollbar-width: none;
-      padding: 0 16px;
+      padding: 4px 0;
     }
     .prods-category-track::-webkit-scrollbar {
       display: none;
@@ -6867,7 +6869,7 @@
 <body>
   <!-- Top Certification Strip -->
   <div class="top-cert-strip" id="topCertStrip" style="background:#030A24; color:#94A3B8; font-size:12px; padding:6px 0; border-bottom:1px solid rgba(228, 246, 254, 0.1);">
-    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; max-width:1400px; margin:0 auto; padding:0 24px;">
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center;">
       <div style="display:flex; align-items:center; gap:16px;">
         <span><strong style="color:#05B8FB;">ISO 9001:2008</strong> Certified Indian Chemical Manufacturer &amp; Global Exporter</span>
         <span style="display:inline-block; width:4px; height:4px; border-radius:50%; background:#05B8FB;"></span>

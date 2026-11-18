@@ -231,19 +231,21 @@
       transform: none !important;
     }
 
+    /* Standard Centered Page Container */
+    .wrap {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: clamp(20px, 3.5vw, 48px);
+      padding-right: clamp(20px, 3.5vw, 48px);
+      box-sizing: border-box;
+    }
+
     /* ==================================================
        2. PAGE-LOAD INTRO
        ================================================== */
     #page-intro {
-      position: fixed;
-      inset: 0;
-      background: #ffffff;
-      z-index: 999999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.6s ease;
-      pointer-events: all;
+      display: none !important;
     }
     .intro-chevron {
       opacity: 0;
