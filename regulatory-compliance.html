@@ -6542,16 +6542,369 @@
 
 </style>
 
+
 <style>
-  .policy-wrapper {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 110px 0 100px;
+  /* ==========================================================================
+     GOVERNANCE & POLICY INTERACTIVE 2-COLUMN STYLES
+     Eliminates wide-screen empty void & adds interactive TOC, search & switcher
+     ========================================================================== */
+  .policy-page-main {
+    background: #F4F8FB;
+    min-height: 100vh;
+    padding-top: 104px;
+    padding-bottom: 90px;
   }
-  .policy-header {
-    margin-bottom: 48px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--line);
+  .policy-wide-wrap {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .policy-page-container {
+    width: 100%;
+  }
+
+  /* Breadcrumb Navigation */
+  .policy-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #64748B;
+    margin-bottom: 22px;
+  }
+  .policy-breadcrumb a {
+    color: #64748B;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .policy-breadcrumb a:hover {
+    color: #0369A1;
+  }
+  .policy-breadcrumb .sep {
+    color: #94A3B8;
+  }
+  .policy-breadcrumb .cat-name {
+    color: #0369A1;
+    font-weight: 600;
+  }
+  .policy-breadcrumb .active-tab-name {
+    color: #061649;
+    font-weight: 700;
+  }
+
+  /* Top Control & Tab Switcher Bar */
+  .policy-control-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #D7E3ED;
+    flex-wrap: wrap;
+  }
+  .policy-tab-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .policy-tab-btn {
+    font-size: 13px;
+    font-weight: 700;
+    color: #475569;
+    background: #FFFFFF;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 999px;
+    padding: 7px 18px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  .policy-tab-btn:hover {
+    background: #EBF8FF;
+    color: #0369A1;
+    border-color: #05B8FB;
+    transform: translateY(-1px);
+  }
+  .policy-tab-btn.active {
+    background: #05B8FB;
+    color: #061649;
+    border-color: #05B8FB;
+    box-shadow: 0 4px 14px rgba(5, 184, 251, 0.35);
+  }
+
+  .policy-toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .policy-search-box {
+    position: relative;
+    width: 320px;
+  }
+  .policy-search-svg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748B;
+    pointer-events: none;
+  }
+  .policy-search-box input {
+    width: 100%;
+    height: 38px;
+    padding: 0 34px 0 38px;
+    border-radius: 999px;
+    border: 1.5px solid #CBD5E1;
+    font-size: 13px;
+    background: #FFFFFF;
+    color: #061649;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+  .policy-search-box input:focus {
+    border-color: #05B8FB;
+    box-shadow: 0 0 0 3px rgba(5, 184, 251, 0.2);
+  }
+  #policySearchClear {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #E2E8F0;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    color: #475569;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+  }
+  .policy-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 38px;
+    padding: 0 16px;
+    border-radius: 999px;
+    background: #FFFFFF;
+    border: 1.5px solid #CBD5E1;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #061649;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    text-decoration: none;
+  }
+  .policy-action-btn:hover {
+    background: #EBF8FF;
+    border-color: #05B8FB;
+    color: #0369A1;
+    transform: translateY(-1px);
+  }
+
+  /* 2-Column Responsive Grid Layout */
+  .policy-layout-grid {
+    display: grid;
+    grid-template-columns: 310px minmax(0, 1fr);
+    gap: 36px;
+    align-items: start;
+  }
+  @media (max-width: 1040px) {
+    .policy-layout-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
+
+  /* Left Sticky Sidebar */
+  .policy-sidebar {
+    position: sticky;
+    top: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  .policy-sidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .policy-sidebar::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+  }
+  .policy-sidebar-card {
+    background: #FFFFFF;
+    border: 1px solid #D7E3ED;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 18px rgba(6, 22, 73, 0.04);
+  }
+  .policy-sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #EEF2F6;
+  }
+  .policy-sidebar-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0369A1;
+  }
+  .policy-reading-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748B;
+    background: #F1F5F9;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .policy-toc-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .policy-toc-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: all 0.18s ease;
+    line-height: 1.35;
+    border-left: 3px solid transparent;
+  }
+  .policy-toc-link:hover {
+    background: #F1F5F9;
+    color: #0369A1;
+  }
+  .policy-toc-link.active {
+    background: #EBF8FF;
+    color: #0369A1;
+    font-weight: 700;
+    border-left-color: #05B8FB;
+    padding-left: 12px;
+  }
+  .policy-toc-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    font-size: 10.5px;
+    font-weight: 700;
+    background: #E2E8F0;
+    color: #334155;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .policy-toc-link.active .policy-toc-num {
+    background: #05B8FB;
+    color: #061649;
+  }
+
+  /* Accreditation Trust List */
+  .policy-trust-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .policy-trust-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  .trust-badge-icon {
+    font-size: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .policy-trust-item strong {
+    display: block;
+    color: #061649;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .policy-trust-item p {
+    margin: 0;
+    color: #64748B;
+    font-size: 11.5px;
+  }
+  .policy-dpo-cta {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid #EEF2F6;
+  }
+  .policy-dpo-cta p {
+    font-size: 12px;
+    color: #475569;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+  }
+  .policy-dpo-btn {
+    display: block;
+    text-align: center;
+    background: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    color: #061649;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .policy-dpo-btn:hover {
+    background: #05B8FB;
+    border-color: #05B8FB;
+    color: #061649;
+  }
+
+  /* Right Main Content Area */
+  .policy-main-content {
+    background: #FFFFFF;
+    border: 1px solid #D7E3ED;
+    border-radius: 20px;
+    padding: 44px;
+    box-shadow: 0 4px 24px rgba(6, 22, 73, 0.04);
+  }
+  @media (max-width: 768px) {
+    .policy-main-content {
+      padding: 24px;
+    }
+  }
+
+  .policy-doc-header {
+    margin-bottom: 40px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #D7E3ED;
   }
   .policy-badge {
     display: inline-flex;
@@ -6566,12 +6919,13 @@
     padding: 5px 12px;
     border-radius: 999px;
     margin-bottom: 16px;
+    border: 1px solid rgba(5, 184, 251, 0.25);
   }
   .policy-title {
-    font-size: clamp(30px, 4vw, 44px);
+    font-size: clamp(28px, 3.2vw, 40px);
     font-weight: 800;
     color: #061649;
-    line-height: 1.18;
+    line-height: 1.2;
     margin-bottom: 16px;
     letter-spacing: -0.02em;
   }
@@ -6579,32 +6933,108 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    font-size: 13.5px;
+    font-size: 13px;
     color: #64748B;
     flex-wrap: wrap;
   }
   .policy-meta span strong {
     color: #061649;
+    font-weight: 700;
   }
-  .policy-body {
-    font-size: 15.5px;
-    color: #334155;
-    line-height: 1.75;
+
+  /* Search Banner */
+  .policy-search-banner {
+    background: #EBF8FF;
+    border: 1px solid #05B8FB;
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #0369A1;
+    gap: 12px;
   }
+  .policy-search-banner button {
+    background: #FFFFFF;
+    border: 1px solid #05B8FB;
+    color: #0369A1;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .policy-search-banner button:hover {
+    background: #05B8FB;
+    color: #061649;
+  }
+
+  /* Tab Panels */
+  .policy-tab-panel {
+    display: none;
+  }
+  .policy-tab-panel.active {
+    display: block;
+    animation: fadeInPolicy 0.25s ease-out forwards;
+  }
+  @keyframes fadeInPolicy {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Policy Sections & Clause Styling */
   .policy-section {
     margin-bottom: 48px;
-    scroll-margin-top: 100px;
+    scroll-margin-top: 110px;
+    position: relative;
+    transition: opacity 0.2s ease;
+  }
+  .policy-section.search-hidden {
+    display: none !important;
+  }
+  .policy-section.search-match {
+    border-left: 3px solid #05B8FB;
+    padding-left: 18px;
   }
   .policy-section h2 {
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 800;
     color: #061649;
     margin: 0 0 16px 0;
     letter-spacing: -0.01em;
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
   }
+  .policy-anchor-btn {
+    opacity: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #0369A1;
+    background: #EBF8FF;
+    border: 1px solid #BAE6FD;
+    padding: 3px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: inherit;
+  }
+  .policy-section:hover .policy-anchor-btn {
+    opacity: 1;
+  }
+  .policy-anchor-btn:hover {
+    background: #05B8FB;
+    color: #061649;
+    border-color: #05B8FB;
+  }
+
   .policy-section h3 {
     font-size: 17px;
     font-weight: 700;
@@ -6613,10 +7043,16 @@
   }
   .policy-section p {
     margin-bottom: 16px;
+    font-size: 15px;
+    color: #334155;
+    line-height: 1.75;
   }
   .policy-section ul {
     margin: 0 0 20px 24px;
     padding: 0;
+    font-size: 15px;
+    color: #334155;
+    line-height: 1.7;
   }
   .policy-section li {
     margin-bottom: 8px;
@@ -6645,6 +7081,8 @@
     border-collapse: collapse;
     margin: 24px 0;
     font-size: 14px;
+    border-radius: 8px;
+    overflow: hidden;
   }
   .policy-table th, .policy-table td {
     padding: 12px 16px;
@@ -6660,83 +7098,112 @@
     background: #FFFFFF;
     color: #334155;
   }
-  .policy-nav-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 36px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid #D7E3ED;
-  }
-  .policy-nav-pills a {
-    font-size: 13px;
-    font-weight: 600;
-    color: #55657F;
-    padding: 6px 14px;
-    background: #FFFFFF;
-    border: 1px solid #CBD5E1;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-  .policy-nav-pills a:hover, .policy-nav-pills a.active {
-    background: #05B8FB;
-    color: #061649;
-    border-color: #05B8FB;
+
+  /* Search Text Highlighting */
+  mark.search-highlight {
+    background: #FEF08A;
+    color: #854D0E;
+    padding: 1px 3px;
+    border-radius: 3px;
   }
 
-    /* Ultra-High Contrast Launch Experience Footer Button */
-    .launch-replay-pill,
-    .footer-bottom-links a.launch-replay-pill,
-    .footer-links-group a.launch-replay-pill {
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 7px !important;
-      background: #EBF8FF !important;
-      border: 1.5px solid #05B8FB !important;
-      color: #0369A1 !important;
-      font-size: 12px !important;
-      font-weight: 700 !important;
-      padding: 5px 14px !important;
-      border-radius: 999px !important;
-      cursor: pointer !important;
-      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
-      text-decoration: none !important;
-      letter-spacing: 0.02em !important;
-      line-height: 1.2 !important;
-      box-shadow: 0 1px 4px rgba(5, 184, 251, 0.15) !important;
+  /* Toast Notification */
+  #policyToast {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: #061649;
+    color: #FFFFFF;
+    border: 1px solid #05B8FB;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(6, 22, 73, 0.35);
+    display: none;
+    align-items: center;
+    gap: 8px;
+    z-index: 99999;
+  }
+
+  /* High Contrast Launch Button */
+  .launch-replay-pill,
+  .footer-bottom-links a.launch-replay-pill,
+  .footer-links-group a.launch-replay-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    background: #EBF8FF !important;
+    border: 1.5px solid #05B8FB !important;
+    color: #0369A1 !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    padding: 5px 14px !important;
+    border-radius: 999px !important;
+    cursor: pointer !important;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    text-decoration: none !important;
+    letter-spacing: 0.02em !important;
+    line-height: 1.2 !important;
+    box-shadow: 0 1px 4px rgba(5, 184, 251, 0.15) !important;
+  }
+  .launch-replay-pill svg,
+  .footer-bottom-links a.launch-replay-pill svg,
+  .footer-links-group a.launch-replay-pill svg {
+    width: 13px !important;
+    height: 13px !important;
+    fill: #0284C7 !important;
+    color: #0284C7 !important;
+    flex-shrink: 0 !important;
+    transition: fill 0.2s ease, transform 0.2s ease !important;
+  }
+  .launch-replay-pill:hover,
+  .footer-bottom-links a.launch-replay-pill:hover,
+  .footer-links-group a.launch-replay-pill:hover {
+    background: #061649 !important;
+    color: #FFFFFF !important;
+    border-color: #05B8FB !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 16px rgba(6, 22, 73, 0.32) !important;
+  }
+  .launch-replay-pill:hover svg,
+  .footer-bottom-links a.launch-replay-pill:hover svg,
+  .footer-links-group a.launch-replay-pill:hover svg {
+    fill: #05B8FB !important;
+    color: #05B8FB !important;
+    transform: scale(1.15) !important;
+  }
+
+  /* Print Styles */
+  @media print {
+    .site-header-fixed,
+    .top-cert-strip,
+    .site-footer,
+    .policy-control-bar,
+    .policy-sidebar,
+    .policy-anchor-btn,
+    #policyToast {
+      display: none !important;
     }
-    .launch-replay-pill svg,
-    .footer-bottom-links a.launch-replay-pill svg,
-    .footer-links-group a.launch-replay-pill svg {
-      width: 13px !important;
-      height: 13px !important;
-      fill: #0284C7 !important;
-      color: #0284C7 !important;
-      flex-shrink: 0 !important;
-      transition: fill 0.2s ease, transform 0.2s ease !important;
+    .policy-page-main {
+      padding: 0 !important;
+      background: #FFFFFF !important;
     }
-    .launch-replay-pill:hover,
-    .footer-bottom-links a.launch-replay-pill:hover,
-    .footer-links-group a.launch-replay-pill:hover,
-    .launch-replay-pill:focus,
-    .footer-bottom-links a.launch-replay-pill:focus {
-      background: #061649 !important;
-      color: #FFFFFF !important;
-      border-color: #05B8FB !important;
-      transform: translateY(-1px) !important;
-      box-shadow: 0 4px 16px rgba(6, 22, 73, 0.32) !important;
+    .policy-wide-wrap, .policy-main-content {
+      box-shadow: none !important;
+      border: none !important;
+      padding: 0 !important;
+      max-width: 100% !important;
     }
-    .launch-replay-pill:hover svg,
-    .footer-bottom-links a.launch-replay-pill:hover svg,
-    .footer-links-group a.launch-replay-pill:hover svg,
-    .launch-replay-pill:focus svg,
-    .footer-bottom-links a.launch-replay-pill:focus svg {
-      fill: #05B8FB !important;
-      color: #05B8FB !important;
-      transform: scale(1.15) !important;
+    .policy-layout-grid {
+      display: block !important;
     }
+    .policy-tab-panel {
+      display: block !important;
+    }
+  }
 </style>
+
 
 </head>
 <body>
@@ -6811,43 +7278,400 @@
     </div>
   </header>
 
-  <main>
-    <div class="wrap">
-      <div class="policy-wrapper">
+  <main class="policy-page-main">
+    <div class="policy-wide-wrap">
+      <div class="policy-page-container">
         
-        <nav aria-label="Breadcrumb" style="display:flex; align-items:center; gap:8px; font-size:13px; color:#64748B; margin-bottom:28px;">
-          <a href="index.html" style="color:inherit; text-decoration:none;">Home</a>
-          <span>/</span>
-          <span style="color:#0369A1; font-weight:600;">Governance &amp; Policies</span>
-          <span>/</span>
-          <span style="color:#061649; font-weight:700;">Regulatory Compliance</span>
+        <!-- Breadcrumb Navigation -->
+        <nav class="policy-breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <span class="cat-name">Governance &amp; Policies</span>
+          <span class="sep">/</span>
+          <span id="policyBreadcrumbActive" class="active-tab-name">Privacy Policy</span>
         </nav>
 
-        
-      <div class="policy-nav-pills">
-        <a href="privacy-policy.html" class="">Privacy Policy</a>
-        <a href="terms-of-trade.html" class="">Terms of Trade</a>
-        <a href="regulatory-compliance.html" class="active">Regulatory Compliance</a>
-        <a href="security.html" class="">Security &amp; IP Protection</a>
-      </div>
-    
-
-        <header class="policy-header">
-          <div class="policy-badge">✦ Regulatory Compliance</div>
-          <h1 class="policy-title">Regulatory Compliance & Quality Standards</h1>
-          <div class="policy-meta">
-            <span>Effective Date: <strong>January 1, 2026</strong></span>
-            <span>&bull;</span>
-            <span>Governance: <strong>One Chemicals Pvt Ltd &bull; Semzolve Technologies</strong></span>
-            <span>&bull;</span>
-            <span>Jurisdiction: <strong>International Trade &amp; Indian Law</strong></span>
+        <!-- Top Control Bar: Tab Pills + Clause Search + Print Action -->
+        <div class="policy-control-bar">
+          <div class="policy-tab-pills" role="tablist">
+            <button type="button" class="policy-tab-btn active" data-tab="privacy" role="tab" aria-selected="true" onclick="switchPolicyTab('privacy')">✦ Privacy Policy</button>
+            <button type="button" class="policy-tab-btn" data-tab="terms" role="tab" aria-selected="false" onclick="switchPolicyTab('terms')">✦ Terms of Trade</button>
+            <button type="button" class="policy-tab-btn" data-tab="regulatory" role="tab" aria-selected="false" onclick="switchPolicyTab('regulatory')">✦ Regulatory Compliance</button>
+            <button type="button" class="policy-tab-btn" data-tab="security" role="tab" aria-selected="false" onclick="switchPolicyTab('security')">✦ Security &amp; IP Protection</button>
           </div>
-        </header>
 
-        <article class="policy-body">
+          <div class="policy-toolbar-actions">
+            <div class="policy-search-box">
+              <svg class="policy-search-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="policySearchInput" placeholder="Search 25+ clauses (e.g. GDPR, Incoterms, SCOMET)..." aria-label="Search clauses" oninput="handlePolicySearch(this.value)">
+              <button type="button" id="policySearchClear" onclick="clearPolicySearch()" title="Clear search" aria-label="Clear search">✕</button>
+            </div>
+            <button type="button" class="policy-action-btn" onclick="window.print()" title="Print or save as PDF">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              <span>Print / PDF</span>
+            </button>
+          </div>
+        </div>
 
-          <section class="policy-section" id="quality-management">
-            <h2>1. Global Quality &amp; Environmental Accreditations</h2>
+        <!-- 2-Column Responsive Layout -->
+        <div class="policy-layout-grid">
+          
+          <!-- Left Column: Sticky Sidebar -->
+          <aside class="policy-sidebar">
+            <!-- Dynamic Table of Contents (TOC) -->
+            <div class="policy-sidebar-card">
+              <div class="policy-sidebar-header">
+                <span class="policy-sidebar-title">ON THIS PAGE</span>
+                <span id="policyReadingTime" class="policy-reading-badge">⏱ 4 MIN READ</span>
+              </div>
+              <nav id="policyTocNav" class="policy-toc-nav" aria-label="Table of Contents">
+                <!-- Dynamically generated via JS -->
+              </nav>
+            </div>
+
+            <!-- Accreditations & Trust Card -->
+            <div class="policy-sidebar-card">
+              <div class="policy-sidebar-header">
+                <span class="policy-sidebar-title">ACCREDITATION STANDARDS</span>
+              </div>
+              <div class="policy-trust-list">
+                <div class="policy-trust-item">
+                  <div class="trust-badge-icon">🛡️</div>
+                  <div>
+                    <strong>ISO 9001:2015 &amp; 14001</strong>
+                    <p>Audited Quality &amp; Environmental Frameworks</p>
+                  </div>
+                </div>
+                <div class="policy-trust-item">
+                  <div class="trust-badge-icon">🔒</div>
+                  <div>
+                    <strong>DPDP 2023 &amp; EU GDPR</strong>
+                    <p>Statutory Corporate Data &amp; NDA Protection</p>
+                  </div>
+                </div>
+                <div class="policy-trust-item">
+                  <div class="trust-badge-icon">🚢</div>
+                  <div>
+                    <strong>Incoterms 2020 Governed</strong>
+                    <p>ICC Standard Global Export Terms</p>
+                  </div>
+                </div>
+                <div class="policy-trust-item">
+                  <div class="trust-badge-icon">⚗️</div>
+                  <div>
+                    <strong>cGMP &amp; SCOMET Audited</strong>
+                    <p>DGFT Dual-Use &amp; Batch Validation</p>
+                  </div>
+                </div>
+              </div>
+              <div class="policy-dpo-cta">
+                <p>Need a bilateral Non-Disclosure Agreement (NDA)?</p>
+                <a href="mailto:info@semzolve.com?subject=Bilateral%20NDA%20Request%20-%20Semzolve" class="policy-dpo-btn">Request Bilateral NDA ↗</a>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Right Column: Main Content Area -->
+          <section class="policy-main-content">
+            <!-- Dynamic Document Header -->
+            <div class="policy-doc-header">
+              <div id="policyActiveBadge" class="policy-badge">✦ Privacy Policy</div>
+              <h1 id="policyActiveTitle" class="policy-title">Privacy Policy &amp; Data Protection</h1>
+              <div class="policy-meta">
+                <span>Effective Date: <strong>January 1, 2026</strong></span>
+                <span>&bull;</span>
+                <span>Governance: <strong>One Chemicals Pvt Ltd &bull; Semzolve Technologies</strong></span>
+                <span>&bull;</span>
+                <span>Jurisdiction: <strong>International Trade &amp; Indian Law</strong></span>
+              </div>
+            </div>
+
+            <!-- Search Banner Feedback -->
+            <div id="policySearchBanner" class="policy-search-banner" style="display:none;">
+              <span>Found <strong id="searchMatchCount">0</strong> matching clauses for "<em id="searchQueryText"></em>"</span>
+              <button type="button" onclick="clearPolicySearch()">Reset Filter</button>
+            </div>
+
+            <!-- 4 Interactive Tab Panels -->
+            <div class="policy-panels-wrap">
+              <div id="panel-privacy" class="policy-tab-panel active" role="tabpanel">
+                <article class="policy-body">
+                  <section class="policy-section" id="scope" data-tab="privacy">
+            <h2>
+              <span>1. Scope &amp; Commitment to Confidentiality</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('privacy', 'scope')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              Semzolve Technologies Pvt. Ltd. and One Chemicals Pvt. Ltd. ("we", "us", or "our") operate a global chemical sourcing, custom synthesis coordination, and trade facilitation platform. We are committed to protecting the commercial confidentiality, proprietary intellectual property, and personal data of our customers, partner manufacturers, and website visitors.
+            </p>
+            <p>
+              This Privacy Policy explains how we collect, process, store, and safeguard technical enquiries, chemical purchase specifications, bilateral non-disclosure documents, and corporate contact details in compliance with the Indian <strong>Digital Personal Data Protection Act (DPDP 2023)</strong> and the European Union <strong>General Data Protection Regulation (EU GDPR)</strong>.
+            </p>
+          </section>
+
+          <section class="policy-section" id="collection" data-tab="privacy">
+            <h2>
+              <span>2. Information We Collect</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('privacy', 'collection')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>We only collect information necessary to prepare commercial chemical quotations, execute synthesis contracts, validate export documentation, and maintain regulatory traceability:</p>
+            <ul>
+              <li><strong>Corporate &amp; Contact Identifiers:</strong> Name, professional title, corporate affiliation, verified business email, contact telephone/WhatsApp, and registered company address.</li>
+              <li><strong>Chemical &amp; Project Specifications:</strong> Target molecule names, CAS Registry Numbers, required assay percentages, impurity tolerances, required packaging (e.g. ISO tanks, UN drums, IBC totes), destination port, and delivery Incoterms.</li>
+              <li><strong>Custom Synthesis Technical Data:</strong> Synthetic pathways, reaction parameters, analytical testing protocols (HPLC/GC-MS), and bilateral non-disclosure agreement (NDA) documentation.</li>
+              <li><strong>Transactional &amp; Regulatory Data:</strong> Bill of Lading details, shipping consignee instructions, Certificate of Origin (COO) applications, and GST LUT export declarations.</li>
+            </ul>
+          </section>
+
+          <section class="policy-section" id="nda-ip" data-tab="privacy">
+            <h2>
+              <span>3. Synthetic IP &amp; Non-Disclosure Safeguards</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('privacy', 'nda-ip')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <div class="policy-box">
+              <h4>Strict Technical Non-Disclosure (NDA) Protocol</h4>
+              <p>Chemical recipes, process routes, stereoselective steps, and bespoke intermediate inquiries shared with Semzolve are protected by bilateral NDAs signed upfront before reaction matching. Formulation data is never published, monetized, or shared with unauthorized third-party brokers.</p>
+            </div>
+            <p>
+              When matching custom manufacturing campaigns to partner synthesis hubs across our verified reaction network, technical parameters are anonymized and released exclusively under signed back-to-back secrecy covenants with audited plant heads.
+            </p>
+          </section>
+
+          <section class="policy-section" id="legal-basis" data-tab="privacy">
+            <h2>
+              <span>4. Legal Basis &amp; Data Processing Purposes</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('privacy', 'legal-basis')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>We process your data strictly on legitimate commercial grounds:</p>
+            <ul>
+              <li><strong>Contractual Performance:</strong> Generating quotations, dispatching Certificate of Analysis (COA) batches, customs clearing, and coordinating ocean freight via Nhava Sheva (JNPT) and Mundra ports.</li>
+              <li><strong>Regulatory Compliance:</strong> Fulfilling DGFT, Customs ICEGATE, SCOMET dual-use declarations, and EU REACH Only Representative (OR) recordkeeping.</li>
+              <li><strong>Customer Support &amp; Technical Consultation:</strong> Answering analytical queries, providing Safety Data Sheets (SDS), and maintaining dedicated account relationships.</li>
+            </ul>
+          </section>
+
+          <section class="policy-section" id="sharing" data-tab="privacy">
+            <h2>
+              <span>5. Data Sharing &amp; Third Parties</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('privacy', 'sharing')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>We do not sell, rent, or trade your contact or enquiry information. Disclosures occur solely in the operational course of chemical trade:</p>
+            <ul>
+              <li><strong>Tier-1 Ocean Carriers &amp; Customs Brokers:</strong> To book container space, generate Bills of Lading, and secure port customs entry.</li>
+              <li><strong>Accredited Testing Laboratories:</strong> To perform independent pre-dispatch purity, moisture, and assay screening against batch specifications.</li>
+              <li><strong>Statutory &amp; Regulatory Authorities:</strong> When mandated by export licensing bodies, DGFT, CBIC, or international chemical regulatory agencies.</li>
+            </ul>
+          </section>
+
+          <section class="policy-section" id="retention" data-tab="privacy">
+            <h2>
+              <span>6. Data Security, Retention &amp; Rights</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('privacy', 'retention')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              All digital communications and inquiry histories are encrypted in transit via TLS 1.3 and stored on hardened servers with role-based access controls. Chemical batch records and analytical COA archives are retained for statutory compliance periods (typically 5 to 7 years) to support regulatory auditability.
+            </p>
+            <p>
+              Under applicable data protection laws, you retain the right to access, rectify, or request the deletion of your personal data, as well as to withdraw consent for direct communications at any time.
+            </p>
+          </section>
+
+          <section class="policy-section" id="contact-dpo" data-tab="privacy">
+            <h2>
+              <span>7. Contact Our Data Protection Desk</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('privacy', 'contact-dpo')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>For inquiries regarding our data practices, bilateral NDAs, or to exercise your privacy rights, please contact our Data Governance Desk:</p>
+            <div class="policy-box">
+              <p><strong>Semzolve Technologies Pvt. Ltd. &bull; One Chemicals Pvt. Ltd.</strong></p>
+              <p>Attention: Data Governance &amp; Compliance Office</p>
+              <p>#21, 29th Main Road, MCHS Colony, BTM Layout 2nd Stage, Bengaluru 560076, Karnataka, India</p>
+              <p>Corporate Office: Plot 42, Turbhe MIDC, Navi Mumbai, Maharashtra 400705, India</p>
+              <p>Official Email: <a href="mailto:info@semzolve.com" style="color:#0369A1; font-weight:700;">info@semzolve.com</a> | Telephone: <a href="tel:+918050818585" style="color:#0369A1; font-weight:700;">+91 80508 18585</a></p>
+            </div>
+          </section>
+                </article>
+              </div>
+
+              <div id="panel-terms" class="policy-tab-panel" role="tabpanel">
+                <article class="policy-body">
+                  <section class="policy-section" id="formation" data-tab="terms">
+            <h2>
+              <span>1. Contract Formation &amp; Quotation Validity</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('terms', 'formation')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              These Terms of Trade govern all commercial quotations, proforma invoices, sales contracts, and export consignments issued by One Chemicals Pvt. Ltd. and Semzolve Technologies Pvt. Ltd. ("Seller") to international and domestic buyers ("Buyer").
+            </p>
+            <p>
+              Formal quotations issued by the Seller are valid for <strong>14 calendar days</strong> from the date of issuance unless explicitly stated otherwise, subject to written acceptance and confirmation of raw material pricing and vessel space availability.
+            </p>
+          </section>
+
+          <section class="policy-section" id="incoterms" data-tab="terms">
+            <h2>
+              <span>2. Delivery &amp; Incoterms 2020 Definitions</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('terms', 'incoterms')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>All international consignments are quoted and executed in accordance with <strong>ICC Incoterms 2020</strong> rules:</p>
+            <table class="policy-table">
+              <thead>
+                <tr>
+                  <th>Incoterm</th>
+                  <th>Point of Origin / Port</th>
+                  <th>Seller Responsibility</th>
+                  <th>Buyer Responsibility</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>FOB</strong> (Free on Board)</td>
+                  <td>Nhava Sheva (JNPT) / Mundra, India</td>
+                  <td>Export clearance, port terminal handling, loading onto nominated vessel.</td>
+                  <td>Ocean freight booking, marine cargo insurance, import customs and destination clearance.</td>
+                </tr>
+                <tr>
+                  <td><strong>CFR</strong> (Cost and Freight)</td>
+                  <td>Named Overseas Destination Port</td>
+                  <td>Export clearance, ocean freight carriage to destination discharge port.</td>
+                  <td>Marine insurance during sea transit, destination port handling, import duties and inland haulage.</td>
+                </tr>
+                <tr>
+                  <td><strong>CIF</strong> (Cost, Insurance &amp; Freight)</td>
+                  <td>Named Overseas Destination Port</td>
+                  <td>Export clearance, ocean freight, and Marine Cargo Insurance under Institute Cargo Clauses (A).</td>
+                  <td>Destination port handling charges, import customs clearance, local taxes and inland transit.</td>
+                </tr>
+                <tr>
+                  <td><strong>DAP</strong> (Delivered at Place)</td>
+                  <td>Buyer’s Named Facility / Warehouse</td>
+                  <td>Full door-to-door transportation to buyer's facility boundary, container tracking.</td>
+                  <td>Import customs clearance formalities, payment of destination VAT/import duties, and unloading.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="policy-section" id="quality-inspection" data-tab="terms">
+            <h2>
+              <span>3. Purity Benchmarks &amp; Analytical Verification</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('terms', 'quality-inspection')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              All chemicals supplied are guaranteed to meet or exceed the analytical specifications outlined in the approved Technical Data Sheet (TDS) and batch Certificate of Analysis (COA).
+            </p>
+            <ul>
+              <li><strong>Pre-Dispatch Analytical Checks:</strong> Prior to port dispatch, batch samples undergo assay determination (GC-FID or HPLC), Karl Fischer moisture titration (&le; 0.05% for anhydrous solvents), specific gravity, color index, and residual solvent profiling.</li>
+              <li><strong>Inspection Window:</strong> The Buyer has <strong>15 calendar days</strong> following vessel discharge at the destination port to inspect the cargo and report any analytical non-conformity.</li>
+              <li><strong>Joint Independent Survey:</strong> In the event of a quality dispute, an independent internationally accredited surveyor (such as SGS, Intertek, or Bureau Veritas) mutually agreed upon shall draw composite samples for referee testing. The referee laboratory findings shall be final and binding.</li>
+            </ul>
+          </section>
+
+          <section class="policy-section" id="packaging" data-tab="terms">
+            <h2>
+              <span>4. UN Packaging &amp; Dangerous Goods Protocols</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('terms', 'packaging')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              Shipments comply strictly with the <strong>International Maritime Dangerous Goods (IMDG) Code</strong>, ICAO/IATA regulations, and port authority guidelines:
+            </p>
+            <ul>
+              <li><strong>Tight-Head Steel / HDPE Drums:</strong> UN-certified 200L / 210L epoxy-lined containers palletized on heat-treated ISPM-15 wooden or plastic pallets (80 drums / 16 MT per 20ft FCL).</li>
+              <li><strong>Composite IBC Totes:</strong> 1,000L UN-approved intermediate bulk containers with anti-static discharge fittings (18&ndash;20 units / 18&ndash;20 MT per 20ft FCL).</li>
+              <li><strong>ISO Tank Containers:</strong> 20&ndash;24 MT dedicated stainless steel 316 / Hastelloy intermodal tanks with steam-heating coils and safety relief valves.</li>
+            </ul>
+          </section>
+
+          <section class="policy-section" id="payment" data-tab="terms">
+            <h2>
+              <span>5. Commercial Payment Terms</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('terms', 'payment')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>Payment terms are established based on order volume, buyer creditworthiness, and contract structure:</p>
+            <ul>
+              <li><strong>Irrevocable Letter of Credit (LC):</strong> 100% at sight issued or confirmed by a Tier-1 international bank.</li>
+              <li><strong>Cash Against Documents (CAD):</strong> Bank-to-bank collection via nominated international financial institutions against presentation of full set of clean on-board ocean Bills of Lading, COA, COO, and commercial invoice.</li>
+              <li><strong>Telegraphic Transfer (T/T Wire):</strong> Structured advance payment with balance upon presentation of non-negotiable shipping copies.</li>
+            </ul>
+          </section>
+
+          <section class="policy-section" id="force-majeure" data-tab="terms">
+            <h2>
+              <span>6. Title, Risk of Loss &amp; Force Majeure</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('terms', 'force-majeure')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              Risk of loss or damage transfers to the Buyer strictly in accordance with the specified Incoterms 2020. Title to the goods remains with the Seller until full payment of the invoice amount is received and cleared.
+            </p>
+            <p>
+              Neither party shall be liable for failure or delay in performance caused by Force Majeure events beyond reasonable control, including acts of God, war, blockades, embargoes, sovereign sanctions, maritime piracy, major industrial explosions, or catastrophic raw material supply shutdowns.
+            </p>
+          </section>
+
+          <section class="policy-section" id="governing-law" data-tab="terms">
+            <h2>
+              <span>7. Governing Law &amp; Arbitration</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('terms', 'governing-law')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              These Terms of Trade and all related commercial contracts shall be governed by and construed in accordance with the laws of <strong>India</strong>. Any dispute, controversy, or claim arising out of or relating to this contract shall be settled by arbitration in accordance with the <strong>Arbitration and Conciliation Act, 1996</strong>, with the seat and venue of arbitration at Mumbai or Bengaluru, India.
+            </p>
+          </section>
+                </article>
+              </div>
+
+              <div id="panel-regulatory" class="policy-tab-panel" role="tabpanel">
+                <article class="policy-body">
+                  <section class="policy-section" id="quality-management" data-tab="regulatory">
+            <h2>
+              <span>1. Global Quality &amp; Environmental Accreditations</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('regulatory', 'quality-management')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
             <p>
               At One Chemicals and Semzolve Technologies, regulatory rigor is the foundation of our supply architecture. We operate and partner with facilities adhering to internationally recognized ISO quality, environmental, and occupational safety frameworks:
             </p>
@@ -6860,8 +7684,14 @@
             </div>
           </section>
 
-          <section class="policy-section" id="reach">
-            <h2>2. European Union REACH Compliance</h2>
+          <section class="policy-section" id="reach" data-tab="regulatory">
+            <h2>
+              <span>2. European Union REACH Compliance</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('regulatory', 'reach')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
             <p>
               We actively support chemical importers across the European Economic Area (EEA) in meeting their obligations under Regulation (EC) No 1907/2006 (EU REACH):
             </p>
@@ -6872,8 +7702,14 @@
             </ul>
           </section>
 
-          <section class="policy-section" id="cgmp">
-            <h2>3. cGMP &amp; Pharmacopoeial Standards</h2>
+          <section class="policy-section" id="cgmp" data-tab="regulatory">
+            <h2>
+              <span>3. cGMP &amp; Pharmacopoeial Standards</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('regulatory', 'cgmp')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
             <p>
               For active pharmaceutical ingredients (APIs), excipients, and advanced pharma building blocks, production is executed under Current Good Manufacturing Practice (cGMP) aligned with ICH Q7 guidelines:
             </p>
@@ -6884,8 +7720,14 @@
             </ul>
           </section>
 
-          <section class="policy-section" id="scomet">
-            <h2>4. SCOMET, DGFT &amp; Dual-Use Export Clearances</h2>
+          <section class="policy-section" id="scomet" data-tab="regulatory">
+            <h2>
+              <span>4. SCOMET, DGFT &amp; Dual-Use Export Clearances</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('regulatory', 'scomet')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
             <p>
               Semzolve adheres strictly to national and international non-proliferation treaties, the Chemical Weapons Convention (CWC), and the Directorate General of Foreign Trade (DGFT) <strong>SCOMET</strong> (Special Chemicals, Organisms, Materials, Equipment and Technologies) regime:
             </p>
@@ -6896,8 +7738,14 @@
             </ul>
           </section>
 
-          <section class="policy-section" id="ghs-sds">
-            <h2>5. GHS Classification &amp; 16-Section Safety Data Sheets</h2>
+          <section class="policy-section" id="ghs-sds" data-tab="regulatory">
+            <h2>
+              <span>5. GHS Classification &amp; 16-Section Safety Data Sheets</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('regulatory', 'ghs-sds')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
             <p>
               Every consignment is accompanied by a destination-compliant <strong>16-section Safety Data Sheet (SDS)</strong> authored under the United Nations Globally Harmonized System of Classification and Labelling of Chemicals (GHS Rev. 8):
             </p>
@@ -6908,18 +7756,134 @@
             </ul>
           </section>
 
-          <section class="policy-section" id="sustainability">
-            <h2>6. Sustainability &amp; Responsible Sourcing</h2>
+          <section class="policy-section" id="sustainability" data-tab="regulatory">
+            <h2>
+              <span>6. Sustainability &amp; Responsible Sourcing</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('regulatory', 'sustainability')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
             <p>
               Our manufacturing partners implement continuous sustainability optimizations including high-efficiency vacuum fractional distillation for solvent recovery, energy-efficient catalytic cascades, and biomass-fueled co-generation boilers to reduce Scope 1 and Scope 2 carbon footprints across Indian industrial corridors.
             </p>
           </section>
+                </article>
+              </div>
 
-        </article>
+              <div id="panel-security" class="policy-tab-panel" role="tabpanel">
+                <article class="policy-body">
+                  <section class="policy-section" id="ip-protection" data-tab="security">
+            <h2>
+              <span>1. Synthetic Intellectual Property &amp; Formulation Secrecy</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('security', 'ip-protection')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              In specialty chemicals and advanced intermediate synthesis, formula protection and process know-how are paramount. Semzolve Technologies guarantees multi-layered technical IP safeguards for every client project:
+            </p>
+            <div class="policy-box">
+              <h4>Bilateral Non-Disclosure Agreements (NDAs)</h4>
+              <p>We execute legally binding bilateral NDAs prior to reviewing proprietary synthetic routes, reaction schemes, isomer requirements, or novel catalog requests. All formulation data is held in strict confidence.</p>
+            </div>
+            <ul>
+              <li><strong>Segregated Campaign Execution:</strong> Contract synthesis campaigns run under isolated batch protocols with dedicated reactor cleans and full line-clearance signoffs.</li>
+              <li><strong>Restricted Synthesis Routing:</strong> Proprietary molecular schemes are disclosed exclusively to verified reaction directors and lead synthesis engineers on a need-to-know basis.</li>
+              <li><strong>No Data Brokering:</strong> We do not operate open broker bazaars. Your production volumes, target prices, and formulation inquiries remain completely confidential.</li>
+            </ul>
+          </section>
 
+          <section class="policy-section" id="digital-security" data-tab="security">
+            <h2>
+              <span>2. Digital Trade Operations &amp; One Radar Governance</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('security', 'digital-security')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              Our digital trade operations platform, <strong>One Radar</strong>, centralizes RFQs, batch tracking, analytical COAs, and customs shipping documents under rigorous enterprise cybersecurity controls:
+            </p>
+            <ul>
+              <li><strong>End-to-End Encryption:</strong> All client communications, RFQ submissions, and trade dossiers are encrypted in transit via TLS 1.3 and stored with AES-256 encryption at rest.</li>
+              <li><strong>Role-Based Access Control (RBAC):</strong> Multi-tenant isolation ensures buyers, manufacturers, and logistics handlers can access only their authorized consignment data.</li>
+              <li><strong>Audit Logging &amp; Immutability:</strong> Comprehensive chronological audit logging of specification approvals, analytical test results, and dispatch signoffs.</li>
+            </ul>
+          </section>
+
+          <section class="policy-section" id="supply-chain" data-tab="security">
+            <h2>
+              <span>3. Tamper-Evident Physical Packaging &amp; Supply Chain Integrity</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('security', 'supply-chain')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              Physical integrity is maintained from the reaction hub to overseas port discharge through certified tamper-evident mechanisms:
+            </p>
+            <ul>
+              <li><strong>Numbered High-Security Bolt Seals:</strong> Container doors are sealed with ISO 17712 certified bolt seals immediately following stuffing, with unique serial numbers matched across the Bill of Lading and packing list.</li>
+              <li><strong>Drum &amp; IBC Tamper Seals:</strong> 200L drums feature crimped tamper-evident bung caps and pallet moisture shrink-wrapping. IBC totes are fitted with numbered valve locks.</li>
+              <li><strong>Verified Transport Escort:</strong> Bulk ISO tankers travel under continuous GPS geofencing with automated route deviation alerts between reaction hubs and Nhava Sheva (JNPT) or Mundra ports.</li>
+            </ul>
+          </section>
+
+          <section class="policy-section" id="partner-vetting" data-tab="security">
+            <h2>
+              <span>4. Vendor Vetting &amp; Facility Audits</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('security', 'partner-vetting')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              Every synthesis partner across our 25+ plant network is subjected to technical, safety, and operational audits conducted by chemical engineers:
+            </p>
+            <ul>
+              <li>Physical inspection of reactor metallurgy (glass-lined, SS316, Hastelloy), pressure relief systems, and scrubbing towers.</li>
+              <li>Verification of raw material provenance, statutory environmental clearances (Pollution Control Board CTE/CTO), and worker safety records.</li>
+              <li>Regular calibration checks on QC analytical instrumentation (GC, HPLC, Karl Fischer, ICP-OES).</li>
+            </ul>
+          </section>
+
+          <section class="policy-section" id="incident-response" data-tab="security">
+            <h2>
+              <span>5. Security Incident Response &amp; Reporting</span>
+              <button type="button" class="policy-anchor-btn" onclick="copyClauseLink('security', 'incident-response')" title="Copy link to this clause">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <span>Copy Link</span>
+              </button>
+            </h2>
+            <p>
+              If you identify any security vulnerability, suspect seal tampering, or have questions regarding intellectual property protection, please contact our Technical Security Officer directly:
+            </p>
+            <div class="policy-box">
+              <p><strong>Semzolve Technologies Technical Security Desk</strong></p>
+              <p>Official Security Email: <a href="mailto:info@semzolve.com" style="color:#0369A1; font-weight:700;">info@semzolve.com</a></p>
+              <p>Direct Telephone: <a href="tel:+918050818585" style="color:#0369A1; font-weight:700;">+91 80508 18585</a></p>
+              <p>Response SLA: Within 12 hours for critical supply chain or IP inquiries.</p>
+            </div>
+          </section>
+                </article>
+              </div>
+            </div>
+
+          </section>
+
+        </div>
       </div>
     </div>
   </main>
+
+  <!-- Interactive Floating Toast -->
+  <div id="policyToast">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#05B8FB" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="policyToastMsg">Clause link copied to clipboard!</span>
+  </div>
+
 
 <footer class="site-footer">
     <!-- Top CTA Strip -->
@@ -7047,5 +8011,300 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="js/semzolveLaunch.js"></script>
+
+<script>
+  /* ==========================================================================
+     INTERACTIVE GOVERNANCE ENGINE: Tab Switching, Dynamic TOC, ScrollSpy, Search
+     ========================================================================== */
+  const POLICY_METADATA = {
+    privacy: {
+      badge: '✦ Privacy Policy',
+      title: 'Privacy Policy & Data Protection',
+      breadcrumb: 'Privacy Policy',
+      readingTime: '⏱ 4 MIN READ'
+    },
+    terms: {
+      badge: '✦ Terms of Trade',
+      title: 'Terms of Trade & Export Conditions',
+      breadcrumb: 'Terms of Trade',
+      readingTime: '⏱ 5 MIN READ'
+    },
+    regulatory: {
+      badge: '✦ Regulatory Compliance',
+      title: 'Regulatory Compliance & Quality Standards',
+      breadcrumb: 'Regulatory Compliance',
+      readingTime: '⏱ 4 MIN READ'
+    },
+    security: {
+      badge: '✦ Security & IP Protection',
+      title: 'Security & IP Protection Architecture',
+      breadcrumb: 'Security & IP Protection',
+      readingTime: '⏱ 3 MIN READ'
+    }
+  };
+
+  let currentPolicyTab = 'privacy';
+  let scrollObserver = null;
+
+  function switchPolicyTab(tabKey, skipScroll) {
+    if (!POLICY_METADATA[tabKey]) tabKey = 'privacy';
+    currentPolicyTab = tabKey;
+
+    // 1. Update Tab Buttons
+    document.querySelectorAll('.policy-tab-btn').forEach(btn => {
+      const isActive = btn.getAttribute('data-tab') === tabKey;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    // 2. Switch Tab Panels
+    document.querySelectorAll('.policy-tab-panel').forEach(panel => {
+      panel.classList.remove('active');
+    });
+    const activePanel = document.getElementById('panel-' + tabKey);
+    if (activePanel) {
+      activePanel.classList.add('active');
+    }
+
+    // 3. Update Dynamic Headers
+    const meta = POLICY_METADATA[tabKey];
+    const badgeEl = document.getElementById('policyActiveBadge');
+    const titleEl = document.getElementById('policyActiveTitle');
+    const breadcrumbEl = document.getElementById('policyBreadcrumbActive');
+    const readingTimeEl = document.getElementById('policyReadingTime');
+
+    if (badgeEl) badgeEl.textContent = meta.badge;
+    if (titleEl) titleEl.textContent = meta.title;
+    if (breadcrumbEl) breadcrumbEl.textContent = meta.breadcrumb;
+    if (readingTimeEl) readingTimeEl.textContent = meta.readingTime;
+
+    // 4. Update Document Title
+    document.title = meta.title + ' | Semzolve Technologies';
+
+    // 5. Update URL Query Param without page reload
+    const url = new URL(window.location);
+    url.searchParams.set('tab', tabKey);
+    window.history.replaceState({ tab: tabKey }, '', url);
+
+    // 6. Reset any active search
+    clearPolicySearch(true);
+
+    // 7. Rebuild Table of Contents for Active Tab
+    buildActiveTOC(tabKey);
+
+    // 8. Scroll to top of content area if tab changed by user
+    if (!skipScroll) {
+      const mainContent = document.querySelector('.policy-main-content');
+      if (mainContent) {
+        const topOffset = mainContent.getBoundingClientRect().top + window.pageYOffset - 110;
+        window.scrollTo({ top: topOffset, behavior: 'smooth' });
+      }
+    }
+  }
+
+  function buildActiveTOC(tabKey) {
+    const tocNav = document.getElementById('policyTocNav');
+    if (!tocNav) return;
+    tocNav.innerHTML = '';
+
+    const panel = document.getElementById('panel-' + tabKey);
+    if (!panel) return;
+
+    const sections = panel.querySelectorAll('.policy-section');
+    sections.forEach((sec, idx) => {
+      const secId = sec.id;
+      const h2Span = sec.querySelector('h2 span');
+      const title = h2Span ? h2Span.textContent.trim() : ('Clause ' + (idx + 1));
+
+      const link = document.createElement('a');
+      link.href = '#' + secId;
+      link.className = 'policy-toc-link' + (idx === 0 ? ' active' : '');
+      link.setAttribute('data-target', secId);
+
+      link.innerHTML = `
+        <span class="policy-toc-num">${idx + 1}</span>
+        <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${title.replace(/^\\d+\\.\\s*/, '')}</span>
+      `;
+
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetEl = document.getElementById(secId);
+        if (targetEl) {
+          const topOffset = targetEl.getBoundingClientRect().top + window.pageYOffset - 100;
+          window.scrollTo({ top: topOffset, behavior: 'smooth' });
+          history.pushState(null, '', '#' + secId);
+          setActiveTocLink(secId);
+        }
+      });
+
+      tocNav.appendChild(link);
+    });
+
+    setupScrollSpy(panel);
+  }
+
+  function setActiveTocLink(targetId) {
+    document.querySelectorAll('.policy-toc-link').forEach(link => {
+      const isTarget = link.getAttribute('data-target') === targetId;
+      link.classList.toggle('active', isTarget);
+    });
+  }
+
+  function setupScrollSpy(panel) {
+    if (scrollObserver) {
+      scrollObserver.disconnect();
+    }
+
+    const sections = panel.querySelectorAll('.policy-section');
+    if (!sections.length) return;
+
+    scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveTocLink(entry.target.id);
+        }
+      });
+    }, {
+      rootMargin: '-100px 0px -60% 0px',
+      threshold: 0
+    });
+
+    sections.forEach(sec => scrollObserver.observe(sec));
+  }
+
+  // Real-time Clause Search
+  function handlePolicySearch(query) {
+    const q = query.trim().toLowerCase();
+    const clearBtn = document.getElementById('policySearchClear');
+    const banner = document.getElementById('policySearchBanner');
+    const matchCountEl = document.getElementById('searchMatchCount');
+    const queryTextEl = document.getElementById('searchQueryText');
+
+    if (clearBtn) clearBtn.style.display = q ? 'flex' : 'none';
+
+    const panel = document.getElementById('panel-' + currentPolicyTab);
+    if (!panel) return;
+
+    const sections = panel.querySelectorAll('.policy-section');
+
+    if (!q) {
+      if (banner) banner.style.display = 'none';
+      sections.forEach(sec => {
+        sec.classList.remove('search-hidden', 'search-match');
+        removeHighlights(sec);
+      });
+      return;
+    }
+
+    let matchCount = 0;
+    sections.forEach(sec => {
+      removeHighlights(sec);
+      const text = sec.textContent.toLowerCase();
+      if (text.includes(q)) {
+        matchCount++;
+        sec.classList.remove('search-hidden');
+        sec.classList.add('search-match');
+        highlightText(sec, q);
+      } else {
+        sec.classList.add('search-hidden');
+        sec.classList.remove('search-match');
+      }
+    });
+
+    if (banner) {
+      banner.style.display = 'flex';
+      if (matchCountEl) matchCountEl.textContent = matchCount;
+      if (queryTextEl) queryTextEl.textContent = query;
+    }
+  }
+
+  function highlightText(element, query) {
+    const paragraphs = element.querySelectorAll('p, li, h3, h4');
+    paragraphs.forEach(p => {
+      const inner = p.innerHTML;
+      if (inner.toLowerCase().includes(query)) {
+        const regex = new RegExp(`(${query.replace(/[-/\\\\^$*+?.()|[\\]{}]/g, '\\\\$&')})`, 'gi');
+        p.innerHTML = inner.replace(regex, '<mark class="search-highlight">$1</mark>');
+      }
+    });
+  }
+
+  function removeHighlights(element) {
+    element.querySelectorAll('mark.search-highlight').forEach(mark => {
+      const parent = mark.parentNode;
+      parent.replaceChild(document.createTextNode(mark.textContent), mark);
+      parent.normalize();
+    });
+  }
+
+  function clearPolicySearch(silent) {
+    const input = document.getElementById('policySearchInput');
+    if (input) input.value = '';
+    const clearBtn = document.getElementById('policySearchClear');
+    if (clearBtn) clearBtn.style.display = 'none';
+    const banner = document.getElementById('policySearchBanner');
+    if (banner) banner.style.display = 'none';
+
+    const panel = document.getElementById('panel-' + currentPolicyTab);
+    if (panel) {
+      panel.querySelectorAll('.policy-section').forEach(sec => {
+        sec.classList.remove('search-hidden', 'search-match');
+        removeHighlights(sec);
+      });
+    }
+  }
+
+  function copyClauseLink(tabKey, secId) {
+    const url = new URL(window.location.origin + window.location.pathname);
+    url.searchParams.set('tab', tabKey);
+    url.hash = secId;
+
+    navigator.clipboard.writeText(url.toString()).then(() => {
+      showToast('Clause link copied to clipboard!');
+    }).catch(() => {
+      showToast('Link: ' + url.toString());
+    });
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('policyToast');
+    const msgEl = document.getElementById('policyToastMsg');
+    if (!toast) return;
+    if (msgEl) msgEl.textContent = msg;
+    toast.style.display = 'flex';
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 2800);
+  }
+
+  // Initial Load Handler
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const requestedTab = urlParams.get('tab');
+    
+    // Determine default tab based on filename
+    let defaultTab = 'privacy';
+    const path = window.location.pathname;
+    if (path.includes('terms-of-trade')) defaultTab = 'terms';
+    else if (path.includes('regulatory-compliance')) defaultTab = 'regulatory';
+    else if (path.includes('security')) defaultTab = 'security';
+
+    const initialTab = (requestedTab && POLICY_METADATA[requestedTab]) ? requestedTab : defaultTab;
+    switchPolicyTab(initialTab, true);
+
+    // If anchor hash present in URL, smooth scroll to it
+    if (window.location.hash) {
+      setTimeout(() => {
+        const targetId = window.location.hash.substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          const topOffset = targetEl.getBoundingClientRect().top + window.pageYOffset - 100;
+          window.scrollTo({ top: topOffset, behavior: 'smooth' });
+          setActiveTocLink(targetId);
+        }
+      }, 250);
+    }
+  });
+</script>
 </body>
 </html>

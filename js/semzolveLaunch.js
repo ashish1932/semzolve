@@ -216,14 +216,6 @@
         <div class="launch-letterbox-top"></div>
         <div class="launch-letterbox-bottom"></div>
 
-        <!-- Top Right Close & Dismiss Button -->
-        <div style="position: absolute; top: 16px; right: 20px; z-index: 99999999;">
-          <button type="button" id="launchSkipBtn" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #ffffff; padding: 6px 16px; border-radius: 999px; font-size: 12.5px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; backdrop-filter: blur(8px); transition: all 0.2s ease;">
-            <span>Close</span>
-            <span style="font-size: 14px;">✕</span>
-          </button>
-        </div>
-
         <!-- Central Stage -->
         <div class="launch-stage" id="launchStage">
           <!-- Central Energy Core & Shockwave Elements -->
@@ -245,14 +237,11 @@
             <p class="intro-subtext">
               The next era in specialty chemicals, precision molecular synthesis, and global manufacturing.
             </p>
-            <div style="display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 20px;">
+            <div style="display: flex; align-items: center; justify-content: center; margin-top: 24px;">
               <button type="button" class="intro-launch-btn" id="introLaunchBtn" aria-label="Start Launch Countdown">
                 <span class="btn-pulse-ring"></span>
                 <span class="btn-icon">▶</span>
                 <span class="btn-text">START COUNTDOWN</span>
-              </button>
-              <button type="button" id="directRevealBtn" style="background: rgba(255,255,255,0.08); border: 1.5px solid rgba(5,184,251,0.5); color: #05B8FB; padding: 12px 22px; border-radius: 999px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s ease;">
-                ✦ View Brand Reveal Directly
               </button>
             </div>
           </div>

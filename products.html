@@ -6821,6 +6821,25 @@
       background: #E2E8F0;
     }
 
+    
+    .category-btn-back {
+      background: #061649 !important;
+      color: #ffffff !important;
+      border-color: #061649 !important;
+      font-weight: 700 !important;
+    }
+    .category-btn-back:hover {
+      background: #05B8FB !important;
+      color: #061649 !important;
+      border-color: #05B8FB !important;
+    }
+    .banner-back-btn:hover {
+      background: #05B8FB !important;
+      border-color: #05B8FB !important;
+      color: #061649 !important;
+      transform: translateY(-1px);
+    }
+
     /* Complete 280-Product Table Panel */
     .prods-table-panel {
       background: #ffffff;
@@ -7371,12 +7390,12 @@
   </section>
 
   <!-- Sticky Category Navigation Capsule -->
-  <div class="prods-category-capsule">
+  <div class="prods-category-capsule" id="categoryNavCapsule" style="display: none;">
     <div class="wrap">
       <div class="prods-category-track" id="categoryNavTrack">
-        <button type="button" class="category-btn active" data-cat="all" onclick="selectProductCategory('all', this)">
-          <span>All Products</span>
-          <span class="category-count-badge">280+</span>
+        <button type="button" class="category-btn category-btn-back" data-cat="all" onclick="selectProductCategory('all')" title="Back to All Categories">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>← All Categories</span>
         </button>
         <button type="button" class="category-btn" data-cat="pharmaceuticals" onclick="selectProductCategory('pharmaceuticals', this)">
           <span>01 Pharmaceuticals</span>
@@ -7419,7 +7438,7 @@
   </div>
 
   <!-- Main Products Display Section -->
-  <section class="prods-main-section" id="products-catalogue">
+  <section class="prods-main-section" id="products-catalogue" style="display: none;">
     <div class="wrap">
       <!-- Active Category Banner with Quick Jump Controls -->
       <div class="active-category-banner" id="activeCategoryBanner">
@@ -7436,11 +7455,9 @@
           </div>
         </div>
         <div style="display:flex; align-items:center; gap: 10px; flex-wrap: wrap;">
-          <button type="button" onclick="selectProductCategory('all')" style="display:inline-flex; align-items:center; gap:6px; background:#ffffff; border:1px solid #D7E3ED; color:#061649; padding:8px 16px; border-radius:8px; font-size:12.5px; font-weight:700; cursor:pointer; transition:all 0.2s ease;">
-            ✕ Show All Products (280+)
-          </button>
-          <button type="button" onclick="scrollToCategories()" style="display:inline-flex; align-items:center; gap:6px; background:#061649; border:none; color:#ffffff; padding:8px 16px; border-radius:8px; font-size:12.5px; font-weight:700; cursor:pointer; transition:all 0.2s ease;">
-            ↑ View All 9 Categories
+          <button type="button" onclick="selectProductCategory('all')" class="banner-back-btn" style="display:inline-flex; align-items:center; gap:8px; background:#061649; border:1px solid #061649; color:#FFFFFF; padding:9px 18px; border-radius:999px; font-size:13px; font-weight:700; cursor:pointer; transition:all 0.2s ease; box-shadow:0 2px 8px rgba(6,22,73,0.15);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            <span>← Back to All Categories</span>
           </button>
         </div>
       </div>
@@ -7928,7 +7945,7 @@ window.closeMobileNav = function() {
       };
     });
 
-    let currentFilter = 'all';
+    let currentFilter = null; // null means default state: ONLY show product categories!
     let searchQuery = '';
 
     function slugify(text) {
@@ -7940,8 +7957,46 @@ window.closeMobileNav = function() {
       return f.replace(/(\d+)/g, '<sub>$1</sub>');
     }
 
-    function selectProductCategory(catKey, cardEl) {
+    function selectProductCategory(catKey, cardEl, skipScroll) {
+      const prodSec = document.getElementById('products-catalogue');
+      const capsuleSec = document.getElementById('categoryNavCapsule');
+      const banner = document.getElementById('activeCategoryBanner');
+
+      // If 'all' or empty or invalid category, reset to Categories-Only mode
+      if (catKey === 'all' || !catKey || !INDUSTRIES_DATA[catKey]) {
+        currentFilter = null;
+
+        // Hide chemical catalogue section and category navigation capsule
+        if (prodSec) prodSec.style.display = 'none';
+        if (capsuleSec) capsuleSec.style.display = 'none';
+
+        // Clear active classes from Bento Grid
+        document.querySelectorAll('#productCategoriesGrid .industry-bento-card').forEach(c => {
+          c.classList.remove('active-selected');
+        });
+
+        // Clear active classes from Capsule Buttons
+        document.querySelectorAll('.category-btn').forEach(b => {
+          b.classList.remove('active');
+        });
+
+        // Clean URL query parameter
+        try {
+          window.history.pushState({}, '', window.location.pathname);
+        } catch (e) {}
+
+        if (!skipScroll) {
+          scrollToCategories();
+        }
+        return;
+      }
+
+      // Specific Category Clicked:
       currentFilter = catKey;
+
+      // Reveal chemical catalogue section and category capsule
+      if (prodSec) prodSec.style.display = 'block';
+      if (capsuleSec) capsuleSec.style.display = 'block';
 
       // Update Bento Grid active-selected classes
       document.querySelectorAll('#productCategoriesGrid .industry-bento-card').forEach(c => {
@@ -7962,38 +8017,39 @@ window.closeMobileNav = function() {
       });
 
       // Update Active Category Banner & Page Titles
-      const banner = document.getElementById('activeCategoryBanner');
       const catMeta = INDUSTRIES_DATA[catKey];
-      if (catKey === 'all' || !catMeta) {
-        if (banner) banner.style.display = 'none';
-        document.getElementById('currentCategoryTitle').textContent = 'All Catalogue Chemicals (280+)';
-      } else {
-        if (banner) {
-          banner.style.display = 'flex';
-          document.getElementById('bannerSectorTag').textContent = 'Sector ' + catMeta.num + ' • ' + catMeta.tag;
-          document.getElementById('bannerTitle').textContent = catMeta.title;
-          document.getElementById('bannerIconBox').innerHTML = catMeta.icon;
-        }
-        document.getElementById('currentCategoryTitle').textContent = catMeta.title + ' Catalogue';
+      if (banner && catMeta) {
+        banner.style.display = 'flex';
+        const tagEl = document.getElementById('bannerSectorTag');
+        const titleEl = document.getElementById('bannerTitle');
+        const iconEl = document.getElementById('bannerIconBox');
+        const secTitleEl = document.getElementById('currentCategoryTitle');
+
+        if (tagEl) tagEl.textContent = 'Sector ' + catMeta.num + ' • ' + catMeta.tag;
+        if (titleEl) titleEl.textContent = catMeta.title;
+        if (iconEl) iconEl.innerHTML = catMeta.icon;
+        if (secTitleEl) secTitleEl.textContent = catMeta.title + ' Catalogue';
       }
 
-      // Smooth scroll to products catalogue section if specific category clicked
-      if (catKey !== 'all') {
-        const prodSec = document.getElementById('products-catalogue');
-        if (prodSec) {
-          const yOffset = -80;
-          const y = prodSec.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
+      // Render only products belonging to this category
+      renderView();
+
+      // Smooth scroll to products catalogue section
+      if (!skipScroll) {
+        setTimeout(() => {
+          if (prodSec) {
+            const yOffset = -70;
+            const y = prodSec.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }, 50);
       }
 
       // Update browser URL query parameter
       try {
-        const newUrl = catKey === 'all' ? window.location.pathname : `${window.location.pathname}?category=${catKey}`;
+        const newUrl = `${window.location.pathname}?category=${catKey}`;
         window.history.pushState({ category: catKey }, '', newUrl);
       } catch (e) {}
-
-      renderView();
     }
 
     function scrollToCategories() {
@@ -8011,7 +8067,21 @@ window.closeMobileNav = function() {
 
     function handleCatalogueSearch(e) {
       searchQuery = e.target.value.toLowerCase().trim();
-      renderView();
+      const prodSec = document.getElementById('products-catalogue');
+      const capsuleSec = document.getElementById('categoryNavCapsule');
+
+      if (searchQuery) {
+        if (prodSec) prodSec.style.display = 'block';
+        if (capsuleSec) capsuleSec.style.display = 'block';
+        renderView();
+      } else {
+        if (!currentFilter || currentFilter === 'all') {
+          if (prodSec) prodSec.style.display = 'none';
+          if (capsuleSec) capsuleSec.style.display = 'none';
+        } else {
+          renderView();
+        }
+      }
     }
 
     function getFilteredList() {
@@ -8045,15 +8115,15 @@ window.closeMobileNav = function() {
         bannerCount.textContent = `${items.length} Verified Chemical Products`;
       }
 
-      // Render Cards Grid (showing all items for this category)
+      // Render Cards Grid
       const cardsGrid = document.getElementById('prodsCardsGrid');
       if (cardsGrid) {
         if (items.length === 0) {
           cardsGrid.innerHTML = `
             <div style="grid-column: 1/-1; text-align:center; padding: 48px 20px; background:#F8FAFC; border:1px dashed #CBD5E1; border-radius:16px;">
               <h4 style="color:#061649; font-size:18px; margin:0 0 8px;">No chemicals found</h4>
-              <p style="color:#55657F; font-size:14px; margin:0 0 16px;">Try adjusting your search criteria or explore all categories.</p>
-              <button type="button" onclick="selectProductCategory('all')" style="background:#061649; color:#fff; border:none; padding:8px 18px; border-radius:8px; font-weight:700; cursor:pointer;">View All 280+ Chemicals</button>
+              <p style="color:#55657F; font-size:14px; margin:0 0 16px;">Try adjusting your search criteria or explore other categories.</p>
+              <button type="button" onclick="selectProductCategory('all')" style="background:#061649; color:#fff; border:none; padding:8px 18px; border-radius:8px; font-weight:700; cursor:pointer;">← Back to All Categories</button>
             </div>
           `;
         } else {
@@ -8072,7 +8142,7 @@ window.closeMobileNav = function() {
                   <span>View Product &amp; Structure</span>
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
-                <button type="button" class="btn-card-specs" onclick="openProductDetail('${item.name.replace(/'/g, "\\'")}')">
+                <button type="button" class="btn-card-specs" onclick="openProductDetail('${item.name.replace(/'/g, "\'")}')">
                   Quick Specs Preview
                 </button>
               </div>
@@ -8099,38 +8169,34 @@ window.closeMobileNav = function() {
       }
     }
 
-    // Auto-detect URL parameter on load (e.g. products.html?category=pharmaceuticals)
-    window.addEventListener('DOMContentLoaded', () => {
-      try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const cat = urlParams.get('category');
-        if (cat && INDUSTRIES_DATA[cat]) {
-          selectProductCategory(cat);
-        } else {
-          renderView();
-        }
-      } catch (e) {
-        renderView();
-      }
-    });
-    // URL Query Parameter Handling on Initial Load (?cat=... or ?search=...)
+    // Single unified URL query parameter handler on load (?category=... or ?search=...)
     window.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       const catParam = (params.get('category') || params.get('cat') || '').toLowerCase().trim();
       const searchParam = (params.get('search') || params.get('q') || '').trim();
+
       if (searchParam) {
         const searchInput = document.getElementById('catalogueSearchInput');
         if (searchInput) searchInput.value = searchParam;
         searchQuery = searchParam;
+        const prodSec = document.getElementById('products-catalogue');
+        const capsuleSec = document.getElementById('categoryNavCapsule');
+        if (prodSec) prodSec.style.display = 'block';
+        if (capsuleSec) capsuleSec.style.display = 'block';
+        renderView();
+        return;
       }
-      if (catParam) {
-        const btn = Array.from(document.querySelectorAll('.category-btn')).find(b => b.getAttribute('data-cat') === catParam);
-        if (btn) {
-          filterCategory(catParam, btn);
-          return;
-        }
+
+      if (catParam && INDUSTRIES_DATA[catParam]) {
+        selectProductCategory(catParam, null, true);
+      } else {
+        // Default initial state: ONLY show product categories! Hide products catalogue and capsule!
+        currentFilter = null;
+        const prodSec = document.getElementById('products-catalogue');
+        const capsuleSec = document.getElementById('categoryNavCapsule');
+        if (prodSec) prodSec.style.display = 'none';
+        if (capsuleSec) capsuleSec.style.display = 'none';
       }
-      renderView();
     });
 
     // Drawer logic
