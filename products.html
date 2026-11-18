@@ -6924,6 +6924,74 @@
       color: #05B8FB !important;
       transform: scale(1.15) !important;
     }
+
+    /* ==================================================
+       9-PRODUCT CATEGORIES BENTO GRID SECTION
+       ================================================== */
+    .prods-categories-section {
+      padding: 56px 0 44px;
+      background: #F8FAFC;
+      border-bottom: 1px solid #E2E8F0;
+      position: relative;
+    }
+    .prods-categories-header {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 40px;
+    }
+    .prods-categories-kicker {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      color: #0369A1;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .prods-categories-title {
+      font-size: clamp(28px, 3.4vw, 40px);
+      font-weight: 900;
+      color: #061649;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+    }
+    .prods-categories-sub {
+      font-size: 15.5px;
+      color: #55657F;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .industry-bento-card.active-selected {
+      border-color: #05B8FB !important;
+      box-shadow: 0 0 0 2.5px #05B8FB, 0 18px 38px rgba(5, 184, 251, 0.24) !important;
+      background: #F0F9FF !important;
+      transform: translateY(-5px) !important;
+    }
+    .industry-bento-card.active-selected .ind-card-num {
+      background: #061649 !important;
+      color: #ffffff !important;
+      border-color: #05B8FB !important;
+    }
+    .industry-bento-card.active-selected .ind-card-icon-box {
+      background: #061649 !important;
+      color: #05B8FB !important;
+    }
+    .industry-bento-card.active-selected .ind-explore-label {
+      color: #0284C7 !important;
+      font-weight: 800 !important;
+    }
+    .active-category-banner {
+      display: none;
+      margin-bottom: 28px;
+      padding: 20px 26px;
+      background: #F0F9FF;
+      border: 1.5px solid #05B8FB;
+      border-radius: 16px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: 0 6px 20px rgba(5, 184, 251, 0.1);
+    }
 </style>
 </head>
 <body>
@@ -7025,41 +7093,326 @@
     </div>
   </section>
 
+  <!-- ==================================================
+       9-PRODUCT CATEGORIES BENTO GRID (Exact Match to Reference Image)
+       ================================================== -->
+  <section class="prods-categories-section" id="productCategoriesSection">
+    <div class="wrap">
+      <div class="prods-categories-header">
+        <div class="prods-categories-kicker">✦ COMMERCIAL CHEMICAL SECTORS</div>
+        <h2 class="prods-categories-title">Select a Product Category</h2>
+        <p class="prods-categories-sub">
+          Click any product category below to view all corresponding chemical products, structural architecture, formulas, and verified specifications.
+        </p>
+      </div>
+
+      <div class="industries-bento-grid" id="productCategoriesGrid">
+        <!-- 01. Pharmaceuticals -->
+        <div class="industry-bento-card" data-cat="pharmaceuticals" onclick="selectProductCategory('pharmaceuticals', this)" role="button" tabindex="0">
+          <div class="ind-card-watermark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
+          </div>
+          <div class="ind-card-top">
+            <div class="ind-card-badge-wrap">
+              <span class="ind-card-num">01</span>
+              <span class="ind-card-tag">Intermediates &amp; APIs</span>
+            </div>
+            <div class="ind-card-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
+            </div>
+          </div>
+          <div class="ind-card-body">
+            <h3 class="industry-bento-title">Pharmaceuticals</h3>
+            <p class="ind-card-desc">Process intermediates, quaternary salts and specialty reagents for generic and innovator drug synthesis.</p>
+            <div class="ind-chips-strip">
+              <span class="ind-mini-chip">Carbazolones</span>
+              <span class="ind-mini-chip">Ethyl isonipecotate</span>
+              <span class="ind-mini-chip">Benzalkonium chloride</span>
+            </div>
+          </div>
+          <div class="ind-card-footer">
+            <span class="ind-explore-label">Explore Category Products</span>
+            <svg class="ind-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- 02. Agrochemicals -->
+        <div class="industry-bento-card" data-cat="agrochemicals" onclick="selectProductCategory('agrochemicals', this)" role="button" tabindex="0">
+          <div class="ind-card-watermark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
+          </div>
+          <div class="ind-card-top">
+            <div class="ind-card-badge-wrap">
+              <span class="ind-card-num">02</span>
+              <span class="ind-card-tag">Crop Protection</span>
+            </div>
+            <div class="ind-card-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10M12 20V10M12 10a5 5 0 0 1 5-5h2v2a5 5 0 0 1-5 5M12 14a5 5 0 0 0-5-5H5v2a5 5 0 0 0 5 5"/></svg>
+            </div>
+          </div>
+          <div class="ind-card-body">
+            <h3 class="industry-bento-title">Agrochemicals</h3>
+            <p class="ind-card-desc">Building blocks for herbicides and plant growth regulators, supplied at scale with consistent assay.</p>
+            <div class="ind-chips-strip">
+              <span class="ind-mini-chip">1,3-Cyclohexanedione</span>
+              <span class="ind-mini-chip">2,4-Thiazolidinedione</span>
+            </div>
+          </div>
+          <div class="ind-card-footer">
+            <span class="ind-explore-label">Explore Category Products</span>
+            <svg class="ind-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- 03. Personal Care -->
+        <div class="industry-bento-card" data-cat="personal-care" onclick="selectProductCategory('personal-care', this)" role="button" tabindex="0">
+          <div class="ind-card-watermark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
+          </div>
+          <div class="ind-card-top">
+            <div class="ind-card-badge-wrap">
+              <span class="ind-card-num">03</span>
+              <span class="ind-card-tag">Cosmeceuticals &amp; Actives</span>
+            </div>
+            <div class="ind-card-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            </div>
+          </div>
+          <div class="ind-card-body">
+            <h3 class="industry-bento-title">Personal Care</h3>
+            <p class="ind-card-desc">Skin-brightening actives, UV filters, anti-dandruff agents and standardised botanical extracts.</p>
+            <div class="ind-chips-strip">
+              <span class="ind-mini-chip">4-n-Butylresorcinol</span>
+              <span class="ind-mini-chip">Ethylhexyl triazone</span>
+              <span class="ind-mini-chip">Piroctone olamine</span>
+            </div>
+          </div>
+          <div class="ind-card-footer">
+            <span class="ind-explore-label">Explore Category Products</span>
+            <svg class="ind-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- 04. Paints, Inks & Coatings -->
+        <div class="industry-bento-card" data-cat="coatings" onclick="selectProductCategory('coatings', this)" role="button" tabindex="0">
+          <div class="ind-card-watermark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
+          </div>
+          <div class="ind-card-top">
+            <div class="ind-card-badge-wrap">
+              <span class="ind-card-num">04</span>
+              <span class="ind-card-tag">Solvents &amp; Dispersants</span>
+            </div>
+            <div class="ind-card-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+            </div>
+          </div>
+          <div class="ind-card-body">
+            <h3 class="industry-bento-title">Paints, Inks &amp; Coatings</h3>
+            <p class="ind-card-desc">Ester solvents, emulsion binders, dispersants, defoamers and thickeners for decorative and industrial coatings.</p>
+            <div class="ind-chips-strip">
+              <span class="ind-mini-chip">Methoxypropyl acetate</span>
+              <span class="ind-mini-chip">Acronal emulsions</span>
+              <span class="ind-mini-chip">Rheovis thickeners</span>
+            </div>
+          </div>
+          <div class="ind-card-footer">
+            <span class="ind-explore-label">Explore Category Products</span>
+            <svg class="ind-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- 05. Construction Chemicals -->
+        <div class="industry-bento-card" data-cat="construction" onclick="selectProductCategory('construction', this)" role="button" tabindex="0">
+          <div class="ind-card-watermark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
+          </div>
+          <div class="ind-card-top">
+            <div class="ind-card-badge-wrap">
+              <span class="ind-card-num">05</span>
+              <span class="ind-card-tag">Polymer Modifiers</span>
+            </div>
+            <div class="ind-card-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="22.01"/><line x1="15" y1="22" x2="15" y2="22.01"/><line x1="9" y1="18" x2="9" y2="18.01"/><line x1="15" y1="18" x2="15" y2="18.01"/><line x1="9" y1="14" x2="9" y2="14.01"/><line x1="15" y1="14" x2="15" y2="14.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/></svg>
+            </div>
+          </div>
+          <div class="ind-card-body">
+            <h3 class="industry-bento-title">Construction Chemicals</h3>
+            <p class="ind-card-desc">Polymer emulsions and cement modifiers for waterproofing, tile adhesives and elastomeric coatings.</p>
+            <div class="ind-chips-strip">
+              <span class="ind-mini-chip">Acronal 5400</span>
+              <span class="ind-mini-chip">Styrofan D 623</span>
+            </div>
+          </div>
+          <div class="ind-card-footer">
+            <span class="ind-explore-label">Explore Category Products</span>
+            <svg class="ind-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- 06. Home Care & Detergents -->
+        <div class="industry-bento-card" data-cat="home-care" onclick="selectProductCategory('home-care', this)" role="button" tabindex="0">
+          <div class="ind-card-watermark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
+          </div>
+          <div class="ind-card-top">
+            <div class="ind-card-badge-wrap">
+              <span class="ind-card-num">06</span>
+              <span class="ind-card-tag">Surfactants &amp; Cleaners</span>
+            </div>
+            <div class="ind-card-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.636 5.636l2.122 2.122m8.485 8.485l2.122 2.122M5.636 18.364l2.122-2.122m8.485-8.485l2.122-2.122"/></svg>
+            </div>
+          </div>
+          <div class="ind-card-body">
+            <h3 class="industry-bento-title">Home Care &amp; Detergents</h3>
+            <p class="ind-card-desc">Surfactants, builders, chelating agents and preservatives for household and industrial cleaners.</p>
+            <div class="ind-chips-strip">
+              <span class="ind-mini-chip">SLES</span>
+              <span class="ind-mini-chip">SLS</span>
+              <span class="ind-mini-chip">STPP</span>
+              <span class="ind-mini-chip">EDTA</span>
+            </div>
+          </div>
+          <div class="ind-card-footer">
+            <span class="ind-explore-label">Explore Category Products</span>
+            <svg class="ind-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- 07. Food, Flavour & Fragrance -->
+        <div class="industry-bento-card" data-cat="food-fragrance" onclick="selectProductCategory('food-fragrance', this)" role="button" tabindex="0">
+          <div class="ind-card-watermark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
+          </div>
+          <div class="ind-card-top">
+            <div class="ind-card-badge-wrap">
+              <span class="ind-card-num">07</span>
+              <span class="ind-card-tag">Aroma &amp; Food Grade</span>
+            </div>
+            <div class="ind-card-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
+          </div>
+          <div class="ind-card-body">
+            <h3 class="industry-bento-title">Food, Flavour &amp; Fragrance</h3>
+            <p class="ind-card-desc">Acidulants, preservatives and aroma chemicals in certified food and high-purity industrial grades.</p>
+            <div class="ind-chips-strip">
+              <span class="ind-mini-chip">Citric acid</span>
+              <span class="ind-mini-chip">Sodium benzoate</span>
+              <span class="ind-mini-chip">Ethyl vanillin</span>
+            </div>
+          </div>
+          <div class="ind-card-footer">
+            <span class="ind-explore-label">Explore Category Products</span>
+            <svg class="ind-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- 08. Polymers & Plastics -->
+        <div class="industry-bento-card" data-cat="polymers" onclick="selectProductCategory('polymers', this)" role="button" tabindex="0">
+          <div class="ind-card-watermark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
+          </div>
+          <div class="ind-card-top">
+            <div class="ind-card-badge-wrap">
+              <span class="ind-card-num">08</span>
+              <span class="ind-card-tag">Advanced Materials</span>
+            </div>
+            <div class="ind-card-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+          </div>
+          <div class="ind-card-body">
+            <h3 class="industry-bento-title">Polymers &amp; Plastics</h3>
+            <p class="ind-card-desc">Plasticizers, stabilisers, glycols and monomers for PVC, industrial resins and polyester synthesis.</p>
+            <div class="ind-chips-strip">
+              <span class="ind-mini-chip">DOP</span>
+              <span class="ind-mini-chip">Neopentyl glycol</span>
+              <span class="ind-mini-chip">Zinc stearate</span>
+            </div>
+          </div>
+          <div class="ind-card-footer">
+            <span class="ind-explore-label">Explore Category Products</span>
+            <svg class="ind-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- 09. Agriculture & Aquaculture -->
+        <div class="industry-bento-card" data-cat="agriculture" onclick="selectProductCategory('agriculture', this)" role="button" tabindex="0">
+          <div class="ind-card-watermark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="50 5, 90 27.5, 90 72.5, 50 95, 10 72.5, 10 27.5"/><circle cx="50" cy="50" r="22"/></svg>
+          </div>
+          <div class="ind-card-top">
+            <div class="ind-card-badge-wrap">
+              <span class="ind-card-num">09</span>
+              <span class="ind-card-tag">Agri-Films &amp; Liners</span>
+            </div>
+            <div class="ind-card-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+          </div>
+          <div class="ind-card-body">
+            <h3 class="industry-bento-title">Agriculture &amp; Aquaculture</h3>
+            <p class="ind-card-desc">Mulching films, pond liners, vermibeds and heavy-duty tarpaulins for agricultural and fish farm applications.</p>
+            <div class="ind-chips-strip">
+              <span class="ind-mini-chip">Mulching films</span>
+              <span class="ind-mini-chip">Pond liners</span>
+              <span class="ind-mini-chip">Vermibeds</span>
+            </div>
+          </div>
+          <div class="ind-card-footer">
+            <span class="ind-explore-label">Explore Category Products</span>
+            <svg class="ind-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Sticky Category Navigation Capsule -->
   <div class="prods-category-capsule">
     <div class="wrap">
       <div class="prods-category-track" id="categoryNavTrack">
-        <button type="button" class="category-btn active" data-cat="all" onclick="filterCategory('all', this)">
+        <button type="button" class="category-btn active" data-cat="all" onclick="selectProductCategory('all', this)">
           <span>All Products</span>
           <span class="category-count-badge">280+</span>
         </button>
-        <button type="button" class="category-btn" data-cat="pharma" onclick="filterCategory('pharma', this)">
-          <span>Pharma &amp; Agro Intermediates</span>
-          <span class="category-count-badge">23</span>
+        <button type="button" class="category-btn" data-cat="pharmaceuticals" onclick="selectProductCategory('pharmaceuticals', this)">
+          <span>01 Pharmaceuticals</span>
+          <span class="category-count-badge">29</span>
         </button>
-        <button type="button" class="category-btn" data-cat="solvents" onclick="filterCategory('solvents', this)">
-          <span>Specialty Solvents &amp; Esters</span>
-          <span class="category-count-badge">23</span>
+        <button type="button" class="category-btn" data-cat="agrochemicals" onclick="selectProductCategory('agrochemicals', this)">
+          <span>02 Agrochemicals</span>
+          <span class="category-count-badge">10</span>
         </button>
-        <button type="button" class="category-btn" data-cat="cosmetics" onclick="filterCategory('cosmetics', this)">
-          <span>Cosmetics &amp; Perfumery</span>
-          <span class="category-count-badge">18</span>
+        <button type="button" class="category-btn" data-cat="personal-care" onclick="selectProductCategory('personal-care', this)">
+          <span>03 Personal Care</span>
+          <span class="category-count-badge">26</span>
         </button>
-        <button type="button" class="category-btn" data-cat="petro" onclick="filterCategory('petro', this)">
-          <span>Petrochemicals &amp; Ketones</span>
-          <span class="category-count-badge">13</span>
+        <button type="button" class="category-btn" data-cat="coatings" onclick="selectProductCategory('coatings', this)">
+          <span>04 Paints, Inks &amp; Coatings</span>
+          <span class="category-count-badge">82</span>
         </button>
-        <button type="button" class="category-btn" data-cat="industrial" onclick="filterCategory('industrial', this)">
-          <span>Industrial Chemicals &amp; Acids</span>
-          <span class="category-count-badge">149</span>
+        <button type="button" class="category-btn" data-cat="construction" onclick="selectProductCategory('construction', this)">
+          <span>05 Construction Chemicals</span>
+          <span class="category-count-badge">28</span>
         </button>
-        <button type="button" class="category-btn" data-cat="emulsions" onclick="filterCategory('emulsions', this)">
-          <span>Emulsions &amp; Additives</span>
-          <span class="category-count-badge">55</span>
+        <button type="button" class="category-btn" data-cat="home-care" onclick="selectProductCategory('home-care', this)">
+          <span>06 Home Care &amp; Detergents</span>
+          <span class="category-count-badge">12</span>
         </button>
-        <button type="button" class="category-btn" data-cat="packaging" onclick="filterCategory('packaging', this)">
-          <span>Packaging &amp; Agri Films</span>
-          <span class="category-count-badge">6</span>
+        <button type="button" class="category-btn" data-cat="food-fragrance" onclick="selectProductCategory('food-fragrance', this)">
+          <span>07 Food, Flavour &amp; Fragrance</span>
+          <span class="category-count-badge">10</span>
+        </button>
+        <button type="button" class="category-btn" data-cat="polymers" onclick="selectProductCategory('polymers', this)">
+          <span>08 Polymers &amp; Plastics</span>
+          <span class="category-count-badge">115</span>
+        </button>
+        <button type="button" class="category-btn" data-cat="agriculture" onclick="selectProductCategory('agriculture', this)">
+          <span>09 Agriculture &amp; Aquaculture</span>
+          <span class="category-count-badge">5</span>
         </button>
       </div>
     </div>
@@ -7068,6 +7421,30 @@
   <!-- Main Products Display Section -->
   <section class="prods-main-section" id="products-catalogue">
     <div class="wrap">
+      <!-- Active Category Banner with Quick Jump Controls -->
+      <div class="active-category-banner" id="activeCategoryBanner">
+        <div style="display:flex; align-items:center; gap: 14px;">
+          <div id="bannerIconBox" style="width: 44px; height: 44px; border-radius: 10px; background: #061649; color: #05B8FB; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
+            ✦
+          </div>
+          <div>
+            <div style="display:flex; align-items:center; gap: 8px; flex-wrap: wrap;">
+              <span id="bannerSectorTag" style="font-size: 11px; font-weight: 800; color: #0369A1; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(5, 184, 251, 0.15); padding: 3px 9px; border-radius: 4px;">Sector 01</span>
+              <span id="bannerCountBadge" style="font-size: 12.5px; font-weight: 700; color: #55657F;">29 Verified Products</span>
+            </div>
+            <h3 id="bannerTitle" style="font-size: 20px; font-weight: 800; color: #061649; margin: 4px 0 0;">Pharmaceuticals</h3>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap: 10px; flex-wrap: wrap;">
+          <button type="button" onclick="selectProductCategory('all')" style="display:inline-flex; align-items:center; gap:6px; background:#ffffff; border:1px solid #D7E3ED; color:#061649; padding:8px 16px; border-radius:8px; font-size:12.5px; font-weight:700; cursor:pointer; transition:all 0.2s ease;">
+            ✕ Show All Products (280+)
+          </button>
+          <button type="button" onclick="scrollToCategories()" style="display:inline-flex; align-items:center; gap:6px; background:#061649; border:none; color:#ffffff; padding:8px 16px; border-radius:8px; font-size:12.5px; font-weight:700; cursor:pointer; transition:all 0.2s ease;">
+            ↑ View All 9 Categories
+          </button>
+        </div>
+      </div>
+
       <div class="prods-header-row">
         <div>
           <h2 class="prods-section-title" id="currentCategoryTitle">All Catalogue Chemicals</h2>
@@ -7366,17 +7743,190 @@ window.closeMobileNav = function() {
     ];
     const CATALOG = {"cats": ["Speciality Solvents & Glycol Esters", "Petrochemicals & Solvents", "Pharma & Agrochem Intermediates", "Industrial Chemicals, Plasticizers & Acids", "Cosmetic Ingredients & Perfumery Chemicals", "Emulsions, Construction Chemicals & Additives (BASF)"], "cos": [], "rows": [["Methanol", "67-56-1", 1, 0, "Feedstock for formaldehyde, acetic acid, biodiesel; industrial solvent", "CH4O", 32.04, "", "", "Methyl alcohol | Wood alcohol | Carbinol"], ["Methoxypropyl Acetate", "108-65-6", 0, 0, "Coating industry", "C6H12O3", 132.16, "", "", "PGMEA | Propylene glycol methyl ether acetate | 1-Methoxy-2-propyl acetate | PMA"], ["n-Butyl Acetate", "123-86-4", 0, 0, "Paint industry", "C6H12O2", 116.16, "", "", "n-Butyl acetate | Butyl acetate | Butyl ethanoate"], ["Ethyl Acetate", "141-78-6", 1, 0, "Solvent for glues, inks, paints, nail-polish remover; decaffeination", "C4H8O2", 88.11, "", "", "Ethyl acetate | Ethyl ethanoate | EtOAc"], ["1,3-Cyclohexanedione", "504-02-9", 2, 0, "Carvedilol, ondansetron, mesotrione, tembotrione, sulcotrione and other triketone herbicides, nitisinone", "C6H8O2", 112.13, "", "", "Cyclohexane-1,3-dione | Dihydroresorcinol | 1,3-CHD"], ["Acetic Acid", "64-19-7", 3, 0, "Feedstock for VAM, esters, PTA, acetic anhydride", "C2H4O2", 60.05, "", "", "Acetic acid | Glacial acetic acid | Ethanoic acid"], ["Normal Butanol", "71-36-3", 1, 0, "Feedstock for butyl acrylate, butyl acetate, glycol ethers; solvent", "C4H10O", 74.12, "", "", "n-Butanol | 1-Butanol | Butyl alcohol"], ["Propylene Glycol IP / FFG", "57-55-6", 1, 0, "Unsaturated polyester resins, antifreeze, food/pharma excipient (USP)", "C3H8O2", 76.09, "", "", "Propylene glycol | Propane-1,2-diol | MPG"], ["Cyclohexanone", "108-94-1", 1, 0, "Caprolactam/nylon 6 feedstock; solvent for PVC and coatings", "C6H10O", 98.14, "", "", "Anone"], ["(R)-(-)-5-(2-Aminopropyl)-2-Methoxybenzene Sulfonamide", "112101-81-2", 2, 0, "Tamsulosin", "C10H16N2O3S", 244.31, "", "", ""], ["(S)-1-Phenyl-1,2,3,4-Tetrahydroisoquinoline", "118864-75-8", 2, 0, "Solifenacin succinate", "C15H15N", 209.29, "", "", ""], ["1,2,3,9-Tetrahydro-4H-Carbazol-4-one", "15128-52-6", 2, 0, "Carvedilol", "C12H11NO", 185.23, "", "", ""], ["1,2,3,9-Tetrahydro-9-Methyl-4H-Carbazol-4-one", "27387-31-1", 2, 0, "Ondansetron", "C13H13NO", 199.25, "", "", ""], ["1,4-Cyclohexanedione", "637-88-7", 2, 0, "Frovatriptan, delamanid", "C6H8O2", 112.13, "", "", ""], ["1,4-Cyclohexanedione Monoethylene Acetal", "4746-97-8", 2, 0, "Liquid-crystal materials, insecticides", "C8H12O3", 156.18, "", "", ""], ["2,4-Thiazolidinedione", "2295-31-0", 2, 0, "Pioglitazone, rosiglitazone, troglitazone", "C3H3NO2S", 117.12, "", "", ""], ["4-(2,3-Epoxypropoxy)Carbazole", "51997-51-4", 2, 0, "Carvedilol", "C15H13NO2", 239.27, "", "", ""], ["4-(4-Methylpiperazinomethyl)Benzoic Acid Dihydrochloride", "106261-49-8", 2, 0, "Imatinib", "C13H20Cl2N2O2", 307.22, "", "", ""], ["4-(Methylamino)-3-Nitrobenzoic Acid Hydrochloride", "41263-74-5", 2, 0, "Dabigatran", "", 0, "", "", ""], ["4-Bromo-1-Chloro-2-(4-Ethoxybenzyl)Benzene", "461432-23-5", 2, 0, "Dapagliflozin", "C15H14BrClO", 325.63, "", "", ""], ["4-Hydroxycarbazole", "52602-39-8", 2, 0, "Carvedilol", "C12H9NO", 183.21, "", "", ""], ["4-Methylcyclohexanone", "589-92-4", 2, 0, "Glimepiride", "C7H12O", 112.17, "", "", ""], ["Benzalkonium Chloride 50%", "8001-54-5", 2, 0, "Preservative, disinfectant, antibacterial", "", 0, "", "", ""], ["Benzalkonium Chloride 80%", "8001-54-5", 2, 0, "Preservative, disinfectant, antibacterial", "", 0, "", "", ""], ["Benzalkonium Chloride Powder", "8001-54-5", 2, 0, "Antibacterial", "", 0, "", "", ""], ["Benzalkonium Chloride Solution 50% IP", "8001-54-5", 2, 0, "Preservative", "", 0, "", "", ""], ["Ethyl 3-(2-Pyridylamino)Propionate", "103041-38-9", 2, 0, "Dabigatran", "C10H14N2O2", 194.23, "", "", ""], ["Ethyl 3-[3-Amino-4-(Methylamino)-N-(2-Pyridyl)Benzamido]Propionate", "212322-56-0", 2, 0, "Dabigatran", "C18H22N4O3", 342.4, "", "", ""], ["Ethyl Isonipecotate", "1126-09-6", 2, 0, "Solifenacin, tamsulosin, avatrombopag, umeclidinium, fexofenadine, bilastine, efinaconazole, donepezil", "C8H15NO2", 157.21, "", "", ""], ["N-(5-Amino-2-Methylphenyl)-4-(3-Pyridyl)-2-Pyrimidineamine", "152460-10-1", 2, 0, "Imatinib", "C16H15N5", 277.33, "", "", ""], ["Trans-4-Methylcyclohexylamine Hydrochloride", "33483-65-7", 2, 0, "Glimepiride", "C7H16ClN", 149.66, "", "", ""], ["2-Ethylhexyl Acetate", "103-09-3", 0, 0, "Leather chemicals", "C10H20O2", 172.27, "", "", ""], ["Butyl Diglycol Acetate", "124-17-4", 0, 0, "Coil coating", "C10H20O4", 204.27, "", "", ""], ["Butyl Glycol Acetate", "112-07-2", 0, 0, "Automotive coatings", "C8H16O3", 160.21, "", "", ""], ["Dipropylene Glycol Monomethyl Ether Acetate", "88917-22-0", 0, 0, "Fragrance industry", "C9H18O4", 190.24, "", "", ""], ["Ethoxypropyl Acetate", "54839-24-6", 0, 0, "", "C7H14O3", 146.19, "", "", ""], ["Ethyl Diglycol Acetate", "112-15-2", 0, 0, "Paint industry", "C8H16O4", 176.21, "", "", ""], ["Ethyl Ethoxypropionate", "763-69-9", 0, 0, "Coating industry", "C7H14O3", 146.19, "", "", ""], ["Ethyl Glycol Acetate", "111-15-9", 0, 0, "Paint industry", "C6H12O3", 132.16, "", "", ""], ["Ethylene Glycol Diacetate", "111-55-7", 0, 0, "Foundry chemicals", "C6H10O4", 146.14, "", "", ""], ["Ethylene Glycol Dipropionate", "123-80-8", 0, 0, "", "C8H14O4", 174.2, "", "", ""], ["Isoamyl Acetate", "123-92-2", 0, 0, "Coating industry", "C7H14O2", 130.19, "", "", ""], ["Isobutyl Acetate", "110-19-0", 0, 0, "Paint industry", "C6H12O2", 116.16, "", "", ""], ["Isobutyl Propionate", "540-42-1", 0, 0, "Coating industry", "C7H14O2", 130.19, "", "", ""], ["Isopropyl Acetate", "108-21-4", 0, 0, "Pharma, paint industry", "C5H10O2", 102.13, "", "", ""], ["N Pentyl Acetate", "628-63-7", 0, 0, "Coating industry", "C7H14O2", 130.19, "", "", ""], ["n-Butyl Propionate", "590-01-2", 0, 0, "Coating industry", "C7H14O2", 130.19, "", "", ""], ["n-Pentyl Propionate", "624-54-4", 0, 0, "Coating industry", "C8H16O2", 144.21, "", "", ""], ["n-Propyl Propionate", "106-36-5", 0, 0, "Coating industry", "C6H12O2", 116.16, "", "", ""], ["Propylene Glycol Diacetate", "623-84-7", 0, 0, "Coating industry", "C7H12O4", 160.17, "", "", ""], ["Propylene Glycol Monomethyl Ether Propionate", "148462-57-1", 0, 0, "Coating industry", "C7H14O3", 146.19, "", "", ""], ["Triacetin", "102-76-1", 0, 0, "Foundry chemicals", "C9H14O6", 218.2, "", "", ""], ["Diacetone Alcohol", "123-42-2", 1, 0, "", "C6H12O2", 116.16, "", "", ""], ["Dibasic Ester (DBE)", "1119-40-0", 1, 0, "", "C7H12O4", 160.17, "", "", ""], ["Isobutyl Alcohol", "78-83-1", 1, 0, "", "C4H10O", 74.12, "", "", ""], ["Isophorone", "78-59-1", 1, 0, "", "C9H14O", 138.21, "", "", ""], ["Methyl Propyl Ketone (MPK)", "107-87-9", 1, 0, "", "C5H10O", 86.13, "", "", ""], ["Mixed Xylene", "1330-20-7", 1, 0, "", "C8H10", 106.17, "", "", ""], ["Ortho Xylene", "95-47-6", 1, 0, "", "C8H10", 106.17, "", "", ""], ["Phenol", "108-95-2", 1, 0, "", "C6H6O", 94.11, "", "", ""], ["2,4-Diaminopyrimidine-3-N-Oxide Monohydrate", "1189096-02-3", 4, 0, "Hair growth", "C4H8N4O2", 144.13, "", "", ""], ["2-Methylcyclohexanol", "583-59-5", 4, 0, "Perfumery", "C7H14O", 114.19, "", "", ""], ["4-Hexylresorcinol", "136-77-6", 4, 0, "Skin whitening", "C12H18O2", 194.27, "", "", ""], ["4-Methylcyclohexanol", "589-91-3", 4, 0, "Perfumery", "C7H14O", 114.19, "", "", ""], ["4-n-Butylresorcinol", "18979-61-8", 4, 0, "Skin whitening", "C10H14O2", 166.22, "", "", ""], ["Coleus Forskohlii Extract 10%", "66575-29-9", 4, 0, "Nutraceutical, weight management", "", 0, "", "", ""], ["Coleus Forskohlii Extract 20%", "66575-29-9", 4, 0, "Nutraceutical, weight management", "", 0, "", "", ""], ["Coleus Forskohlii Extract 40%", "66575-29-9", 4, 0, "Nutraceutical, weight management", "", 0, "", "", ""], ["Curcumin 98%", "458-37-7", 4, 0, "Nutraceutical, antioxidant", "C21H20O6", 368.38, "", "", ""], ["Curcuminoids 95%", "8024-37-1", 4, 0, "Nutraceutical, antioxidant", "", 0, "", "", ""], ["Ethylhexyl Triazone", "88122-99-0", 4, 0, "Sunscreen UV-B filter", "C48H66N6O6", 823.09, "", "", ""], ["Forskolin 98%", "66575-29-9", 4, 0, "Nutraceutical, weight management", "", 0, "", "", ""], ["Iscotrizinol", "154702-15-5", 4, 0, "UV filter, sun care", "", 0, "", "", ""], ["Piperine 95%", "94-62-2", 4, 0, "Bioavailability enhancer", "C17H19NO3", 285.34, "", "", ""], ["Piroctone Olamine", "68890-66-4", 4, 0, "Anti-dandruff", "C16H30N2O3", 298.43, "", "", ""], ["Tetrahydrocurcumin", "36062-04-1", 4, 0, "Antiseptic, skin care", "C21H24O6", 372.42, "", "", ""], ["Tetrahydropiperine", "23434-88-0", 4, 0, "Anti-acne", "C17H23NO3", 289.38, "", "", ""], ["Acrylamide", "79-06-1", 3, 0, "", "C3H5NO", 71.08, "", "", ""], ["Adipic Acid", "124-04-9", 3, 0, "", "C6H10O4", 146.14, "", "", ""], ["Alpha Olefin Sulphonate (AOS)", "93686-14-7", 3, 0, "", "", 0, "", "", ""], ["Alphox 100 & 200", "9016-45-9", 3, 0, "", "", 0, "", "R", ""], ["Alum", "7784-24-9", 3, 0, "", "AlH24KO20S2", 474.37, "", "", ""], ["Aluminium Stearate (HI Grade)", "637-12-7", 3, 0, "", "", 0, "", "", ""], ["Ammonium Benzoate", "1863-63-4", 3, 0, "", "C7H9NO2", 139.15, "", "", ""], ["Ammonium Bicarbonate", "1066-33-7", 3, 0, "", "CH5NO3", 79.06, "", "", ""], ["Ammonium Chloride", "12125-02-9", 3, 0, "", "ClH4N", 53.49, "", "", ""], ["Ammonium Persulphate", "7727-54-0", 3, 0, "", "H8N2O8S2", 228.19, "", "", ""], ["Amyl Acetate", "628-63-7", 3, 0, "", "C7H14O2", 130.19, "", "", ""], ["Bentec ED-11", "14808-60-7", 3, 0, "", "", 0, "", "", ""], ["Bentec P2", "14808-60-7", 3, 0, "", "", 0, "", "", ""], ["Bentec PLB", "14808-60-7", 3, 0, "", "", 0, "", "", ""], ["Bentec PLC", "14808-60-7", 3, 0, "", "", 0, "", "", ""], ["Bentonite", "1302-78-9", 3, 0, "", "", 0, "", "", ""], ["Benzoic Acid", "65-85-0", 3, 0, "", "C7H6O2", 122.12, "", "", ""], ["Benzotriazole", "95-14-7", 3, 0, "", "C6H5N3", 119.13, "", "", ""], ["Benzyl Alcohol", "100-51-6", 3, 0, "", "C7H8O", 108.14, "", "", ""], ["BHT & BHA", "128-37-0", 3, 0, "", "C15H24O", 220.36, "", "", ""], ["Borax", "1303-96-4", 3, 0, "", "B4H20Na2O17", 381.36, "", "", ""], ["Boric Acid", "10043-35-3", 3, 0, "", "BH3O3", 61.83, "", "", ""], ["Butyl Cellosolve", "111-76-2", 3, 0, "", "C6H14O2", 118.18, "", "", ""], ["Cabosil", "112945-52-5", 3, 0, "", "O2Si", 60.08, "", "", ""], ["Calcium Carbonate (All Grades)", "471-34-1", 3, 0, "", "CCaO3", 100.09, "", "", ""], ["Calcium Chloride (All Grades)", "10043-52-4", 3, 0, "", "CaCl2", 110.98, "", "", ""], ["Calcium Chloride Lye", "10043-52-4", 3, 0, "", "CaCl2", 110.98, "", "", ""], ["Calcium Stearate", "1592-23-0", 3, 0, "", "", 0, "", "", ""], ["Carboxymethyl Cellulose (CMC)", "9004-32-4", 3, 0, "", "", 0, "", "", ""], ["Castrox 200", "111-46-6", 3, 0, "", "", 0, "", "", ""], ["Caustic Potash", "1310-58-3", 3, 0, "", "HKO", 56.11, "", "", ""], ["Caustic Soda", "1310-73-2", 3, 0, "", "HNaO", 40, "", "", ""], ["Caustic Soda Lye", "1310-73-2", 3, 0, "", "HNaO", 40, "", "", ""], ["China Clay", "1332-58-7", 3, 0, "", "Al2H4O9Si2", 258.16, "", "", ""], ["Chloroform", "67-66-3", 3, 0, "", "CHCl3", 119.37, "", "R", ""], ["Citric Acid (Anhydrous & Monohydrate)", "77-92-9", 3, 0, "", "C6H8O7", 192.12, "", "", ""], ["Copper Carbonate", "1184-64-1", 3, 0, "", "CH2Cu2O5", 221.11, "", "", ""], ["Cyclohexane", "110-82-7", 3, 0, "", "C6H12", 84.16, "", "", ""], ["Dextrose Monohydrate", "5996-10-1", 3, 0, "", "C6H14O7", 198.17, "", "", ""], ["Diammonium Phosphate", "7783-28-0", 3, 0, "", "H9N2O4P", 132.06, "", "", ""], ["Dibutyl Phthalate", "84-74-2", 3, 0, "", "C16H22O4", 278.35, "", "R", ""], ["Diethyl Phthalate", "84-66-2", 3, 0, "", "C12H14O4", 222.24, "", "", ""], ["Diethylene Glycol", "111-46-6", 3, 0, "", "C4H10O3", 106.12, "", "", ""], ["Diisopropyl Ether", "108-20-3", 3, 0, "", "C6H14O", 102.18, "", "", ""], ["Dimethyl Sulphoxide", "67-68-5", 3, 0, "", "C2H6OS", 78.13, "", "", ""], ["Dimethylaminoethanol", "108-01-0", 3, 0, "", "C4H11NO", 89.14, "", "", ""], ["Dimethylformamide", "68-12-2", 3, 0, "", "C3H7NO", 73.09, "", "", ""], ["Dioctyl Phthalate (DOP)", "117-81-7", 3, 0, "", "C24H38O4", 390.56, "", "R", ""], ["Dipentene (Camphane, Heavy & Normal)", "138-86-3", 3, 0, "", "C10H16", 136.24, "", "", ""], ["Dipropylene Glycol", "25265-71-8", 3, 0, "", "C6H14O3", 134.18, "", "", ""], ["DMP", "87413-09-0", 3, 0, "", "", 0, "", "", ""], ["EDTA Disodium", "6381-92-6", 3, 0, "", "", 0, "", "", ""], ["EDTA Tetrasodium", "13235-36-4", 3, 0, "", "", 0, "", "", ""], ["Ethoxyquin", "91-53-2", 3, 0, "", "C14H19NO", 217.31, "", "", ""], ["Ethyl Carbitol (EDG)", "111-90-0", 3, 0, "", "C6H14O3", 134.18, "", "", ""], ["Ethyl Vanillin", "121-32-4", 3, 0, "", "C9H10O3", 166.18, "", "", ""], ["Ethylene Glycol Monostearate (EGMS)", "111-60-4", 3, 0, "", "C20H40O3", 328.54, "", "", ""], ["Formaldehyde", "50-00-0", 3, 0, "", "CH2O", 30.03, "", "", ""], ["Glycerine", "56-81-5", 3, 0, "", "C3H8O3", 92.09, "", "", ""], ["Gum Acacia", "9000-01-5", 3, 0, "", "", 0, "", "", ""], ["Hexamine", "100-97-0", 3, 0, "", "C6H12N4", 140.19, "", "", ""], ["Hexylene Glycol", "107-41-5", 3, 0, "", "C6H14O2", 118.18, "", "", ""], ["Hydrobromic Acid", "10035-10-6", 3, 0, "", "BrH", 80.91, "", "", ""], ["Hydrogen Peroxide", "7722-84-1", 3, 0, "", "H2O2", 34.01, "", "", ""], ["Hyflo Super-Cel", "68855-54-9", 3, 0, "", "", 0, "", "", ""], ["Lactic Acid", "79-33-4", 3, 0, "", "C3H6O3", 90.08, "", "", ""], ["Lauryl Alcohol Ethoxylate LA-7 & LA-9", "68439-50-9", 3, 0, "", "", 0, "", "", ""], ["Liquid Paraffin (Light & Heavy)", "8012-95-1", 3, 0, "", "", 0, "", "", ""], ["Liquor Ammonia", "1336-21-6", 3, 0, "", "H5NO", 35.05, "", "", ""], ["Magnesium Sulphate", "7487-88-9", 3, 0, "", "MgO4S", 120.36, "", "", ""], ["Maleic Acid DL", "6915-15-7", 3, 0, "", "C4H4O4", 116.07, "", "", ""], ["Maleic Anhydride", "108-31-6", 3, 0, "", "C4H2O3", 98.06, "", "", ""], ["Manganese Sulphate", "10034-96-5", 3, 0, "", "H2MnO5S", 169.01, "", "", ""], ["Methyl Cellosolve", "109-86-4", 3, 0, "", "C3H8O2", 76.09, "", "", ""], ["Methylene Chloride", "75-09-2", 3, 0, "", "CH2Cl2", 84.93, "", "", ""], ["Mocidate", "", 3, 0, "", "", 0, "", "", ""], ["Monoethanolamine", "141-43-5", 3, 0, "", "C2H7NO", 61.08, "", "", ""], ["Monoethylene Glycol", "107-21-1", 3, 0, "", "C2H6O2", 62.07, "", "", ""], ["Monosodium Phosphate", "10049-21-5", 3, 0, "", "H2NaO4P", 119.98, "", "", ""], ["Morpholine", "110-91-8", 3, 0, "", "C4H9NO", 87.12, "", "", ""], ["N,N-Dimethylaniline", "121-69-7", 3, 0, "", "C8H11N", 121.18, "", "", ""], ["n-Heptane", "142-82-5", 3, 0, "", "C7H16", 100.2, "", "", ""], ["n-Propanol", "71-23-8", 3, 0, "", "C3H8O", 60.1, "", "", ""], ["Neopentyl Glycol", "126-30-7", 3, 0, "", "C5H12O2", 104.15, "", "", ""], ["Nilofoam NDW", "64742-96-7", 3, 0, "", "", 0, "", "", ""], ["Nonyl Phenol", "84852-15-3", 3, 0, "", "", 0, "", "R", ""], ["Nonyl Phenol Ethoxylate N 9.5 & N 4.5", "9016-45-9", 3, 0, "", "", 0, "", "R", ""], ["Octanol", "111-87-5", 3, 0, "", "C8H18O", 130.23, "", "", ""], ["Oleic Acid", "112-80-1", 3, 0, "", "C18H34O2", 282.47, "", "", ""], ["Oxalic Acid", "144-62-7", 3, 0, "", "C2H2O4", 90.03, "", "", ""], ["para-Toluenesulphonic Acid", "6192-52-5", 3, 0, "", "C7H8O3S", 172.2, "", "", ""], ["Paraffin Wax", "8002-74-2", 3, 0, "", "", 0, "", "", ""], ["Paraformaldehyde", "30525-89-4", 3, 0, "", "", 0, "", "", ""], ["Perchloroethylene", "127-18-4", 3, 0, "", "C2Cl4", 165.82, "", "", ""], ["Phosphoric Acid", "7664-38-2", 3, 0, "", "H3O4P", 97.99, "", "", ""], ["Polyaluminium Chloride", "1327-41-9", 3, 0, "", "", 0, "", "", ""], ["Polyethylene Glycol 200, 400 & 600", "25322-68-3", 3, 0, "", "", 0, "", "", ""], ["Polyethylene Glycol 4000 & 6000", "25322-68-3", 3, 0, "", "", 0, "", "", ""], ["Polysorbate (80 & 20)", "9005-64-5", 3, 0, "", "", 0, "", "", ""], ["Polyvinyl Alcohol", "9002-89-5", 3, 0, "", "", 0, "", "", ""], ["Polyvinyl Alcohol Powder", "9002-89-5", 3, 0, "", "", 0, "", "", ""], ["Potassium Carbonate, Granular", "584-08-7", 3, 0, "", "CK2O3", 138.2, "", "", ""], ["Potassium Metabisulphite", "16731-55-8", 3, 0, "", "K2O5S2", 222.31, "", "", ""], ["Potassium Persulphate", "7727-21-1", 3, 0, "", "K2O8S2", 270.31, "", "", ""], ["PPG 2000", "25322-69-4", 3, 0, "", "", 0, "", "", ""], ["Precipitated Silica", "7631-86-9", 3, 0, "", "O2Si", 60.08, "", "", ""], ["Propyl Gallate", "121-79-9", 3, 0, "", "C10H12O5", 212.2, "", "", ""], ["Salicylic Acid (Brown & White)", "69-72-7", 3, 0, "", "C7H6O3", 138.12, "", "", ""], ["Slurry", "27176-87-0", 3, 0, "", "", 0, "", "", ""], ["Soapstone Powder (Talc)", "14807-96-6", 3, 0, "", "H2Mg3O12Si4", 379.26, "", "", ""], ["Soda Ash", "497-19-8", 3, 0, "", "CNa2O3", 105.99, "", "", ""], ["Sodium Acetate", "6131-90-4", 3, 0, "", "C2H9NaO5", 136.08, "", "", ""], ["Sodium Benzoate", "532-32-1", 3, 0, "", "C7H5NaO2", 144.1, "", "", ""], ["Sodium Bicarbonate", "144-55-8", 3, 0, "", "CHNaO3", 84.01, "", "", ""], ["Sodium Bisulphite", "7631-90-5", 3, 0, "", "HNaO3S", 104.06, "", "", ""], ["Sodium Chloride, Free Flow", "7647-14-5", 3, 0, "", "ClNa", 58.44, "", "", ""], ["Sodium Citrate", "68-04-2", 3, 0, "", "C6H5Na3O7", 258.07, "", "", ""], ["Sodium Gluconate", "527-07-1", 3, 0, "", "C6H11NaO7", 218.14, "", "", ""], ["Sodium Hexametaphosphate", "10124-56-8", 3, 0, "", "Na6O18P6", 611.77, "", "", ""], ["Sodium Laureth Sulphate", "9004-82-4", 3, 0, "", "", 0, "", "", ""], ["Sodium Lauryl Sulphate", "151-21-3", 3, 0, "", "C12H25NaO4S", 288.38, "", "", ""], ["Sodium Metabisulphite, Food Grade", "7681-57-4", 3, 0, "", "Na2O5S2", 190.09, "", "", ""], ["Sodium Percarbonate", "15630-89-4", 3, 0, "", "C2H6Na4O12", 314.02, "", "", ""], ["Sodium Silicate", "1344-09-8", 3, 0, "", "Na2O3Si", 122.06, "", "", ""], ["Sodium Stearate", "822-16-2", 3, 0, "", "C18H35NaO2", 306.47, "", "", ""], ["Sodium Sulphate Anhydrous", "7757-82-6", 3, 0, "", "Na2O4S", 142.04, "", "", ""], ["Sodium Sulphite", "7757-83-7", 3, 0, "", "Na2O3S", 126.04, "", "", ""], ["Sodium Thiosulphate", "7772-98-7", 3, 0, "", "H10Na2O8S2", 248.17, "", "", ""], ["Sodium Tripolyphosphate", "7758-29-4", 3, 0, "", "Na5O10P3", 367.86, "", "", ""], ["Sorbitol", "50-70-4", 3, 0, "", "C6H14O6", 182.17, "", "", ""], ["Soya Lecithin", "8002-43-5", 3, 0, "", "", 0, "", "", ""], ["Stearic Acid", "57-11-4", 3, 0, "", "C18H36O2", 284.48, "", "", ""], ["Styrene Monomer", "100-42-5", 3, 0, "", "C8H8", 104.15, "", "", ""], ["Succinic Acid", "110-15-6", 3, 0, "", "C4H6O4", 118.09, "", "", ""], ["Sulphamic Acid", "5329-14-6", 3, 0, "", "H3NO3S", 97.09, "", "", ""], ["Tartaric Acid DL", "133-37-9", 3, 0, "", "C4H6O6", 150.09, "", "", ""], ["TCC-90", "87-90-1", 3, 0, "", "C3Cl3N3O3", 232.4, "", "", ""], ["Tetrahydrofuran (THF)", "109-99-9", 3, 0, "", "C4H8O", 72.11, "", "", ""], ["Titanium Dioxide", "13463-67-7", 3, 0, "", "O2Ti", 79.86, "", "", ""], ["Trichloroethylene (TCE)", "79-01-6", 3, 0, "", "C2HCl3", 131.38, "", "R", ""], ["Triethylamine & Triethanolamine", "121-44-8", 3, 0, "", "C6H15N", 101.19, "", "R", ""], ["Trimethylolpropane", "77-99-6", 3, 0, "", "C6H14O3", 134.18, "", "", ""], ["Trisodium Phosphate", "7601-54-9", 3, 0, "", "H24Na3O16P", 380.12, "", "", ""], ["Turkey Red Oil", "8002-33-3", 3, 0, "", "", 0, "", "", ""], ["Zinc Chloride", "7646-85-7", 3, 0, "", "Cl2Zn", 136.28, "", "", ""], ["Zinc Oxide", "1314-13-2", 3, 0, "", "OZn", 81.38, "", "", ""], ["Zinc Stearate", "557-05-1", 3, 0, "", "", 0, "", "", ""], ["Zinc Sulphate", "7446-20-0", 3, 0, "", "H14O11SZn", 287.54, "", "", ""], ["Dispex AA 4040", "", 5, 0, "Dispersing inorganic pigments and fillers in water-based paints", "", 0, "", "B", ""], ["Dispex AA 4143", "", 5, 0, "", "", 0, "", "B", ""], ["Dispex CX 4320", "", 5, 0, "Pigments and fillers in gloss, semi-gloss and highly filled interior paints", "", 0, "", "B", ""], ["Dispex HIDE CX 4540", "", 5, 0, "Titanium dioxide with extenders, for more hiding", "", 0, "", "B", ""], ["Foamaster MO 2150", "", 5, 0, "Mid- to high-PVC emulsion paints, plasters, water-based adhesives", "", 0, "", "B", ""], ["Foamaster MO 2151", "", 5, 0, "", "", 0, "", "B", ""], ["Foamaster MO 2170", "", 5, 0, "", "", 0, "", "B", ""], ["FoamStar SI 2240", "", 5, 0, "Pigment concentrates and high-surfactant systems", "", 0, "", "B", ""], ["Loxanol CA 5330", "", 5, 0, "", "", 0, "", "B", ""], ["Loxanol PL 5060", "", 5, 0, "", "", 0, "", "B", ""], ["Rheovis AS 1125", "", 5, 0, "Low-shear acrylic thickener for emulsion paints", "", 0, "", "B", ""], ["Rheovis HS 1181", "", 5, 0, "Associative thickener for acrylic coatings", "", 0, "", "B", ""], ["Rheovis HS 1184", "", 5, 0, "", "", 0, "", "B", ""], ["Rheovis PE 1320", "", 5, 0, "", "", 0, "", "B", ""], ["Rheovis PE 1331", "", 5, 0, "", "", 0, "", "B", ""], ["Rheovis PU 1291", "", 5, 0, "Mid-shear polyurethane thickener for brush and roller application", "", 0, "", "B", ""], ["Rheovis UR 1120", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal 7048", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal 7051", "", 5, 0, "Texture and stone-finish paints", "", 0, "", "B", ""], ["Acronal 7079", "", 5, 0, "Elastomeric exterior wall coatings", "", 0, "", "B", ""], ["Acronal ECO 702", "", 5, 0, "Low-odour, stain-resistant premium interior paints", "", 0, "", "B", ""], ["Acronal EDGE 7005", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal EDGE 7686", "", 5, 0, "Premium exterior finishes with low dirt pick-up", "", 0, "", "B", ""], ["Acronal IA 734", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal IS 750", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal PA 510", "", 5, 0, "Low-pigmented high-gloss interior paints", "", 0, "", "B", ""], ["Acronal PA 808", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal PLUS 7023", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal PLUS 7033", "", 5, 0, "Exterior coatings", "", 0, "", "B", ""], ["Acronal PLUS 7090", "", 5, 0, "Scrub-resistant paints with high pigment-binding power", "", 0, "", "B", ""], ["Acronal PLUS 7611", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal PLUS 7648", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal PLUS 7691", "", 5, 0, "", "", 0, "", "B", ""], ["COL.9 7671", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal 295 D", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal 7035", "", 5, 0, "High-PVC all-purpose paints with good wet-scrub resistance", "", 0, "", "B", ""], ["Acronal 7092", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal 7225", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal IN 296 D", "", 5, 0, "", "", 0, "", "B", ""], ["AQACell HIDE 6299", "", 5, 0, "Hollow-sphere polymer that improves hiding and reduces titanium dioxide", "", 0, "", "B", ""], ["Acronal 7598", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal 7848", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal 7855", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal NX 3587", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal PLUS 7810", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal PS 715", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal V 275", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal Xpress 7540", "", 5, 0, "", "", 0, "", "B", ""], ["Styrofan 7809", "", 5, 0, "", "", 0, "", "B", ""], ["Styrofan NX 1492", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal 5400", "", 5, 0, "Cement-based flexible waterproofing membranes under tiles", "", 0, "", "B", ""], ["Acronal 7846", "", 5, 0, "", "", 0, "", "B", ""], ["Acronal S 400", "", 5, 0, "", "", 0, "", "B", ""], ["Styrofan D 623", "", 5, 0, "Modifying hydraulic binders, mainly cement mixes", "", 0, "", "B", ""], ["Styrofan ID 604", "", 5, 0, "", "", 0, "", "B", ""]]};
 
-    const ALL_ITEMS = CATALOG.rows.map((r, i) => ({
-      name: r[0],
-      slug: r[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
-      cas: r[1] || '',
-      catIndex: r[2],
-      category: CATALOG.cats[r[2]] || 'Specialty Chemicals',
-      app: r[4] || '',
-      formula: r[5] || '',
-      mw: r[6] || '',
-      synonyms: r[9] || ''
-    }));
+    
+    const INDUSTRIES_DATA = {
+      'pharmaceuticals': {
+        num: '01',
+        title: 'Pharmaceuticals',
+        tag: 'INTERMEDIATES & APIS',
+        desc: 'Process intermediates, quaternary salts and specialty reagents for generic and innovator drug synthesis.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>'
+      },
+      'agrochemicals': {
+        num: '02',
+        title: 'Agrochemicals',
+        tag: 'CROP PROTECTION',
+        desc: 'Building blocks for herbicides and plant growth regulators, supplied at scale with consistent assay.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10M12 20V10M12 10a5 5 0 0 1 5-5h2v2a5 5 0 0 1-5 5M12 14a5 5 0 0 0-5-5H5v2a5 5 0 0 0 5 5"/></svg>'
+      },
+      'personal-care': {
+        num: '03',
+        title: 'Personal Care',
+        tag: 'COSMECEUTICALS & ACTIVES',
+        desc: 'Skin-brightening actives, UV filters, anti-dandruff agents and standardised botanical extracts.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>'
+      },
+      'coatings': {
+        num: '04',
+        title: 'Paints, Inks & Coatings',
+        tag: 'SOLVENTS & DISPERSANTS',
+        desc: 'Ester solvents, emulsion binders, dispersants, defoamers and thickeners for decorative and industrial coatings.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>'
+      },
+      'construction': {
+        num: '05',
+        title: 'Construction Chemicals',
+        tag: 'POLYMER MODIFIERS',
+        desc: 'Polymer emulsions and cement modifiers for waterproofing, tile adhesives and elastomeric coatings.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="22.01"/><line x1="15" y1="22" x2="15" y2="22.01"/><line x1="9" y1="18" x2="9" y2="18.01"/><line x1="15" y1="18" x2="15" y2="18.01"/><line x1="9" y1="14" x2="9" y2="14.01"/><line x1="15" y1="14" x2="15" y2="14.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/></svg>'
+      },
+      'home-care': {
+        num: '06',
+        title: 'Home Care & Detergents',
+        tag: 'SURFACTANTS & CLEANERS',
+        desc: 'Surfactants, builders, chelating agents and preservatives for household and industrial cleaners.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.636 5.636l2.122 2.122m8.485 8.485l2.122 2.122M5.636 18.364l2.122-2.122m8.485-8.485l2.122-2.122"/></svg>'
+      },
+      'food-fragrance': {
+        num: '07',
+        title: 'Food, Flavour & Fragrance',
+        tag: 'AROMA & FOOD GRADE',
+        desc: 'Acidulants, preservatives and aroma chemicals in certified food and high-purity industrial grades.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>'
+      },
+      'polymers': {
+        num: '08',
+        title: 'Polymers & Plastics',
+        tag: 'ADVANCED MATERIALS',
+        desc: 'Plasticizers, stabilisers, glycols and monomers for PVC, industrial resins and polyester synthesis.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
+      },
+      'agriculture': {
+        num: '09',
+        title: 'Agriculture & Aquaculture',
+        tag: 'AGRI-FILMS & LINERS',
+        desc: 'Mulching films, pond liners, vermibeds and heavy-duty tarpaulins for agricultural and fish farm applications.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>'
+      }
+    };
+
+    function assignCategories(name, cat_idx, app, syn) {
+      const app_l = (app || '').toLowerCase();
+      const syn_l = (syn || '').toLowerCase();
+      const name_l = name.toLowerCase();
+      const assigned = new Set();
+
+      // 01. pharmaceuticals
+      if (cat_idx === 2 || ['api', 'drug', 'carvedilol', 'ondansetron', 'solifenacin', 'tamsulosin', 'dabigatran', 'imatinib', 'dapagliflozin', 'glimepiride', 'frovatriptan', 'delamanid', 'pharmaceutical', 'excipient (usp)', 'preservative', 'antimicrobial', 'antiseptic'].some(k => app_l.includes(k))) {
+        assigned.add('pharmaceuticals');
+      }
+      if (['carbazol', 'isonipecotate', 'benzalkonium', 'tetrahydroisoquinoline', 'dabigatran', 'imatinib', 'glimepiride', 'thiazolidinedione', 'cyclohexanedione', 'propylene glycol ip', 'normal butanol', 'tetrahydrofuran', 'methanol', 'ethyl acetate'].some(k => name_l.includes(k))) {
+        assigned.add('pharmaceuticals');
+      }
+
+      // 02. agrochemicals
+      if (['herbicide', 'plant growth', 'insecticide', 'crop', 'triketone', 'fungicide', 'pesticide', 'mesotrione', 'tembotrione', 'sulcotrione'].some(k => app_l.includes(k))) {
+        assigned.add('agrochemicals');
+      }
+      if (['cyclohexanedione', 'thiazolidinedione', 'monochloroacetic', 'mca', 'acetic acid', 'phosphoric', 'pyridine', 'zinc sulphate', 'copper sulphate', 'triethylamine', 'dmf', 'dimethylformamide', 'thionyl chloride', 'chloroform'].some(k => name_l.includes(k))) {
+        assigned.add('agrochemicals');
+      }
+
+      // 03. personal-care
+      if (cat_idx === 4 || ['cosmetic', 'sunscreen', 'uv filter', 'skin', 'anti-dandruff', 'hair', 'lotion', 'shampoo', 'cream', 'perfumery', 'excipient', 'moisturizer'].some(k => app_l.includes(k))) {
+        assigned.add('personal-care');
+      }
+      if (['butylresorcinol', 'triazone', 'piroctone', 'benzophenone', 'octocrylene', 'avobenzone', 'homosalate', 'cetyl', 'stearyl', 'cetostearyl', 'glycerin', 'propylene glycol', 'salicylic', 'ethylhexylglycerin', 'phenoxyethanol', 'zinc oxide', 'titanium dioxide', 'dipropylene glycol'].some(k => name_l.includes(k))) {
+        assigned.add('personal-care');
+      }
+
+      // 04. coatings
+      if (cat_idx === 0 || cat_idx === 1 || ['paint', 'coating', 'ink', 'varnish', 'lacquer', 'solvent', 'refinish', 'primer', 'binder', 'coil coating', 'automotive', 'flexographic'].some(k => app_l.includes(k))) {
+        assigned.add('coatings');
+      }
+      if (cat_idx === 5 && (['dispex', 'foamaster', 'foamstar', 'rheovis', 'loxanol', 'col.9', 'aqacell', 'acronal 7', 'acronal eco', 'acronal edge', 'acronal plus'].some(k => name_l.includes(k)) || ['paint', 'coating', 'interior', 'exterior'].some(k => app_l.includes(k)))) {
+        assigned.add('coatings');
+      }
+      if (['acetate', 'pgmea', 'butanol', 'cyclohexanone', 'xylene', 'mek', 'mibk', 'toluene', 'isobutyl', 'glycol ether', 'diacetone'].some(k => name_l.includes(k))) {
+        assigned.add('coatings');
+      }
+
+      // 05. construction
+      if (cat_idx === 5 && (['5400', '623', '604', '400', '7846', '295 d', '296 d', '7809', '7225'].some(k => name_l.includes(k)) || ['cement', 'concrete', 'waterproof', 'mortar', 'tile', 'plaster', 'binder', 'hydraulic'].some(k => app_l.includes(k)))) {
+        assigned.add('construction');
+      }
+      if (['formate', 'gluconate', 'lignosulphonate', 'calcium chloride', 'silica fume', 'triethanolamine', 'tea'].some(k => name_l.includes(k))) {
+        assigned.add('construction');
+      }
+
+      // 06. home-care
+      if (['detergent', 'cleaner', 'surfactant', 'soap', 'bleach', 'disinfectant', 'washing', 'laundry', 'household', 'sanitizer'].some(k => app_l.includes(k))) {
+        assigned.add('home-care');
+      }
+      if (['sles', 'sls', 'edta', 'stpp', 'labsa', 'caustic soda', 'soda ash', 'sodium sulphate', 'bleaching', 'benzalkonium', 'hypochlorite', 'turkey red', 'linear alkyl'].some(k => name_l.includes(k))) {
+        assigned.add('home-care');
+      }
+
+      // 07. food-fragrance
+      if (['food', 'flavour', 'flavor', 'fragrance', 'beverage', 'confectionery', 'edible', 'preservative for food', 'excipient', 'food/pharma'].some(k => app_l.includes(k))) {
+        assigned.add('food-fragrance');
+      }
+      if (['citric', 'benzoate', 'vanillin', 'sorbate', 'malic', 'tartaric', 'fumaric', 'ascorbic', 'phosphoric', 'dipropylene glycol fragrance', 'msg', 'glutamate', 'sodium metabisulphite', 'sucralose'].some(k => name_l.includes(k))) {
+        assigned.add('food-fragrance');
+      }
+
+      // 08. polymers
+      if ((cat_idx === 1 || cat_idx === 3) && ['plastic', 'polymer', 'pvc', 'resin', 'rubber', 'stabilizer', 'plasticizer', 'polyester', 'masterbatch', 'nylon', 'monomer'].some(k => app_l.includes(k))) {
+        assigned.add('polymers');
+      }
+      if (['dop', 'dinp', 'dotp', 'doa', 'dbp', 'neopentyl', 'stearate', 'maleic', 'phthalic', 'titanium dioxide', 'zinc oxide', 'styrene', 'bisphenol', 'pentaerythritol', 'plasticizer'].some(k => name_l.includes(k))) {
+        assigned.add('polymers');
+      }
+
+      // 09. agriculture
+      if (['film', 'mulch', 'liner', 'pond', 'vermi', 'tarpaulin', 'fertilizer', 'micronutrient', 'agriculture', 'aquaculture', 'soil', 'greenhouse'].some(k => app_l.includes(k))) {
+        assigned.add('agriculture');
+      }
+      if (['mulch', 'liner', 'tarpaulin', 'vermi', 'zinc sulphate', 'ferrous sulphate', 'copper sulphate', 'magnesium sulphate', 'manganese sulphate', 'edta chelate', 'potassium chloride', 'urea', 'borax', 'boric'].some(k => name_l.includes(k))) {
+        assigned.add('agriculture');
+      }
+
+      if (assigned.size === 0) {
+        if (cat_idx === 0 || cat_idx === 1) assigned.add('coatings');
+        else if (cat_idx === 2) assigned.add('pharmaceuticals');
+        else if (cat_idx === 3) assigned.add('polymers');
+        else if (cat_idx === 4) assigned.add('personal-care');
+        else if (cat_idx === 5) assigned.add('construction');
+        else assigned.add('coatings');
+      }
+
+      return Array.from(assigned);
+    }
+
+    const ALL_ITEMS = CATALOG.rows.map((r, i) => {
+      const name = r[0];
+      const cas = r[1] || '';
+      const catIndex = r[2];
+      const category = CATALOG.cats[r[2]] || 'Specialty Chemicals';
+      const app = r[4] || '';
+      const formula = r[5] || '';
+      const mw = r[6] || '';
+      const synonyms = r[9] || '';
+      const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const assignedCategories = assignCategories(name, catIndex, app, synonyms);
+      return {
+        name,
+        slug,
+        cas,
+        catIndex,
+        category,
+        app,
+        formula,
+        mw,
+        synonyms,
+        assignedCategories
+      };
+    });
 
     let currentFilter = 'all';
     let searchQuery = '';
@@ -7390,24 +7940,73 @@ window.closeMobileNav = function() {
       return f.replace(/(\d+)/g, '<sub>$1</sub>');
     }
 
-    function filterCategory(catKey, btnEl) {
+    function selectProductCategory(catKey, cardEl) {
       currentFilter = catKey;
-      document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-      if (btnEl) btnEl.classList.add('active');
 
-      const titles = {
-        'all': 'All Catalogue Chemicals (280+)',
-        'pharma': 'Pharma & Agrochem Intermediates',
-        'solvents': 'Speciality Solvents & Glycol Esters',
-        'cosmetics': 'Cosmetic Ingredients & Perfumery Chemicals',
-        'petro': 'Petrochemicals & Solvents',
-        'industrial': 'Industrial Chemicals, Plasticizers & Acids',
-        'emulsions': 'Performance Emulsions, Construction Chemicals & Additives',
-        'packaging': 'Packaging & Agricultural Protective Films'
-      };
+      // Update Bento Grid active-selected classes
+      document.querySelectorAll('#productCategoriesGrid .industry-bento-card').forEach(c => {
+        if (c.getAttribute('data-cat') === catKey) {
+          c.classList.add('active-selected');
+        } else {
+          c.classList.remove('active-selected');
+        }
+      });
 
-      document.getElementById('currentCategoryTitle').textContent = titles[catKey] || 'Chemical Products';
+      // Update Capsule Buttons
+      document.querySelectorAll('.category-btn').forEach(b => {
+        if (b.getAttribute('data-cat') === catKey) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+
+      // Update Active Category Banner & Page Titles
+      const banner = document.getElementById('activeCategoryBanner');
+      const catMeta = INDUSTRIES_DATA[catKey];
+      if (catKey === 'all' || !catMeta) {
+        if (banner) banner.style.display = 'none';
+        document.getElementById('currentCategoryTitle').textContent = 'All Catalogue Chemicals (280+)';
+      } else {
+        if (banner) {
+          banner.style.display = 'flex';
+          document.getElementById('bannerSectorTag').textContent = 'Sector ' + catMeta.num + ' • ' + catMeta.tag;
+          document.getElementById('bannerTitle').textContent = catMeta.title;
+          document.getElementById('bannerIconBox').innerHTML = catMeta.icon;
+        }
+        document.getElementById('currentCategoryTitle').textContent = catMeta.title + ' Catalogue';
+      }
+
+      // Smooth scroll to products catalogue section if specific category clicked
+      if (catKey !== 'all') {
+        const prodSec = document.getElementById('products-catalogue');
+        if (prodSec) {
+          const yOffset = -80;
+          const y = prodSec.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+
+      // Update browser URL query parameter
+      try {
+        const newUrl = catKey === 'all' ? window.location.pathname : `${window.location.pathname}?category=${catKey}`;
+        window.history.pushState({ category: catKey }, '', newUrl);
+      } catch (e) {}
+
       renderView();
+    }
+
+    function scrollToCategories() {
+      const catSec = document.getElementById('productCategoriesSection');
+      if (catSec) {
+        const yOffset = -70;
+        const y = catSec.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+
+    function filterCategory(catKey, btnEl) {
+      selectProductCategory(catKey, btnEl);
     }
 
     function handleCatalogueSearch(e) {
@@ -7417,31 +8016,18 @@ window.closeMobileNav = function() {
 
     function getFilteredList() {
       return ALL_ITEMS.filter(item => {
-        // Category check
         let matchesCat = true;
-        if (currentFilter === 'pharma') {
-          matchesCat = item.category.toLowerCase().includes('pharma');
-        } else if (currentFilter === 'solvents') {
-          matchesCat = item.category.toLowerCase().includes('solvent') || item.category.toLowerCase().includes('ester');
-        } else if (currentFilter === 'cosmetics') {
-          matchesCat = item.category.toLowerCase().includes('cosmetic') || item.category.toLowerCase().includes('perfumer');
-        } else if (currentFilter === 'petro') {
-          matchesCat = item.category.toLowerCase().includes('petro');
-        } else if (currentFilter === 'industrial') {
-          matchesCat = item.category.toLowerCase().includes('industrial');
-        } else if (currentFilter === 'emulsions') {
-          matchesCat = item.category.toLowerCase().includes('emulsion') || item.category.toLowerCase().includes('basf');
-        } else if (currentFilter === 'packaging') {
-          matchesCat = item.category.toLowerCase().includes('packag') || item.category.toLowerCase().includes('film');
+        if (currentFilter && currentFilter !== 'all') {
+          matchesCat = item.assignedCategories.includes(currentFilter);
         }
 
-        // Search check
         let matchesSearch = true;
         if (searchQuery) {
           matchesSearch = item.name.toLowerCase().includes(searchQuery) ||
                           item.cas.toLowerCase().includes(searchQuery) ||
                           item.formula.toLowerCase().includes(searchQuery) ||
-                          item.app.toLowerCase().includes(searchQuery);
+                          item.app.toLowerCase().includes(searchQuery) ||
+                          item.synonyms.toLowerCase().includes(searchQuery);
         }
 
         return matchesCat && matchesSearch;
@@ -7450,52 +8036,83 @@ window.closeMobileNav = function() {
 
     function renderView() {
       const items = getFilteredList();
-      document.getElementById('productCountSub').textContent = `Showing ${items.length} chemicals matching criteria`;
+      const countSub = document.getElementById('productCountSub');
+      if (countSub) {
+        countSub.textContent = `Showing ${items.length} chemicals matching criteria`;
+      }
+      const bannerCount = document.getElementById('bannerCountBadge');
+      if (bannerCount) {
+        bannerCount.textContent = `${items.length} Verified Chemical Products`;
+      }
 
-      // Render Cards (first 24 items or search results)
+      // Render Cards Grid (showing all items for this category)
       const cardsGrid = document.getElementById('prodsCardsGrid');
-      const cardsSlice = items.slice(0, 24);
-      cardsGrid.innerHTML = cardsSlice.map(item => `
-        <div class="prod-grid-card" onclick="if (!event.target.closest('button') && !event.target.closest('a')) window.location.href='products/${item.slug}.html';" style="cursor:pointer;">
-          <div>
-            <div class="prod-card-top-row">
-              <span class="prod-card-cas">CAS ${item.cas || 'Specialty'}</span>
-              <span class="prod-card-formula">${formatSubscripts(item.formula)}</span>
+      if (cardsGrid) {
+        if (items.length === 0) {
+          cardsGrid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align:center; padding: 48px 20px; background:#F8FAFC; border:1px dashed #CBD5E1; border-radius:16px;">
+              <h4 style="color:#061649; font-size:18px; margin:0 0 8px;">No chemicals found</h4>
+              <p style="color:#55657F; font-size:14px; margin:0 0 16px;">Try adjusting your search criteria or explore all categories.</p>
+              <button type="button" onclick="selectProductCategory('all')" style="background:#061649; color:#fff; border:none; padding:8px 18px; border-radius:8px; font-weight:700; cursor:pointer;">View All 280+ Chemicals</button>
             </div>
-            <h4 class="prod-card-name">${item.name}</h4>
-            <p class="prod-card-desc">${item.app ? item.app.substring(0, 100) + '...' : 'High-grade chemical building block for industrial synthesis.'}</p>
-          </div>
-          <div class="prod-card-actions">
-            <a href="products/${item.slug}.html" class="btn-card-primary">
-              <span>View Product &amp; Structure</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <button type="button" class="btn-card-specs" onclick="openProductDetail('${item.name}')">
-              Quick Specs Preview
-            </button>
-          </div>
-        </div>
-      `).join('');
+          `;
+        } else {
+          cardsGrid.innerHTML = items.map(item => `
+            <div class="prod-grid-card" onclick="if (!event.target.closest('button') && !event.target.closest('a')) window.location.href='products/${item.slug}.html';" style="cursor:pointer;">
+              <div>
+                <div class="prod-card-top-row">
+                  <span class="prod-card-cas">CAS ${item.cas || 'Specialty'}</span>
+                  <span class="prod-card-formula">${formatSubscripts(item.formula)}</span>
+                </div>
+                <h4 class="prod-card-name">${item.name}</h4>
+                <p class="prod-card-desc">${item.app ? item.app.substring(0, 110) + '...' : 'High-grade chemical building block for industrial synthesis and manufacturing.'}</p>
+              </div>
+              <div class="prod-card-actions">
+                <a href="products/${item.slug}.html" class="btn-card-primary">
+                  <span>View Product &amp; Structure</span>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <button type="button" class="btn-card-specs" onclick="openProductDetail('${item.name.replace(/'/g, "\\'")}')">
+                  Quick Specs Preview
+                </button>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
 
       // Render Master Table
       const masterTbody = document.getElementById('masterTableBody');
-      masterTbody.innerHTML = items.map(item => `
-        <tr onclick="if (!event.target.closest('button') && !event.target.closest('a')) window.location.href='products/${item.slug}.html';" style="cursor:pointer;">
-          <td><strong style="color:#061649;">${item.name}</strong></td>
-          <td><span style="font-family:var(--mono); font-size:12px; color:#55657F;">${item.cas || 'Proprietary'}</span></td>
-          <td><span style="font-family:var(--mono); font-size:12px; color:#0369A1; font-weight:700;">${formatSubscripts(item.formula)}</span></td>
-          <td><span style="font-size:12.5px; color:#55657F;">${item.category}</span></td>
-          <td style="color:#55657F; max-width:280px;">${item.app ? item.app.substring(0, 80) + '...' : '-'}</td>
-          <td>
-            <a href="products/${item.slug}.html" class="btn-table-page">
-              <span>Sub-Page</span>
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </td>
-        </tr>
-      `).join('');
+      if (masterTbody) {
+        masterTbody.innerHTML = items.map(item => `
+          <tr onclick="if (!event.target.closest('button') && !event.target.closest('a')) window.location.href='products/${item.slug}.html';" style="cursor:pointer;">
+            <td><strong style="color:#061649;">${item.name}</strong></td>
+            <td><span style="font-family:var(--mono); font-size:12px; color:#55657F;">${item.cas || 'Proprietary'}</span></td>
+            <td><span style="font-family:var(--mono); font-size:12px; color:#0369A1; font-weight:700;">${formatSubscripts(item.formula)}</span></td>
+            <td><span style="font-size:12.5px; color:#55657F;">${item.category}</span></td>
+            <td style="color:#55657F; max-width:280px;">${item.app ? item.app.substring(0, 80) + '...' : '-'}</td>
+            <td>
+              <a href="products/${item.slug}.html" style="color:#0369A1; font-weight:700; text-decoration:none; font-size:12.5px;">View Details &rarr;</a>
+            </td>
+          </tr>
+        `).join('');
+      }
     }
 
+    // Auto-detect URL parameter on load (e.g. products.html?category=pharmaceuticals)
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const cat = urlParams.get('category');
+        if (cat && INDUSTRIES_DATA[cat]) {
+          selectProductCategory(cat);
+        } else {
+          renderView();
+        }
+      } catch (e) {
+        renderView();
+      }
+    });
     // URL Query Parameter Handling on Initial Load (?cat=... or ?search=...)
     window.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
