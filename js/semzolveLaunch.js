@@ -35,8 +35,6 @@
     constructor() {
       this.ctx = null;
       this.isMuted = false;
-      this.droneOsc = null;
-      this.droneGain = null;
     }
 
     init() {
@@ -52,131 +50,102 @@
     }
 
     startDrone() {
-      if (this.isMuted || !this.ctx) return;
-      if (this.ctx.state === 'suspended') {
-        this.ctx.resume().catch(() => {});
-      }
-      if (this.droneOsc) return;
+      // Background hum/drone intentionally removed to eliminate background noise and audio distortion.
+    }
 
+    stopDrone() {
+      // No-op
+    }
+
+    /**
+     * Subtle, realistic acoustic clock ticking ("tick-tick") sound
+     * Plays a crisp primary escapement tick followed by a soft mechanical rebound click.
+     */
+    playCountdownHit(val) {
+      if (this.isMuted || !this.ctx) return;
+      try {
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume().catch(() => {});
+        }
+        const now = this.ctx.currentTime;
+
+        // 1. Primary clock tick ("tick")
+        this.playSingleTick(now, 1820, 0.085, 0.026);
+
+        // 2. Subtle rebound escapement click ("-tick") 65ms later
+        this.playSingleTick(now + 0.065, 1260, 0.040, 0.018);
+      } catch (e) {}
+    }
+
+    playSingleTick(time, freq, gainLevel, decayDuration) {
+      if (!this.ctx) return;
       try {
         const osc = this.ctx.createOscillator();
-        const filter = this.ctx.createBiquadFilter();
         const gain = this.ctx.createGain();
+        const filter = this.ctx.createBiquadFilter();
 
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(55, this.ctx.currentTime); // Deep A1 note
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, time);
+        osc.frequency.exponentialRampToValueAtTime(Math.max(40, freq * 0.35), time + decayDuration);
 
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(120, this.ctx.currentTime);
-        filter.frequency.exponentialRampToValueAtTime(260, this.ctx.currentTime + 8);
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(freq, time);
+        filter.Q.setValueAtTime(4.2, time);
 
-        gain.gain.setValueAtTime(0.001, this.ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.12, this.ctx.currentTime + 1.5);
+        gain.gain.setValueAtTime(gainLevel, time);
+        gain.gain.exponentialRampToValueAtTime(0.0001, time + decayDuration);
 
         osc.connect(filter);
         filter.connect(gain);
         gain.connect(this.ctx.destination);
 
-        osc.start();
-        this.droneOsc = osc;
-        this.droneGain = gain;
-      } catch (e) {}
-    }
-
-    stopDrone() {
-      if (this.droneGain && this.ctx) {
-        try {
-          this.droneGain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.8);
-          setTimeout(() => {
-            if (this.droneOsc) {
-              this.droneOsc.stop();
-              this.droneOsc = null;
-              this.droneGain = null;
-            }
-          }, 850);
-        } catch (e) {}
-      }
-    }
-
-    playCountdownHit(val) {
-      if (this.isMuted || !this.ctx) return;
-      try {
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-        const now = this.ctx.currentTime;
-
-        // Sub drop
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(140 + val * 8, now);
-        osc.frequency.exponentialRampToValueAtTime(42, now + 0.28);
-
-        gain.gain.setValueAtTime(0.22, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
-
-        osc.connect(gain);
-        gain.connect(this.ctx.destination);
-
-        osc.start(now);
-        osc.stop(now + 0.35);
-
-        // High metallic click
-        const clickOsc = this.ctx.createOscillator();
-        const clickGain = this.ctx.createGain();
-        clickOsc.type = 'triangle';
-        clickOsc.frequency.setValueAtTime(1200 + (10 - val) * 80, now);
-        clickGain.gain.setValueAtTime(0.08, now);
-        clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-
-        clickOsc.connect(clickGain);
-        clickGain.connect(this.ctx.destination);
-        clickOsc.start(now);
-        clickOsc.stop(now + 0.09);
+        osc.start(time);
+        osc.stop(time + decayDuration + 0.01);
       } catch (e) {}
     }
 
     playClimaxBoom() {
       if (this.isMuted || !this.ctx) return;
       try {
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume().catch(() => {});
+        }
         const now = this.ctx.currentTime;
-        // Deep sub-impact boom
+
+        // Soft, gentle low support (warmth without distortion or harsh boom)
         const subOsc = this.ctx.createOscillator();
         const subGain = this.ctx.createGain();
         subOsc.type = 'sine';
-        subOsc.frequency.setValueAtTime(130, now);
-        subOsc.frequency.exponentialRampToValueAtTime(26, now + 1.2);
+        subOsc.frequency.setValueAtTime(96, now);
+        subOsc.frequency.exponentialRampToValueAtTime(36, now + 0.8);
 
-        subGain.gain.setValueAtTime(0.45, now);
-        subGain.gain.exponentialRampToValueAtTime(0.001, now + 1.3);
+        subGain.gain.setValueAtTime(0.12, now);
+        subGain.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
 
         subOsc.connect(subGain);
         subGain.connect(this.ctx.destination);
         subOsc.start(now);
-        subOsc.stop(now + 1.35);
+        subOsc.stop(now + 0.95);
 
-        // Shimmer chime chord
+        // Elegant ascending shimmer chime chord
         [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
           const chimeOsc = this.ctx.createOscillator();
           const chimeGain = this.ctx.createGain();
           chimeOsc.type = 'sine';
-          chimeOsc.frequency.setValueAtTime(freq, now + 0.05 * i);
-          chimeGain.gain.setValueAtTime(0.001, now + 0.05 * i);
-          chimeGain.gain.linearRampToValueAtTime(0.08, now + 0.05 * i + 0.04);
-          chimeGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.5 + 0.1 * i);
+          chimeOsc.frequency.setValueAtTime(freq, now + 0.04 * i);
+          chimeGain.gain.setValueAtTime(0.001, now + 0.04 * i);
+          chimeGain.gain.linearRampToValueAtTime(0.06, now + 0.04 * i + 0.03);
+          chimeGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2 + 0.1 * i);
           chimeOsc.connect(chimeGain);
           chimeGain.connect(this.ctx.destination);
-          chimeOsc.start(now + 0.05 * i);
-          chimeOsc.stop(now + 1.6 + 0.1 * i);
+          chimeOsc.start(now + 0.04 * i);
+          chimeOsc.stop(now + 1.3 + 0.1 * i);
         });
       } catch (e) {}
     }
 
     toggleMute() {
       this.isMuted = !this.isMuted;
-      if (this.isMuted) {
-        this.stopDrone();
-      } else {
-        this.startDrone();
-      }
       return this.isMuted;
     }
   }
