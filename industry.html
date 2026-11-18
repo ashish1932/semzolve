@@ -7206,7 +7206,7 @@ window.closeMobileNav = function() {
           <td><span style="font-family:var(--mono); font-size:12px; color:#0369A1; background:#E0F2FE; padding:2px 8px; border-radius:4px;">${p.formula || '-'}</span></td>
           <td style="color:#55657F;">${p.role}</td>
           <td>
-            <a href="product.html?name=${encodeURIComponent(p.slug || p.name)}" class="btn-view-chem">
+            <a href="products/${encodeURIComponent(p.slug || p.name)}.html" class="btn-view-chem">
               <span>View Product Page</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>

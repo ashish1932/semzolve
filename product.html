@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var q = params.get('name') || params.get('slug') || params.get('product') || params.get('id');
+        if (q) {
+          var cleanSlug = q.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+          window.location.replace('products/' + cleanSlug + '.html');
+        } else {
+          window.location.replace('products.html');
+        }
+      } catch(e) {
+        // Fallback
+      }
+    })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="pageTitle">Chemical Product Specifications | Semzolve Technologies</title>

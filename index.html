@@ -6709,10 +6709,10 @@
             <!-- Quick Filter Chips -->
             <div class="elchemy-chips-row">
               <span class="elchemy-chips-label">Popular:</span>
-              <button type="button" class="hero-chip elchemy-chip" data-product="Methanol" onclick="window.openProductDetail('Methanol')">Methanol <span class="chip-cas">67-56-1</span></button>
-              <button type="button" class="hero-chip elchemy-chip" data-product="CAS 64-19-7" onclick="window.openProductDetail('Acetic Acid')">Acetic Acid <span class="chip-cas">64-19-7</span></button>
-              <button type="button" class="hero-chip elchemy-chip" data-product="PGMEA" onclick="window.openProductDetail('Methoxypropyl Acetate')">PGMEA</button>
-              <button type="button" class="hero-chip elchemy-chip" data-product="Triacetin" onclick="window.openProductDetail('Triacetin')">Triacetin</button>
+              <button type="button" class="hero-chip elchemy-chip" data-product="Methanol" onclick="window.location.href='products/methanol.html'">Methanol <span class="chip-cas">67-56-1</span></button>
+              <button type="button" class="hero-chip elchemy-chip" data-product="CAS 64-19-7" onclick="window.location.href='products/acetic-acid.html'">Acetic Acid <span class="chip-cas">64-19-7</span></button>
+              <button type="button" class="hero-chip elchemy-chip" data-product="PGMEA" onclick="window.location.href='products/methoxypropyl-acetate.html'">PGMEA</button>
+              <button type="button" class="hero-chip elchemy-chip" data-product="Triacetin" onclick="window.location.href='products/triacetin.html'">Triacetin</button>
             </div>
 
             <!-- Autocomplete Results Dropdown -->
@@ -8765,6 +8765,12 @@ Incoterm: ${currentIncoterm}`;
         };
       }
 
+      const dedicatedBtn = document.getElementById('dDedicatedPage');
+      if (dedicatedBtn) {
+        const cleanSlug = prod.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        dedicatedBtn.href = `products/${cleanSlug}.html`;
+      }
+
       drawer.classList.add('open');
       document.body.style.overflow = 'hidden';
     };
@@ -8967,8 +8973,13 @@ Incoterm: ${currentIncoterm}`;
         const card = document.createElement('div');
         card.className = 'product-card product-pop-in';
         card.style.animationDelay = `${idx * 45}ms`;
+        const cleanSlug = prod.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
         card.style.cursor = 'pointer';
-        card.onclick = () => window.openProductDetail(prod.name);
+        card.onclick = (e) => {
+          if (!e.target.closest('button') && !e.target.closest('a')) {
+            window.location.href = `products/${cleanSlug}.html`;
+          }
+        };
 
         const imgHtml = prod.image ? `
           <div class="prod-img-box">
@@ -8988,7 +8999,10 @@ Incoterm: ${currentIncoterm}`;
           </div>
           <p class="prod-desc">${esc(prod.desc || 'An intermediate for APIs and specialty chemical synthesis.')}</p>
           <div class="prod-bottom-row">
-            <button type="button" class="prod-spec-btn" onclick="event.stopPropagation(); window.openProductDetail('${esc(prod.name)}');">Specification &mdash;</button>
+            <a href="products/${cleanSlug}.html" class="prod-spec-btn" onclick="event.stopPropagation();" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:4px;">
+              <span>Full Page</span>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
             <button type="button" class="prod-quote-btn" onclick="event.stopPropagation(); window.enquireProduct('${esc(prod.name)}', '${esc(prod.cas || '')}', '${esc(prod.hsn || '')}'); this.innerText='Added ✓'; this.style.background='#047857'; setTimeout(() => { this.innerText='+ Quote'; this.style.background='#05B8FB'; }, 1800);">+ Quote</button>
           </div>
         `;
@@ -9591,20 +9605,15 @@ ${email} · ${country}`;
 
       heroResults.innerHTML = html;
 
-      // Click on result item opens product or populates form
+      // Click on result item opens dedicated product page
       heroResults.querySelectorAll('.hero-res-item').forEach(el => {
-        el.addEventListener('click', () => {
+        el.addEventListener('click', (e) => {
+          if (e.target.closest('button')) return;
           const idx = el.getAttribute('data-index');
           const p = P[idx];
           if (p) {
-            heroInput.value = p.name;
-            heroResults.hidden = true;
-            // Scroll to products catalogue and filter
-            if (typeof renderProducts === 'function') {
-              renderProducts('All', p.name);
-              const sec = document.getElementById('products');
-              if (sec) sec.scrollIntoView({ behavior: 'smooth' });
-            }
+            const slug = p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+            window.location.href = `products/${slug}.html`;
           }
         });
       });
@@ -9921,12 +9930,34 @@ ${email} · ${country}`;
       heroInput.addEventListener('focus', () => {
         if (heroInput.value.trim()) renderHeroResults(heroInput.value);
       });
+      heroInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const q = heroInput.value.trim();
+          if (q) {
+            const matches = searchCatalogue(q, 1);
+            if (matches.length > 0) {
+              const slug = matches[0].name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+              window.location.href = `products/${slug}.html`;
+            } else {
+              window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+            }
+          }
+        }
+      });
     }
 
     if (heroBtn) {
       heroBtn.addEventListener('click', () => {
         if (heroInput && heroInput.value.trim()) {
-          renderHeroResults(heroInput.value);
+          const q = heroInput.value.trim();
+          const matches = searchCatalogue(q, 1);
+          if (matches.length > 0) {
+            const slug = matches[0].name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+            window.location.href = `products/${slug}.html`;
+          } else {
+            window.location.href = `products.html?search=${encodeURIComponent(q)}`;
+          }
         }
       });
     }
@@ -10414,9 +10445,15 @@ ${email} · ${country}`;
         <div class="apps" id="dDocs"></div>
       </div>
     </div>
-    <div class="dfoot">
-      <button class="btn-drawer-add" type="button" id="dAdd">+ Add to enquiry</button>
-      <a class="btn-drawer-quote" href="#contact" id="dQuote">Request a quote</a>
+    <div class="dfoot" style="display:flex; flex-direction:column; gap:8px;">
+      <a class="btn-drawer-quote" id="dDedicatedPage" href="products/acetic-acid.html" style="background:#061649; color:#fff; border:1px solid #05B8FB; text-align:center; display:flex; align-items:center; justify-content:center; gap:8px;">
+        <span>View Full Chemical Page &amp; Structure</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <div style="display:flex; gap:8px;">
+        <button class="btn-drawer-add" type="button" id="dAdd" style="flex:1;">+ Add to enquiry</button>
+        <a class="btn-drawer-quote" href="#contact" id="dQuote" style="flex:1; text-align:center;">Request a quote</a>
+      </div>
     </div>
   </aside>
 </div>

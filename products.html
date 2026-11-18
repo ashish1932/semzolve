@@ -7387,7 +7387,7 @@ window.closeMobileNav = function() {
       const cardsGrid = document.getElementById('prodsCardsGrid');
       const cardsSlice = items.slice(0, 24);
       cardsGrid.innerHTML = cardsSlice.map(item => `
-        <div class="prod-grid-card">
+        <div class="prod-grid-card" onclick="if (!event.target.closest('button') && !event.target.closest('a')) window.location.href='products/${item.slug}.html';" style="cursor:pointer;">
           <div>
             <div class="prod-card-top-row">
               <span class="prod-card-cas">CAS ${item.cas || 'Specialty'}</span>
@@ -7411,7 +7411,7 @@ window.closeMobileNav = function() {
       // Render Master Table
       const masterTbody = document.getElementById('masterTableBody');
       masterTbody.innerHTML = items.map(item => `
-        <tr>
+        <tr onclick="if (!event.target.closest('button') && !event.target.closest('a')) window.location.href='products/${item.slug}.html';" style="cursor:pointer;">
           <td><strong style="color:#061649;">${item.name}</strong></td>
           <td><span style="font-family:var(--mono); font-size:12px; color:#55657F;">${item.cas || 'Proprietary'}</span></td>
           <td><span style="font-family:var(--mono); font-size:12px; color:#0369A1; font-weight:700;">${formatSubscripts(item.formula)}</span></td>
@@ -7427,10 +7427,16 @@ window.closeMobileNav = function() {
       `).join('');
     }
 
-    // URL Query Parameter Handling on Initial Load (?cat=... or ?category=...)
+    // URL Query Parameter Handling on Initial Load (?cat=... or ?search=...)
     window.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       const catParam = (params.get('category') || params.get('cat') || '').toLowerCase().trim();
+      const searchParam = (params.get('search') || params.get('q') || '').trim();
+      if (searchParam) {
+        const searchInput = document.getElementById('catalogueSearchInput');
+        if (searchInput) searchInput.value = searchParam;
+        searchQuery = searchParam;
+      }
       if (catParam) {
         const btn = Array.from(document.querySelectorAll('.category-btn')).find(b => b.getAttribute('data-cat') === catParam);
         if (btn) {

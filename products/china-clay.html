@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>China Clay (CAS 1332-58-7) Specifications &amp; Architecture | Semzolve Technologies</title>
-  <meta name="description" content="Technical specifications, chemical architecture, molecular formula, purity assay, and supply options for China Clay (CAS 1332-58-7) from Semzolve Technologies.">
+  <title>China Clay — CAS 1332-58-7 manufacturer | Semzolve Technologies</title>
+  <meta name="description" content="China Clay (CAS 1332-58-7) manufactured and supplied by Semzolve Technologies. Specifications, synthesis applications, batch COA, and export supply.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../css/semzolveLaunch.css">
@@ -6542,350 +6542,482 @@
 
 
 
-    /* Sub-page Specific Layout */
-    .prod-sub-hero {
-      background: linear-gradient(135deg, #030A24 0%, #061649 60%, #0B2263 100%);
-      color: #ffffff;
-      padding: 125px 0 50px;
-      position: relative;
-    }
-    .breadcrumb-nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: #94A3B8;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
-    .breadcrumb-nav a {
-      color: #94A3B8;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .breadcrumb-nav a:hover {
-      color: #05B8FB;
-    }
-    .breadcrumb-sep {
-      opacity: 0.5;
-    }
-    .breadcrumb-current {
-      color: #05B8FB;
-      font-weight: 600;
-    }
+:root {
+  --shell: 1200px;
+  --pad: clamp(1rem, 3vw, 2rem);
+  --bg-1: #ffffff;
+  --bg-2: #F8FAFD;
+  --bg-3: #EDF2F7;
+  --fg: #061649;
+  --fg-2: #334155;
+  --fg-3: #64748B;
+  --line: #D7E3ED;
+  --line-2: #CBD5E1;
+  --plate: #ffffff;
+  --radius: 8px;
+  --signal: #05B8FB;
+  --on-signal: #061649;
+  --signal-wash: #E0F2FE;
+  --signal-text: #0369A1;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --sans: "Schibsted Grotesk", system-ui, sans-serif;
+  --notch: 14px;
+}
 
-    .prod-layout-grid {
-      display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 36px;
-      margin-top: 10px;
-    }
-    .prod-structure-card {
-      background: #ffffff;
-      border: 1px solid #D7E3ED;
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(6, 22, 73, 0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .prod-image-box {
-      background: #F8FAFD;
-      border: 1px solid #E2E8F0;
-      border-radius: 14px;
-      padding: 18px;
-      text-align: center;
-      min-height: 190px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .prod-badges-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .prod-badge-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 12px;
-      background: #F4F8FB;
-      border-radius: 8px;
-      border: 1px solid #E2E8F0;
-      font-size: 13px;
-    }
-    .prod-badge-label {
-      color: #55657F;
-      font-weight: 500;
-    }
-    .prod-badge-val {
-      font-family: var(--mono);
-      font-weight: 700;
-      color: #061649;
-    }
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
 
-    .prod-cat-pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 4px 12px;
-      border-radius: 999px;
-      background: rgba(5, 184, 251, 0.15);
-      border: 1px solid rgba(5, 184, 251, 0.3);
-      color: #05B8FB;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 12px;
-    }
-    .prod-title {
-      font-size: clamp(28px, 3.5vw, 44px);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: #ffffff;
-      margin-bottom: 8px;
-    }
-    .prod-synonyms {
-      font-size: 14px;
-      color: #94A3B8;
-      margin-bottom: 18px;
-      line-height: 1.5;
-    }
-    .prod-overview-p {
-      font-size: 16px;
-      color: #CBD5E1;
-      line-height: 1.65;
-      margin-bottom: 24px;
-      max-width: 760px;
-    }
-    .prod-key-props-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 28px;
-    }
-    .prod-prop-chip {
-      padding: 6px 12px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(228, 246, 254, 0.12);
-      font-size: 12.5px;
-      color: #E4F6FE;
-    }
-    .prod-prop-chip strong {
-      color: #05B8FB;
-    }
+.section {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+}
+.section--tight {
+  padding-block: clamp(2rem, 4vw, 3rem);
+}
+.section--ruled {
+  border-top: 1px solid var(--line);
+}
 
-    .prod-card-panel {
-      background: #ffffff;
-      border: 1px solid #D7E3ED;
-      border-radius: 18px;
-      padding: 36px;
-      box-shadow: 0 4px 20px rgba(6, 22, 73, 0.04);
-      margin-bottom: 32px;
-    }
-    .prod-panel-title {
-      font-size: 20px;
-      font-weight: 800;
-      color: #061649;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+.product__head {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: start;
+}
+@media (min-width: 860px) {
+  .product__head {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  }
+}
 
-    /* Architecture Blueprint Box */
-    .arch-blueprint-box {
-      background: #030A24;
-      border: 1px solid rgba(5, 184, 251, 0.3);
-      border-radius: 14px;
-      padding: 24px;
-      color: #ffffff;
-      margin-bottom: 24px;
-    }
-    .arch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-    .arch-metric {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(228, 246, 254, 0.1);
-      border-radius: 8px;
-      padding: 12px 16px;
-    }
-    .arch-metric-lbl {
-      font-size: 11.5px;
-      color: #94A3B8;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .arch-metric-val {
-      font-family: var(--mono);
-      font-size: 15px;
-      font-weight: 700;
-      color: #05B8FB;
-      margin-top: 4px;
-    }
+.product__head h1 {
+  font-size: clamp(2.2rem, 1.6rem + 2.5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--fg);
+  margin-bottom: 0.85rem;
+}
 
-    /* Specifications Table */
-    .prod-spec-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-    .prod-spec-table th {
-      text-align: left;
-      font-size: 12px;
-      font-weight: 700;
-      color: #55657F;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding: 12px 16px;
-      border-bottom: 2px solid #D7E3ED;
-      background: #F8FAFD;
-    }
-    .prod-spec-table td {
-      padding: 14px 16px;
-      border-bottom: 1px solid #EDF2F7;
-      font-size: 14px;
-      color: #061649;
-    }
-    .prod-spec-table tr:hover td {
-      background: #F8FAFD;
-    }
-    .spec-param-name {
-      font-weight: 600;
-      color: #061649;
-    }
-    .spec-param-val {
-      font-family: var(--mono);
-      font-weight: 700;
-      color: #0369A1;
-    }
+.product__ids {
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 
-    /* Packaging Grid */
-    .prod-pack-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      margin-top: 18px;
-    }
-    .prod-pack-card {
-      background: #F8FAFD;
-      border: 1px solid #D7E3ED;
-      border-radius: 12px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .prod-pack-card h4 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #061649;
-    }
-    .prod-pack-card p {
-      font-size: 13.5px;
-      color: #55657F;
-      margin: 0;
-      line-height: 1.5;
-    }
+.cas {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-2);
+  font-family: var(--mono);
+  line-height: 1;
+}
+.cas__k {
+  padding: 0.45rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  background: var(--bg-3);
+  border-right: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+}
+.cas__v {
+  padding: 0.45rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--fg);
+  display: grid;
+  place-items: center;
+}
+.cas__copy {
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: none;
+  color: var(--fg-3);
+  cursor: pointer;
+  transition: color 0.18s, background 0.18s;
+}
+.cas__copy:hover {
+  color: var(--signal-text);
+  background: var(--signal-wash);
+}
+.cas__copy svg {
+  width: 14px;
+  height: 14px;
+}
 
-    /* RFQ Box */
-    .prod-rfq-wrap {
-      background: linear-gradient(135deg, #030A24 0%, #061649 100%);
-      border-radius: 18px;
-      padding: 40px;
-      color: #ffffff;
-      margin-bottom: 40px;
-    }
-    .prod-rfq-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 40px;
-    }
-    .rfq-left h3 {
-      font-size: 26px;
-      font-weight: 800;
-      margin-bottom: 14px;
-      color: #ffffff;
-    }
-    .rfq-left p {
-      font-size: 15px;
-      color: #CBD5E1;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-    .rfq-inputs-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .rfq-field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .rfq-field label {
-      font-size: 12px;
-      font-weight: 700;
-      color: #CBD5E1;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-    .rfq-field input, .rfq-field select, .rfq-field textarea {
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid rgba(228, 246, 254, 0.2);
-      background: rgba(255, 255, 255, 0.08);
-      color: #ffffff;
-      font-family: inherit;
-      font-size: 14px;
-      outline: none;
-    }
-    .rfq-field input:focus, .rfq-field select:focus, .rfq-field textarea:focus {
-      border-color: #05B8FB;
-      background: rgba(255, 255, 255, 0.12);
-    }
+.formula-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius);
+  background: var(--signal-wash);
+  border: 1px solid #BAE6FD;
+  color: var(--signal-text);
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
 
-    .related-prod-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    .related-prod-card {
-      background: #ffffff;
-      border: 1px solid #D7E3ED;
-      border-radius: 14px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.2s ease;
-    }
-    .related-prod-card:hover {
-      transform: translateY(-2px);
-      border-color: #05B8FB;
-      box-shadow: 0 6px 18px rgba(5, 184, 251, 0.1);
-    }
+.lede {
+  font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.22rem);
+  line-height: 1.6;
+  color: var(--fg-2);
+  margin-bottom: 1.75rem;
+}
 
-    @media (max-width: 900px) {
-      .prod-layout-grid {
-        grid-template-columns: 1fr;
-      }
-      .prod-rfq-grid {
-        grid-template-columns: 1fr;
-      }
-      .rfq-inputs-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+.center-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-2);
+  background: #ffffff;
+  color: var(--fg);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn:hover {
+  background: var(--bg-2);
+  border-color: var(--fg);
+}
+.btn--signal {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--on-signal);
+  font-weight: 700;
+}
+.btn--signal:hover {
+  background: #039fe0;
+  border-color: #039fe0;
+  color: #ffffff;
+}
+.btn--ghost {
+  background: transparent;
+  border-color: var(--line-2);
+}
+.btn--ghost:hover {
+  background: var(--bg-2);
+}
+.btn--lg {
+  padding: 0.9rem 1.6rem;
+  font-size: 0.98rem;
+}
+
+/* Titleblock Grid */
+.titleblock {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  background: var(--line);
+  gap: 1px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 1.75rem;
+}
+.titleblock > div {
+  background: #ffffff;
+  padding: 1rem 1.15rem;
+}
+.titleblock dt {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: 0.35rem;
+}
+.titleblock dd {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Product Structure Plate */
+.plate {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(6, 22, 73, 0.04);
+}
+.product__struct {
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+  background: #ffffff;
+}
+.product__struct img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Description List .dl */
+.section-title {
+  font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--fg);
+  margin-bottom: 1.5rem;
+}
+.mt-lg {
+  margin-top: 1.5rem;
+}
+
+.dl {
+  border-top: 1px solid var(--line);
+}
+.dl > div {
+  display: grid;
+  gap: 0.5rem 1.5rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+@media (min-width: 720px) {
+  .dl > div {
+    grid-template-columns: 14rem minmax(0, 1fr);
+  }
+}
+.dl dt {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--fg-3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.dl dd {
+  font-size: 0.96rem;
+  color: var(--fg);
+  line-height: 1.55;
+  margin: 0;
+}
+.dl dd a {
+  color: var(--signal-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* FAQ Accordion */
+.faq {
+  border-top: 1px solid var(--line);
+}
+.faq details {
+  border-bottom: 1px solid var(--line);
+}
+.faq summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.35rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: clamp(1.02rem, 0.98rem + 0.3vw, 1.18rem);
+  font-weight: 700;
+  color: var(--fg);
+  transition: color 0.15s;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary::after {
+  content: "+";
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--signal-text);
+}
+.faq details[open] summary::after {
+  content: "−";
+}
+.faq summary:hover {
+  color: var(--signal-text);
+}
+.faq__a {
+  padding-bottom: 1.4rem;
+  font-size: 0.98rem;
+  color: var(--fg-2);
+  line-height: 1.65;
+}
+
+/* Related Products Grid */
+.related {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+@media (min-width: 640px) {
+  .related {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .related {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.related a {
+  background: #ffffff;
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: var(--fg);
+  min-height: 110px;
+  transition: background 0.15s;
+}
+.related a:hover {
+  background: var(--bg-2);
+}
+.related .nm {
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+  color: var(--fg);
+}
+.related .cs {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--fg-3);
+}
+
+/* Somu-style CTA Box */
+.cta {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  background: #F8FAFD;
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+.cta__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .cta__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.cta h2 {
+  font-size: clamp(1.8rem, 1.2rem + 2vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+  margin-bottom: 0.75rem;
+}
+.cta p {
+  color: var(--fg-2);
+  font-size: 1.05rem;
+  max-width: 52ch;
+  line-height: 1.6;
+}
+.cta__acts {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Certbar */
+.certbar {
+  border-block: 1px solid var(--line);
+  background: #ffffff;
+  padding-block: clamp(2.25rem, 4.5vw, 3.5rem);
+}
+.certbar__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+@media (min-width: 900px) {
+  .certbar__inner {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+.certbar__lead {
+  max-width: 380px;
+}
+.certbar__lead .label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal-text);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.certbar__h {
+  font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+  font-weight: 800;
+  color: var(--fg);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+.certbar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  max-width: 620px;
+}
+.certbar__row {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--bg-3);
+  font-size: 0.9rem;
+}
+.certbar__name {
+  font-weight: 700;
+  color: var(--fg);
+}
+.certbar__what {
+  color: var(--fg-2);
+}
+
   </style>
 </head>
 <body>
@@ -6944,25 +7076,52 @@
     </div>
   </header>
 
-  <!-- Product Page Hero -->
-  <section class="prod-sub-hero">
-    <div class="wrap">
-      <div class="breadcrumb-nav">
-        <a href="../index.html">Home</a>
-        <span class="breadcrumb-sep">/</span>
-        <a href="../products.html">Chemical Products</a>
-        <span class="breadcrumb-sep">/</span>
-        <span style="color:#94A3B8;">Industrial Chemicals, Plasticizers & Acids</span>
-        <span class="breadcrumb-sep">/</span>
-        <span class="breadcrumb-current">China Clay</span>
+  <!-- 1. Hero Section (Somu Group Product Head Layout) -->
+  <section class="section section--tight" style="padding-top:100px;">
+    <div class="shell product__head">
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--fg-3); margin-bottom:14px;">
+          <a href="../index.html" style="color:inherit; text-decoration:none;">Home</a>
+          <span>/</span>
+          <a href="../products.html" style="color:inherit; text-decoration:none;">Products</a>
+          <span>/</span>
+          <a href="../products.html?cat=industrial" style="color:inherit; text-decoration:none;">Industrial Chemicals, Plasticizers & Acids</a>
+          <span>/</span>
+          <span style="color:var(--signal-text); font-weight:600;">China Clay</span>
+        </div>
+
+        <h1>China Clay</h1>
+
+        <div class="product__ids">
+          <span class="cas">
+            <span class="cas__k">CAS</span>
+            <span class="cas__v">1332-58-7</span>
+            <button aria-label="Copy CAS number 1332-58-7" class="cas__copy" data-copy="1332-58-7" type="button" onclick="copyCasNumber('1332-58-7', this)">
+              <svg aria-hidden="true" class="ico" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24"><rect height="11" rx="1.5" width="11" x="9" y="9"></rect><path d="M5 15V5a1.5 1.5 0 0 1 1.5-1.5H15"></path></svg>
+            </button>
+          </span>
+          <span class="formula-chip">Al<sub>2</sub>H<sub>4</sub>O<sub>9</sub>Si<sub>2</sub></span>
+          <span class="formula-chip" style="background:#F4F8FB; border-color:#D7E3ED; color:var(--fg-2);">MW 258.16 g/mol</span>
+        </div>
+
+        <p class="lede">China Clay is an industrial chemical intermediate manufactured and supplied to strict purity assay benchmarks.</p>
+
+        <div class="center-cta">
+          <a class="btn btn--signal btn--lg" href="../contact.html?product=China%20Clay">Request a quotation <svg aria-hidden="true" class="ico" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a>
+          <a class="btn btn--lg" href="../contact.html?product=China%20Clay&topic=Technical+data+sheet">Request the data sheet <svg aria-hidden="true" class="ico" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a>
+        </div>
+
+        <dl class="titleblock">
+          <div><dt>Used in</dt><dd>Active pharmaceutical synthesis, fine chemical synthesis, and industrial chemical processing.</dd></div>
+          <div><dt>Made / supplied by</dt><dd><a href="../about.html" style="color:inherit; text-decoration:underline;">Semzolve Technologies Pvt. Ltd.</a></dd></div>
+          <div><dt>Process</dt><dd>Industrial catalytic synthesis, vacuum distillation & assay standardization</dd></div>
+          <div><dt>Quality system</dt><dd>ISO 9001:2015 · ISO 14001:2015 · cGMP aligned</dd></div>
+        </dl>
       </div>
 
-      <!-- Hero 2 Columns -->
-      <div class="prod-layout-grid">
-        <!-- Left: Structure & Key Identifiers -->
-        <div class="prod-structure-card">
-          <div class="prod-image-box">
-            <svg viewBox="0 0 280 180" width="100%" height="160" xmlns="http://www.w3.org/2000/svg" style="background:#F4F8FB; border-radius:10px;">
+      <!-- Right Column Structure Plate -->
+      <div class="plate product__struct">
+        <svg viewBox="0 0 280 180" width="100%" height="160" xmlns="http://www.w3.org/2000/svg" style="background:#F4F8FB; border-radius:10px;">
       <defs>
         <pattern id="chemGrid" width="20" height="20" patternUnits="userSpaceOnUse">
           <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#E2E8F0" stroke-width="0.8"/>
@@ -6994,326 +7153,174 @@
         MW: 258.16 g/mol
       </text>
     </svg>
-          </div>
-          <div class="prod-badges-stack">
-            <div class="prod-badge-row">
-              <span class="prod-badge-label">CAS Registry No.</span>
-              <span class="prod-badge-val">1332-58-7</span>
-            </div>
-            <div class="prod-badge-row">
-              <span class="prod-badge-label">Molecular Formula</span>
-              <span class="prod-badge-val" style="color:#0369A1;">Al<sub>2</sub>H<sub>4</sub>O<sub>9</sub>Si<sub>2</sub></span>
-            </div>
-            <div class="prod-badge-row">
-              <span class="prod-badge-label">Molecular Weight</span>
-              <span class="prod-badge-val">258.16 g/mol</span>
-            </div>
-            <div class="prod-badge-row">
-              <span class="prod-badge-label">HSN Tariff Code</span>
-              <span class="prod-badge-val">2915 / 2902 / 3824</span>
-            </div>
-            <div class="prod-badge-row">
-              <span class="prod-badge-label">Standard Assay</span>
-              <span class="prod-badge-val" style="color:#05B8FB;">&ge; 99.0% - 99.8% (HPLC/GC)</span>
-            </div>
-          </div>
-          <a href="#quoteForm" class="btn-primary" style="width:100%; text-align:center;">Request Free 500g Evaluation Sample</a>
-        </div>
-
-        <!-- Right: Overview & Description -->
-        <div class="prod-hero-details">
-          <div class="prod-cat-pill">Industrial Chemicals, Plasticizers & Acids</div>
-          <h1 class="prod-title">China Clay</h1>
-          <p class="prod-synonyms">IUPAC / Synonyms: China Clay Technical Assay</p>
-          <p class="prod-overview-p">China Clay is an industrial chemical intermediate manufactured and supplied to strict purity assay benchmarks.</p>
-
-          <div class="prod-key-props-strip">
-            <div class="prod-prop-chip">Assay Purity: <strong>&ge; 99.5%</strong></div>
-            <div class="prod-prop-chip">Physical State: <strong>High Purity Matrix</strong></div>
-            <div class="prod-prop-chip">Moisture (KF): <strong>&lt; 0.15%</strong></div>
-            <div class="prod-prop-chip">Testing: <strong>GC-MS / HPLC</strong></div>
-            <div class="prod-prop-chip">Export Quality: <strong>UN Certified</strong></div>
-          </div>
-
-          <div style="display:flex; gap:14px; flex-wrap:wrap;">
-            <a href="#quoteForm" class="btn-primary" style="padding:13px 28px;">Request Immediate Price Quote</a>
-            <button type="button" class="btn-primary" onclick="alert('Downloading certified Technical Data Sheet (TDS) for China Clay...')" style="background:rgba(255,255,255,0.12); border-color:rgba(228,246,254,0.3); color:#ffffff;">Download TDS &amp; COA Benchmark</button>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Content Wrap -->
-  <div class="wrap" style="padding-top:40px;">
-    <!-- Chemical Architecture & Molecular Characteristics Panel -->
-    <div class="prod-card-panel">
-      <h2 class="prod-panel-title">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#05B8FB" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-        <span>Chemical Architecture &amp; Molecular Blueprint</span>
-      </h2>
-      <p style="font-size:14.5px; color:#55657F; line-height:1.6; margin-bottom:18px;">
-        Comprehensive structural attributes and physicochemical metrics verified across our analytical laboratories:
-      </p>
+  <!-- 2. Full Specification Section -->
+  <section aria-labelledby="spec-h" class="section section--tight section--ruled">
+    <div class="shell">
+      <h2 class="section-title" id="spec-h">Full specification</h2>
+      <dl class="dl mt-lg">
+        <div><dt>Product name</dt><dd>China Clay</dd></div>
+        <div><dt>CAS number</dt><dd>1332-58-7</dd></div>
+        <div><dt>Category</dt><dd><a href="../products.html?cat=industrial">Industrial Chemicals, Plasticizers & Acids</a></dd></div>
+        <div><dt>Molecular formula</dt><dd style="font-family:var(--mono); font-weight:700;">Al<sub>2</sub>H<sub>4</sub>O<sub>9</sub>Si<sub>2</sub></dd></div>
+        <div><dt>Molecular weight</dt><dd style="font-family:var(--mono);">258.16 g/mol</dd></div>
+        <div><dt>Assay / Purity</dt><dd style="font-weight:700; color:#0369A1;">&ge; 99.0% - 99.8% (HPLC / GC-FID)</dd></div>
+        <div><dt>Applications</dt><dd>Active pharmaceutical synthesis, fine chemical synthesis, and industrial chemical processing.</dd></div>
+        <div><dt>Manufactured / supplied by</dt><dd>Semzolve Technologies Pvt. Ltd., Ankleshwar &amp; Tarapur Reaction Hubs, India</dd></div>
+        <div><dt>Process</dt><dd>Industrial catalytic synthesis, vacuum distillation & assay standardization</dd></div>
+        <div><dt>Certification</dt><dd>ISO 9001:2015 · ISO 14001:2015 · ISO 45001:2018 · cGMP · REACH Compliant</dd></div>
+        <div><dt>Documentation</dt><dd>Technical data sheet, certificate of analysis, MSDS / SDS on enquiry</dd></div>
+        <div><dt>Packing</dt><dd>As agreed — UN-approved drums, carboys, bags or composite IBC to suit the destination</dd></div>
+        <div><dt>Supply</dt><dd>Domestic across India and export to USA, Europe, Japan, Australia, South Korea, UAE, Brazil, Germany</dd></div>
+      </dl>
+    </div>
+  </section>
 
-      <div class="arch-blueprint-box">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-bottom:1px solid rgba(228, 246, 254, 0.15); padding-bottom:12px;">
-          <span style="font-size:13px; font-weight:700; color:#05B8FB; text-transform:uppercase;">Molecular Structure Formula:</span>
-          <span style="font-family:var(--mono); font-size:16px; font-weight:800; color:#ffffff;">Al<sub>2</sub>H<sub>4</sub>O<sub>9</sub>Si<sub>2</sub></span>
-        </div>
-        <div class="arch-grid">
-          <div class="arch-metric">
-            <div class="arch-metric-lbl">CAS Registry No.</div>
-            <div class="arch-metric-val">1332-58-7</div>
+  <!-- 3. About supply of China Clay (FAQ Section) -->
+  <section aria-labelledby="faq-h" class="section section--tight section--ruled">
+    <div class="shell">
+      <h2 class="section-title" id="faq-h">About supply of China Clay</h2>
+      <div class="faq mt-lg">
+        <details open>
+          <summary>What is the CAS number of China Clay?</summary>
+          <div class="faq__a">
+            <p>The CAS Registry Number for China Clay is <strong>1332-58-7</strong>. It is manufactured and supplied by Semzolve Technologies from its Ankleshwar and Tarapur facilities in India.</p>
           </div>
-          <div class="arch-metric">
-            <div class="arch-metric-lbl">Molecular Weight</div>
-            <div class="arch-metric-val">258.16 g/mol</div>
+        </details>
+        <details>
+          <summary>What is China Clay used for?</summary>
+          <div class="faq__a">
+            <p>China Clay is supplied for <strong>Active pharmaceutical synthesis, fine chemical synthesis, and industrial chemical processing.</strong>. It sits in the Industrial Chemicals, Plasticizers & Acids range, produced by industrial catalytic synthesis, vacuum distillation & assay standardization.</p>
           </div>
-          <div class="arch-metric">
-            <div class="arch-metric-lbl">Assay Testing Method</div>
-            <div class="arch-metric-val">GC-FID / HPLC-UV</div>
+        </details>
+        <details>
+          <summary>What documentation do you supply with China Clay?</summary>
+          <div class="faq__a">
+            <p>Every consignment carries a certified Certificate of Analysis (COA) against agreed specifications. A Technical Data Sheet (TDS) and Safety Data Sheet (SDS/MSDS) are issued on enquiry, and export consignments include the Certificate of Origin, Packing List, and Bill of Lading. Semzolve Technologies operates an ISO 9001:2015 and ISO 14001:2015 certified quality system.</p>
           </div>
-          <div class="arch-metric">
-            <div class="arch-metric-lbl">Quality Grade</div>
-            <div class="arch-metric-val">High Purity Reagent</div>
+        </details>
+        <details>
+          <summary>What is the minimum order quantity for China Clay?</summary>
+          <div class="faq__a">
+            <p>Minimum order quantity depends on the grade and packaging. Semzolve Technologies supplies from evaluation samples and trial quantities through to multi-ton FCL container loads and bulk ISO tank containers. Tell us the quantity you need and we will confirm stock availability or campaign production schedule.</p>
           </div>
-        </div>
-      </div>
-
-      <div style="background:#F8FAFD; border:1px solid #D7E3ED; border-radius:12px; padding:20px;">
-        <h4 style="font-size:15px; font-weight:700; color:#061649; margin-bottom:8px;">Reaction Synthesis &amp; Preparation Route</h4>
-        <p style="font-size:13.5px; color:#55657F; line-height:1.6; margin:0;">
-          Synthesized and purified through controlled catalytic reaction cascades, fractional distillation, and specialized crystallization at our Ankleshwar / Tarapur facilities to maintain strict stereoselective tolerances and minimize residual organic impurities.
-        </p>
+        </details>
+        <details>
+          <summary>Can you export China Clay?</summary>
+          <div class="faq__a">
+            <p>Yes. Semzolve Technologies exports to 25+ countries worldwide including Germany, USA, Japan, South Korea, the UK, the UAE, Brazil, and Australia. We hold active export clearances from JNPT (Nhava Sheva) and Mundra ports with complete hazardous and non-hazardous chemical handling certifications.</p>
+          </div>
+        </details>
       </div>
     </div>
+  </section>
 
-    <!-- Technical Specifications Table -->
-    <div class="prod-card-panel">
-      <h2 class="prod-panel-title">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#05B8FB" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        <span>Guaranteed Certificate of Analysis (COA) Specifications</span>
-      </h2>
-      <div style="overflow-x:auto;">
-        <table class="prod-spec-table">
-          <thead>
-            <tr>
-              <th>Analytical Parameter</th>
-              <th>Guaranteed Benchmark</th>
-              <th>Typical Batch Result</th>
-              <th>Testing Method</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="spec-param-name">Chemical Assay / Purity</td>
-              <td class="spec-param-val">&ge; 99.00 % - 99.80 %</td>
-              <td>99.65 %</td>
-              <td>HPLC / GC-FID</td>
-            </tr>
-            <tr>
-              <td class="spec-param-name">Moisture Content (Karl Fischer)</td>
-              <td class="spec-param-val">&le; 0.15 %</td>
-              <td>0.04 %</td>
-              <td>ASTM E1064 / Karl Fischer</td>
-            </tr>
-            <tr>
-              <td class="spec-param-name">Appearance &amp; Physical State</td>
-              <td class="spec-param-val">Conforms to Standard</td>
-              <td>Clear / Crystalline</td>
-              <td>Visual Inspection</td>
-            </tr>
-            <tr>
-              <td class="spec-param-name">Residue on Ignition</td>
-              <td class="spec-param-val">&le; 0.05 %</td>
-              <td>0.01 %</td>
-              <td>Gravimetric</td>
-            </tr>
-            <tr>
-              <td class="spec-param-name">Heavy Metals (as Pb)</td>
-              <td class="spec-param-val">&le; 10 ppm</td>
-              <td>&lt; 5 ppm</td>
-              <td>ICP-MS / USP &lt;231&gt;</td>
-            </tr>
-          </tbody>
-        </table>
+  <!-- 4. Also in Industrial Chemicals, Plasticizers & Acids -->
+  <section aria-labelledby="rel-h" class="section section--tight section--ruled">
+    <div class="shell">
+      <h2 class="section-title" id="rel-h">Also in Industrial Chemicals, Plasticizers & Acids</h2>
+      <div class="related mt-lg">
+        <a href="alpha-olefin-sulphonate-aos.html">
+      <span class="nm">Alpha Olefin Sulphonate (AOS)</span>
+      <span class="cs">93686-14-7</span>
+    </a>
+<a href="alphox-100-200.html">
+      <span class="nm">Alphox 100 & 200</span>
+      <span class="cs">9016-45-9</span>
+    </a>
+<a href="aluminium-stearate-hi-grade.html">
+      <span class="nm">Aluminium Stearate (HI Grade)</span>
+      <span class="cs">637-12-7</span>
+    </a>
+<a href="ammonium-benzoate.html">
+      <span class="nm">Ammonium Benzoate</span>
+      <span class="cs">1863-63-4</span>
+    </a>
+<a href="ammonium-chloride.html">
+      <span class="nm">Ammonium Chloride</span>
+      <span class="cs">12125-02-9</span>
+    </a>
+<a href="ammonium-persulphate.html">
+      <span class="nm">Ammonium Persulphate</span>
+      <span class="cs">7727-54-0</span>
+    </a>
+<a href="amyl-acetate.html">
+      <span class="nm">Amyl Acetate</span>
+      <span class="cs">628-63-7</span>
+    </a>
+<a href="bentec-ed-11.html">
+      <span class="nm">Bentec ED-11</span>
+      <span class="cs">14808-60-7</span>
+    </a>
+      </div>
+      <div class="center-cta" style="margin-top:2.5rem; justify-content:center;">
+        <a class="btn" href="../products.html?cat=industrial">All products in Industrial Chemicals, Plasticizers & Acids <svg aria-hidden="true" class="ico" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a>
       </div>
     </div>
+  </section>
 
-    <!-- Synthesis Roles & Applications -->
-    <div class="prod-card-panel">
-      <h2 class="prod-panel-title">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#05B8FB" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-        <span>Industrial Applications &amp; Synthesis Roles</span>
-      </h2>
-      <p style="font-size:15px; color:#55657F; line-height:1.7; margin-bottom:18px;">
-        Active pharmaceutical synthesis, fine chemical synthesis, and industrial chemical processing.
-      </p>
-      <div style="background:#F4F8FB; border-radius:10px; padding:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-        <span style="font-size:13.5px; color:#061649; font-weight:600;">Looking for industry-specific formulations?</span>
-        <a href="../industries.html" class="btn-primary" style="padding:8px 16px; font-size:12.5px; text-decoration:none;">Explore All 9 Industry Solutions →</a>
+  <!-- 5. Somu-style CTA Box: Need China Clay? -->
+  <section class="cta">
+    <div class="shell cta__inner">
+      <div>
+        <h2>Need China Clay?</h2>
+        <p>Tell us the grade, the quantity and where it ships to. We reply with price, lead time and documentation.</p>
+      </div>
+      <div class="cta__acts">
+        <a class="btn btn--signal btn--lg" href="../contact.html?product=China%20Clay">Request a quotation <svg aria-hidden="true" class="ico" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a>
+        <a class="btn btn--lg btn--ghost" href="../contact.html">Talk to us <svg aria-hidden="true" class="ico" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 5.2 2 2 0 0 1 6 3Z"></path></svg></a>
       </div>
     </div>
+  </section>
 
-    <!-- Packaging & Supply Logistics -->
-    <div class="prod-card-panel">
-      <h2 class="prod-panel-title">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#05B8FB" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        <span>Export Packaging &amp; Supply Logistics</span>
-      </h2>
-      <div class="prod-pack-grid">
-        <div class="prod-pack-card">
-          <h4>200L UN-Rated Steel Drums</h4>
-          <p>Standard export packaging: 200 kg net weight per drum. Palletized and shrink-wrapped with tamper-evident caps.</p>
-        </div>
-        <div class="prod-pack-card">
-          <h4>1,000L Composite IBC Totes</h4>
-          <p>1,000 kg net weight per IBC. UN31HA1 certified for hazardous liquid transits. Easy unloading with camlock valves.</p>
-        </div>
-        <div class="prod-pack-card">
-          <h4>Bulk ISO Tank Containers</h4>
-          <p>20,000 to 25,000 kg per 20ft ISO tank. Dedicated stainless steel T11 vessels for high-volume consumers.</p>
-        </div>
-        <div class="prod-pack-card">
-          <h4>25 kg Bags / Carboys</h4>
-          <p>Multi-wall kraft paper bags with inner polyethylene liner or UN-rated composite carboys for solid and liquid intermediates.</p>
-        </div>
+  <!-- 6. Somu-style Certbar -->
+  <section aria-labelledby="certbar-h" class="certbar">
+    <div class="shell certbar__inner">
+      <div class="certbar__lead">
+        <span class="label">Certification</span>
+        <h2 class="certbar__h" id="certbar-h">Certified by independent third parties</h2>
+        <a class="btn btn--ghost" href="../about.html#certifications">Quality &amp; certification <svg aria-hidden="true" class="ico" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"></path></svg></a>
+      </div>
+      <div class="certbar__list">
+        <div class="certbar__row"><span class="certbar__name">ISO 9001:2015</span><span class="certbar__what">Quality management</span></div>
+        <div class="certbar__row"><span class="certbar__name">ISO 14001:2015</span><span class="certbar__what">Environmental management</span></div>
+        <div class="certbar__row"><span class="certbar__name">ISO 45001:2018</span><span class="certbar__what">Occupational health &amp; safety</span></div>
+        <div class="certbar__row"><span class="certbar__name">cGMP Compliant</span><span class="certbar__what">Current good manufacturing practice</span></div>
+        <div class="certbar__row"><span class="certbar__name">REACH Ready</span><span class="certbar__what">European Union chemical registration</span></div>
       </div>
     </div>
-
-    <!-- RFQ Box -->
-    <div class="prod-rfq-wrap" id="quoteForm">
-      <div class="prod-rfq-grid">
-        <div class="rfq-left">
-          <h3>Request Commercial Quote for China Clay</h3>
-          <p>
-            Submit your quantity requirements and delivery port to receive competitive pricing, batch availability, and certified COA from our exports desk.
-          </p>
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="display:flex; align-items:center; gap:10px; font-size:13.5px; color:#CBD5E1;">
-              <span style="color:#05B8FB; font-weight:800;">✓</span>
-              <span>Fast 4-hour response on business days</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:10px; font-size:13.5px; color:#CBD5E1;">
-              <span style="color:#05B8FB; font-weight:800;">✓</span>
-              <span>Flexible Incoterms: CIF, CFR, FOB (Nhava Sheva/Mundra), EXW</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:10px; font-size:13.5px; color:#CBD5E1;">
-              <span style="color:#05B8FB; font-weight:800;">✓</span>
-              <span>Complimentary 500g courier samples for approved commercial accounts</span>
-            </div>
-          </div>
-        </div>
-
-        <form id="productRfqForm" onsubmit="event.preventDefault(); alert('Thank you! Your quote request for ' + document.getElementById('rfqProdQty').value + ' of China Clay has been received. Our sales engineer will email you within 4 business hours.');">
-          <div class="rfq-inputs-grid">
-            <div class="rfq-field">
-              <label>Chemical Product</label>
-              <input type="text" value="China Clay" readonly style="background:rgba(255,255,255,0.18); font-weight:700; color:#05B8FB;">
-            </div>
-            <div class="rfq-field">
-              <label>CAS Number</label>
-              <input type="text" value="1332-58-7" readonly style="background:rgba(255,255,255,0.18); font-family:var(--mono);">
-            </div>
-            <div class="rfq-field">
-              <label>Required Quantity</label>
-              <input type="text" id="rfqProdQty" placeholder="e.g. 5 MT or 20 Drums" required>
-            </div>
-            <div class="rfq-field">
-              <label>Packaging Preference</label>
-              <select id="rfqProdPack">
-                <option value="drums">200L Steel Drums (200 kg)</option>
-                <option value="ibc">1,000L IBC Totes (1,000 kg)</option>
-                <option value="iso">Bulk ISO Tankers (20 MT+)</option>
-                <option value="sample">Free 500g Evaluation Sample</option>
-              </select>
-            </div>
-            <div class="rfq-field">
-              <label>Business Email</label>
-              <input type="email" placeholder="chemist@company.com" required>
-            </div>
-            <div class="rfq-field">
-              <label>Destination Port / City</label>
-              <input type="text" placeholder="e.g. Nhava Sheva, Rotterdam, Houston" required>
-            </div>
-          </div>
-          <button type="submit" class="btn-primary" style="width:100%; padding:14px; margin-top:18px; font-size:14px;">Submit Quote Request</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Related Products -->
-    <div class="prod-card-panel">
-      <h2 class="prod-panel-title">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#05B8FB" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-        <span>Related &amp; Complementary Chemicals</span>
-      </h2>
-      <div class="related-prod-grid">
-        <div class="related-prod-card">
-          <div>
-            <div style="font-family:var(--mono); font-size:11px; color:#55657F; margin-bottom:4px;">CAS 93686-14-7</div>
-            <h4 style="font-size:15px; font-weight:700; color:#061649; margin-bottom:6px;">Alpha Olefin Sulphonate (AOS)</h4>
-            <div style="font-family:var(--mono); font-size:11.5px; color:#0369A1; margin-bottom:8px;">Specialty Formulation</div>
-            <p style="font-size:12.5px; color:#55657F; line-height:1.5;">Alpha Olefin Sulphonate (AOS) is an industrial chemical intermediate manufacture...</p>
-          </div>
-          <a href="alpha-olefin-sulphonate-aos.html" class="btn-primary" style="margin-top:14px; font-size:12px; padding:8px 12px; text-align:center; text-decoration:none;">
-            View Dedicated Page →
-          </a>
-        </div>
-<div class="related-prod-card">
-          <div>
-            <div style="font-family:var(--mono); font-size:11px; color:#55657F; margin-bottom:4px;">CAS 9016-45-9</div>
-            <h4 style="font-size:15px; font-weight:700; color:#061649; margin-bottom:6px;">Alphox 100 & 200</h4>
-            <div style="font-family:var(--mono); font-size:11.5px; color:#0369A1; margin-bottom:8px;">Specialty Formulation</div>
-            <p style="font-size:12.5px; color:#55657F; line-height:1.5;">Alphox 100 & 200 is an industrial chemical intermediate manufactured and supplie...</p>
-          </div>
-          <a href="alphox-100-200.html" class="btn-primary" style="margin-top:14px; font-size:12px; padding:8px 12px; text-align:center; text-decoration:none;">
-            View Dedicated Page →
-          </a>
-        </div>
-<div class="related-prod-card">
-          <div>
-            <div style="font-family:var(--mono); font-size:11px; color:#55657F; margin-bottom:4px;">CAS 637-12-7</div>
-            <h4 style="font-size:15px; font-weight:700; color:#061649; margin-bottom:6px;">Aluminium Stearate (HI Grade)</h4>
-            <div style="font-family:var(--mono); font-size:11.5px; color:#0369A1; margin-bottom:8px;">Specialty Formulation</div>
-            <p style="font-size:12.5px; color:#55657F; line-height:1.5;">Aluminium Stearate (HI Grade) is an industrial chemical intermediate manufacture...</p>
-          </div>
-          <a href="aluminium-stearate-hi-grade.html" class="btn-primary" style="margin-top:14px; font-size:12px; padding:8px 12px; text-align:center; text-decoration:none;">
-            View Dedicated Page →
-          </a>
-        </div>
-<div class="related-prod-card">
-          <div>
-            <div style="font-family:var(--mono); font-size:11px; color:#55657F; margin-bottom:4px;">CAS 1863-63-4</div>
-            <h4 style="font-size:15px; font-weight:700; color:#061649; margin-bottom:6px;">Ammonium Benzoate</h4>
-            <div style="font-family:var(--mono); font-size:11.5px; color:#0369A1; margin-bottom:8px;">C<sub>7</sub>H<sub>9</sub>NO<sub>2</sub></div>
-            <p style="font-size:12.5px; color:#55657F; line-height:1.5;">Ammonium Benzoate is an industrial chemical intermediate manufactured and suppli...</p>
-          </div>
-          <a href="ammonium-benzoate.html" class="btn-primary" style="margin-top:14px; font-size:12px; padding:8px 12px; text-align:center; text-decoration:none;">
-            View Dedicated Page →
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 
   <!-- Common Footer -->
-  <footer class="site-footer" style="margin-top:60px;">
-    <div class="wrap">
-      <div class="footer-bottom" style="display:flex; justify-content:space-between; align-items:center; padding:24px 0; border-top:1px solid #D7E3ED; font-size:13px; color:#55657F;">
+  <footer class="site-footer" style="padding-top:40px; border-top:1px solid var(--line);">
+    <div class="shell">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:24px 0; font-size:13px; color:var(--fg-3); flex-wrap:wrap; gap:16px;">
         <div>&copy; 2026 Semzolve Technologies. All rights reserved.</div>
         <div style="display:flex; gap:20px;">
-          <a href="../index.html" style="color:#55657F; text-decoration:none;">Home</a>
-          <a href="../products.html" style="color:#55657F; text-decoration:none;">Products</a>
-          <a href="../industries.html" style="color:#55657F; text-decoration:none;">Industries</a>
-          <a href="../contact.html" style="color:#55657F; text-decoration:none;">Contact</a>
+          <a href="../index.html" style="color:inherit; text-decoration:none;">Home</a>
+          <a href="../products.html" style="color:inherit; text-decoration:none;">Products</a>
+          <a href="../industries.html" style="color:inherit; text-decoration:none;">Industries</a>
+          <a href="../services.html" style="color:inherit; text-decoration:none;">Services</a>
+          <a href="../about.html" style="color:inherit; text-decoration:none;">About</a>
+          <a href="../contact.html" style="color:inherit; text-decoration:none;">Contact</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="../js/gsap.min.js"></script>
-  <script src="../js/semzolveLaunch.js"></script>
+  <script>
+    function copyCasNumber(casText, btn) {
+      navigator.clipboard.writeText(casText).then(() => {
+        const origSvg = btn.innerHTML;
+        btn.innerHTML = '<span style="font-size:10px; font-weight:700; color:#0369A1;">✓</span>';
+        setTimeout(() => { btn.innerHTML = origSvg; }, 2000);
+      }).catch(() => {
+        prompt("Copy CAS Number:", casText);
+      });
+    }
+  </script>
 </body>
 </html>
