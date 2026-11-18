@@ -6550,49 +6550,15 @@
   overflow: hidden;
   border-bottom: 2px solid #05B8FB;
 }
-.page-hero-wrap {
+.page-hero-inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: clamp(20px, 3.5vw, 48px);
+  padding-right: clamp(20px, 3.5vw, 48px);
+  box-sizing: border-box;
   position: relative;
   z-index: 2;
-  width: 100%;
-}
-.page-hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 48px;
-  align-items: center;
-}
-@media (max-width: 1040px) {
-  .page-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-}
-.page-hero-content {
-  display: flex;
-  flex-direction: column;
-}
-.breadcrumb-nav {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: #94A3B8;
-  margin-bottom: 20px;
-}
-.breadcrumb-nav a {
-  color: #94A3B8;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.breadcrumb-nav a:hover {
-  color: #05B8FB;
-}
-.breadcrumb-sep {
-  opacity: 0.5;
-}
-.breadcrumb-current {
-  color: #05B8FB;
-  font-weight: 600;
 }
 .page-hero-badge {
   display: inline-flex;
@@ -6602,81 +6568,39 @@
   border: 1px solid rgba(5, 184, 251, 0.4);
   color: #05B8FB;
   font-family: var(--mono);
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 5px 14px;
+  padding: 6px 14px;
   border-radius: 999px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 18px;
-  align-self: flex-start;
+  margin-bottom: 20px;
 }
 .page-hero-title {
   font-family: var(--sans);
-  font-size: clamp(32px, 3.8vw, 48px);
+  font-size: clamp(34px, 4.2vw, 52px);
   font-weight: 850;
   line-height: 1.18;
   letter-spacing: -0.025em;
   color: #ffffff;
   margin: 0 0 18px;
-  max-width: none;
+  max-width: 950px;
 }
 .page-hero-desc {
-  font-size: clamp(15.5px, 1.6vw, 17.5px);
+  font-size: clamp(16px, 1.4vw, 18.5px);
   line-height: 1.65;
   color: #C4D3EC;
-  max-width: none;
-  margin: 0 0 24px;
-}
-.page-hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-}
-.hero-btn-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 22px;
-  border-radius: 999px;
-  font-size: 13.5px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-.hero-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 20px;
-  border-radius: 999px;
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #E2E8F0;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-.hero-btn-secondary:hover {
-  background: rgba(5, 184, 251, 0.15);
-  border-color: #05B8FB;
-  color: #05B8FB;
-  transform: translateY(-1px);
+  max-width: 860px;
+  margin: 0 0 28px;
 }
 .page-hero-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 48px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding-top: 22px;
-}
-@media (max-width: 640px) {
-  .page-hero-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  padding-top: 24px;
+  margin-top: 24px;
+  max-width: 860px;
 }
 .page-stat-item {
   display: flex;
@@ -6684,171 +6608,18 @@
 }
 .page-stat-num {
   font-family: var(--sans);
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 800;
   color: #05B8FB;
   line-height: 1.2;
 }
 .page-stat-label {
-  font-size: 12px;
+  font-size: 12.5px;
   color: #94A3B8;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-top: 3px;
-}
-
-/* Right Column Card: Glassmorphic Synthesis Architecture */
-.page-hero-card-col {
-  width: 100%;
-}
-.hero-infra-card {
-  background: rgba(6, 22, 73, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(5, 184, 251, 0.35);
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 30px rgba(5, 184, 251, 0.12);
-  position: relative;
-  overflow: hidden;
-}
-.hero-infra-card::before {
-  content: '';
-  position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(5, 184, 251, 0.3) 0%, transparent 70%);
-  pointer-events: none;
-}
-.infra-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.infra-card-status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: #05B8FB;
-}
-.infra-status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 10px #10B981;
-  animation: pulseGreen 2s infinite;
-}
-@keyframes pulseGreen {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
-}
-.infra-card-badge {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #94A3B8;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 11.5px;
-  font-weight: 600;
-}
-.infra-card-title {
-  font-size: 21px;
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0 0 6px 0;
-  letter-spacing: -0.01em;
-}
-.infra-card-sub {
-  font-size: 13px;
-  color: #94A3B8;
-  line-height: 1.5;
-  margin: 0 0 20px 0;
-}
-.infra-features-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-bottom: 22px;
-}
-@media (max-width: 480px) {
-  .infra-features-grid {
-    grid-template-columns: 1fr;
-  }
-}
-.infra-feat-item {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 12px 14px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  transition: all 0.2s ease;
-}
-.infra-feat-item:hover {
-  background: rgba(5, 184, 251, 0.08);
-  border-color: rgba(5, 184, 251, 0.3);
-}
-.infra-feat-icon {
-  font-size: 18px;
-  line-height: 1;
   margin-top: 2px;
 }
-.infra-feat-item strong {
-  display: block;
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 2px;
-}
-.infra-feat-item p {
-  font-size: 11.5px;
-  color: #94A3B8;
-  margin: 0;
-  line-height: 1.35;
-}
-.infra-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.infra-cert-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: #E2E8F0;
-  font-weight: 600;
-}
-.infra-card-link {
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #05B8FB;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.infra-card-link:hover {
-  color: #38BDF8;
-  text-decoration: underline;
-}
-
-/* Ensure .page-section aligns with .wrap 1400px */
 .page-section {
   padding: 80px clamp(20px, 3.5vw, 48px);
   max-width: 1400px;
@@ -7074,117 +6845,33 @@
 </header>
   
   <main>
-    <div class="page-hero">
-      <div class="wrap page-hero-wrap">
-        <div class="page-hero-grid">
-          
-          <!-- Left Column: Copy & Telemetry Stats -->
-          <div class="page-hero-content">
-            <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-              <a href="index.html">Home</a>
-              <span class="breadcrumb-sep">/</span>
-              <span class="breadcrumb-current">Technical Services &amp; Synthesis</span>
-            </nav>
-
-            <span class="page-hero-badge">✦ ONE CHEMICALS &bull; TECHNICAL SERVICES &amp; SYNTHESIS</span>
-            
-            <h1 class="page-hero-title">Custom Synthesis, Toll Distillation &amp; Global Export Supply</h1>
-            
-            <p class="page-hero-desc">
-              From multi-step organic synthesis to multi-ton toll distillation and full-container chemical export, One Chemicals and Semzolve provide institutional quality control, strict IP protection under NDA, and direct ocean freight logistics for multinational industrial buyers.
-            </p>
-
-            <div class="page-hero-actions">
-              <a href="#contact" class="btn-primary hero-btn-cta">
-                <span>Request Technical RFQ</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="#capabilities" class="hero-btn-secondary">
-                <span>Explore Capabilities</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 9-7 7-7-7"/></svg>
-              </a>
-            </div>
-
-            <div class="page-hero-stats">
-              <div class="page-stat-item">
-                <span class="page-stat-num">500L – 10kL</span>
-                <span class="page-stat-label">Reactor Capacities</span>
-              </div>
-              <div class="page-stat-item">
-                <span class="page-stat-num">-78°C</span>
-                <span class="page-stat-label">Cryogenic Capabilities</span>
-              </div>
-              <div class="page-stat-item">
-                <span class="page-stat-num">100%</span>
-                <span class="page-stat-label">IP Protection / NDA</span>
-              </div>
-              <div class="page-stat-item">
-                <span class="page-stat-num">FOB to DDP</span>
-                <span class="page-stat-label">Flexible Incoterms</span>
-              </div>
-            </div>
+        <div class="page-hero">
+      <div class="page-hero-inner">
+        <span class="page-hero-badge">✦ ONE CHEMICALS &bull; TECHNICAL SERVICES &amp; SYNTHESIS</span>
+        <h1 class="page-hero-title">Custom Synthesis, Toll Distillation &amp; Global Export Supply</h1>
+        <p class="page-hero-desc">
+          From multi-step organic synthesis to multi-ton toll distillation and full-container chemical export, One Chemicals and Semzolve provide institutional quality control, strict IP protection under NDA, and direct ocean freight logistics for multinational industrial buyers.
+        </p>
+        <div class="page-hero-stats">
+          <div class="page-stat-item">
+            <span class="page-stat-num">500L – 10kL</span>
+            <span class="page-stat-label">Reactor Capacities</span>
           </div>
-
-          <!-- Right Column: Interactive Synthesis Infrastructure Card -->
-          <div class="page-hero-card-col">
-            <div class="hero-infra-card">
-              <div class="infra-card-header">
-                <div class="infra-card-status">
-                  <span class="infra-status-dot"></span>
-                  <span class="infra-status-text">AUDITED SYNTHESIS HUBS ACTIVE</span>
-                </div>
-                <div class="infra-card-badge">Pan-India Network</div>
-              </div>
-
-              <h3 class="infra-card-title">Commercial Synthesis Architecture</h3>
-              <p class="infra-card-sub">Audited chemical reaction capabilities across our parent facilities and 25+ partner manufacturing hubs in India.</p>
-
-              <div class="infra-features-grid">
-                <div class="infra-feat-item">
-                  <div class="infra-feat-icon">🏭</div>
-                  <div>
-                    <strong>Dual Infrastructure</strong>
-                    <p>Parent units + 25 audited plants</p>
-                  </div>
-                </div>
-                <div class="infra-feat-item">
-                  <div class="infra-feat-icon">⚗️</div>
-                  <div>
-                    <strong>Multi-Step Organic</strong>
-                    <p>GLR, SS316 &amp; Hastelloy reactors</p>
-                  </div>
-                </div>
-                <div class="infra-feat-item">
-                  <div class="infra-feat-icon">❄️</div>
-                  <div>
-                    <strong>-78°C to +280°C</strong>
-                    <p>Cryogenic &amp; vacuum distillation</p>
-                  </div>
-                </div>
-                <div class="infra-feat-item">
-                  <div class="infra-feat-icon">🔒</div>
-                  <div>
-                    <strong>Bilateral IP Shield</strong>
-                    <p>NDA &amp; formulation secrecy</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="infra-card-footer">
-                <div class="infra-cert-pill">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#05B8FB" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>ISO 9001:2015 &amp; cGMP Standard Release</span>
-                </div>
-                <a href="#contact" class="infra-card-link">Submit Target Molecule &rarr;</a>
-              </div>
-            </div>
+          <div class="page-stat-item">
+            <span class="page-stat-num">-78°C</span>
+            <span class="page-stat-label">Cryogenic Capabilities</span>
           </div>
-
+          <div class="page-stat-item">
+            <span class="page-stat-num">100%</span>
+            <span class="page-stat-label">IP Protection / NDA</span>
+          </div>
+          <div class="page-stat-item">
+            <span class="page-stat-num">FOB to DDP</span>
+            <span class="page-stat-label">Flexible Incoterms</span>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="page-section" id="capabilities">
+    </div><div class="page-section">
       <div class="section-headline">
         <span class="badge">OUR CORE CAPABILITIES</span>
         <h2>End-to-End Chemical Solutions</h2>
