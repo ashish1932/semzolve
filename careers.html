@@ -6762,6 +6762,217 @@
       }
     }
 
+
+/* Careers 2-Column Hero Grid & Balanced Layout */
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+@media (max-width: 980px) {
+  .page-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+.page-hero-content {
+  display: flex;
+  flex-direction: column;
+}
+.page-hero-title {
+  max-width: 100% !important;
+}
+.page-hero-desc {
+  max-width: 100% !important;
+  margin-bottom: 24px !important;
+}
+.page-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+.hero-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.22s ease;
+}
+.hero-cta-primary {
+  background: #05B8FB;
+  color: #030A24;
+}
+.hero-cta-primary:hover {
+  background: #38BDF8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(5, 184, 251, 0.35);
+}
+.hero-cta-outline {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+.hero-cta-outline:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* Right Card */
+.page-hero-card {
+  background: rgba(6, 22, 73, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(5, 184, 251, 0.3);
+  border-radius: 20px;
+  padding: 28px 30px;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.page-hero-card:hover {
+  border-color: #05B8FB;
+  box-shadow: 0 24px 60px -10px rgba(5, 184, 251, 0.25), 0 0 0 1px rgba(5, 184, 251, 0.4) inset;
+}
+.hero-card-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #34D6A3;
+  background: rgba(52, 214, 163, 0.12);
+  border: 1px solid rgba(52, 214, 163, 0.3);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.hero-card-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+.hero-card-sub {
+  font-size: 13.5px;
+  color: #94A3B8;
+  margin: 0 0 18px;
+  line-height: 1.45;
+}
+.hero-card-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+.hero-role-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  text-decoration: none;
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+}
+.hero-role-pill:hover {
+  background: rgba(5, 184, 251, 0.15);
+  border-color: #05B8FB;
+  transform: translateX(4px);
+}
+.role-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.role-badge.eng { background: rgba(5, 184, 251, 0.2); color: #7DD3FC; }
+.role-badge.mkt { background: rgba(245, 158, 11, 0.2); color: #FCD34D; }
+.role-badge.fin { background: rgba(52, 214, 163, 0.2); color: #6EE7B7; }
+.role-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #F8FAFC;
+  flex: 1;
+}
+.role-arrow {
+  color: #05B8FB;
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+.hero-role-pill:hover .role-arrow {
+  transform: translateX(3px);
+}
+.hero-card-perks {
+  display: grid;
+  gap: 7px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 16px;
+}
+.hero-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #C4D3EC;
+}
+.perk-check {
+  color: #34D6A3;
+  font-weight: 800;
+  font-size: 13px;
+}
+.hero-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #94A3B8;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hero-card-footer a {
+  color: #05B8FB;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* 4-Stat Bar: perfectly balanced across 4 equal columns */
+.page-hero-stats {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 24px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
+  padding-top: 28px !important;
+  margin-top: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+@media (max-width: 768px) {
+  .page-hero-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+@media (max-width: 440px) {
+  .page-hero-stats {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 </style>
 
 <style>
@@ -7217,11 +7428,69 @@
   <main>
     <div class="page-hero">
       <div class="page-hero-inner">
-        <span class="page-hero-badge">✦ JOIN OUR TEAM • CAREERS AT SEMZOLVE</span>
-        <h1 class="page-hero-title">Build the Future of Specialty Chemical Commerce</h1>
-        <p class="page-hero-desc">
-          Semzolve Technologies bridges India’s high-precision chemical synthesis manufacturing with global enterprise buyers across 15+ countries. We are searching for passionate chemical engineers, international trade professionals, and regulatory scientists eager to shape next-generation cross-border chemical trade.
-        </p>
+        <div class="page-hero-grid">
+          <!-- Left Column: Content & CTAs -->
+          <div class="page-hero-content">
+            <span class="page-hero-badge">✦ JOIN OUR TEAM • CAREERS AT SEMZOLVE</span>
+            <h1 class="page-hero-title">Build the Future of Specialty Chemical Commerce</h1>
+            <p class="page-hero-desc">
+              Semzolve Technologies bridges India’s high-precision chemical synthesis manufacturing with global enterprise buyers across 15+ countries. We are searching for passionate chemical engineers, international trade professionals, and regulatory scientists eager to shape next-generation cross-border chemical trade.
+            </p>
+            <div class="page-hero-actions">
+              <a href="#open-roles" class="hero-cta-btn hero-cta-primary">View Open Roles ↓</a>
+              <a href="mailto:careers@semzolve.com?subject=Application%20Inquiry" class="hero-cta-btn hero-cta-outline">Email Recruitment Team &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Hiring Hub Card -->
+          <div class="page-hero-card">
+            <div class="hero-card-header">
+              <div class="hero-card-tag">✦ IMMEDIATE OPENINGS</div>
+              <h3 class="hero-card-title">Join a Fast-Growing Chemicals Leader</h3>
+              <p class="hero-card-sub">Freshers &amp; candidates with up to 1 year experience welcome.</p>
+            </div>
+            
+            <div class="hero-card-roles">
+              <a href="#open-roles" class="hero-role-pill">
+                <span class="role-badge eng">Engineering</span>
+                <span class="role-name">Chemical Engineer</span>
+                <span class="role-arrow">&rarr;</span>
+              </a>
+              <a href="#open-roles" class="hero-role-pill">
+                <span class="role-badge mkt">Marketing</span>
+                <span class="role-name">Digital Marketing Executive</span>
+                <span class="role-arrow">&rarr;</span>
+              </a>
+              <a href="#open-roles" class="hero-role-pill">
+                <span class="role-badge fin">Finance</span>
+                <span class="role-name">Accountant &amp; Trade Finance</span>
+                <span class="role-arrow">&rarr;</span>
+              </a>
+            </div>
+
+            <div class="hero-card-perks">
+              <div class="hero-perk-item">
+                <span class="perk-check">✓</span>
+                <span>Fast-track promotion &amp; performance incentives</span>
+              </div>
+              <div class="hero-perk-item">
+                <span class="perk-check">✓</span>
+                <span>Direct exposure to global export corridors</span>
+              </div>
+              <div class="hero-perk-item">
+                <span class="perk-check">✓</span>
+                <span>Hybrid working model in Mumbai Hub</span>
+              </div>
+            </div>
+
+            <div class="hero-card-footer">
+              <span>Have questions?</span>
+              <a href="mailto:careers@semzolve.com">careers@semzolve.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Stats Bar in balanced 4-column grid spanning full width -->
         <div class="page-hero-stats">
           <div class="page-stat-item">
             <span class="page-stat-num">15+</span>
