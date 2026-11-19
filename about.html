@@ -6821,6 +6821,106 @@
   white-space: nowrap !important;
 }
 
+
+/* ==================================================
+   UNIVERSAL CENTERED PAGE HEROES (Equal Empty Space on Both Sides)
+   ================================================== */
+.page-hero-inner,
+.prods-hero .wrap,
+.ind-hero .wrap,
+.cat-hero-section .wrap,
+.ind-single-hero .wrap {
+  width: 100% !important;
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  padding-left: clamp(20px, 4vw, 48px) !important;
+  padding-right: clamp(20px, 4vw, 48px) !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.page-hero-badge,
+.prods-hero-badge,
+.ind-hero-badge,
+.cat-badge-wrap,
+.ind-single-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.page-hero-title,
+.prods-hero-title,
+.ind-hero-title,
+.cat-hero-title,
+.ind-single-title {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 980px !important;
+}
+
+.page-hero-desc,
+.prods-hero-desc,
+.ind-hero-desc,
+.cat-hero-desc,
+.ind-single-desc {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 860px !important;
+}
+
+.prods-hero .breadcrumb-nav,
+.ind-hero .breadcrumb-nav,
+.cat-hero-section .breadcrumb-nav,
+.ind-single-hero .breadcrumb-nav {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.hero-search-wrap {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 680px !important;
+  width: 100% !important;
+}
+
+.page-hero-stats {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: clamp(28px, 5vw, 68px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
+  padding-top: 26px !important;
+  margin: 0 auto !important;
+  max-width: 900px !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+@media (max-width: 820px) {
+  .page-hero-stats {
+    flex-wrap: wrap !important;
+    gap: 20px 36px !important;
+  }
+}
+.page-stat-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  flex: 0 0 auto !important;
+}
+
 </style>
 
 <style>
