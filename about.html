@@ -6620,7 +6620,112 @@
       bottom: clamp(76px, calc(2.5vw + 58px), 94px);
     }
 
-  </style>
+  
+/* Founder Cards Matching Reference Design */
+.fnd {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 860px) {
+  .fnd {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+}
+.fcard {
+  background: #ffffff;
+  border: 1px solid #D7E3ED;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(6, 22, 73, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.fcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(6, 22, 73, 0.09);
+  border-color: #05B8FB;
+}
+.fcard .fphoto {
+  aspect-ratio: 4 / 3;
+  background: #0B1530;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.fcard .fphoto img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.fcard:hover .fphoto img {
+  transform: scale(1.03);
+}
+.fcard .fphoto.v {
+  background: #0B0D12;
+}
+.fcard .fb {
+  padding: 28px 30px 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+.fcard h3 {
+  font-size: 24px;
+  font-weight: 750;
+  color: #061649;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+.fcard .role {
+  color: #0284C7;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 4px 0 14px;
+  letter-spacing: 0.01em;
+}
+.fcard .focus {
+  margin: 0 0 22px;
+  color: #55657F;
+  font-size: 15px;
+  line-height: 1.55;
+  flex: 1 1 auto;
+}
+.fcard .links {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+.fcard .links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #061649;
+  border: 1.5px solid #D7E3ED;
+  border-radius: 999px;
+  padding: 7px 18px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+.fcard .links a:hover {
+  border-color: #061649;
+  background: #061649;
+  color: #ffffff;
+}
+
+</style>
 
 <style>
 .page-hero {
@@ -7000,40 +7105,29 @@
     <div class="page-section page-section-alt">
       <div class="section-headline">
         <span class="badge">LEADERSHIP</span>
-        <h2>Executive Leadership</h2>
-        <p>Founded and managed by chemical technologists and supply chain leaders with deep sector expertise.</p>
+        <h2>Founders</h2>
+        <p>Semzolve was founded to give chemical buyers one dependable partner from sample to shipment.</p>
       </div>
 
-      <div class="card-grid-2">
-        <div class="feature-card" style="padding: 40px;">
-          <div style="display:flex; align-items:center; gap:20px; margin-bottom:20px;">
-            <div style="width:68px; height:68px; border-radius:50%; background:linear-gradient(135deg, #061649 0%, #05B8FB 100%); display:flex; align-items:center; justify-content:center; color:#fff; font-size:24px; font-weight:800;">MP</div>
-            <div>
-              <h3 style="margin:0 0 4px; font-size:22px;">Mani Maheshwari Perumal</h3>
-              <span style="color:#0369A1; font-weight:600; font-size:14px;">Co-Founder &amp; Managing Director</span>
-            </div>
+      <div class="fnd">
+        <article class="fcard">
+          <div class="fphoto has-img"><img src="images/mani-maheshwari-perumal.jpg" alt="Mani Maheshwari Perumal, Co-Founder of Semzolve" width="1440" height="1080" loading="lazy"></div>
+          <div class="fb">
+            <h3>Mani Maheshwari Perumal</h3>
+            <div class="role">Co-Founder</div>
+            <p class="focus">Disciplined execution that connects strategy, technology and finance.</p>
+            <div class="links"><a href="contact.html">Get in touch</a></div>
           </div>
-          <p>Leads commercial trade execution, strategic manufacturer partnerships, and international customer contracts across Semzolve and Semzolve. Oversees bilateral supply agreements with multinational coating, agrochem, and pharma synthesis buyers worldwide.</p>
-          <ul>
-            <li>Specializes in glycol ethers (PGMEA), specialty solvents, and API building blocks</li>
-            <li>Architect of the One Radar digital trade and customs transaction suite</li>
-          </ul>
-        </div>
-
-        <div class="feature-card" style="padding: 40px;">
-          <div style="display:flex; align-items:center; gap:20px; margin-bottom:20px;">
-            <div style="width:68px; height:68px; border-radius:50%; background:linear-gradient(135deg, #0B2263 0%, #05B8FB 100%); display:flex; align-items:center; justify-content:center; color:#fff; font-size:24px; font-weight:800;">VG</div>
-            <div>
-              <h3 style="margin:0 0 4px; font-size:22px;">Naga Vishal Gade</h3>
-              <span style="color:#0369A1; font-weight:600; font-size:14px;">Co-Founder &amp; Operations Director</span>
-            </div>
+        </article>
+        <article class="fcard">
+          <div class="fphoto has-img v"><img src="images/naga-vishal-gade.jpg" alt="Naga Vishal Gade, Co-Founder of Semzolve" width="1440" height="1080" loading="lazy"></div>
+          <div class="fb">
+            <h3>Naga Vishal Gade</h3>
+            <div class="role">Co-Founder</div>
+            <p class="focus">Deep technical expertise, from designing synthesis routes to scaling them up.</p>
+            <div class="links"><a href="contact.html">Get in touch</a></div>
           </div>
-          <p>Leads operations, plant coordination, quality control, and regulatory compliance across manufacturing facilities and audited partner sites.</p>
-          <ul>
-            <li>Technical route assessment and process scale-up</li>
-            <li>Manages ISO compliance and international export documentation</li>
-          </ul>
-        </div>
+        </article>
       </div>
     </div>
   </main>
