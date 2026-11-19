@@ -8694,6 +8694,9 @@
           <div class="chips" id="dChips"></div>
         </div>
         <div class="dbody">
+          <div id="dStructWrap" style="margin-bottom:18px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px; text-align:center; display:none;">
+            <img id="dStructImg" src="" alt="Chemical structure" style="max-height:160px; max-width:100%; object-fit:contain; margin:0 auto; display:block;">
+          </div>
           <div>
             <h4>Overview &amp; Functional Purpose</h4>
             <p id="dDesc" style="font-size:14px; color:#55657F; line-height:1.6;"></p>
@@ -8991,6 +8994,22 @@
           item.desc || `${item.name} is synthesized and supplied to audited quality standards.`;
         const appsEl = document.getElementById("dApps");
         if (appsEl) appsEl.textContent = item.app || "Industrial synthesis, manufacturing, and specialty chemical applications.";
+        
+        const structWrap = document.getElementById("dStructWrap");
+        const structImg = document.getElementById("dStructImg");
+        if (structWrap && structImg) {
+          const testImg = new Image();
+          testImg.onload = () => {
+            structImg.src = `images/structures/${item.slug}.png`;
+            structImg.alt = `Skeletal structure of ${item.name}`;
+            structWrap.style.display = "block";
+          };
+          testImg.onerror = () => {
+            structWrap.style.display = "none";
+          };
+          testImg.src = `images/structures/${item.slug}.png`;
+        }
+
         document.getElementById("drawerPageLink").href =
           `products/${item.slug}.html`;
         drawer.classList.add("open");
