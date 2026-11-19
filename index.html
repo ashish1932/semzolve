@@ -2183,6 +2183,79 @@
       position: relative;
       z-index: 2;
     }
+
+    /* Directional Hotspots for Accurate Geography */
+    .map-hotspot.hotspot-dir-top {
+      transform: translate(-50%, -95%);
+    }
+    .map-hotspot.hotspot-dir-top:hover, .map-hotspot.hotspot-dir-top.active {
+      transform: translate(-50%, -100%) scale(1.06);
+    }
+
+    .map-hotspot.hotspot-dir-topleft {
+      transform: translate(-88%, -95%);
+    }
+    .map-hotspot.hotspot-dir-topleft .map-badge-arrow {
+      left: 85%;
+    }
+    .map-hotspot.hotspot-dir-topleft:hover, .map-hotspot.hotspot-dir-topleft.active {
+      transform: translate(-88%, -100%) scale(1.06);
+    }
+
+    .map-hotspot.hotspot-dir-bottom {
+      flex-direction: column;
+      transform: translate(-50%, -6px);
+    }
+    .map-hotspot.hotspot-dir-bottom .map-badge {
+      margin-top: 8px;
+    }
+    .map-hotspot.hotspot-dir-bottom .map-badge-arrow {
+      top: -7px;
+      bottom: auto;
+      border-top: none;
+      border-bottom: 7px solid #ffffff;
+    }
+    .map-hotspot.hotspot-dir-bottom.active .map-badge-arrow {
+      border-bottom-color: var(--brand-red);
+      border-top-color: transparent;
+    }
+    .map-hotspot.hotspot-dir-bottom:hover, .map-hotspot.hotspot-dir-bottom.active {
+      transform: translate(-50%, -4px) scale(1.06);
+    }
+
+    .map-hotspot.hotspot-dir-right {
+      flex-direction: row;
+      align-items: center;
+      transform: translate(-6px, -50%);
+    }
+    .map-hotspot.hotspot-dir-right .map-badge {
+      margin-left: 10px;
+    }
+    .map-hotspot.hotspot-dir-right .map-badge-arrow {
+      left: -7px;
+      top: 50%;
+      bottom: auto;
+      transform: translateY(-50%);
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      border-right: 7px solid #ffffff;
+      border-left: none;
+    }
+    .map-hotspot.hotspot-dir-right.active .map-badge-arrow {
+      border-right-color: var(--brand-red);
+      border-top-color: transparent;
+    }
+    .map-hotspot.hotspot-dir-right:hover, .map-hotspot.hotspot-dir-right.active {
+      transform: translate(-4px, -50%) scale(1.06);
+    }
+
+    /* Interactive Map Land Paths */
+    .map-land {
+      cursor: pointer;
+    }
+    .map-land:hover {
+      fill: #c5d0e0;
+    }
     .map-pin-pulse {
       position: absolute;
       width: 32px;
@@ -7278,9 +7351,9 @@
   </g>
 </svg>
       </div>
-                  <div class="map-hotspots-overlay" id="mapHotspotsOverlay">
+                        <div class="map-hotspots-overlay" id="mapHotspotsOverlay">
         <!-- India (Active Default) -->
-        <div class="map-hotspot active" data-region="india" style="left: 67%; top: 46%;">
+        <div class="map-hotspot active hotspot-dir-top" data-region="india" style="left: 72.5%; top: 41.9%;">
           <div class="map-badge">
             <div class="map-badge-val">35%</div>
             <div class="map-badge-label">India</div>
@@ -7293,7 +7366,7 @@
         </div>
 
         <!-- USA -->
-        <div class="map-hotspot" data-region="usa" style="left: 22%; top: 32%;">
+        <div class="map-hotspot hotspot-dir-top" data-region="usa" style="left: 22.5%; top: 34.0%;">
           <div class="map-badge">
             <div class="map-badge-val">22%</div>
             <div class="map-badge-label">USA</div>
@@ -7306,7 +7379,7 @@
         </div>
 
         <!-- Dubai -->
-        <div class="map-hotspot" data-region="dubai" style="left: 54%; top: 36%;">
+        <div class="map-hotspot hotspot-dir-topleft" data-region="dubai" style="left: 65.8%; top: 36.9%;">
           <div class="map-badge">
             <div class="map-badge-val">16%</div>
             <div class="map-badge-label">Dubai</div>
@@ -7319,7 +7392,7 @@
         </div>
 
         <!-- China -->
-        <div class="map-hotspot" data-region="china" style="left: 81%; top: 20%;">
+        <div class="map-hotspot hotspot-dir-top" data-region="china" style="left: 81.5%; top: 31.9%;">
           <div class="map-badge">
             <div class="map-badge-val">12%</div>
             <div class="map-badge-label">China</div>
@@ -7331,29 +7404,29 @@
           </div>
         </div>
 
-        <!-- Vietnam -->
-        <div class="map-hotspot" data-region="vietnam" style="left: 88%; top: 42%;">
+        <!-- Vietnam (Offset Right/East) -->
+        <div class="map-hotspot hotspot-dir-right" data-region="vietnam" style="left: 81.6%; top: 46.2%;">
+          <div class="map-pin">
+            <div class="map-pin-pulse"></div>
+            <div class="map-pin-dot"></div>
+          </div>
           <div class="map-badge">
             <div class="map-badge-val">8%</div>
             <div class="map-badge-label">Vietnam</div>
             <div class="map-badge-arrow"></div>
           </div>
+        </div>
+
+        <!-- Thailand (Offset Bottom/South) -->
+        <div class="map-hotspot hotspot-dir-bottom" data-region="thailand" style="left: 79.0%; top: 48.1%;">
           <div class="map-pin">
             <div class="map-pin-pulse"></div>
             <div class="map-pin-dot"></div>
           </div>
-        </div>
-
-        <!-- Thailand -->
-        <div class="map-hotspot" data-region="thailand" style="left: 77%; top: 60%;">
           <div class="map-badge">
             <div class="map-badge-val">7%</div>
             <div class="map-badge-label">Thailand</div>
             <div class="map-badge-arrow"></div>
-          </div>
-          <div class="map-pin">
-            <div class="map-pin-pulse"></div>
-            <div class="map-pin-dot"></div>
           </div>
         </div>
       </div>
@@ -8884,7 +8957,7 @@ Incoterm: ${currentIncoterm}`;
         leadTime: '24–28 days direct ocean transit',
         incoterm: 'CIF / CFR / DDP',
         portCode: 'Houston',
-        routePath: 'M 715 213 Q 472.5 57 230 177',
+        routePath: 'M 725 218 Q 475 60 225 177',
         speed: 3.2
       },
       'dubai': {
@@ -8895,7 +8968,7 @@ Incoterm: ${currentIncoterm}`;
         leadTime: '4–7 days express sea transit',
         incoterm: 'CIF / CFR / FOB',
         portCode: 'Jebel Ali',
-        routePath: 'M 715 213 Q 672.5 163 630 198',
+        routePath: 'M 725 218 Q 690 195 658 192',
         speed: 1.8
       },
       'china': {
@@ -8906,7 +8979,7 @@ Incoterm: ${currentIncoterm}`;
         leadTime: '10–14 days direct route',
         incoterm: 'CIF / CFR / FOB',
         portCode: 'Shanghai',
-        routePath: 'M 715 213 Q 762.5 103 810 148',
+        routePath: 'M 725 218 Q 770 160 815 166',
         speed: 2.2
       },
       'vietnam': {
@@ -8917,7 +8990,7 @@ Incoterm: ${currentIncoterm}`;
         leadTime: '8–12 days direct ocean route',
         incoterm: 'CIF / CFR',
         portCode: 'Ho Chi Minh',
-        routePath: 'M 715 213 Q 760.0 183 835 242',
+        routePath: 'M 725 218 Q 770 215 816 240',
         speed: 2.0
       },
       'thailand': {
@@ -8928,7 +9001,7 @@ Incoterm: ${currentIncoterm}`;
         leadTime: '7–11 days direct route',
         incoterm: 'CIF / CFR',
         portCode: 'Laem Chabang',
-        routePath: 'M 715 213 Q 730.0 188 765 232',
+        routePath: 'M 725 218 Q 755 240 790 250',
         speed: 1.9
       }
     };
@@ -8948,6 +9021,22 @@ Incoterm: ${currentIncoterm}`;
     };
 
     function initGlobalMap() {
+      const regionToPathId = {
+        'india': 'map-region-india',
+        'usa': 'map-region-north-america',
+        'dubai': 'map-region-middle-east',
+        'china': 'map-region-rest-asia',
+        'vietnam': 'map-region-rest-asia',
+        'thailand': 'map-region-rest-asia'
+      };
+
+      const pathToRegion = {
+        'map-region-india': 'india',
+        'map-region-north-america': 'usa',
+        'map-region-middle-east': 'dubai',
+        'map-region-rest-asia': 'china'
+      };
+
       const hotspots = document.querySelectorAll('.map-hotspot');
       const landPaths = document.querySelectorAll('.map-land');
       const mobileChips = document.querySelectorAll('.m-map-chip');
@@ -8984,7 +9073,7 @@ Incoterm: ${currentIncoterm}`;
         });
 
         landPaths.forEach(path => {
-          path.classList.toggle('highlighted', path.id === `map-region-${regionName}`);
+          const targetPathId = regionToPathId[regionName] || `map-region-${regionName}`; path.classList.toggle('highlighted', path.id === targetPathId);
         });
 
         mobileChips.forEach(chip => {
@@ -9040,7 +9129,17 @@ Incoterm: ${currentIncoterm}`;
         });
       });
 
-      mobileChips.forEach((chip, idx) => {
+      
+      landPaths.forEach(path => {
+        path.addEventListener('click', () => {
+          const reg = pathToRegion[path.id];
+          if (reg) {
+            clearInterval(mapAutoInterval);
+            highlightRegion(reg, true);
+          }
+        });
+      });
+mobileChips.forEach((chip, idx) => {
         chip.addEventListener('click', () => {
           clearInterval(mapAutoInterval);
           currentRegionIdx = idx;
