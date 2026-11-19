@@ -1326,20 +1326,12 @@
       color: #ffffff;
     }
 
-    /* Floating FAB scroll visibility logic: prevents collision with Ask AI chip when hero is visible */
-    body:not(.scrolled-past-hero) .fab {
-      opacity: 0;
-      pointer-events: none;
-      visibility: hidden;
-      transform: translateY(12px) scale(0.9);
-      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    }
-    body.scrolled-past-hero .fab {
-      opacity: 1;
-      pointer-events: auto;
-      visibility: visible;
-      transform: translateY(0) scale(1);
-      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    /* Floating FAB is visible across the entire site */
+    .fab {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      visibility: visible !important;
+      transform: translateY(0) scale(1) !important;
     }
 
     .mobile-hero-heading-wrap {
@@ -11008,5 +11000,6 @@ ${email} · ${country}`;
   </aside>
 </div>
 
+<script src="js/ask-ai.js"></script>
 </body>
 </html>
