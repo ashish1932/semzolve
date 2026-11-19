@@ -1220,3 +1220,46 @@ body:has(.chat:not([hidden])) .floating-back-to-top {
   text-align: center !important;
   flex: 0 0 auto !important;
 }
+
+.ind-stats-row {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 20px !important;
+  width: 100% !important;
+  max-width: 1040px !important;
+  margin: 0 auto !important;
+  padding-top: 30px !important;
+}
+@media (max-width: 768px) {
+  .ind-stats-row {
+    flex-wrap: wrap !important;
+  }
+}
+.ind-stat-card {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(228, 246, 254, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 18px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+.ind-stat-val {
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  color: #05B8FB !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+}
+.ind-stat-label {
+  font-size: 13px !important;
+  color: #94A3B8 !important;
+  margin-top: 6px !important;
+  line-height: 1.35 !important;
+}
