@@ -6816,16 +6816,21 @@ section, .section {
   font-size: 0.98rem;
 }
 
-/* Titleblock Grid */
+/* Titleblock Grid - 2x2 */
 .titleblock {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   background: var(--line);
   gap: 1px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
   margin-top: 1.75rem;
+}
+@media (max-width: 600px) {
+  .titleblock {
+    grid-template-columns: 1fr;
+  }
 }
 .titleblock > div {
   background: #ffffff;
