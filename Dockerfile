@@ -1,5 +1,5 @@
 # ==================================================
-# Semzolve Technologies & One Chemicals Production Dockerfile
+# Semzolve Technologies & Semzolve Production Dockerfile
 # ==================================================
 FROM python:3.11-slim
 

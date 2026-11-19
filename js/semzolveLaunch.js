@@ -497,7 +497,18 @@
       });
 
       // Hook up any replay triggers on the page (.btn-header-launch, .btn-replay-launch, .launch-replay-pill)
+      const isHidden = (function() {
+        try { return localStorage.getItem('semzolve_launch_btn_hidden') === '1'; } catch (e) { return false; }
+      })();
+
       document.querySelectorAll('.btn-header-launch, .btn-replay-launch, .launch-replay-pill, [data-launch-replay]').forEach((btn) => {
+        if (isHidden) {
+          const wrap = btn.closest('.header-launch-wrap') || btn.closest('.footer-launch-pill-wrap') || btn;
+          wrap.classList.add('is-hidden');
+          if (wrap !== btn) wrap.style.display = 'none';
+          else btn.style.display = 'none';
+        }
+
         btn.addEventListener('click', (e) => {
           e.preventDefault();
           this.replay();

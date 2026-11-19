@@ -1,0 +1,3645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Chemical Categories | Semzolve Technologies</title>
+  <meta name="description" id="metaDesc" content="Explore verified chemical products, technical specifications, molecular formulas, CAS numbers, and commercial quotes by category from Semzolve Technologies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/semzolveLaunch.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      --navy: #061649;
+      --navy-2: #0B2263;
+      --navy-3: #13307E;
+      --cyan: #05B8FB;
+      --cyan-ink: #0369A1;
+      --sky: #E4F6FE;
+      --bg: #F8FAFC;
+      --card: #FFFFFF;
+      --ink: #061649;
+      --muted: #55657F;
+      --line: #E2E8F0;
+      --sans: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--sans);
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      padding-top: 72px; /* Exact navbar height clearance */
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* FIXED NAVBAR (No Overlap) */
+    .navbar.site-header-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 72px;
+      background: #FFFFFF !important;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 14px rgba(6, 22, 73, 0.05);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .navbar-brand {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .navbar-logo-img {
+      height: 32px !important;
+      max-height: 32px !important;
+      width: auto !important;
+      max-width: 160px !important;
+      object-fit: contain;
+    }
+
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 28px;
+    }
+
+    .nav-link {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #334155;
+      padding: 7px 11px;
+      border-radius: 8px;
+      position: relative;
+      text-decoration: none;
+      transition: color 0.22s ease, background-color 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      width: 0;
+      height: 2.5px;
+      background: linear-gradient(90deg, var(--cyan), var(--cyan-ink));
+      border-radius: 999px;
+      transform: translateX(-50%);
+      transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .nav-link:hover {
+      color: var(--cyan-ink) !important;
+      background-color: rgba(5, 184, 251, 0.08);
+      transform: translateY(-1.5px);
+    }
+
+    .nav-link:hover::after {
+      width: calc(100% - 16px);
+      opacity: 1;
+    }
+
+    .nav-link.active {
+      color: var(--cyan) !important;
+      font-weight: 700;
+    }
+
+    .nav-link.active::after {
+      width: calc(100% - 16px);
+      opacity: 1;
+    }
+
+    .navbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-nav-rfq {
+      background: var(--navy);
+      color: #FFFFFF !important;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-nav-rfq:hover {
+      background: var(--cyan-ink);
+      transform: translateY(-1px);
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+    }
+
+    .hamburger-bar {
+      width: 22px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+    }
+
+    /* HERO SECTION */
+    .cat-hero-section {
+      background: linear-gradient(135deg, #030A24 0%, #061649 60%, #0B2263 100%);
+      color: #FFFFFF;
+      padding: 48px 0 44px;
+      position: relative;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .breadcrumb-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #94A3B8;
+      margin-bottom: 18px;
+    }
+
+    .breadcrumb-nav a {
+      color: #94A3B8;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb-nav a:hover {
+      color: var(--cyan);
+    }
+
+    .breadcrumb-current {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .cat-badge-strip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cat-pill-num {
+      font-size: 11px;
+      font-weight: 800;
+      color: #030A24;
+      background: var(--cyan);
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cat-pill-tag {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--cyan);
+      background: rgba(5, 184, 251, 0.14);
+      border: 1px solid rgba(5, 184, 251, 0.3);
+      padding: 3px 11px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cat-hero-title {
+      font-size: 34px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .cat-hero-desc {
+      font-size: 15.5px;
+      color: #CBD5E1;
+      max-width: 860px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .cat-metrics-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cat-metric-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #E2E8F0;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+
+    .cat-metric-badge.highlight {
+      background: rgba(5, 184, 251, 0.18);
+      border-color: rgba(5, 184, 251, 0.5);
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    /* MAIN CONTENT */
+    .cat-content-section {
+      padding: 36px 0 64px;
+    }
+
+    /* CONTROLS BAR */
+    .cat-controls-row {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      box-shadow: 0 2px 8px rgba(6, 22, 73, 0.02);
+    }
+
+    .cat-search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .cat-search-box input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 14.5px;
+      color: var(--ink);
+      font-family: inherit;
+      background: transparent;
+    }
+
+    .cat-controls-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cat-result-pill {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--cyan-ink);
+      background: #E0F2FE;
+      padding: 5px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .view-switcher {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #F8FAFC;
+    }
+
+    .view-btn {
+      background: transparent;
+      border: none;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748B;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .view-btn.active {
+      background: #FFFFFF;
+      color: var(--navy);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .btn-quick-quote {
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      color: #166534;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-quick-quote:hover {
+      background: #DCFCE7;
+    }
+
+    /* PRODUCT CARDS GRID (3 Columns, clean & spacious) */
+    .cat-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+      gap: 22px;
+      margin-bottom: 48px;
+    }
+
+    .chem-card {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 6px rgba(6, 22, 73, 0.03);
+      position: relative;
+    }
+
+    .chem-card:hover {
+      transform: translateY(-2px);
+      border-color: #38BDF8;
+      box-shadow: 0 10px 24px rgba(6, 22, 73, 0.08);
+    }
+
+    .card-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .cas-pill {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: #475569;
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+
+    .formula-tag {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--cyan-ink);
+    }
+
+    .chem-card-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .chem-card-app {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 42px;
+    }
+
+    .card-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 14px;
+      border-top: 1px solid #F1F5F9;
+    }
+
+    .assay-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: #047857;
+      background: #ECFDF5;
+      border: 1px solid #D1FAE5;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-card-view {
+      background: #FFFFFF;
+      color: var(--navy);
+      border: 1px solid #CBD5E1;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-card-view:hover {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+    }
+
+    /* TABLE VIEW */
+    .cat-table-wrap {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(6, 22, 73, 0.03);
+      margin-bottom: 48px;
+      display: none;
+    }
+
+    .cat-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .cat-table th {
+      background: #F8FAFC;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cat-table td {
+      padding: 14px 18px;
+      font-size: 13.5px;
+      border-bottom: 1px solid #F1F5F9;
+      color: #334155;
+      vertical-align: middle;
+    }
+
+    .cat-table tr:hover td {
+      background: #F8FAFC;
+    }
+
+    /* COMMERCIAL RFQ & INQUIRY SECTION */
+    .cat-rfq-section {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(6, 22, 73, 0.04);
+      margin-bottom: 48px;
+      scroll-margin-top: 100px;
+    }
+
+    .rfq-grid-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .rfq-info-col h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .rfq-info-col p {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .rfq-benefit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .rfq-benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .rfq-benefit-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #E0F2FE;
+      color: var(--cyan-ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .rfq-contact-box {
+      background: #F8FAFC;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .rfq-form-col {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .rfq-form-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .rfq-form-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .rfq-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .rfq-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .rfq-form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .rfq-form-group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .rfq-form-group input, .rfq-form-group select {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #CBD5E1;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--ink);
+      background: #FFFFFF;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .rfq-form-group input:focus {
+      border-color: var(--cyan);
+    }
+
+    .btn-submit-rfq {
+      grid-column: 1 / -1;
+      background: var(--navy);
+      color: #FFFFFF;
+      border: none;
+      padding: 13px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .btn-submit-rfq:hover {
+      background: var(--cyan-ink);
+    }
+
+    /* ENTERPRISE FOOTER */
+    .site-footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--line);
+      padding: 60px 0 32px;
+      color: #64748B;
+    }
+
+    .footer-main-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 48px;
+    }
+
+    .footer-col-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 13.5px;
+      color: #64748B;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan-ink);
+    }
+
+    .footer-bottom-bar {
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12.5px;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .navbar-menu {
+        display: none;
+      }
+      .mobile-nav-toggle {
+        display: flex;
+      }
+      .rfq-grid-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .footer-main-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .cat-cards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cat-hero-title {
+        font-size: 26px;
+      }
+      .cat-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .rfq-form-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-main-grid {
+        grid-template-columns: 1fr;
+      }
+      .rfq-form-col {
+        padding: 20px;
+      }
+    }
+
+    /* Floating Back to Top Button */
+    .floating-back-to-top {
+      position: fixed;
+      right: clamp(16px, 2.5vw, 32px);
+      bottom: clamp(16px, 2.5vw, 32px);
+      z-index: 999;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #061649;
+      color: #FFFFFF;
+      border: 1px solid rgba(5, 184, 251, 0.4);
+      box-shadow: 0 10px 25px -4px rgba(6, 22, 73, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(14px) scale(0.85);
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s, background 0.2s, box-shadow 0.2s, border-color 0.2s;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .floating-back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+    .floating-back-to-top:hover {
+      background: #0A2265;
+      color: var(--cyan, #05B8FB);
+      border-color: var(--cyan, #05B8FB);
+      transform: translateY(-3px) scale(1.06);
+      box-shadow: 0 14px 30px -4px rgba(6, 22, 73, 0.45), 0 0 14px rgba(5, 184, 251, 0.35);
+    }
+    .floating-back-to-top:active {
+      transform: translateY(-1px) scale(0.96);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SINGLE-LINE UNIFIED NAVBAR (Clean, Fixed 72px) -->
+  <header class="navbar site-header-fixed" id="siteHeader">
+    <div class="wrap header-inner">
+      <div class="navbar-left">
+        <a href="index.html" class="navbar-brand" aria-label="SEMZOLVE">
+          <img src="images/semzolve-logo.png" alt="SEMZOLVE" class="navbar-logo-img">
+        </a>
+      </div>
+
+      <ul class="navbar-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="products.html" class="nav-link active">Products</a></li>
+        <li class="nav-item"><a href="industries.html" class="nav-link">Industries</a></li>
+        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="navbar-actions">
+        <a href="#categoryRfqSection" class="btn-nav-rfq">
+          <span>Request a Quote</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu" onclick="openMobileNav()">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CATEGORY HERO SECTION -->
+  <section class="cat-hero-section">
+    <div class="wrap">
+      <div class="breadcrumb-nav">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="products.html">Chemical Products</a>
+        <span>/</span>
+        <span class="breadcrumb-current" id="crumbTitle">Category Details</span>
+      </div>
+
+      <div class="cat-badge-strip">
+        <span class="cat-pill-num" id="badgeNum">Category 01</span>
+        <span class="cat-pill-tag" id="badgeTag">Verified Portfolio</span>
+      </div>
+
+      <h1 class="cat-hero-title" id="mainTitle">Loading Category...</h1>
+      <p class="cat-hero-desc" id="mainDesc">Dedicated portfolio of chemical building blocks, intermediates, and high-purity solvents.</p>
+
+      <div class="cat-metrics-strip">
+        <span class="cat-metric-badge highlight" id="statProductCount">Loading Chemicals...</span>
+        <span class="cat-metric-badge">✦ Guaranteed Assay &amp; COA</span>
+        <span class="cat-metric-badge">✦ ISO 9001 &amp; cGMP Partner Units</span>
+        <span class="cat-metric-badge">✦ Export Tanker &amp; Drum Logistics</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN PRODUCTS SECTION -->
+  <main class="cat-content-section">
+    <div class="wrap">
+
+      <!-- CONTROLS ROW: Search, Counter, View Switcher -->
+      <div class="cat-controls-row">
+        <div class="cat-search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="categorySearchInput" oninput="handleCategorySearch(event)" placeholder="Search within this category by chemical name, CAS number, or formula...">
+        </div>
+        <div class="cat-controls-right">
+          <span class="cat-result-pill" id="filterResultCount">Showing all items</span>
+          <div class="view-switcher" role="group" aria-label="Layout view switcher">
+            <button type="button" class="view-btn active" id="btnGridView" onclick="setViewMode('grid')" title="Grid View">⊞ Cards</button>
+            <button type="button" class="view-btn" id="btnTableView" onclick="setViewMode('table')" title="Table View">☰ Directory</button>
+          </div>
+          <a href="#categoryRfqSection" class="btn-quick-quote">Request Bulk Quote ↓</a>
+        </div>
+      </div>
+
+      <!-- PRODUCT CARDS GRID (3 Columns) -->
+      <div class="cat-cards-grid" id="categoryCardsGrid">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- COMPACT SPECIFICATIONS TABLE (Toggled via Switcher) -->
+      <div class="cat-table-wrap" id="categoryTableWrap">
+        <table class="cat-table">
+          <thead>
+            <tr>
+              <th>Chemical Product</th>
+              <th>CAS Number</th>
+              <th>Molecular Formula</th>
+              <th>Synthesis / Commercial Role</th>
+              <th style="text-align:right;">Sub-Page</th>
+            </tr>
+          </thead>
+          <tbody id="categoryTableBody">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- COMMERCIAL RFQ & INQUIRY SECTION (Below Products, Spacious & Clean) -->
+      <section class="cat-rfq-section" id="categoryRfqSection">
+        <div class="rfq-grid-layout">
+          <div class="rfq-info-col">
+            <div style="font-size:11.5px; font-weight:800; color:var(--cyan-ink); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:8px;">
+              ✦ TECHNICAL SOURCING &amp; BULK SYNTHESIS
+            </div>
+            <h3 id="rfqSecTitle">Request Commercial Quotations for this Category</h3>
+            <p id="rfqSecDesc">
+              Connecting multinational buyers with verified Indian chemical synthesis capabilities. Receive complete specifications, batch Certificate of Analysis (COA), and dispatch schedules.
+            </p>
+
+            <div class="rfq-benefit-list">
+              <div class="rfq-benefit-item">
+                <span class="rfq-benefit-check">✓</span>
+                <span>Guaranteed HPLC / GC-MS Assay Standards</span>
+              </div>
+              <div class="rfq-benefit-item">
+                <span class="rfq-benefit-check">✓</span>
+                <span>Commercial Quotes &amp; TDS Provided within 4 Hours</span>
+              </div>
+              <div class="rfq-benefit-item">
+                <span class="rfq-benefit-check">✓</span>
+                <span>ISO Tanker, IBC, and UN-Approved Export Packaging</span>
+              </div>
+              <div class="rfq-benefit-item">
+                <span class="rfq-benefit-check">✓</span>
+                <span>EU REACH, SCOMET &amp; Regulatory Clearance Assistance</span>
+              </div>
+            </div>
+
+            <div class="rfq-contact-box">
+              <div style="font-weight:700; color:var(--navy);">Direct Chemical Procurement Desk:</div>
+              <div>Email: <a href="mailto:info@semzolve.com" style="color:var(--cyan-ink); font-weight:600;">info@semzolve.com</a></div>
+              <div>Sales Phone: <a href="tel:+918050818585" style="color:var(--cyan-ink); font-weight:600;">+91 80508 18585</a></div>
+            </div>
+          </div>
+
+          <div class="rfq-form-col">
+            <h4 class="rfq-form-title">Submit Chemical Requirement</h4>
+            <div class="rfq-form-subtitle">Fill in your specifications to receive prompt pricing and lead times:</div>
+
+            <form id="categoryRfqForm" onsubmit="handleCategoryRfq(event)">
+              <div class="rfq-form-grid">
+                <div class="rfq-form-group full-width">
+                  <label>Selected Category</label>
+                  <input type="text" id="rfqCategory" readonly style="background:#EDF2F7; font-weight:700; color:var(--navy);">
+                </div>
+
+                <div class="rfq-form-group">
+                  <label>Chemical Required *</label>
+                  <input type="text" id="rfqChem" placeholder="e.g. Methoxypropyl Acetate" required>
+                </div>
+
+                <div class="rfq-form-group">
+                  <label>Target Volume / Qty *</label>
+                  <input type="text" id="rfqQty" placeholder="e.g. 5 MT, 1 ISO Tanker" required>
+                </div>
+
+                <div class="rfq-form-group">
+                  <label>Required Purity / Grade</label>
+                  <input type="text" id="rfqGrade" placeholder="e.g. ≥ 99.5%, Electronic Grade">
+                </div>
+
+                <div class="rfq-form-group">
+                  <label>Your Business Email *</label>
+                  <input type="email" id="rfqEmail" placeholder="procurement@company.com" required>
+                </div>
+
+                <div class="rfq-form-group full-width">
+                  <label>Delivery Port / Destination</label>
+                  <input type="text" id="rfqPort" placeholder="e.g. Nhava Sheva (IN), Rotterdam, Houston">
+                </div>
+
+                <button type="submit" class="btn-submit-rfq">
+                  <span>Submit Technical Sourcing Request</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            </form>
+            <div id="rfqSuccessMsg" style="display:none; margin-top:16px; padding:12px; border-radius:8px; background:#ECFDF5; border:1px solid #A7F3D0; color:#065F46; font-size:13px; font-weight:700; text-align:center;">
+              ✓ Your inquiry has been submitted! Our specialist will respond within 4 business hours.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ENTERPRISE FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-main-grid">
+        <div>
+          <a href="index.html" class="navbar-brand" style="margin-bottom:14px; display:inline-block;">
+            <img src="images/semzolve-logo.png" alt="SEMZOLVE" class="navbar-logo-img">
+          </a>
+          <p style="font-size:13.5px; line-height:1.6; max-width:320px; color:#64748B; margin-bottom:18px;">
+            India's technology-driven specialty chemicals and contract manufacturing partner. Connecting global buyers with verified synthesis suites.
+          </p>
+          <div style="font-size:13px; color:#475569; display:flex; flex-direction:column; gap:6px;">
+            <div>Email: <a href="mailto:info@semzolve.com" style="color:var(--cyan-ink); font-weight:600;">info@semzolve.com</a></div>
+            <div>Sales: <a href="tel:+918050818585" style="color:var(--cyan-ink); font-weight:600;">+91 80508 18585</a></div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Chemical Categories</h4>
+          <ul class="footer-links">
+            <li><a href="category.html?id=pharma">Pharma &amp; Agro Intermediates</a></li>
+            <li><a href="category.html?id=solvents">Specialty Solvents &amp; Esters</a></li>
+            <li><a href="category.html?id=cosmetics">Cosmetic &amp; Active Ingredients</a></li>
+            <li><a href="category.html?id=petro">Petrochemicals &amp; Ketones</a></li>
+            <li><a href="category.html?id=industrial">Industrial Acids &amp; Plasticizers</a></li>
+            <li><a href="products.html" style="color:var(--cyan-ink); font-weight:700;">Explore Full Catalogue </a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Quality &amp; Standards</h4>
+          <ul class="footer-links">
+            <li><a href="regulatory-compliance.html#quality-management">ISO 9001:2015 Quality</a></li>
+            <li><a href="regulatory-compliance.html#quality-management">ISO 14001:2015 Environment</a></li>
+            <li><a href="regulatory-compliance.html#quality-management">ISO 45001:2018 Safety</a></li>
+            <li><a href="regulatory-compliance.html#reach">EU REACH Compliance</a></li>
+            <li><a href="regulatory-compliance.html#scomet">SCOMET Clearances</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="industries.html">Industries We Serve</a></li>
+            <li><a href="services.html">Services &amp; CMO</a></li>
+            <li><a href="about.html">About Semzolve</a></li>
+            <li><a href="contact.html">Contact &amp; RFQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>© 2026 Semzolve Technologies. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <span>•</span>
+          <a href="terms-of-trade.html">Terms of Trade</a>
+          <span>•</span>
+          <a href="regulatory-compliance.html">Regulatory Compliance</a>
+          <span>•</span>
+          <a href="security.html">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button type="button" class="floating-back-to-top" id="floatingBackToTop" aria-label="Back to top" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1100;"></div>
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" style="display:none; position:fixed; top:0; right:0; width:280px; height:100%; background:#FFFFFF; z-index:1200; padding:24px; box-shadow:-4px 0 16px rgba(0,0,0,0.1);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+      <img src="images/semzolve-logo.png" alt="SEMZOLVE" style="height:28px;">
+      <button type="button" onclick="closeMobileNav()" style="background:none; border:none; font-size:22px; cursor:pointer;">✕</button>
+    </div>
+    <ul style="list-style:none; display:flex; flex-direction:column; gap:16px; font-size:15px; font-weight:600;">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" style="color:var(--cyan);">Products</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <script>
+    window.openMobileNav = function() {
+      document.getElementById('mobileNavBackdrop').style.display = 'block';
+      document.getElementById('mobileNavDrawer').style.display = 'block';
+    };
+    window.closeMobileNav = function() {
+      document.getElementById('mobileNavBackdrop').style.display = 'none';
+      document.getElementById('mobileNavDrawer').style.display = 'none';
+    };
+  </script>
+
+  <!-- DATA & CATEGORY RENDERING ENGINE -->
+  <script>
+          const CATALOG = {
+        cats: [
+          "Speciality Solvents & Glycol Esters",
+          "Petrochemicals & Solvents",
+          "Pharma & Agrochem Intermediates",
+          "Industrial Chemicals, Plasticizers & Acids",
+          "Cosmetic Ingredients & Perfumery Chemicals",
+          "Emulsions, Construction Chemicals & Additives (BASF)",
+        ],
+        cos: [],
+        rows: [
+          [
+            "Methanol",
+            "67-56-1",
+            1,
+            0,
+            "Feedstock for formaldehyde, acetic acid, biodiesel; industrial solvent",
+            "CH4O",
+            32.04,
+            "",
+            "",
+            "Methyl alcohol | Wood alcohol | Carbinol",
+          ],
+          [
+            "Methoxypropyl Acetate",
+            "108-65-6",
+            0,
+            0,
+            "Coating industry",
+            "C6H12O3",
+            132.16,
+            "",
+            "",
+            "PGMEA | Propylene glycol methyl ether acetate | 1-Methoxy-2-propyl acetate | PMA",
+          ],
+          [
+            "n-Butyl Acetate",
+            "123-86-4",
+            0,
+            0,
+            "Paint industry",
+            "C6H12O2",
+            116.16,
+            "",
+            "",
+            "n-Butyl acetate | Butyl acetate | Butyl ethanoate",
+          ],
+          [
+            "Ethyl Acetate",
+            "141-78-6",
+            1,
+            0,
+            "Solvent for glues, inks, paints, nail-polish remover; decaffeination",
+            "C4H8O2",
+            88.11,
+            "",
+            "",
+            "Ethyl acetate | Ethyl ethanoate | EtOAc",
+          ],
+          [
+            "1,3-Cyclohexanedione",
+            "504-02-9",
+            2,
+            0,
+            "Carvedilol, ondansetron, mesotrione, tembotrione, sulcotrione and other triketone herbicides, nitisinone",
+            "C6H8O2",
+            112.13,
+            "",
+            "",
+            "Cyclohexane-1,3-dione | Dihydroresorcinol | 1,3-CHD",
+          ],
+          [
+            "Acetic Acid",
+            "64-19-7",
+            3,
+            0,
+            "Feedstock for VAM, esters, PTA, acetic anhydride",
+            "C2H4O2",
+            60.05,
+            "",
+            "",
+            "Acetic acid | Glacial acetic acid | Ethanoic acid",
+          ],
+          [
+            "Normal Butanol",
+            "71-36-3",
+            1,
+            0,
+            "Feedstock for butyl acrylate, butyl acetate, glycol ethers; solvent",
+            "C4H10O",
+            74.12,
+            "",
+            "",
+            "n-Butanol | 1-Butanol | Butyl alcohol",
+          ],
+          [
+            "Propylene Glycol IP / FFG",
+            "57-55-6",
+            1,
+            0,
+            "Unsaturated polyester resins, antifreeze, food/pharma excipient (USP)",
+            "C3H8O2",
+            76.09,
+            "",
+            "",
+            "Propylene glycol | Propane-1,2-diol | MPG",
+          ],
+          [
+            "Cyclohexanone",
+            "108-94-1",
+            1,
+            0,
+            "Caprolactam/nylon 6 feedstock; solvent for PVC and coatings",
+            "C6H10O",
+            98.14,
+            "",
+            "",
+            "Anone",
+          ],
+          [
+            "(R)-(-)-5-(2-Aminopropyl)-2-Methoxybenzene Sulfonamide",
+            "112101-81-2",
+            2,
+            0,
+            "Tamsulosin",
+            "C10H16N2O3S",
+            244.31,
+            "",
+            "",
+            "",
+          ],
+          [
+            "(S)-1-Phenyl-1,2,3,4-Tetrahydroisoquinoline",
+            "118864-75-8",
+            2,
+            0,
+            "Solifenacin succinate",
+            "C15H15N",
+            209.29,
+            "",
+            "",
+            "",
+          ],
+          [
+            "1,2,3,9-Tetrahydro-4H-Carbazol-4-one",
+            "15128-52-6",
+            2,
+            0,
+            "Carvedilol",
+            "C12H11NO",
+            185.23,
+            "",
+            "",
+            "",
+          ],
+          [
+            "1,2,3,9-Tetrahydro-9-Methyl-4H-Carbazol-4-one",
+            "27387-31-1",
+            2,
+            0,
+            "Ondansetron",
+            "C13H13NO",
+            199.25,
+            "",
+            "",
+            "",
+          ],
+          [
+            "1,4-Cyclohexanedione",
+            "637-88-7",
+            2,
+            0,
+            "Frovatriptan, delamanid",
+            "C6H8O2",
+            112.13,
+            "",
+            "",
+            "",
+          ],
+          [
+            "1,4-Cyclohexanedione Monoethylene Acetal",
+            "4746-97-8",
+            2,
+            0,
+            "Liquid-crystal materials, insecticides",
+            "C8H12O3",
+            156.18,
+            "",
+            "",
+            "",
+          ],
+          [
+            "2,4-Thiazolidinedione",
+            "2295-31-0",
+            2,
+            0,
+            "Pioglitazone, rosiglitazone, troglitazone",
+            "C3H3NO2S",
+            117.12,
+            "",
+            "",
+            "",
+          ],
+          [
+            "4-(2,3-Epoxypropoxy)Carbazole",
+            "51997-51-4",
+            2,
+            0,
+            "Carvedilol",
+            "C15H13NO2",
+            239.27,
+            "",
+            "",
+            "",
+          ],
+          [
+            "4-(4-Methylpiperazinomethyl)Benzoic Acid Dihydrochloride",
+            "106261-49-8",
+            2,
+            0,
+            "Imatinib",
+            "C13H20Cl2N2O2",
+            307.22,
+            "",
+            "",
+            "",
+          ],
+          [
+            "4-(Methylamino)-3-Nitrobenzoic Acid Hydrochloride",
+            "41263-74-5",
+            2,
+            0,
+            "Dabigatran",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "4-Bromo-1-Chloro-2-(4-Ethoxybenzyl)Benzene",
+            "461432-23-5",
+            2,
+            0,
+            "Dapagliflozin",
+            "C15H14BrClO",
+            325.63,
+            "",
+            "",
+            "",
+          ],
+          [
+            "4-Hydroxycarbazole",
+            "52602-39-8",
+            2,
+            0,
+            "Carvedilol",
+            "C12H9NO",
+            183.21,
+            "",
+            "",
+            "",
+          ],
+          [
+            "4-Methylcyclohexanone",
+            "589-92-4",
+            2,
+            0,
+            "Glimepiride",
+            "C7H12O",
+            112.17,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Benzalkonium Chloride 50%",
+            "8001-54-5",
+            2,
+            0,
+            "Preservative, disinfectant, antibacterial",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Benzalkonium Chloride 80%",
+            "8001-54-5",
+            2,
+            0,
+            "Preservative, disinfectant, antibacterial",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Benzalkonium Chloride Powder",
+            "8001-54-5",
+            2,
+            0,
+            "Antibacterial",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Benzalkonium Chloride Solution 50% IP",
+            "8001-54-5",
+            2,
+            0,
+            "Preservative",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethyl 3-(2-Pyridylamino)Propionate",
+            "103041-38-9",
+            2,
+            0,
+            "Dabigatran",
+            "C10H14N2O2",
+            194.23,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethyl 3-[3-Amino-4-(Methylamino)-N-(2-Pyridyl)Benzamido]Propionate",
+            "212322-56-0",
+            2,
+            0,
+            "Dabigatran",
+            "C18H22N4O3",
+            342.4,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethyl Isonipecotate",
+            "1126-09-6",
+            2,
+            0,
+            "Solifenacin, tamsulosin, avatrombopag, umeclidinium, fexofenadine, bilastine, efinaconazole, donepezil",
+            "C8H15NO2",
+            157.21,
+            "",
+            "",
+            "",
+          ],
+          [
+            "N-(5-Amino-2-Methylphenyl)-4-(3-Pyridyl)-2-Pyrimidineamine",
+            "152460-10-1",
+            2,
+            0,
+            "Imatinib",
+            "C16H15N5",
+            277.33,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Trans-4-Methylcyclohexylamine Hydrochloride",
+            "33483-65-7",
+            2,
+            0,
+            "Glimepiride",
+            "C7H16ClN",
+            149.66,
+            "",
+            "",
+            "",
+          ],
+          [
+            "2-Ethylhexyl Acetate",
+            "103-09-3",
+            0,
+            0,
+            "Leather chemicals",
+            "C10H20O2",
+            172.27,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Butyl Diglycol Acetate",
+            "124-17-4",
+            0,
+            0,
+            "Coil coating",
+            "C10H20O4",
+            204.27,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Butyl Glycol Acetate",
+            "112-07-2",
+            0,
+            0,
+            "Automotive coatings",
+            "C8H16O3",
+            160.21,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Dipropylene Glycol Monomethyl Ether Acetate",
+            "88917-22-0",
+            0,
+            0,
+            "Fragrance industry",
+            "C9H18O4",
+            190.24,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethoxypropyl Acetate",
+            "54839-24-6",
+            0,
+            0,
+            "",
+            "C7H14O3",
+            146.19,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethyl Diglycol Acetate",
+            "112-15-2",
+            0,
+            0,
+            "Paint industry",
+            "C8H16O4",
+            176.21,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethyl Ethoxypropionate",
+            "763-69-9",
+            0,
+            0,
+            "Coating industry",
+            "C7H14O3",
+            146.19,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethyl Glycol Acetate",
+            "111-15-9",
+            0,
+            0,
+            "Paint industry",
+            "C6H12O3",
+            132.16,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethylene Glycol Diacetate",
+            "111-55-7",
+            0,
+            0,
+            "Foundry chemicals",
+            "C6H10O4",
+            146.14,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethylene Glycol Dipropionate",
+            "123-80-8",
+            0,
+            0,
+            "",
+            "C8H14O4",
+            174.2,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Isoamyl Acetate",
+            "123-92-2",
+            0,
+            0,
+            "Coating industry",
+            "C7H14O2",
+            130.19,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Isobutyl Acetate",
+            "110-19-0",
+            0,
+            0,
+            "Paint industry",
+            "C6H12O2",
+            116.16,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Isobutyl Propionate",
+            "540-42-1",
+            0,
+            0,
+            "Coating industry",
+            "C7H14O2",
+            130.19,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Isopropyl Acetate",
+            "108-21-4",
+            0,
+            0,
+            "Pharma, paint industry",
+            "C5H10O2",
+            102.13,
+            "",
+            "",
+            "",
+          ],
+          [
+            "N Pentyl Acetate",
+            "628-63-7",
+            0,
+            0,
+            "Coating industry",
+            "C7H14O2",
+            130.19,
+            "",
+            "",
+            "",
+          ],
+          [
+            "n-Butyl Propionate",
+            "590-01-2",
+            0,
+            0,
+            "Coating industry",
+            "C7H14O2",
+            130.19,
+            "",
+            "",
+            "",
+          ],
+          [
+            "n-Pentyl Propionate",
+            "624-54-4",
+            0,
+            0,
+            "Coating industry",
+            "C8H16O2",
+            144.21,
+            "",
+            "",
+            "",
+          ],
+          [
+            "n-Propyl Propionate",
+            "106-36-5",
+            0,
+            0,
+            "Coating industry",
+            "C6H12O2",
+            116.16,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Propylene Glycol Diacetate",
+            "623-84-7",
+            0,
+            0,
+            "Coating industry",
+            "C7H12O4",
+            160.17,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Propylene Glycol Monomethyl Ether Propionate",
+            "148462-57-1",
+            0,
+            0,
+            "Coating industry",
+            "C7H14O3",
+            146.19,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Triacetin",
+            "102-76-1",
+            0,
+            0,
+            "Foundry chemicals",
+            "C9H14O6",
+            218.2,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Diacetone Alcohol",
+            "123-42-2",
+            1,
+            0,
+            "",
+            "C6H12O2",
+            116.16,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Dibasic Ester (DBE)",
+            "1119-40-0",
+            1,
+            0,
+            "",
+            "C7H12O4",
+            160.17,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Isobutyl Alcohol",
+            "78-83-1",
+            1,
+            0,
+            "",
+            "C4H10O",
+            74.12,
+            "",
+            "",
+            "",
+          ],
+          ["Isophorone", "78-59-1", 1, 0, "", "C9H14O", 138.21, "", "", ""],
+          [
+            "Methyl Propyl Ketone (MPK)",
+            "107-87-9",
+            1,
+            0,
+            "",
+            "C5H10O",
+            86.13,
+            "",
+            "",
+            "",
+          ],
+          ["Mixed Xylene", "1330-20-7", 1, 0, "", "C8H10", 106.17, "", "", ""],
+          ["Ortho Xylene", "95-47-6", 1, 0, "", "C8H10", 106.17, "", "", ""],
+          ["Phenol", "108-95-2", 1, 0, "", "C6H6O", 94.11, "", "", ""],
+          [
+            "2,4-Diaminopyrimidine-3-N-Oxide Monohydrate",
+            "1189096-02-3",
+            4,
+            0,
+            "Hair growth",
+            "C4H8N4O2",
+            144.13,
+            "",
+            "",
+            "",
+          ],
+          [
+            "2-Methylcyclohexanol",
+            "583-59-5",
+            4,
+            0,
+            "Perfumery",
+            "C7H14O",
+            114.19,
+            "",
+            "",
+            "",
+          ],
+          [
+            "4-Hexylresorcinol",
+            "136-77-6",
+            4,
+            0,
+            "Skin whitening",
+            "C12H18O2",
+            194.27,
+            "",
+            "",
+            "",
+          ],
+          [
+            "4-Methylcyclohexanol",
+            "589-91-3",
+            4,
+            0,
+            "Perfumery",
+            "C7H14O",
+            114.19,
+            "",
+            "",
+            "",
+          ],
+          [
+            "4-n-Butylresorcinol",
+            "18979-61-8",
+            4,
+            0,
+            "Skin whitening",
+            "C10H14O2",
+            166.22,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Coleus Forskohlii Extract 10%",
+            "66575-29-9",
+            4,
+            0,
+            "Nutraceutical, weight management",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Coleus Forskohlii Extract 20%",
+            "66575-29-9",
+            4,
+            0,
+            "Nutraceutical, weight management",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Coleus Forskohlii Extract 40%",
+            "66575-29-9",
+            4,
+            0,
+            "Nutraceutical, weight management",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Curcumin 98%",
+            "458-37-7",
+            4,
+            0,
+            "Nutraceutical, antioxidant",
+            "C21H20O6",
+            368.38,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Curcuminoids 95%",
+            "8024-37-1",
+            4,
+            0,
+            "Nutraceutical, antioxidant",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethylhexyl Triazone",
+            "88122-99-0",
+            4,
+            0,
+            "Sunscreen UV-B filter",
+            "C48H66N6O6",
+            823.09,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Forskolin 98%",
+            "66575-29-9",
+            4,
+            0,
+            "Nutraceutical, weight management",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Iscotrizinol",
+            "154702-15-5",
+            4,
+            0,
+            "UV filter, sun care",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Piperine 95%",
+            "94-62-2",
+            4,
+            0,
+            "Bioavailability enhancer",
+            "C17H19NO3",
+            285.34,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Piroctone Olamine",
+            "68890-66-4",
+            4,
+            0,
+            "Anti-dandruff",
+            "C16H30N2O3",
+            298.43,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Tetrahydrocurcumin",
+            "36062-04-1",
+            4,
+            0,
+            "Antiseptic, skin care",
+            "C21H24O6",
+            372.42,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Tetrahydropiperine",
+            "23434-88-0",
+            4,
+            0,
+            "Anti-acne",
+            "C17H23NO3",
+            289.38,
+            "",
+            "",
+            "",
+          ],
+          ["Acrylamide", "79-06-1", 3, 0, "", "C3H5NO", 71.08, "", "", ""],
+          ["Adipic Acid", "124-04-9", 3, 0, "", "C6H10O4", 146.14, "", "", ""],
+          [
+            "Alpha Olefin Sulphonate (AOS)",
+            "93686-14-7",
+            3,
+            0,
+            "",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          ["Alphox 100 & 200", "9016-45-9", 3, 0, "", "", 0, "", "R", ""],
+          ["Alum", "7784-24-9", 3, 0, "", "AlH24KO20S2", 474.37, "", "", ""],
+          [
+            "Aluminium Stearate (HI Grade)",
+            "637-12-7",
+            3,
+            0,
+            "",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ammonium Benzoate",
+            "1863-63-4",
+            3,
+            0,
+            "",
+            "C7H9NO2",
+            139.15,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ammonium Bicarbonate",
+            "1066-33-7",
+            3,
+            0,
+            "",
+            "CH5NO3",
+            79.06,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ammonium Chloride",
+            "12125-02-9",
+            3,
+            0,
+            "",
+            "ClH4N",
+            53.49,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ammonium Persulphate",
+            "7727-54-0",
+            3,
+            0,
+            "",
+            "H8N2O8S2",
+            228.19,
+            "",
+            "",
+            "",
+          ],
+          ["Amyl Acetate", "628-63-7", 3, 0, "", "C7H14O2", 130.19, "", "", ""],
+          ["Bentec ED-11", "14808-60-7", 3, 0, "", "", 0, "", "", ""],
+          ["Bentec P2", "14808-60-7", 3, 0, "", "", 0, "", "", ""],
+          ["Bentec PLB", "14808-60-7", 3, 0, "", "", 0, "", "", ""],
+          ["Bentec PLC", "14808-60-7", 3, 0, "", "", 0, "", "", ""],
+          ["Bentonite", "1302-78-9", 3, 0, "", "", 0, "", "", ""],
+          ["Benzoic Acid", "65-85-0", 3, 0, "", "C7H6O2", 122.12, "", "", ""],
+          ["Benzotriazole", "95-14-7", 3, 0, "", "C6H5N3", 119.13, "", "", ""],
+          ["Benzyl Alcohol", "100-51-6", 3, 0, "", "C7H8O", 108.14, "", "", ""],
+          ["BHT & BHA", "128-37-0", 3, 0, "", "C15H24O", 220.36, "", "", ""],
+          ["Borax", "1303-96-4", 3, 0, "", "B4H20Na2O17", 381.36, "", "", ""],
+          ["Boric Acid", "10043-35-3", 3, 0, "", "BH3O3", 61.83, "", "", ""],
+          [
+            "Butyl Cellosolve",
+            "111-76-2",
+            3,
+            0,
+            "",
+            "C6H14O2",
+            118.18,
+            "",
+            "",
+            "",
+          ],
+          ["Cabosil", "112945-52-5", 3, 0, "", "O2Si", 60.08, "", "", ""],
+          [
+            "Calcium Carbonate (All Grades)",
+            "471-34-1",
+            3,
+            0,
+            "",
+            "CCaO3",
+            100.09,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Calcium Chloride (All Grades)",
+            "10043-52-4",
+            3,
+            0,
+            "",
+            "CaCl2",
+            110.98,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Calcium Chloride Lye",
+            "10043-52-4",
+            3,
+            0,
+            "",
+            "CaCl2",
+            110.98,
+            "",
+            "",
+            "",
+          ],
+          ["Calcium Stearate", "1592-23-0", 3, 0, "", "", 0, "", "", ""],
+          [
+            "Carboxymethyl Cellulose (CMC)",
+            "9004-32-4",
+            3,
+            0,
+            "",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          ["Castrox 200", "111-46-6", 3, 0, "", "", 0, "", "", ""],
+          ["Caustic Potash", "1310-58-3", 3, 0, "", "HKO", 56.11, "", "", ""],
+          ["Caustic Soda", "1310-73-2", 3, 0, "", "HNaO", 40, "", "", ""],
+          ["Caustic Soda Lye", "1310-73-2", 3, 0, "", "HNaO", 40, "", "", ""],
+          [
+            "China Clay",
+            "1332-58-7",
+            3,
+            0,
+            "",
+            "Al2H4O9Si2",
+            258.16,
+            "",
+            "",
+            "",
+          ],
+          ["Chloroform", "67-66-3", 3, 0, "", "CHCl3", 119.37, "", "R", ""],
+          [
+            "Citric Acid (Anhydrous & Monohydrate)",
+            "77-92-9",
+            3,
+            0,
+            "",
+            "C6H8O7",
+            192.12,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Copper Carbonate",
+            "1184-64-1",
+            3,
+            0,
+            "",
+            "CH2Cu2O5",
+            221.11,
+            "",
+            "",
+            "",
+          ],
+          ["Cyclohexane", "110-82-7", 3, 0, "", "C6H12", 84.16, "", "", ""],
+          [
+            "Dextrose Monohydrate",
+            "5996-10-1",
+            3,
+            0,
+            "",
+            "C6H14O7",
+            198.17,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Diammonium Phosphate",
+            "7783-28-0",
+            3,
+            0,
+            "",
+            "H9N2O4P",
+            132.06,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Dibutyl Phthalate",
+            "84-74-2",
+            3,
+            0,
+            "",
+            "C16H22O4",
+            278.35,
+            "",
+            "R",
+            "",
+          ],
+          [
+            "Diethyl Phthalate",
+            "84-66-2",
+            3,
+            0,
+            "",
+            "C12H14O4",
+            222.24,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Diethylene Glycol",
+            "111-46-6",
+            3,
+            0,
+            "",
+            "C4H10O3",
+            106.12,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Diisopropyl Ether",
+            "108-20-3",
+            3,
+            0,
+            "",
+            "C6H14O",
+            102.18,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Dimethyl Sulphoxide",
+            "67-68-5",
+            3,
+            0,
+            "",
+            "C2H6OS",
+            78.13,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Dimethylaminoethanol",
+            "108-01-0",
+            3,
+            0,
+            "",
+            "C4H11NO",
+            89.14,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Dimethylformamide",
+            "68-12-2",
+            3,
+            0,
+            "",
+            "C3H7NO",
+            73.09,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Dioctyl Phthalate (DOP)",
+            "117-81-7",
+            3,
+            0,
+            "",
+            "C24H38O4",
+            390.56,
+            "",
+            "R",
+            "",
+          ],
+          [
+            "Dipentene (Camphane, Heavy & Normal)",
+            "138-86-3",
+            3,
+            0,
+            "",
+            "C10H16",
+            136.24,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Dipropylene Glycol",
+            "25265-71-8",
+            3,
+            0,
+            "",
+            "C6H14O3",
+            134.18,
+            "",
+            "",
+            "",
+          ],
+          ["DMP", "87413-09-0", 3, 0, "", "", 0, "", "", ""],
+          ["EDTA Disodium", "6381-92-6", 3, 0, "", "", 0, "", "", ""],
+          ["EDTA Tetrasodium", "13235-36-4", 3, 0, "", "", 0, "", "", ""],
+          ["Ethoxyquin", "91-53-2", 3, 0, "", "C14H19NO", 217.31, "", "", ""],
+          [
+            "Ethyl Carbitol (EDG)",
+            "111-90-0",
+            3,
+            0,
+            "",
+            "C6H14O3",
+            134.18,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethyl Vanillin",
+            "121-32-4",
+            3,
+            0,
+            "",
+            "C9H10O3",
+            166.18,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Ethylene Glycol Monostearate (EGMS)",
+            "111-60-4",
+            3,
+            0,
+            "",
+            "C20H40O3",
+            328.54,
+            "",
+            "",
+            "",
+          ],
+          ["Formaldehyde", "50-00-0", 3, 0, "", "CH2O", 30.03, "", "", ""],
+          ["Glycerine", "56-81-5", 3, 0, "", "C3H8O3", 92.09, "", "", ""],
+          ["Gum Acacia", "9000-01-5", 3, 0, "", "", 0, "", "", ""],
+          ["Hexamine", "100-97-0", 3, 0, "", "C6H12N4", 140.19, "", "", ""],
+          [
+            "Hexylene Glycol",
+            "107-41-5",
+            3,
+            0,
+            "",
+            "C6H14O2",
+            118.18,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Hydrobromic Acid",
+            "10035-10-6",
+            3,
+            0,
+            "",
+            "BrH",
+            80.91,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Hydrogen Peroxide",
+            "7722-84-1",
+            3,
+            0,
+            "",
+            "H2O2",
+            34.01,
+            "",
+            "",
+            "",
+          ],
+          ["Hyflo Super-Cel", "68855-54-9", 3, 0, "", "", 0, "", "", ""],
+          ["Lactic Acid", "79-33-4", 3, 0, "", "C3H6O3", 90.08, "", "", ""],
+          [
+            "Lauryl Alcohol Ethoxylate LA-7 & LA-9",
+            "68439-50-9",
+            3,
+            0,
+            "",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Liquid Paraffin (Light & Heavy)",
+            "8012-95-1",
+            3,
+            0,
+            "",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          ["Liquor Ammonia", "1336-21-6", 3, 0, "", "H5NO", 35.05, "", "", ""],
+          [
+            "Magnesium Sulphate",
+            "7487-88-9",
+            3,
+            0,
+            "",
+            "MgO4S",
+            120.36,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Maleic Acid DL",
+            "6915-15-7",
+            3,
+            0,
+            "",
+            "C4H4O4",
+            116.07,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Maleic Anhydride",
+            "108-31-6",
+            3,
+            0,
+            "",
+            "C4H2O3",
+            98.06,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Manganese Sulphate",
+            "10034-96-5",
+            3,
+            0,
+            "",
+            "H2MnO5S",
+            169.01,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Methyl Cellosolve",
+            "109-86-4",
+            3,
+            0,
+            "",
+            "C3H8O2",
+            76.09,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Methylene Chloride",
+            "75-09-2",
+            3,
+            0,
+            "",
+            "CH2Cl2",
+            84.93,
+            "",
+            "",
+            "",
+          ],
+          ["Mocidate", "", 3, 0, "", "", 0, "", "", ""],
+          [
+            "Monoethanolamine",
+            "141-43-5",
+            3,
+            0,
+            "",
+            "C2H7NO",
+            61.08,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Monoethylene Glycol",
+            "107-21-1",
+            3,
+            0,
+            "",
+            "C2H6O2",
+            62.07,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Monosodium Phosphate",
+            "10049-21-5",
+            3,
+            0,
+            "",
+            "H2NaO4P",
+            119.98,
+            "",
+            "",
+            "",
+          ],
+          ["Morpholine", "110-91-8", 3, 0, "", "C4H9NO", 87.12, "", "", ""],
+          [
+            "N,N-Dimethylaniline",
+            "121-69-7",
+            3,
+            0,
+            "",
+            "C8H11N",
+            121.18,
+            "",
+            "",
+            "",
+          ],
+          ["n-Heptane", "142-82-5", 3, 0, "", "C7H16", 100.2, "", "", ""],
+          ["n-Propanol", "71-23-8", 3, 0, "", "C3H8O", 60.1, "", "", ""],
+          [
+            "Neopentyl Glycol",
+            "126-30-7",
+            3,
+            0,
+            "",
+            "C5H12O2",
+            104.15,
+            "",
+            "",
+            "",
+          ],
+          ["Nilofoam NDW", "64742-96-7", 3, 0, "", "", 0, "", "", ""],
+          ["Nonyl Phenol", "84852-15-3", 3, 0, "", "", 0, "", "R", ""],
+          [
+            "Nonyl Phenol Ethoxylate N 9.5 & N 4.5",
+            "9016-45-9",
+            3,
+            0,
+            "",
+            "",
+            0,
+            "",
+            "R",
+            "",
+          ],
+          ["Octanol", "111-87-5", 3, 0, "", "C8H18O", 130.23, "", "", ""],
+          ["Oleic Acid", "112-80-1", 3, 0, "", "C18H34O2", 282.47, "", "", ""],
+          ["Oxalic Acid", "144-62-7", 3, 0, "", "C2H2O4", 90.03, "", "", ""],
+          [
+            "para-Toluenesulphonic Acid",
+            "6192-52-5",
+            3,
+            0,
+            "",
+            "C7H8O3S",
+            172.2,
+            "",
+            "",
+            "",
+          ],
+          ["Paraffin Wax", "8002-74-2", 3, 0, "", "", 0, "", "", ""],
+          ["Paraformaldehyde", "30525-89-4", 3, 0, "", "", 0, "", "", ""],
+          [
+            "Perchloroethylene",
+            "127-18-4",
+            3,
+            0,
+            "",
+            "C2Cl4",
+            165.82,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Phosphoric Acid",
+            "7664-38-2",
+            3,
+            0,
+            "",
+            "H3O4P",
+            97.99,
+            "",
+            "",
+            "",
+          ],
+          ["Polyaluminium Chloride", "1327-41-9", 3, 0, "", "", 0, "", "", ""],
+          [
+            "Polyethylene Glycol 200, 400 & 600",
+            "25322-68-3",
+            3,
+            0,
+            "",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Polyethylene Glycol 4000 & 6000",
+            "25322-68-3",
+            3,
+            0,
+            "",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          ["Polysorbate (80 & 20)", "9005-64-5", 3, 0, "", "", 0, "", "", ""],
+          ["Polyvinyl Alcohol", "9002-89-5", 3, 0, "", "", 0, "", "", ""],
+          [
+            "Polyvinyl Alcohol Powder",
+            "9002-89-5",
+            3,
+            0,
+            "",
+            "",
+            0,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Potassium Carbonate, Granular",
+            "584-08-7",
+            3,
+            0,
+            "",
+            "CK2O3",
+            138.2,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Potassium Metabisulphite",
+            "16731-55-8",
+            3,
+            0,
+            "",
+            "K2O5S2",
+            222.31,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Potassium Persulphate",
+            "7727-21-1",
+            3,
+            0,
+            "",
+            "K2O8S2",
+            270.31,
+            "",
+            "",
+            "",
+          ],
+          ["PPG 2000", "25322-69-4", 3, 0, "", "", 0, "", "", ""],
+          [
+            "Precipitated Silica",
+            "7631-86-9",
+            3,
+            0,
+            "",
+            "O2Si",
+            60.08,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Propyl Gallate",
+            "121-79-9",
+            3,
+            0,
+            "",
+            "C10H12O5",
+            212.2,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Salicylic Acid (Brown & White)",
+            "69-72-7",
+            3,
+            0,
+            "",
+            "C7H6O3",
+            138.12,
+            "",
+            "",
+            "",
+          ],
+          ["Slurry", "27176-87-0", 3, 0, "", "", 0, "", "", ""],
+          [
+            "Soapstone Powder (Talc)",
+            "14807-96-6",
+            3,
+            0,
+            "",
+            "H2Mg3O12Si4",
+            379.26,
+            "",
+            "",
+            "",
+          ],
+          ["Soda Ash", "497-19-8", 3, 0, "", "CNa2O3", 105.99, "", "", ""],
+          [
+            "Sodium Acetate",
+            "6131-90-4",
+            3,
+            0,
+            "",
+            "C2H9NaO5",
+            136.08,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Benzoate",
+            "532-32-1",
+            3,
+            0,
+            "",
+            "C7H5NaO2",
+            144.1,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Bicarbonate",
+            "144-55-8",
+            3,
+            0,
+            "",
+            "CHNaO3",
+            84.01,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Bisulphite",
+            "7631-90-5",
+            3,
+            0,
+            "",
+            "HNaO3S",
+            104.06,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Chloride, Free Flow",
+            "7647-14-5",
+            3,
+            0,
+            "",
+            "ClNa",
+            58.44,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Citrate",
+            "68-04-2",
+            3,
+            0,
+            "",
+            "C6H5Na3O7",
+            258.07,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Gluconate",
+            "527-07-1",
+            3,
+            0,
+            "",
+            "C6H11NaO7",
+            218.14,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Hexametaphosphate",
+            "10124-56-8",
+            3,
+            0,
+            "",
+            "Na6O18P6",
+            611.77,
+            "",
+            "",
+            "",
+          ],
+          ["Sodium Laureth Sulphate", "9004-82-4", 3, 0, "", "", 0, "", "", ""],
+          [
+            "Sodium Lauryl Sulphate",
+            "151-21-3",
+            3,
+            0,
+            "",
+            "C12H25NaO4S",
+            288.38,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Metabisulphite, Food Grade",
+            "7681-57-4",
+            3,
+            0,
+            "",
+            "Na2O5S2",
+            190.09,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Percarbonate",
+            "15630-89-4",
+            3,
+            0,
+            "",
+            "C2H6Na4O12",
+            314.02,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Silicate",
+            "1344-09-8",
+            3,
+            0,
+            "",
+            "Na2O3Si",
+            122.06,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Stearate",
+            "822-16-2",
+            3,
+            0,
+            "",
+            "C18H35NaO2",
+            306.47,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Sulphate Anhydrous",
+            "7757-82-6",
+            3,
+            0,
+            "",
+            "Na2O4S",
+            142.04,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Sulphite",
+            "7757-83-7",
+            3,
+            0,
+            "",
+            "Na2O3S",
+            126.04,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Thiosulphate",
+            "7772-98-7",
+            3,
+            0,
+            "",
+            "H10Na2O8S2",
+            248.17,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Sodium Tripolyphosphate",
+            "7758-29-4",
+            3,
+            0,
+            "",
+            "Na5O10P3",
+            367.86,
+            "",
+            "",
+            "",
+          ],
+          ["Sorbitol", "50-70-4", 3, 0, "", "C6H14O6", 182.17, "", "", ""],
+          ["Soya Lecithin", "8002-43-5", 3, 0, "", "", 0, "", "", ""],
+          ["Stearic Acid", "57-11-4", 3, 0, "", "C18H36O2", 284.48, "", "", ""],
+          ["Styrene Monomer", "100-42-5", 3, 0, "", "C8H8", 104.15, "", "", ""],
+          ["Succinic Acid", "110-15-6", 3, 0, "", "C4H6O4", 118.09, "", "", ""],
+          [
+            "Sulphamic Acid",
+            "5329-14-6",
+            3,
+            0,
+            "",
+            "H3NO3S",
+            97.09,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Tartaric Acid DL",
+            "133-37-9",
+            3,
+            0,
+            "",
+            "C4H6O6",
+            150.09,
+            "",
+            "",
+            "",
+          ],
+          ["TCC-90", "87-90-1", 3, 0, "", "C3Cl3N3O3", 232.4, "", "", ""],
+          [
+            "Tetrahydrofuran (THF)",
+            "109-99-9",
+            3,
+            0,
+            "",
+            "C4H8O",
+            72.11,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Titanium Dioxide",
+            "13463-67-7",
+            3,
+            0,
+            "",
+            "O2Ti",
+            79.86,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Trichloroethylene (TCE)",
+            "79-01-6",
+            3,
+            0,
+            "",
+            "C2HCl3",
+            131.38,
+            "",
+            "R",
+            "",
+          ],
+          [
+            "Triethylamine & Triethanolamine",
+            "121-44-8",
+            3,
+            0,
+            "",
+            "C6H15N",
+            101.19,
+            "",
+            "R",
+            "",
+          ],
+          [
+            "Trimethylolpropane",
+            "77-99-6",
+            3,
+            0,
+            "",
+            "C6H14O3",
+            134.18,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Trisodium Phosphate",
+            "7601-54-9",
+            3,
+            0,
+            "",
+            "H24Na3O16P",
+            380.12,
+            "",
+            "",
+            "",
+          ],
+          ["Turkey Red Oil", "8002-33-3", 3, 0, "", "", 0, "", "", ""],
+          ["Zinc Chloride", "7646-85-7", 3, 0, "", "Cl2Zn", 136.28, "", "", ""],
+          ["Zinc Oxide", "1314-13-2", 3, 0, "", "OZn", 81.38, "", "", ""],
+          ["Zinc Stearate", "557-05-1", 3, 0, "", "", 0, "", "", ""],
+          [
+            "Zinc Sulphate",
+            "7446-20-0",
+            3,
+            0,
+            "",
+            "H14O11SZn",
+            287.54,
+            "",
+            "",
+            "",
+          ],
+          [
+            "Dispex AA 4040",
+            "",
+            5,
+            0,
+            "Dispersing inorganic pigments and fillers in water-based paints",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Dispex AA 4143", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "Dispex CX 4320",
+            "",
+            5,
+            0,
+            "Pigments and fillers in gloss, semi-gloss and highly filled interior paints",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          [
+            "Dispex HIDE CX 4540",
+            "",
+            5,
+            0,
+            "Titanium dioxide with extenders, for more hiding",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          [
+            "Foamaster MO 2150",
+            "",
+            5,
+            0,
+            "Mid- to high-PVC emulsion paints, plasters, water-based adhesives",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Foamaster MO 2151", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Foamaster MO 2170", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "FoamStar SI 2240",
+            "",
+            5,
+            0,
+            "Pigment concentrates and high-surfactant systems",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Loxanol CA 5330", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Loxanol PL 5060", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "Rheovis AS 1125",
+            "",
+            5,
+            0,
+            "Low-shear acrylic thickener for emulsion paints",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          [
+            "Rheovis HS 1181",
+            "",
+            5,
+            0,
+            "Associative thickener for acrylic coatings",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Rheovis HS 1184", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Rheovis PE 1320", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Rheovis PE 1331", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "Rheovis PU 1291",
+            "",
+            5,
+            0,
+            "Mid-shear polyurethane thickener for brush and roller application",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Rheovis UR 1120", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal 7048", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "Acronal 7051",
+            "",
+            5,
+            0,
+            "Texture and stone-finish paints",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          [
+            "Acronal 7079",
+            "",
+            5,
+            0,
+            "Elastomeric exterior wall coatings",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          [
+            "Acronal ECO 702",
+            "",
+            5,
+            0,
+            "Low-odour, stain-resistant premium interior paints",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Acronal EDGE 7005", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "Acronal EDGE 7686",
+            "",
+            5,
+            0,
+            "Premium exterior finishes with low dirt pick-up",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Acronal IA 734", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal IS 750", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "Acronal PA 510",
+            "",
+            5,
+            0,
+            "Low-pigmented high-gloss interior paints",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Acronal PA 808", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal PLUS 7023", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "Acronal PLUS 7033",
+            "",
+            5,
+            0,
+            "Exterior coatings",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          [
+            "Acronal PLUS 7090",
+            "",
+            5,
+            0,
+            "Scrub-resistant paints with high pigment-binding power",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Acronal PLUS 7611", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal PLUS 7648", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal PLUS 7691", "", 5, 0, "", "", 0, "", "B", ""],
+          ["COL.9 7671", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal 295 D", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "Acronal 7035",
+            "",
+            5,
+            0,
+            "High-PVC all-purpose paints with good wet-scrub resistance",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Acronal 7092", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal 7225", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal IN 296 D", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "AQACell HIDE 6299",
+            "",
+            5,
+            0,
+            "Hollow-sphere polymer that improves hiding and reduces titanium dioxide",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Acronal 7598", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal 7848", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal 7855", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal NX 3587", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal PLUS 7810", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal PS 715", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal V 275", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal Xpress 7540", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Styrofan 7809", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Styrofan NX 1492", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "Acronal 5400",
+            "",
+            5,
+            0,
+            "Cement-based flexible waterproofing membranes under tiles",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Acronal 7846", "", 5, 0, "", "", 0, "", "B", ""],
+          ["Acronal S 400", "", 5, 0, "", "", 0, "", "B", ""],
+          [
+            "Styrofan D 623",
+            "",
+            5,
+            0,
+            "Modifying hydraulic binders, mainly cement mixes",
+            "",
+            0,
+            "",
+            "B",
+            "",
+          ],
+          ["Styrofan ID 604", "", 5, 0, "", "", 0, "", "B", ""],
+        ],
+      };
+
+
+    const CATEGORIES = [
+      {
+        id: "pharma",
+        num: "01",
+        catIndex: 2,
+        title: "Pharma & Agro Intermediates",
+        tag: "Intermediates & Reagents",
+        desc: "Pharmaceutical process intermediates, chiral precursors, heterocycles, and agricultural crop-protection building blocks with verified assay, impurity profiling, and DMF documentation support."
+      },
+      {
+        id: "solvents",
+        num: "02",
+        catIndex: 0,
+        title: "Specialty Solvents & Esters",
+        tag: "Solvents & Glycol Esters",
+        desc: "Ultra-pure organic acetates, glycol ether esters, latent solvents, and electronic-grade thinners for coatings, inks, microelectronics, and precision chemical synthesis."
+      },
+      {
+        id: "cosmetics",
+        num: "03",
+        catIndex: 4,
+        title: "Cosmetic & Active Ingredients",
+        tag: "Cosmeceuticals & Actives",
+        desc: "Skin-brightening actives, UV filters, anti-dandruff agents, standardized botanical extracts, and personal care excipients formulated to international cosmetic directives."
+      },
+      {
+        id: "petro",
+        num: "04",
+        catIndex: 1,
+        title: "Petrochemicals & Ketones",
+        tag: "Aromatics & Monomers",
+        desc: "High-purity aromatic feedstocks, industrial ketones, styrene monomers, and basic chemical synthesis building blocks supplied with consistent assay and export compliance."
+      },
+      {
+        id: "industrial",
+        num: "05",
+        catIndex: 3,
+        title: "Industrial Acids & Plasticizers",
+        tag: "Acids & Specialties",
+        desc: "Bulk industrial organic and inorganic acids, plasticizers, coagulants, water-treatment salts, and heavy inorganic chemicals engineered for continuous plant operations."
+      },
+      {
+        id: "emulsions",
+        num: "06",
+        catIndex: 5,
+        title: "BASF Emulsions & Additives",
+        tag: "Dispersions & Additives",
+        desc: "Acronal acrylic polymer dispersions, Styrofan SBR latices, Rheovis associative thickeners, Foamaster defoamers, and Dispex dispersants for coatings and construction."
+      }
+    ];
+
+    const ALIAS_MAP = {
+      'pharma': 'pharma',
+      'pharma-agro': 'pharma',
+      'intermediates': 'pharma',
+      'solvents': 'solvents',
+      'specialty-solvents': 'solvents',
+      'esters': 'solvents',
+      'cosmetics': 'cosmetics',
+      'cosmetic': 'cosmetics',
+      'personal-care': 'cosmetics',
+      'petro': 'petro',
+      'petrochemicals': 'petro',
+      'ketones': 'petro',
+      'industrial': 'industrial',
+      'acids': 'industrial',
+      'plasticizers': 'industrial',
+      'emulsions': 'emulsions',
+      'basf': 'emulsions'
+    };
+
+    let currentCat = null;
+    let categoryProducts = [];
+    let filterQuery = '';
+    let currentViewMode = 'grid'; // 'grid' or 'table'
+
+    function formatSubscripts(f) {
+      if (!f) return '';
+      return f.replace(/(\d+)/g, '<sub>$1</sub>');
+    }
+
+    function slugify(name) {
+      return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    }
+
+    function initCategory() {
+      const params = new URLSearchParams(window.location.search);
+      let catId = (params.get('id') || params.get('cat') || params.get('category') || 'pharma').toLowerCase().trim();
+      catId = ALIAS_MAP[catId] || catId;
+
+      currentCat = CATEGORIES.find(c => c.id === catId) || CATEGORIES[0];
+
+      // Update Hero Titles & Meta
+      document.getElementById('pageTitle').textContent = currentCat.title + ' | Semzolve Technologies';
+      document.getElementById('metaDesc').setAttribute('content', currentCat.desc);
+      document.getElementById('crumbTitle').textContent = currentCat.title;
+      document.getElementById('badgeNum').textContent = 'Category ' + currentCat.num;
+      document.getElementById('badgeTag').textContent = currentCat.tag;
+      document.getElementById('mainTitle').textContent = currentCat.title;
+      document.getElementById('mainDesc').textContent = currentCat.desc;
+
+      // Update RFQ Section Info
+      document.getElementById('rfqCategory').value = currentCat.title;
+      document.getElementById('rfqSecTitle').textContent = 'Request Commercial Quotations for ' + currentCat.title;
+
+      // Filter products strictly for this category from CATALOG.rows
+      categoryProducts = CATALOG.rows.filter(r => r[2] === currentCat.catIndex).map(r => {
+        const name = r[0];
+        const cas = r[1] || '';
+        const app = r[4] || '';
+        const formula = r[5] || '';
+        const mw = r[6] || '';
+        const syn = r[9] || '';
+        const slug = slugify(name);
+        return { name, cas, app, formula, mw, syn, slug };
+      });
+
+      // Update Verified Product Counter Badge
+      document.getElementById('statProductCount').textContent = `${categoryProducts.length} Verified Chemicals`;
+
+      // Render items
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const q = filterQuery.toLowerCase().trim();
+      const filtered = categoryProducts.filter(p => {
+        if (!q) return true;
+        return p.name.toLowerCase().includes(q) ||
+               p.cas.toLowerCase().includes(q) ||
+               p.formula.toLowerCase().includes(q) ||
+               p.app.toLowerCase().includes(q) ||
+               p.syn.toLowerCase().includes(q);
+      });
+
+      // Update count text
+      const countEl = document.getElementById('filterResultCount');
+      if (countEl) {
+        countEl.textContent = `Showing ${filtered.length} of ${categoryProducts.length} chemicals`;
+      }
+
+      // Render Cards Grid
+      const cardsGrid = document.getElementById('categoryCardsGrid');
+      if (cardsGrid) {
+        if (filtered.length === 0) {
+          cardsGrid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align:center; padding: 48px 20px; background:#FFFFFF; border:1px dashed #CBD5E1; border-radius:14px;">
+              <h4 style="color:#061649; font-size:18px; margin-bottom:8px;">No chemicals match your search</h4>
+              <p style="color:#55657F; font-size:14px; margin-bottom:16px;">Try clearing your search terms or view other categories.</p>
+              <button type="button" onclick="document.getElementById('categorySearchInput').value=''; filterQuery=''; renderProducts();" style="background:#061649; color:#FFFFFF; border:none; padding:8px 18px; border-radius:8px; font-weight:700; cursor:pointer;">Reset Search Filter</button>
+            </div>
+          `;
+        } else {
+          cardsGrid.innerHTML = filtered.map(p => `
+            <div class="chem-card" onclick="if (!event.target.closest('a') && !event.target.closest('button')) window.location.href='products/${p.slug}.html';" style="cursor:pointer;">
+              <div>
+                <div class="card-top-row">
+                  <span class="cas-pill">CAS ${p.cas || 'Specialty'}</span>
+                  <span class="formula-tag">${formatSubscripts(p.formula)}</span>
+                </div>
+                <h3 class="chem-card-name">${p.name}</h3>
+                <p class="chem-card-app">${p.app || 'High-grade chemical building block for industrial formulation and synthesis.'}</p>
+              </div>
+              <div class="card-footer-row">
+                <span class="assay-tag">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Verified Assay</span>
+                </span>
+                <a href="products/${p.slug}.html" class="btn-card-view">
+                  <span>View Details &rarr;</span>
+                </a>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+
+      // Render Table
+      const tbody = document.getElementById('categoryTableBody');
+      if (tbody) {
+        tbody.innerHTML = filtered.map(p => `
+          <tr>
+            <td><strong style="color:#061649; font-weight:700;">${p.name}</strong></td>
+            <td><span class="cas-pill">${p.cas || 'Specialty'}</span></td>
+            <td><span class="formula-tag">${formatSubscripts(p.formula) || '-'}</span></td>
+            <td style="max-width:320px; color:#55657F;">${p.app || '-'}</td>
+            <td style="text-align:right;">
+              <a href="products/${p.slug}.html" class="btn-card-view" style="padding:5px 11px; font-size:11.5px;">
+                <span>View &rarr;</span>
+              </a>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    function handleCategorySearch(e) {
+      filterQuery = e.target.value;
+      renderProducts();
+    }
+
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      const cardsGrid = document.getElementById('categoryCardsGrid');
+      const tableWrap = document.getElementById('categoryTableWrap');
+      const btnGrid = document.getElementById('btnGridView');
+      const btnTable = document.getElementById('btnTableView');
+
+      if (mode === 'table') {
+        if (cardsGrid) cardsGrid.style.display = 'none';
+        if (tableWrap) tableWrap.style.display = 'block';
+        if (btnTable) btnTable.classList.add('active');
+        if (btnGrid) btnGrid.classList.remove('active');
+      } else {
+        if (cardsGrid) cardsGrid.style.display = 'grid';
+        if (tableWrap) tableWrap.style.display = 'none';
+        if (btnGrid) btnGrid.classList.add('active');
+        if (btnTable) btnTable.classList.remove('active');
+      }
+    }
+
+    function handleCategoryRfq(e) {
+      e.preventDefault();
+      const chem = document.getElementById('rfqChem').value;
+      const msg = document.getElementById('rfqSuccessMsg');
+      if (msg) {
+        msg.style.display = 'block';
+        msg.textContent = '✓ Technical sourcing inquiry for ' + chem + ' submitted successfully! Our desk will reply within 4 business hours.';
+      }
+      setTimeout(() => {
+        alert('Thank you! Your quotation request for ' + chem + ' has been logged. Our chemical specialist will send pricing and COA within 4 business hours.');
+      }, 300);
+    }
+
+    // Floating Back to Top Button
+    (function() {
+      const bttBtn = document.getElementById('floatingBackToTop');
+      if (!bttBtn) return;
+      const checkScroll = () => {
+        if (window.scrollY > 300) {
+          bttBtn.classList.add('visible');
+        } else {
+          bttBtn.classList.remove('visible');
+        }
+      };
+      window.addEventListener('scroll', checkScroll, { passive: true });
+      checkScroll();
+      bttBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    window.addEventListener('DOMContentLoaded', initCategory);
+  </script>
+</body>
+</html>

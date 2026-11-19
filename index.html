@@ -346,22 +346,51 @@
     }
     .nav-link {
       font-size: 13.5px;
-      color: #0F172A !important;
+      color: #0F172A;
       font-weight: 600;
-      padding: 6px 0;
+      padding: 7px 11px;
+      border-radius: 8px;
       display: inline-flex;
       align-items: center;
       gap: 5px;
       position: relative;
       white-space: nowrap !important;
       line-height: 1;
-      transition: color 0.2s ease;
       text-decoration: none;
       letter-spacing: -0.01em;
       flex-shrink: 0;
+      transition: color 0.22s ease, background-color 0.22s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      width: 0;
+      height: 2.5px;
+      background: linear-gradient(90deg, #05B8FB, #0284C7);
+      border-radius: 999px;
+      transform: translateX(-50%);
+      transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
+      opacity: 0;
+      pointer-events: none;
     }
     .nav-link:hover {
-      color: #0369A1 !important;
+      color: #0284C7 !important;
+      background-color: rgba(5, 184, 251, 0.08);
+      transform: translateY(-1.5px);
+    }
+    .nav-link:hover::after {
+      width: calc(100% - 16px);
+      opacity: 1;
+    }
+    .nav-link.active {
+      color: #05B8FB !important;
+      font-weight: 700;
+    }
+    .nav-link.active::after {
+      width: calc(100% - 16px);
+      opacity: 1;
     }
     .nav-dropdown-caret {
       display: inline-block;
@@ -370,12 +399,12 @@
       border-right: 1.8px solid #64748B;
       border-bottom: 1.8px solid #64748B;
       transform: rotate(45deg) translateY(-1px);
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
       margin-left: 2px;
     }
     .nav-item.has-dropdown:hover .nav-dropdown-caret {
       border-color: #05B8FB;
-      transform: rotate(-135deg) translateY(-1px);
+      transform: rotate(-135deg) translateY(1px);
     }
     .navbar-actions {
       display: flex;
@@ -402,73 +431,7 @@
       text-decoration: none;
       letter-spacing: -0.01em;
     }
-    /* Header Launch Button Wrap & Hide Feature */
-    .header-launch-wrap {
-      display: inline-flex;
-      align-items: center;
-      position: relative;
-      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), max-width 0.3s ease, margin 0.3s ease;
-      max-width: 160px;
-      overflow: visible;
-    }
-    .header-launch-wrap.is-hidden {
-      opacity: 0 !important;
-      transform: scale(0.8) !important;
-      max-width: 0 !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      pointer-events: none !important;
-      visibility: hidden !important;
-    }
-    .navbar .btn-header-launch {
-      font-size: 13px;
-      font-weight: 700;
-      padding: 0 10px 0 14px;
-      height: 33px;
-      border-radius: 6px 0 0 6px;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      background: rgba(5, 184, 251, 0.08) !important;
-      color: #0369A1 !important;
-      border: 1px solid rgba(5, 184, 251, 0.35) !important;
-      border-right: none !important;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      font-family: var(--sans);
-    }
-    .navbar .btn-header-launch:hover {
-      background: #061649 !important;
-      color: #ffffff !important;
-      border-color: #05B8FB !important;
-    }
-    .btn-header-launch-hide {
-      height: 33px;
-      padding: 0 8px;
-      border-radius: 0 6px 6px 0;
-      background: rgba(5, 184, 251, 0.08) !important;
-      color: rgba(5, 184, 251, 0.7) !important;
-      border: 1px solid rgba(5, 184, 251, 0.35) !important;
-      border-left: 1px solid rgba(5, 184, 251, 0.2) !important;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 11px;
-      font-weight: 700;
-      transition: all 0.2s ease;
-      font-family: var(--sans);
-    }
-    .btn-header-launch-hide:hover {
-      background: rgba(220, 38, 38, 0.12) !important;
-      color: #DC2626 !important;
-      border-color: rgba(220, 38, 38, 0.4) !important;
-    }
-    /* Toast Notification */
+    /* Launch Button Toast Notification */
     .header-launch-toast {
       position: fixed;
       bottom: 24px;
@@ -533,6 +496,39 @@
     }
     .footer-launch-toggle:hover {
       color: #054837;
+    }
+    .footer-launch-pill-wrap {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      vertical-align: middle;
+    }
+    .footer-launch-pill-wrap.is-hidden {
+      display: none !important;
+    }
+    .footer-launch-hide-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: rgba(3, 105, 161, 0.12);
+      border: 1px solid rgba(5, 184, 251, 0.4);
+      color: #0369A1;
+      font-size: 11px;
+      line-height: 1;
+      margin-left: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      padding: 0;
+    }
+    .footer-launch-hide-btn:hover {
+      background: #EF4444;
+      border-color: #EF4444;
+      color: #FFFFFF;
+      transform: scale(1.1);
     }
     .mobile-nav-launch-btn {
       width: 100%;
@@ -750,17 +746,17 @@
       font-family: var(--sans);
     }
 
-    /* Bold 3-line headline matching Elchemy's heavy uppercase style */
+    /* Refined 3-line headline with balanced boldness */
     .elchemy-title {
       font-size: clamp(2.4rem, 4.4vw, 4.1rem);
-      font-weight: 900;
-      line-height: 1.08;
+      font-weight: 600;
+      line-height: 1.1;
       color: #ffffff;
       text-transform: uppercase;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.01em;
       margin: 0 0 16px 0;
       font-family: var(--sans);
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
     }
     .elchemy-title-accent {
       color: #ffffff;
@@ -789,8 +785,8 @@
       display: flex;
       align-items: center;
       background: #ffffff;
-      border-radius: 8px;
-      padding: 5px 6px 5px 16px;
+      border-radius: 9999px;
+      padding: 6px 8px 6px 22px;
       box-shadow: 0 14px 38px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -828,23 +824,24 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #061649;
+      background: #05B8FB;
       color: #ffffff;
       border: none;
-      border-radius: 6px;
-      padding: 10px 22px;
+      border-radius: 9999px;
+      padding: 11px 24px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.01em;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       white-space: nowrap;
       flex-shrink: 0;
       font-family: var(--sans);
+      box-shadow: 0 2px 10px rgba(5, 184, 251, 0.35);
     }
     .elchemy-btn:hover {
-      background: #0D8367;
-      box-shadow: 0 4px 14px rgba(5, 184, 251, 0.4);
+      background: #0284C7;
+      box-shadow: 0 4px 16px rgba(5, 184, 251, 0.5);
       transform: translateY(-1px);
     }
     .elchemy-btn:active {
@@ -1696,30 +1693,118 @@
 
     .bento-card-highlight {
       grid-row: span 2;
-      background: var(--brand-red);
-      color: var(--white);
-      padding: 34px 28px;
+      background: linear-gradient(145deg, #05B8FB 0%, #0284C7 100%);
+      color: #FFFFFF;
+      padding: 26px 24px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: space-between;
       box-shadow: 0 10px 28px rgba(5, 184, 251, 0.28);
+      position: relative;
+      overflow: hidden;
     }
     .bento-highlight-deco {
       position: absolute;
-      bottom: -40px;
-      right: -40px;
-      width: 200px;
-      height: 200px;
+      top: -30px;
+      right: -30px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 70%);
       pointer-events: none;
     }
-    .bento-highlight-title {
-      font-size: 32px;
-      font-weight: 800;
-      line-height: 1.2;
-      color: var(--white);
+    .bento-highlight-globe-bg {
+      position: absolute;
+      right: -25px;
+      bottom: -25px;
+      width: 170px;
+      height: 170px;
+      color: #FFFFFF;
+      opacity: 0.16;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .bento-highlight-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      width: fit-content;
+      margin-bottom: 10px;
       z-index: 2;
+    }
+    .bento-highlight-title {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+      z-index: 2;
+    }
+    .bento-highlight-desc {
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.92);
+      margin: 0 0 14px 0;
+      z-index: 2;
+    }
+    .bento-highlight-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      z-index: 2;
+    }
+    .bento-highlight-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+    .bento-highlight-list li svg {
+      width: 14px;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.22);
+      border-radius: 50%;
+      padding: 2px;
+      flex-shrink: 0;
+    }
+    .bento-highlight-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      color: #0284C7;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      width: fit-content;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 2;
+    }
+    .bento-highlight-btn:hover {
+      background: #061649;
+      color: #FFFFFF;
+      transform: translateX(2px);
+      box-shadow: 0 6px 18px rgba(6, 22, 73, 0.25);
     }
 
     .bento-card-stat {
@@ -5633,6 +5718,58 @@
       from { opacity: 0; transform: scale(0.95) translateY(12px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
+
+    /* Floating Back to Top Button */
+    .floating-back-to-top {
+      position: fixed;
+      right: clamp(16px, 2.5vw, 32px);
+      bottom: clamp(16px, 2.5vw, 32px);
+      z-index: 999;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #061649;
+      color: #FFFFFF;
+      border: 1px solid rgba(5, 184, 251, 0.4);
+      box-shadow: 0 10px 25px -4px rgba(6, 22, 73, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(14px) scale(0.85);
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s, background 0.2s, box-shadow 0.2s, border-color 0.2s;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .floating-back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+    .floating-back-to-top:hover {
+      background: #0A2265;
+      color: var(--cyan, #05B8FB);
+      border-color: var(--cyan, #05B8FB);
+      transform: translateY(-3px) scale(1.06);
+      box-shadow: 0 14px 30px -4px rgba(6, 22, 73, 0.45), 0 0 14px rgba(5, 184, 251, 0.35);
+    }
+    .floating-back-to-top:active {
+      transform: translateY(-1px) scale(0.96);
+    }
+    body:has(#chatFab:not([hidden])) .floating-back-to-top,
+    body:has(.fab:not([hidden])) .floating-back-to-top,
+    body.has-chat-fab .floating-back-to-top {
+      bottom: clamp(76px, calc(2.5vw + 58px), 94px);
+    }
+    body:has(.chat:not([hidden])) .floating-back-to-top {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
     .chat .ch {
       display: flex;
       align-items: center;
@@ -6317,10 +6454,10 @@
       color: #0369A1;
     }
     .prod-quote-btn {
-      background: #061649;
+      background: #05B8FB;
       color: #ffffff;
       border: none;
-      border-radius: 6px;
+      border-radius: 9999px;
       font-size: 12px;
       font-weight: 700;
       padding: 6px 14px;
@@ -6695,7 +6832,7 @@
 
       <ul class="navbar-menu">
         <li class="nav-item">
-          <a href="index.html" class="nav-link active" style="color:#05B8FB; font-weight:700;">Home</a>
+          <a href="index.html" class="nav-link active">Home</a>
         </li>
         <li class="nav-item">
           <a href="products.html" class="nav-link" >Products</a>
@@ -6879,7 +7016,7 @@
         Semzolve Technologies connects global chemical buyers with India's audited specialty chemical synthesis ecosystem. Combining parent manufacturing infrastructure with 25+ audited contract manufacturing partners, we provide custom synthesis, high-assay solvents, and certified shipments across 15+ countries worldwide.
       </p>
       <div>
-        <a href="products.html" class="btn-primary" style="padding: 12px 26px; font-size: 13px;">Browse All Chemical Products →</a>
+        <a href="products.html" class="btn-primary" style="padding: 12px 26px; font-size: 13px;">Browse All Chemical Products </a>
       </div>
     </div>
 
@@ -6888,7 +7025,41 @@
       <!-- Left Column: Global Partner of Choice -->
       <div class="bento-card bento-card-highlight">
         <div class="bento-highlight-deco"></div>
-        <div class="bento-highlight-title">Global Partner<br>of Choice</div>
+        <svg class="bento-highlight-globe-bg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="100" cy="100" r="88" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+          <ellipse cx="100" cy="100" rx="88" ry="36" stroke="currentColor" stroke-width="2"/>
+          <ellipse cx="100" cy="100" rx="36" ry="88" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 100h176M100 12v176" stroke="currentColor" stroke-width="2"/>
+          <circle cx="140" cy="70" r="4" fill="currentColor"/>
+          <circle cx="65" cy="125" r="4" fill="currentColor"/>
+          <circle cx="120" cy="140" r="3.5" fill="currentColor"/>
+        </svg>
+        <div>
+          <div class="bento-highlight-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span>Export Gateway</span>
+          </div>
+          <div class="bento-highlight-title">Global Partner<br>of Choice</div>
+          <p class="bento-highlight-desc">Connecting global buyers with India's audited chemical synthesis ecosystem.</p>
+        </div>
+        <ul class="bento-highlight-list">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>15+ Nations Export Footprint</span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Batch COA &amp; REACH Compliance</span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>25+ Audited Production Hubs</span>
+          </li>
+        </ul>
+        <a href="about.html" class="bento-highlight-btn">
+          <span>Our Global Reach</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
 
       <!-- Top Row Cards -->
@@ -7487,7 +7658,7 @@
     <!-- Explore All 9 Dedicated Industry Pages CTA -->
     <div style="text-align: center; margin: 32px 0 48px;">
       <a href="industries.html" class="btn-primary" style="padding: 14px 32px; font-size: 15px; box-shadow: 0 4px 20px rgba(5, 184, 251, 0.25);">
-        Explore All 9 Dedicated Industry Pages →
+        Explore All 9 Dedicated Industry Pages 
       </a>
     </div>
 
@@ -8348,13 +8519,13 @@
       <div class="footer-col">
         <h4 class="footer-col-title">Chemical Products</h4>
         <ul class="footer-links">
-          <li><a href="products.html?cat=pharma">Pharma &amp; Agro Intermediates (23)</a></li>
-          <li><a href="products.html?cat=solvents">Specialty Solvents &amp; Esters (23)</a></li>
-          <li><a href="products.html?cat=cosmetics">Cosmetic &amp; Active Ingredients (18)</a></li>
-          <li><a href="products.html?cat=petro">Petrochemicals &amp; Ketones (12)</a></li>
-          <li><a href="products.html?cat=industrial">Industrial Acids &amp; Plasticizers (150)</a></li>
-          <li><a href="products.html?cat=emulsions">BASF Emulsions &amp; Additives (55)</a></li>
-          <li><a href="products.html" class="footer-link-highlight">Explore Full Catalogue (280+ Chemicals) →</a></li>
+          <li><a href="category.html?id=pharma">Pharma &amp; Agro Intermediates (23)</a></li>
+          <li><a href="category.html?id=solvents">Specialty Solvents &amp; Esters (23)</a></li>
+          <li><a href="category.html?id=cosmetics">Cosmetic &amp; Active Ingredients (18)</a></li>
+          <li><a href="category.html?id=petro">Petrochemicals &amp; Ketones (12)</a></li>
+          <li><a href="category.html?id=industrial">Industrial Acids &amp; Plasticizers (150)</a></li>
+          <li><a href="category.html?id=emulsions">BASF Emulsions &amp; Additives (55)</a></li>
+          <li><a href="products.html" class="footer-link-highlight">Explore Full Catalogue (280+ Chemicals) </a></li>
         </ul>
       </div>
 
@@ -8380,7 +8551,6 @@
           <li><a href="about.html">About Us & Founders</a></li>
           <li><a href="services.html">Services & Synthesis</a></li>
           <li><a href="contact.html">Contact & RFQ</a></li>
-          <li><a href="#hero" class="site-logo-link">Back to Top ↑</a></li>
         </ul>
       </div>
     </div>
@@ -8389,18 +8559,21 @@
     <div class="footer-bottom-bar">
       <div class="footer-bottom-left">
         <span>© 2026 Semzolve Technologies. All rights reserved.</span>
-        <span class="footer-pill-badge">Documentation on Request &bull; Audited ISO &amp; cGMP Standards</span>
       </div>
       <div class="footer-bottom-links">
         <div class="footer-links-group">
           <a href="privacy-policy.html">Privacy Policy</a>
           <span class="footer-sep">•</span>
           <a href="terms-of-trade.html">Terms of Trade</a>
-          <span class="footer-sep">•</span>
-          <a href="javascript:void(0)" onclick="window.triggerSemzolveLaunch ? window.triggerSemzolveLaunch() : (window.SemzolveLaunch ? window.SemzolveLaunch.replay(true) : window.location.href='index.html?launch=true')" class="launch-replay-pill" title="Experience Semzolve Cinematic Launch Reveal">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7.2-6.3-4.6-6.3 4.6 2.3-7.2-6-4.6h7.6z"/></svg>
-            ✦ Launch
-          </a></div>
+          <span class="footer-sep footer-launch-sep">•</span>
+          <span class="footer-launch-pill-wrap" id="footerLaunchPillWrap">
+            <a href="javascript:void(0)" onclick="window.triggerSemzolveLaunch ? window.triggerSemzolveLaunch() : (window.SemzolveLaunch ? window.SemzolveLaunch.replay(true) : window.location.href='index.html?launch=true')" class="launch-replay-pill" title="Experience Semzolve Cinematic Launch Reveal">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7.2-6.3-4.6-6.3 4.6 2.3-7.2-6-4.6h7.6z"/></svg>
+              ✦ Launch
+            </a>
+            <button type="button" class="footer-launch-hide-btn" id="footerLaunchHideBtn" onclick="toggleLaunchButton(false)" title="Hide launch button" aria-label="Hide launch button">&times;</button>
+          </span>
+        </div>
         <span class="footer-sep footer-sep-mid">•</span>
         <div class="footer-links-group">
           <a href="regulatory-compliance.html">Regulatory Compliance</a>
@@ -8410,6 +8583,13 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button type="button" class="floating-back-to-top" id="floatingBackToTop" aria-label="Back to top" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
 
   <!-- Floating Action Button for AI Assistant -->
   <button class="fab" id="chatFab" aria-label="Open Onechemicals AI assistant">
@@ -8576,6 +8756,28 @@ Incoterm: ${currentIncoterm}`;
         }
       });
     });
+
+    // 0c. FLOATING BACK TO TOP BUTTON
+    (function() {
+      const bttBtn = document.getElementById('floatingBackToTop');
+      if (!bttBtn) return;
+      if (document.getElementById('chatFab')) {
+        document.body.classList.add('has-chat-fab');
+      }
+      const checkScroll = () => {
+        if (window.scrollY > 300) {
+          bttBtn.classList.add('visible');
+        } else {
+          bttBtn.classList.remove('visible');
+        }
+      };
+      window.addEventListener('scroll', checkScroll, { passive: true });
+      checkScroll();
+      bttBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
 
     // 1. PAGE LOAD INTRO (Guaranteed smooth dismissal)
     function dismissIntro() {
@@ -10542,23 +10744,28 @@ ${email} · ${country}`;
       }
     });
 
-  // Feature: Hide / Toggle Header Launch Button
-  function toggleHeaderLaunch(forceShow) {
-    const wrap = document.getElementById('headerLaunchWrap');
-    const footerToggle = document.getElementById('footerLaunchToggleLink');
-    if (!wrap) return;
+  // Feature: Hide / Toggle Launch Button (Footer & Mobile)
+  function toggleLaunchButton(forceShow) {
+    const footerWrap = document.getElementById('footerLaunchPillWrap');
+    const footerSep = document.querySelector('.footer-launch-sep');
+    const mobileBtn = document.querySelector('.mobile-nav-launch-btn');
 
-    const willHide = (forceShow === undefined) ? !wrap.classList.contains('is-hidden') : !forceShow;
+    const isCurrentlyHidden = (footerWrap && footerWrap.classList.contains('is-hidden')) ||
+                              localStorage.getItem('semzolve_launch_btn_hidden') === '1';
+
+    const willHide = (forceShow === undefined) ? !isCurrentlyHidden : !forceShow;
 
     if (willHide) {
-      wrap.classList.add('is-hidden');
+      if (footerWrap) footerWrap.classList.add('is-hidden');
+      if (footerSep) footerSep.style.display = 'none';
+      if (mobileBtn) mobileBtn.style.display = 'none';
       try { localStorage.setItem('semzolve_launch_btn_hidden', '1'); } catch (e) {}
-      if (footerToggle) footerToggle.style.display = 'inline-flex';
-      showLaunchToast('✦ Launch button hidden. Press <kbd>Alt + L</kbd> to restore.', true);
+      showLaunchToast('✦ Launch button hidden.', true);
     } else {
-      wrap.classList.remove('is-hidden');
+      if (footerWrap) footerWrap.classList.remove('is-hidden');
+      if (footerSep) footerSep.style.display = '';
+      if (mobileBtn) mobileBtn.style.display = '';
       try { localStorage.removeItem('semzolve_launch_btn_hidden'); } catch (e) {}
-      if (footerToggle) footerToggle.style.display = 'none';
       showLaunchToast('✦ Launch button restored.', false);
     }
   }
@@ -10575,7 +10782,7 @@ ${email} · ${country}`;
 
     toast.innerHTML = `
       <span>${htmlMessage}</span>
-      ${showUndo ? '<button type="button" class="toast-undo-btn" onclick="toggleHeaderLaunch(true)">Undo</button>' : ''}
+      ${showUndo ? '<button type="button" class="toast-undo-btn" onclick="toggleLaunchButton(true)">Undo</button>' : ''}
     `;
     toast.classList.add('is-visible');
 
@@ -10585,52 +10792,35 @@ ${email} · ${country}`;
     }, 4500);
   }
 
-  window.toggleHeaderLaunch = toggleHeaderLaunch;
+  window.toggleLaunchButton = toggleLaunchButton;
+  window.toggleHeaderLaunch = toggleLaunchButton;
 
   document.addEventListener('DOMContentLoaded', () => {
     // Check saved state
     try {
       if (localStorage.getItem('semzolve_launch_btn_hidden') === '1') {
-        const wrap = document.getElementById('headerLaunchWrap');
-        if (wrap) wrap.classList.add('is-hidden');
-        const footerToggle = document.getElementById('footerLaunchToggleLink');
-        if (footerToggle) footerToggle.style.display = 'inline-flex';
+        const footerWrap = document.getElementById('footerLaunchPillWrap');
+        if (footerWrap) footerWrap.classList.add('is-hidden');
+        const footerSep = document.querySelector('.footer-launch-sep');
+        if (footerSep) footerSep.style.display = 'none';
+        const mobileBtn = document.querySelector('.mobile-nav-launch-btn');
+        if (mobileBtn) mobileBtn.style.display = 'none';
       }
     } catch (e) {}
 
-    // Click on Hide button
-    const hideBtn = document.getElementById('headerLaunchHideBtn');
-    if (hideBtn) {
-      hideBtn.addEventListener('click', (e) => {
+    // Right-click on Launch buttons to hide
+    document.querySelectorAll('.launch-replay-pill, .mobile-nav-launch-btn').forEach(btn => {
+      btn.addEventListener('contextmenu', (e) => {
         e.preventDefault();
-        e.stopPropagation();
-        toggleHeaderLaunch(false);
+        toggleLaunchButton(false);
       });
-    }
-
-    // Right-click on Launch button to hide
-    const launchBtn = document.getElementById('headerLaunchBtn');
-    if (launchBtn) {
-      launchBtn.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-        toggleHeaderLaunch(false);
-      });
-    }
-
-    // Double-click on navbar brand logo to toggle
-    const brandLogo = document.querySelector('.navbar-brand');
-    if (brandLogo) {
-      brandLogo.addEventListener('dblclick', (e) => {
-        e.preventDefault();
-        toggleHeaderLaunch();
-      });
-    }
+    });
 
     // Keyboard shortcut: Alt + L to toggle
     window.addEventListener('keydown', (e) => {
       if (e.altKey && (e.key === 'l' || e.key === 'L')) {
         e.preventDefault();
-        toggleHeaderLaunch();
+        toggleLaunchButton();
       }
     });
   });
